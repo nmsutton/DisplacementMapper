@@ -1,0 +1,5811 @@
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater
+iteration y:0 x:0
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	0
+UL_X:   -1
+UL_Y:   -2.5
+UL_Z:   -1
+UL_texX:   -0.33
+UL_texY:   0.99
+UR_X:   0.5
+UR_Y:   -2.5
+UR_Z:   2.5
+UR_texX:   0
+UR_texY:   0.99
+BL_X:   0.5
+BL_Y:   -0.5
+BL_Z:   -1
+BL_texX:   0
+BL_texY:   1.33
+BR_X:   -1
+BR_Y:   -0.5
+BR_Z:   -1
+BR_texX:   -0.33
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:1
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   0.5
+UL_Y:   -2.5
+UL_Z:   -4.5
+UL_texX:   -0.66
+UL_texY:   0.99
+UR_X:   2
+UR_Y:   -2.5
+UR_Z:   -1
+UR_texX:   -0.33
+UR_texY:   0.99
+BL_X:   2
+BL_Y:   -0.5
+BL_Z:   -4.5
+BL_texX:   -0.33
+BL_texY:   1.33
+BR_X:   0.5
+BR_Y:   -0.5
+BR_Z:   -4.5
+BR_texX:   -0.66
+BR_texY:   1.33
+_____________________
+x greater
+iteration y:0 x:2
+sizeOfMesh/2: 1	y>=sizeOfMesh/2:	0	(x>=sizeOfMesh/2):	1
+UL_X:   2
+UL_Y:   -2.5
+UL_Z:   -8
+UL_texX:   -0.99
+UL_texY:   0.99
+UR_X:   3.5
+UR_Y:   -2.5
+UR_Z:   -4.5
+UR_texX:   -0.66
+UR_texY:   0.99
+BL_X:   3.5
+BL_Y:   -0.5
+BL_Z:   -8
+BL_texX:   -0.66
+BL_texY:   1.33
+BR_X:   2
+BR_Y:   -0.5
+BR_Z:   -8
+BR_texX:   -0.99
+BR_texY:   1.33
+_____________________
+y greater
+y greater

@@ -1,0 +1,71 @@
+	/*createTexMap("UMUL");
+    glVertex3f(-1.0f, -0.5f, -1.5f);
+    createTexMap("UMUR");
+    glVertex3f(1.0f, -0.5f, -1.5f);
+    createTexMap("UMBL");
+    glVertex3f(1.0f, 1.5f, -4.5f);
+    createTexMap("UMBR");
+    glVertex3f(-1.0f, 1.5f, -4.5f);*/
+
+    createTexMap("URUL");
+	glVertex3f(1.0f, -0.5f, -1.5f);
+	createTexMap("URUR");
+	glVertex3f(2.5f, -0.5f, -4.5f);
+	createTexMap("URBL");
+	glVertex3f(2.5f, 1.5f, -4.5f);
+	createTexMap("URBR");
+	glVertex3f(1.0f, 1.5f, -4.5f);
+
+	createTexMap("MLUL");
+	glVertex3f(-2.5f, -2.5f, -4.5f);
+	createTexMap("MLUR");
+	glVertex3f(-1.0f, -2.5f, -1.5f);
+	createTexMap("MLBL");
+	glVertex3f(-1.0f, -0.5f, -1.5f);
+	createTexMap("MLBR");
+	glVertex3f(-2.5f, -0.5f, -4.5f);
+
+	createTexMap("MMUL");
+    glVertex3f(-1.0f, -2.5f, -1.5f);
+    createTexMap("MMUR");
+    glVertex3f(1.0f, -2.5f, -1.5f);
+    createTexMap("MMBL");
+    glVertex3f(1.0f, -0.5f, -1.5f);
+    createTexMap("MMBR");
+    glVertex3f(-1.0f, -0.5f, -1.5f);
+
+    createTexMap("MRUL");
+	glVertex3f(1.0f, -2.5f, -1.5f);
+	createTexMap("MRUR");
+	glVertex3f(2.5f, -2.5f, -4.5f);
+	createTexMap("MRBL");
+	glVertex3f(2.5f, -0.5f, -4.5f);
+	createTexMap("MRBR");
+	glVertex3f(1.0f, -0.5f, -1.5f);
+
+	createTexMap("BLUL");
+	glVertex3f(-2.5f, -4.5f, -4.5f);
+	createTexMap("BLUR");
+	glVertex3f(-1.0f, -4.5f, -4.5f);
+	createTexMap("BLBL");
+	glVertex3f(-1.0f, -2.5f, -1.5f);
+	createTexMap("BLBR");
+	glVertex3f(-2.5f, -2.5f, -4.5f);
+
+	createTexMap("BMUL");
+    glVertex3f(-1.0f, -4.5f, -4.5f);
+    createTexMap("BMUR");
+    glVertex3f(1.0f, -4.5f, -4.5f);
+    createTexMap("BMBL");
+    glVertex3f(1.0f, -2.5f, -1.5f);
+    createTexMap("BMBR");
+    glVertex3f(-1.0f, -2.5f, -1.5f);
+
+    createTexMap("BRUL");
+	glVertex3f(1.0f, -4.5f, -4.5f);
+	createTexMap("BRUR");
+	glVertex3f(2.5f, -4.5f, -4.5f);
+	createTexMap("BRBL");
+	glVertex3f(2.5f, -2.5f, -4.5f);
+	createTexMap("BRBR");
+	glVertex3f(1.0f, -2.5f, -1.5f);

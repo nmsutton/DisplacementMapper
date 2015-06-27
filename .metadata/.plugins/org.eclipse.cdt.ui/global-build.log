@@ -1,0 +1,92 @@
+20:40:32 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+make all 
+make: Nothing to be done for 'all'.
+20:40:38 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+make all 
+make: Nothing to be done for 'all'.
+20:43:15 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+make all 
+Building file: ../main.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.cpp"
+../main.cpp: In function ‘void drawScene()’:
+../main.cpp:272:32: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    if ((x < sizeOfMesh/2) | (x < (sizeOfMesh/2+(sizeOfMesh*expandMeshSize-sizeOfMesh)) & x > (sizeOfMesh*expandMeshSize-sizeOfMesh))) {
+                                ^
+../main.cpp:288:16: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= sizeOfMesh/2 & x < sizeOfMesh) | (x > (sizeOfMesh/2+(sizeOfMesh*expandMeshSize-sizeOfMesh)) & x < (sizeOfMesh*expandMeshSize))) {
+                ^
+../main.cpp:288:55: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= sizeOfMesh/2 & x < sizeOfMesh) | (x > (sizeOfMesh/2+(sizeOfMesh*expandMeshSize-sizeOfMesh)) & x < (sizeOfMesh*expandMeshSize))) {
+                                                       ^
+../main.cpp:305:15: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if (x > (sizeOfMesh) & x < (sizeOfMesh*expandMeshSize-sizeOfMesh)) {
+               ^
+../main.cpp:192:8: warning: unused variable ‘initVerZUL’ [-Wunused-variable]
+  float initVerZUL = -4.50f;
+        ^
+../main.cpp:193:8: warning: unused variable ‘initVerZUR’ [-Wunused-variable]
+  float initVerZUR = -4.50f;//initVerZUL+verZIncrement;
+        ^
+../main.cpp:194:8: warning: unused variable ‘initVerZBL’ [-Wunused-variable]
+  float initVerZBL = -4.50f;
+        ^
+../main.cpp:195:8: warning: unused variable ‘initVerZBR’ [-Wunused-variable]
+  float initVerZBR = -4.50f;
+        ^
+Finished building: ../main.cpp
+ 
+Building target: DisplacementMapper
+Invoking: Cross G++ Linker
+g++ -L/usr/lib/x86_64-linux-gnu -o "DisplacementMapper"  ./imageloader.o ./main.o   -lGL -lGLU -lglut
+Finished building target: DisplacementMapper
+ 
+20:43:16 **** Incremental Build of configuration Debug for project ImagePreprocessor ****
+make all 
+make: Nothing to be done for 'all'.
+20:43:17 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+make all 
+make: Nothing to be done for 'all'.
+20:43:46 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+make all 
+Building file: ../main.cpp
+Invoking: Cross G++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.cpp"
+../main.cpp: In function ‘void drawScene()’:
+../main.cpp:272:32: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    if ((x < sizeOfMesh/2) | (x < (sizeOfMesh/2+(sizeOfMesh*expandMeshSize-sizeOfMesh)) & x > (sizeOfMesh*expandMeshSize-sizeOfMesh))) {
+                                ^
+../main.cpp:288:16: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= sizeOfMesh/2 & x < sizeOfMesh) | (x > (sizeOfMesh/2+(sizeOfMesh*expandMeshSize-sizeOfMesh)) & x < (sizeOfMesh*expandMeshSize))) {
+                ^
+../main.cpp:288:55: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= sizeOfMesh/2 & x < sizeOfMesh) | (x > (sizeOfMesh/2+(sizeOfMesh*expandMeshSize-sizeOfMesh)) & x < (sizeOfMesh*expandMeshSize))) {
+                                                       ^
+../main.cpp:305:15: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if (x > (sizeOfMesh) & x < (sizeOfMesh*expandMeshSize-sizeOfMesh)) {
+               ^
+../main.cpp:192:8: warning: unused variable ‘initVerZUL’ [-Wunused-variable]
+  float initVerZUL = -4.50f;
+        ^
+../main.cpp:193:8: warning: unused variable ‘initVerZUR’ [-Wunused-variable]
+  float initVerZUR = -4.50f;//initVerZUL+verZIncrement;
+        ^
+../main.cpp:194:8: warning: unused variable ‘initVerZBL’ [-Wunused-variable]
+  float initVerZBL = -4.50f;
+        ^
+../main.cpp:195:8: warning: unused variable ‘initVerZBR’ [-Wunused-variable]
+  float initVerZBR = -4.50f;
+        ^
+Finished building: ../main.cpp
+ 
+Building target: DisplacementMapper
+Invoking: Cross G++ Linker
+g++ -L/usr/lib/x86_64-linux-gnu -o "DisplacementMapper"  ./imageloader.o ./main.o   -lGL -lGLU -lglut
+Finished building target: DisplacementMapper
+ 
+20:43:46 **** Incremental Build of configuration Debug for project ImagePreprocessor ****
+make all 
+make: Nothing to be done for 'all'.
+20:43:48 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+make all 
+make: Nothing to be done for 'all'.

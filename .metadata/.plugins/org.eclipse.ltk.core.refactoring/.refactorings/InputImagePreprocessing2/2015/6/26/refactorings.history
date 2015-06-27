@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move &apos;InputImagePreprocessing.cpp, breastsOutline.jpg&apos; to &apos;InputImagePreprocessing2&apos;" description="Move 2 resources to &apos;InputImagePreprocessing2&apos;" destination="/InputImagePreprocessing2" element1="/InputImagePreprocessing/src/InputImagePreprocessing.cpp" element2="/InputImagePreprocessing/src/breastsOutline.jpg" flags="7" id="org.eclipse.ltk.core.refactoring.move.resources" resources="2" stamp="1435202779582" updateReferences="true"/>
+</session>

@@ -1,0 +1,15 @@
+23:52:38 **** Incremental Build of configuration Debug for project InputImagePreprocessing2 ****
+make all 
+Building target: InputImagePreprocessing2
+Invoking: Cross G++ Linker
+g++  -o "InputImagePreprocessing2"  ./InputImagePreprocessing.o   
+./InputImagePreprocessing.o: In function `cv::Mat::~Mat()':
+/usr/local/include/opencv2/core/mat.inl.hpp:556: undefined reference to `cv::fastFree(void*)'
+makefile:44: recipe for target 'InputImagePreprocessing2' failed
+./InputImagePreprocessing.o: In function `cv::Mat::release()':
+/usr/local/include/opencv2/core/mat.inl.hpp:667: undefined reference to `cv::Mat::deallocate()'
+collect2: error: ld returned 1 exit status
+make: *** [InputImagePreprocessing2] Error 1
+
+23:52:38 Build Finished (took 119ms)
+

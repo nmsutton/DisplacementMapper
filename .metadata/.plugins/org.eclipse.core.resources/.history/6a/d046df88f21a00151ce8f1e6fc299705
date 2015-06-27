@@ -1,0 +1,38 @@
+//============================================================================
+// Name        : ImagePreprocessor.cpp
+// Author      : Nate Sutton
+// Version     :
+// Copyright   : Your copyright notice
+// Description : Hello World in C++, Ansi-style
+// from http://docs.opencv.org/doc/tutorials/introduction/display_image/display_image.html
+//============================================================================
+
+#include <opencv2/core/core.hpp>
+#include <opencv2/imgcodecs.hpp>
+#include <opencv2/highgui/highgui.hpp>
+
+#include <iostream>
+#include <string>
+
+using namespace cv;
+
+using namespace std;
+
+int main( int argc, char** argv )
+{
+  Mat image;
+  image = imread( argv[1], 1 );
+
+  if( argc != 2 || !image.data )
+    {
+      printf( "No image data \n" );
+      return -1;
+    }
+
+  namedWindow( "Display Image", CV_WINDOW_AUTOSIZE );
+  imshow( "Display Image", image );
+
+  waitKey(0);
+
+  return 0;
+}
