@@ -20,7 +20,9 @@
  * www.videotutorialsrock.com
  */
 
-
+#include <opencv2/core/core.hpp>
+#include <opencv2/imgcodecs.hpp>
+#include <opencv2/highgui/highgui.hpp>
 
 #include <iostream>
 #include <stdlib.h>
@@ -33,6 +35,7 @@
 #endif
 
 #include "imageloader.h"
+using namespace cv;
 
 using namespace std;
 
@@ -45,8 +48,13 @@ void handleKeypress(unsigned char key, int x, int y) {
 	}
 }
 
+String imageName6 = "/home/nmsutton/Documents/Software/OpenGL/Media/GeneralProcessed.bmp";
+Mat dispMapImage;
+
 //Makes the image into a texture, and returns the id of the texture
 GLuint loadTexture(Image* image) {
+	dispMapImage = imread(imageName6, CV_LOAD_IMAGE_COLOR);
+
 	GLuint textureId;
 	glGenTextures(1, &textureId); //Make room for our texture
 	glBindTexture(GL_TEXTURE_2D, textureId); //Tell OpenGL which texture to edit
@@ -73,7 +81,7 @@ void initRendering() {
 	glEnable(GL_COLOR_MATERIAL);
 	glShadeModel(GL_SMOOTH); //Enable smooth shading
 
-	Image* image = loadBMP("vtr.bmp");
+	Image* image = loadBMP("/home/nmsutton/Documents/Software/OpenGL/Media/generalImg.bmp");
 	_textureId = loadTexture(image);
 	delete image;
 }
@@ -100,6 +108,8 @@ void createMesh(vertsAndTextures vAT) {
 }
 
 void drawScene() {
+	int grayLevel;
+
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	glMatrixMode(GL_MODELVIEW);
@@ -239,10 +249,10 @@ void drawScene() {
 			vAT3.BLVerInst[1] -= verYIncrement;
 			vAT3.BRVerInst[1] -= verYIncrement;
 
-			vAT3.ULVerInst[2] += verZIncrement;
+			/*vAT3.ULVerInst[2] += verZIncrement;
 			vAT3.URVerInst[2] += verZIncrement;
 			vAT3.BLVerInst[2] += verZIncrement;
-			vAT3.BRVerInst[2] += verZIncrement;
+			vAT3.BRVerInst[2] += verZIncrement;*/
 
 			vAT3.ULTexInst[1] -= texYIncrement;
 			vAT3.URTexInst[1] -= texYIncrement;
@@ -256,10 +266,10 @@ void drawScene() {
 			vAT3.BLVerInst[1] -= verYIncrement;
 			vAT3.BRVerInst[1] -= verYIncrement;
 
-			vAT3.ULVerInst[2] -= verZIncrement;
+			/*vAT3.ULVerInst[2] -= verZIncrement;
 			vAT3.URVerInst[2] -= verZIncrement;
 			vAT3.BLVerInst[2] -= verZIncrement;
-			vAT3.BRVerInst[2] -= verZIncrement;
+			vAT3.BRVerInst[2] -= verZIncrement;*/
 
 			vAT3.ULTexInst[1] -= texYIncrement;
 			vAT3.URTexInst[1] -= texYIncrement;
@@ -318,6 +328,17 @@ void drawScene() {
 				vAT3.BLTexInst[0] += texXIncrement;
 				vAT3.BRTexInst[0] += texXIncrement;
 			}
+			// Apply displacement map
+			int imageToScenePixelDiff = 255/sizeOfMesh;
+			int translatedX = x * imageToScenePixelDiff; int translatedY = y * imageToScenePixelDiff;
+			grayLevel = dispMapImage.at<Vec3b>(translatedY,translatedX).val[0];
+			cout<<"translatedY\t";cout<<translatedY;cout<<"\ttranslatedX\t";cout<<translatedX;cout<"\tgrey level\t";cout<<grayLevel;cout<"\n";
+			int depthScalingFactor = .5;
+			/*vAT3.ULVerInst[2] = grayLevel*depthScalingFactor;
+			vAT3.URVerInst[2] = grayLevel*depthScalingFactor;*/
+			vAT3.BLVerInst[2] = grayLevel*depthScalingFactor;
+			vAT3.BRVerInst[2] = grayLevel*depthScalingFactor;
+			//vAT3.BRVerInst[2] (int)image.at<Vec3b>(y,x).val[0]
 
 			/*cout << "iteration y:";cout<<y;cout<<" x:";cout<<x;cout<<"\n";
 			cout<<"sizeOfMesh/2: ";cout<<sizeOfMesh/2;cout<<"\ty>=sizeOfMesh/2:\t";cout<<(y>=sizeOfMesh/2);cout<<"\t(x>=sizeOfMesh/2):\t";cout<<(x>=sizeOfMesh/2);cout<<"\n";

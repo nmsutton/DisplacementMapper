@@ -23,31 +23,9 @@ int main(int argc, char** argv) {
 	//! [load]
 
 	String imageName5 = "/home/nmsutton/Documents/Software/OpenGL/DisplacementMapper/ImagePreprocessor/src/blank.jpg";
-	/*if( argc > 1)
-    {
-        imageName = argv[1];
-    }*/
-	//! [load]
-
-	//! [mat]
+	String imageName6 = "/home/nmsutton/Documents/Software/OpenGL/Media/general3.bmp";
 	Mat image;
-	//! [mat]
-
-	//! [imread]
-	//image = imread(imageName.c_str(), IMREAD_COLOR); // Read the file
-	//Mat imread(const String& filename, int flags=IMREAD_COLOR );
-	//Mat image2 = imread(const String& imageName3, int flags=IMREAD_COLOR );
-	//image = imread(const String& imageName, int flags=CV_LOAD_IMAGE_COLOR);
-
-
-	image = imread(imageName5, CV_LOAD_IMAGE_COLOR);
-	//image = imread(imageName3, 0); //greyscale
-
-
-	//IplImage *img=cvLoadImage("brain_mri_00%j.jpg", CV_LOAD_IMAGE_GRAYSCALE);
-	//CvMat* cvLoadImageM(const char* imageName, int iscolor=CV_LOAD_IMAGE_COLOR);
-	//! [imread]
-
+	image = imread(imageName6, CV_LOAD_IMAGE_COLOR);
 
 	// Find anchor points
 	bool anchorXAxisFound = false;
@@ -60,11 +38,10 @@ int main(int argc, char** argv) {
 		for (int x=0;x<image.cols;x++)
 		{
 			if ((image.at<Vec3b>(y,x) == Vec3b(0,0,0) & anchorXAxisFound == false) &
-					((x+11) < image.cols) &
-					(image.at<Vec3b>(y,(x+10)) == Vec3b(255,255,255))) {
+					((x+11) < image.cols)) {
 				for (int x2=x+100;x2<(image.cols/2);x2++) {
 					// find first occuring limited line segment.
-					if (image.at<Vec3b>(y,x2) == Vec3b(0,0,0)) {
+					if (image.at<Vec3b>(y,x2) == Vec3b(0,0,0) & anchorXAxisFound == false) {
 						for (int x3=x;x3<x2;x3++) {
 							//if ((x3%5==0) & (anchorXAxisFound == false)) {
 							//if (anchorXAxisFound == false) {
@@ -93,7 +70,7 @@ int main(int argc, char** argv) {
 				}
 				// draw anchor y axis
 				for(int y2=y;y2<bottomAnchorYAxis[0];y2++) {
-					image.at<Vec3b>(y2,targetX) = Vec3b(0,255,0);
+					image.at<Vec3b>(y2,targetX) = Vec3b(255,0,0);
 				}
 			}
 		}
@@ -103,6 +80,7 @@ int main(int argc, char** argv) {
 	double yGrayLevel = 0;
 	double xGrayLevel = 0;
 	double mu = 3.0;
+	double muX = 2.0;
 	double sigma = 1.1;
 	double normalizedY = -1.0;
 	double yScaleConvertedGrey = 0.0;
@@ -128,8 +106,8 @@ int main(int argc, char** argv) {
 		// adjust for top section
 		//if (y < (bottomAnchorYAxis[0]-(topAnchorYAxis[0]))) {
 		//if (y > 50) {
-			yDouble = y;
-			yScaleConvertedGrey += (1/((yDouble*.007)+.5))*15;//50;//-= (6.0/255.0)*30;
+		yDouble = y;
+		yScaleConvertedGrey += (1/((yDouble*.007)+.5))*15;//50;//-= (6.0/255.0)*30;
 		//}
 		if (y > 49) {
 			//baseAdjustment = -20;
@@ -140,7 +118,7 @@ int main(int argc, char** argv) {
 			yScaleConvertedGrey -= ((y-244)*1.9);//4;//8;
 			//if (yScaleConvertedGrey > 2.001) {yScaleConvertedGrey = 2;}
 			if (yScaleConvertedGrey < 0) {yScaleConvertedGrey = 0;}
-			cout<<"y: ";cout<<y;cout<<"  ";cout << yScaleConvertedGrey;cout << "\n";
+			//cout<<"y: ";cout<<y;cout<<"  ";cout << yScaleConvertedGrey;cout << "\n";
 			//cout << "y:\t";cout<<y;
 		}
 		yScaleConvertedGreyTemp = yScaleConvertedGrey;
@@ -150,13 +128,15 @@ int main(int argc, char** argv) {
 		{
 			normalizedX += 6.0/255.0;
 
-			xGrayLevel = (1.0/(sigma*pow((2.0*pi),0.5)))*(exp(-(pow((normalizedX-mu),2.0)/pow((2*sigma),2.0))));
+			xGrayLevel = (1.0/(sigma*pow((2.0*pi),0.5)))*(exp(-(pow((normalizedX-muX),2.0)/pow((2*sigma),2.0))));
 
 			xScaleConvertedGrey = xGrayLevel * 255.0/2.0 + baseAdjustment;
 
 			xScaleConvertedGrey += x*.1;
 
-			if (x < leftAnchorXAxis[1]) {
+			//if (x < leftAnchorXAxis[1]) {
+			if (image.at<Vec3b>(y,x) == Vec3b(255,255,255)) {
+				//if (image.at<Vec3b>(y,x) == Vec3b(0,0,0)) {
 				//cout << "leftAnchorXAxis[1]:\t";
 				//cout << leftAnchorXAxis[1];cout<<"\n";
 				//xScaleConvertedGrey -= (100 - x);
@@ -172,31 +152,30 @@ int main(int argc, char** argv) {
 
 			if (x < 30) {
 				if (xScaleConvertedGrey < 0) {xScaleConvertedGrey = 0;}
-				cout << leftAnchorXAxis[1];//xScaleConvertedGrey;
-				cout << " ";
+				//cout << leftAnchorXAxis[1];//xScaleConvertedGrey;
+				//cout << " ";
 			}
-				// Rotation not working last checked
-				/*rotationAngle = 30.0;
-				rotatedY = floor(y * cos(rotationAngle));
-				rotatedX = floor(x * cos(rotationAngle));*/
 
-			//if (y < bottomAnchorYAxis[0] & x > leftAnchorXAxis[1]) {
-				//image.at<Vec3b>(y,x) = Vec3b(yScaleConvertedGrey+xScaleConvertedGrey,yScaleConvertedGrey+xScaleConvertedGrey,yScaleConvertedGrey+xScaleConvertedGrey);
+			image.at<Vec3b>(y,x) = Vec3b(yScaleConvertedGrey+xScaleConvertedGrey,yScaleConvertedGrey+xScaleConvertedGrey,yScaleConvertedGrey+xScaleConvertedGrey);
 
-				//image.at<Vec3b>(rotatedY,rotatedX) = Vec3b(yScaleConvertedGrey+xScaleConvertedGrey,yScaleConvertedGrey+xScaleConvertedGrey,yScaleConvertedGrey+xScaleConvertedGrey);
-			//}
+			// Mirror image verically
+			if (x > (image.cols/2)) {
+				image.at<Vec3b>(y,x) = image.at<Vec3b>(y,(image.cols-x));
+			}
+			//cout<<(int)image.at<Vec3b>(y,x).val[0];cout<<"\n";
 		}
 	}
 
 
-	cout<<"rows";
+	/*cout<<"rows";
 	cout<<image.rows;
 	cout<<"\n";
 	cout<<"cols";
 	cout<<image.cols;
-	cout<<"\n";
+	cout<<"\n";*/
 	//After changing
 	//cv::imshow("After",img);
+	imwrite( "/home/nmsutton/Documents/Software/OpenGL/Media/GeneralProcessed.bmp", image );
 
 	namedWindow( "Display Image", CV_WINDOW_AUTOSIZE );
 	imshow( "Display Image", image );
