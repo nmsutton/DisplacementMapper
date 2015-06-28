@@ -48,7 +48,7 @@ void handleKeypress(unsigned char key, int x, int y) {
 	}
 }
 
-String imageName6 = "/home/nmsutton/Documents/Software/OpenGL/Media/GeneralProcessed.bmp";
+String imageName6 = "/home/nmsutton/Documents/Software/OpenGL/Media/GeneralProcessed2.bmp";
 Mat dispMapImage;
 
 //Makes the image into a texture, and returns the id of the texture
@@ -108,16 +108,30 @@ void createMesh(vertsAndTextures vAT) {
 }
 
 void drawScene() {
-	int grayLevel;
+	/*double grayLevel = 0;
+	double priorAdjustedGrayLevel = 0;
+	double nextGrayLevel = 0;*/
+	double meshVec_neg1_neg1 = 0;
+	double meshVec_neg1_0 = 0;
+	double meshVec_neg1_1 = 0;
+	double meshVec_0_neg1 = 0;
+	double meshVec_0_0 = 0;
+	double meshVec_0_1 = 0;
+	double meshVec_1_neg1 = 0;
+	double meshVec_1_0 = 0;
+	double meshVec_1_1 = 0;
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 
-	glTranslatef(-10.0f, 1.0f, -50.0f);
+	// camera position mapper
+	//glTranslatef(-30.0f, 1.0f, -60.0f);//-150.0f);
+	glTranslatef(-30.0f, -4.0f, -45.0f);//-150.0f);
 
-	GLfloat ambientLight[] = {0.2f, 0.2f, 0.2f, 1.0f};
+	//GLfloat ambientLight[] = {0.2f, 0.2f, 0.2f, 1.0f};
+	GLfloat ambientLight[] = {200.2f, 200.2f, 200.2f, 1.0f};
 	glLightModelfv(GL_LIGHT_MODEL_AMBIENT, ambientLight);
 
 	GLfloat directedLight[] = {0.7f, 0.7f, 0.7f, 1.0f};
@@ -140,69 +154,43 @@ void drawScene() {
 
 	glNormal3f(1.0f, 1.0f, 1.0f);
 
-	/*int adjuster1 = 1.0,adjuster2 = 1.0;
-	glTexCoord2f(0.00f*adjuster1, 0.660f*adjuster2);
-	glVertex3f(-2.5f, -0.5f, -4.5f);
-	glTexCoord2f(0.3300f*adjuster1, 0.660f*adjuster2);
-	glVertex3f(-1.0f, -0.5f, -1.5f);
-	glTexCoord2f(0.3300f*adjuster1, 1.00f*adjuster2);
-	glVertex3f(-1.0f, 1.5f, -4.5f);
-	glTexCoord2f(0.00f*adjuster1, 1.00f*adjuster2);
-	glVertex3f(-2.5f, 1.5f, -4.5f);*/
+	//glFrustum(-10, 0, 0, 10, -200000, 200000000);
 
 	vertsAndTextures vAT3;
-	/*vAT3.ULVerInst[0] = -2.5f;
-	vAT3.ULVerInst[1] = -0.5f;
-	vAT3.ULVerInst[2] = -4.5f;
-	vAT3.ULTexInst[0] = 0.00f;
-	vAT3.ULTexInst[1] = 0.66f;
 
-	vAT3.URVerInst[0] = -1.0f;
-	vAT3.URVerInst[1] = -0.5f;
-	vAT3.URVerInst[2] = -4.5f;//-1.5f;
-	vAT3.URTexInst[0] = 0.33f;
-	vAT3.URTexInst[1] = 0.66f;
-
-	vAT3.BLVerInst[0] = -1.0f;
-	vAT3.BLVerInst[1] = 1.5f;
-	vAT3.BLVerInst[2] = -4.5f;
-	vAT3.BLTexInst[0] = 0.33f;
-	vAT3.BLTexInst[1] = 1.00f;
-
-	vAT3.BRVerInst[0] = -2.5f;
-	vAT3.BRVerInst[1] = 1.5f;
-	vAT3.BRVerInst[2] = -4.5f;
-	vAT3.BRTexInst[0] = 0.00f;
-	vAT3.BRTexInst[1] = 1.00f;*/
-
-	//createMesh(vAT3);
-
-	int sizeOfMesh = 10;
+	double sizeScalingFactor = 5;
+	double sizeOfMesh = 6;//50;
+	sizeOfMesh = sizeOfMesh/sizeScalingFactor;
+	double sizeOfMesh2 = sizeOfMesh*2;
+	//double x = 0, y = 0;
 	int x = 0, y = 0;
-	int expandMeshSize = 2.5;
+	double expandMeshSize = 2.5;
+	float initalZ = 40.0f;
+	double depthScalingFactor = .025;//.3;//0.1;
 
 	float verXIncrement = 1.5f;//0.5f;//1.5f;
 	float verYIncrement = 1.5f;//2.0f;//0.5f;//2.0f;
 	float verZIncrement = 1.0f;//3.5f;//0.5f;//3.5f;
-	float texXIncrement = 1.00f/(sizeOfMesh*expandMeshSize);
-	float texYIncrement = 1.00f/sizeOfMesh;
+	//float texXIncrement = 1.1*(1.00f/(sizeOfMesh*expandMeshSize));
+	float texXIncrement = 1.07*(1.00f/(sizeOfMesh2*expandMeshSize));
+	float texYIncrement = 1.00f/sizeOfMesh2;
 
 	float initVerXUL = -2.50f;
 	float initVerXBR = -2.50f;
 	float initVerXUR = initVerXUL+verXIncrement;
 	float initVerXBL = initVerXBR+verXIncrement;
-	float initTexXUL = 0.00f;
-	float initTexXBR = 0.00f;
+	float initTexXUL = -0.05f;//-0.05f;//0.0f;//
+	float initTexXBR = -0.05f;//-0.05f;//-0.10f;
 	float initTexXUR = initTexXUL+texXIncrement;
 	float initTexXBL = initTexXBR+texXIncrement;
-	float initTexYBR = 1.00f;
+	float initTexYBR = 1.25f;//1.10f;
 	float initTexYUL = initTexYBR-texYIncrement;
-	float initTexYBL = 1.00f;
+	float initTexYBL = 1.25f;//1.10f;
 	float initTexYUR = initTexYBL-texYIncrement;
-	float initVerZUL = -4.50f;
-	float initVerZUR = -4.50f;//initVerZUL+verZIncrement;
-	float initVerZBL = -4.50f;
-	float initVerZBR = -4.50f;
+	float initVerZUL = -4.50f+initalZ;
+	float initVerZUR = -4.50f+initalZ;//initVerZUL+verZIncrement;
+	float initVerZBL = -4.50f+initalZ;
+	float initVerZBR = -4.50f+initalZ;
 
 	vAT3.ULVerInst[0] = -2.5f;
 	vAT3.ULVerInst[1] = -0.5f;
@@ -228,7 +216,42 @@ void drawScene() {
 	vAT3.BRTexInst[0] = initTexXBR;
 	vAT3.BRTexInst[1] = initTexYBR;
 
-	for (y = 0; y < sizeOfMesh; y++) {
+	//double incrementValue = 0.5;
+	int incrementValue = 1;
+
+	// Build displacement map.  *4 is due to 4 rectangle verticies for each Z level included.
+	int verticiesInRectangle = 4;
+	int xAmount = ceil(sizeOfMesh*expandMeshSize*(1/incrementValue))*4, yAmount = ceil(sizeOfMesh*(1/incrementValue))*4;
+	double verZLevels[yAmount][xAmount] = {0};
+	for (int y = 0; y < yAmount; y += 2) {
+		for (x = 0; x < xAmount; x += 2) {
+			double imageToScenePixelDiff = (255/sizeOfMesh)*(1/verticiesInRectangle);
+			//double translatedX = x * imageToScenePixelDiff; double translatedY = y * imageToScenePixelDiff;
+			double translatedX = ceil(x * imageToScenePixelDiff); double translatedY = ceil(y * imageToScenePixelDiff);
+			//double nextTranslatedX = (x+incrementValue) * imageToScenePixelDiff; double nextTranslatedY = (y+incrementValue) * imageToScenePixelDiff;
+			//double priorTranslatedX = (x-incrementValue) * imageToScenePixelDiff; double priorTranslatedY = (y-incrementValue) * imageToScenePixelDiff;
+			int meshVec_0_0_b = dispMapImage.at<Vec3b>(translatedY,translatedX).val[0];
+
+			if (x < xAmount) {
+				verZLevels[y][x] = meshVec_0_0;
+			}
+			if (x > 0) {
+				verZLevels[y][x+1] = meshVec_0_0;
+			}
+			if ((y < yAmount) & (x < xAmount)) {
+				verZLevels[y+1][x+1] = meshVec_0_0;
+			}
+			if (y > 0) {
+				verZLevels[y+1][x] = meshVec_0_0;
+			}
+		}
+	}
+	cout << "yAmount\t";cout << yAmount;
+	cout<<"\txAmount\t";cout<<sizeOfMesh;//ceil(sizeOfMesh*expandMeshSize*(1/incrementValue));
+	cout<<"\n";
+
+
+	for (y = 0; y < sizeOfMesh; y += incrementValue) {
 		//createMesh(vAT3);
 		// Reinitialze X dimension before the x value loop
 		vAT3.ULVerInst[0] = initVerXUL;
@@ -278,7 +301,7 @@ void drawScene() {
 		}
 
 
-		for (x = 0; x < sizeOfMesh*expandMeshSize; x++) {
+		for (x = 0; x < sizeOfMesh*expandMeshSize; x += incrementValue) {
 			if ((x < sizeOfMesh/2) | (x < (sizeOfMesh/2+(sizeOfMesh*expandMeshSize-sizeOfMesh)) & x > (sizeOfMesh*expandMeshSize-sizeOfMesh))) {
 				vAT3.ULVerInst[0] += verXIncrement;
 				vAT3.URVerInst[0] += verXIncrement;
@@ -328,16 +351,164 @@ void drawScene() {
 				vAT3.BLTexInst[0] += texXIncrement;
 				vAT3.BRTexInst[0] += texXIncrement;
 			}
+
+
+
 			// Apply displacement map
-			int imageToScenePixelDiff = 255/sizeOfMesh;
-			int translatedX = x * imageToScenePixelDiff; int translatedY = y * imageToScenePixelDiff;
-			grayLevel = dispMapImage.at<Vec3b>(translatedY,translatedX).val[0];
-			cout<<"translatedY\t";cout<<translatedY;cout<<"\ttranslatedX\t";cout<<translatedX;cout<"\tgrey level\t";cout<<grayLevel;cout<"\n";
-			int depthScalingFactor = .5;
-			/*vAT3.ULVerInst[2] = grayLevel*depthScalingFactor;
-			vAT3.URVerInst[2] = grayLevel*depthScalingFactor;*/
-			vAT3.BLVerInst[2] = grayLevel*depthScalingFactor;
-			vAT3.BRVerInst[2] = grayLevel*depthScalingFactor;
+
+			double imageToScenePixelDiff = 255/sizeOfMesh;
+			double translatedX = x * imageToScenePixelDiff; double translatedY = y * imageToScenePixelDiff;
+			double nextTranslatedX = (x+incrementValue) * imageToScenePixelDiff; double nextTranslatedY = (y+incrementValue) * imageToScenePixelDiff;
+			double priorTranslatedX = (x-incrementValue) * imageToScenePixelDiff; double priorTranslatedY = (y-incrementValue) * imageToScenePixelDiff;
+			/*grayLevel = dispMapImage.at<Vec3b>(translatedY,translatedX).val[0];
+			if (x != (sizeOfMesh-1)*expandMeshSize) {
+				nextGrayLevel = dispMapImage.at<Vec3b>(nextTranslatedY,nextTranslatedX).val[0];
+			}*/
+			// Avoid edge problems
+			double tempVal = 0;
+			/*if (x >= ((sizeOfMesh-1)*expandMeshSize)) {
+				nextTranslatedX = tempVal;//translatedX;
+			}
+			if (x == 0) {
+				priorTranslatedX = tempVal;//translatedX;
+			}
+			if (y >= ((sizeOfMesh-1))) {
+				nextTranslatedY = tempVal;//translatedY;
+			}
+			if (y == 0) {
+				priorTranslatedY = tempVal;//translatedY;
+			}*/
+			meshVec_neg1_neg1 = dispMapImage.at<Vec3b>(priorTranslatedY,priorTranslatedX).val[0];
+			meshVec_neg1_0 = dispMapImage.at<Vec3b>(priorTranslatedY,translatedX).val[0];
+			meshVec_neg1_1 = dispMapImage.at<Vec3b>(priorTranslatedY,nextTranslatedX).val[0];
+			meshVec_0_neg1 = dispMapImage.at<Vec3b>(translatedY,priorTranslatedX).val[0];
+			meshVec_0_0 = dispMapImage.at<Vec3b>(translatedY,translatedX).val[0];
+			meshVec_0_1 = dispMapImage.at<Vec3b>(translatedY,nextTranslatedX).val[0];
+			meshVec_1_neg1 = dispMapImage.at<Vec3b>(nextTranslatedY,priorTranslatedX).val[0];
+			meshVec_1_0 = dispMapImage.at<Vec3b>(nextTranslatedY,translatedX).val[0];
+			meshVec_1_1 = dispMapImage.at<Vec3b>(nextTranslatedY,nextTranslatedX).val[0];
+
+			/*double vectorSlope = .25;
+			vAT3.ULVerInst[2] = vectorSlope*((meshVec_1_1-meshVec_neg1_neg1)*.5+(meshVec_1_neg1-meshVec_neg1_1)*.5);*/
+
+			/*vAT3.ULVerInst[2] = ((meshVec_neg1_neg1)*.5+(meshVec_0_0)*.5) * depthScalingFactor+initalZ;
+			vAT3.URVerInst[2] = ((meshVec_neg1_1)*.5+(meshVec_0_0)*.5) * depthScalingFactor+initalZ;
+			vAT3.BLVerInst[2] = ((meshVec_1_neg1)*.5+(meshVec_0_0)*.5) * depthScalingFactor+initalZ;
+			vAT3.BRVerInst[2] = ((meshVec_1_1)*.5+(meshVec_0_0)*.5) * depthScalingFactor+initalZ;*/
+
+			/*vAT3.ULVerInst[2] = ((meshVec_0_0)*.5+(meshVec_0_0)*.5) * depthScalingFactor+initalZ;
+			vAT3.URVerInst[2] = ((meshVec_neg1_neg1)*.5+(meshVec_0_0)*.5) * depthScalingFactor+initalZ;
+			vAT3.BLVerInst[2] = ((meshVec_neg1_neg1)*.5+(meshVec_0_0)*.5) * depthScalingFactor+initalZ;
+			vAT3.BRVerInst[2] = ((meshVec_0_0)*.5+(meshVec_0_0)*.5) * depthScalingFactor+initalZ;*/
+
+			/*vAT3.ULVerInst[2] = ((meshVec_neg1_1)*.5+(meshVec_0_0)*.5) * depthScalingFactor+initalZ;
+			vAT3.BRVerInst[2] = ((meshVec_1_neg1)*.5+(meshVec_0_0)*.5) * depthScalingFactor+initalZ;
+			vAT3.BLVerInst[2] = ((meshVec_1_1)*.5+(meshVec_0_0)*.5) * depthScalingFactor+initalZ;*/
+
+			/*vAT3.ULVerInst[2] = ((meshVec_neg1_neg1)*.5+(meshVec_0_0)*.5) * depthScalingFactor+initalZ;
+			vAT3.URVerInst[2] = ((meshVec_0_0)*.5+(meshVec_0_0)*.5) * depthScalingFactor+initalZ;
+			vAT3.BLVerInst[2] = ((meshVec_0_0)*.5+(meshVec_0_0)*.5) * depthScalingFactor+initalZ;
+			vAT3.BRVerInst[2] = ((meshVec_neg1_neg1)*.5+(meshVec_0_0)*.5) * depthScalingFactor+initalZ;*/
+
+			/*vAT3.ULVerInst[2] = ((meshVec_0_0)*.5+(meshVec_0_0)*.5) * depthScalingFactor+initalZ;
+			vAT3.URVerInst[2] = ((meshVec_0_0)*.5+(meshVec_0_0)*.5) * depthScalingFactor+initalZ;
+			vAT3.BLVerInst[2] = ((meshVec_neg1_neg1)*.5+(meshVec_0_0)*.5) * depthScalingFactor+initalZ;
+			vAT3.BRVerInst[2] = ((meshVec_neg1_neg1)*.5+(meshVec_0_0)*.5) * depthScalingFactor+initalZ;*/
+
+			/*vAT3.ULVerInst[2] = ((meshVec_neg1_neg1)*.5+(meshVec_0_0)*.5) * depthScalingFactor+initalZ;
+			vAT3.URVerInst[2] = ((meshVec_neg1_neg1)*.5+(meshVec_0_0)*.5) * depthScalingFactor+initalZ;
+			vAT3.BLVerInst[2] = ((meshVec_0_0)*.5+(meshVec_0_0)*.5) * depthScalingFactor+initalZ;
+			vAT3.BRVerInst[2] = ((meshVec_0_0)*.5+(meshVec_0_0)*.5) * depthScalingFactor+initalZ;*/
+
+			/*vAT3.ULVerInst[2] = ((meshVec_neg1_neg1)*.5+(meshVec_0_0)*.5) * depthScalingFactor+initalZ;
+			vAT3.URVerInst[2] = ((meshVec_0_0)*.5+(meshVec_1_1)*.5) * depthScalingFactor+initalZ;
+			vAT3.BLVerInst[2] = ((meshVec_0_0)*.5+(meshVec_1_1)*.5) * depthScalingFactor+initalZ;
+			vAT3.BRVerInst[2] = ((meshVec_neg1_neg1)*.5+(meshVec_0_0)*.5) * depthScalingFactor+initalZ;*/
+
+			/*vAT3.ULVerInst[2] = (meshVec_neg1_neg1) * depthScalingFactor+initalZ;
+			vAT3.URVerInst[2] = (meshVec_neg1_1) * depthScalingFactor+initalZ;
+			vAT3.BLVerInst[2] = (meshVec_1_neg1) * depthScalingFactor+initalZ;
+			vAT3.BRVerInst[2] = (meshVec_1_1) * depthScalingFactor+initalZ;*/
+
+			/*vAT3.ULVerInst[2] = (meshVec_neg1_1) * depthScalingFactor+initalZ;
+			vAT3.URVerInst[2] = (meshVec_neg1_neg1) * depthScalingFactor+initalZ;
+			vAT3.BLVerInst[2] = (meshVec_1_neg1) * depthScalingFactor+initalZ;
+			vAT3.BRVerInst[2] = (meshVec_1_1) * depthScalingFactor+initalZ;*/
+
+			/*double sharedVert = meshVec_1_1;
+			vAT3.ULVerInst[2] = (sharedVert) * depthScalingFactor+initalZ;
+			vAT3.URVerInst[2] = (sharedVert) * depthScalingFactor+initalZ;
+			vAT3.BLVerInst[2] = (sharedVert) * depthScalingFactor+initalZ;
+			vAT3.BRVerInst[2] = (sharedVert) * depthScalingFactor+initalZ;*/
+
+			/*vAT3.ULVerInst[2] = (meshVec_neg1_neg1) * depthScalingFactor+initalZ;
+			vAT3.URVerInst[2] = (meshVec_neg1_0) * depthScalingFactor+initalZ;
+			vAT3.BLVerInst[2] = (meshVec_0_neg1) * depthScalingFactor+initalZ;
+			vAT3.BRVerInst[2] = (meshVec_0_0) * depthScalingFactor+initalZ;*/
+
+			/*vAT3.ULVerInst[2] = (meshVec_0_0) * depthScalingFactor+initalZ;
+			vAT3.URVerInst[2] = (meshVec_0_0) * depthScalingFactor+initalZ;
+			vAT3.BLVerInst[2] = (meshVec_1_1) * depthScalingFactor+initalZ;
+			vAT3.BRVerInst[2] = (meshVec_1_1) * depthScalingFactor+initalZ;*/
+
+			/*vAT3.ULVerInst[2] = (meshVec_0_0) * depthScalingFactor+initalZ;
+			vAT3.URVerInst[2] = (meshVec_1_1) * depthScalingFactor+initalZ;
+			vAT3.BLVerInst[2] = (meshVec_1_1) * depthScalingFactor+initalZ;
+			vAT3.BRVerInst[2] = (meshVec_0_0) * depthScalingFactor+initalZ;*/
+			/*vAT3.ULVerInst[2] = initalZ;//(meshVec_0_0) * depthScalingFactor+initalZ;//bl
+			vAT3.URVerInst[2] = initalZ+3;//(meshVec_0_0) * depthScalingFactor+initalZ;//br
+			vAT3.BLVerInst[2] = initalZ+3;//(meshVec_0_0) * depthScalingFactor+initalZ;//ur
+			vAT3.BRVerInst[2] = initalZ;//(meshVec_0_0) * depthScalingFactor+initalZ;//ul*/
+			/*vAT3.ULVerInst[2] = (meshVec_0_0) * depthScalingFactor+initalZ;//bl
+			vAT3.URVerInst[2] = (meshVec_1_1) * depthScalingFactor+initalZ;//br
+			vAT3.BLVerInst[2] = (meshVec_1_1) * depthScalingFactor+initalZ;//ur
+			vAT3.BRVerInst[2] = (meshVec_0_0) * depthScalingFactor+initalZ;//ul*/
+			/*vAT3.ULVerInst[2] = (meshVec_0_0) * depthScalingFactor+initalZ;
+			vAT3.URVerInst[2] = (meshVec_neg1_neg1) * depthScalingFactor+initalZ;
+			vAT3.BLVerInst[2] = (meshVec_0_0) * depthScalingFactor+initalZ;
+			vAT3.BRVerInst[2] = (meshVec_0_0) * depthScalingFactor+initalZ;*/
+
+			/*vAT3.ULVerInst[2] = (meshVec_0_0) * depthScalingFactor+initalZ;//bl
+			vAT3.URVerInst[2] = (meshVec_0_1) * depthScalingFactor+initalZ;//br
+			vAT3.BLVerInst[2] = (meshVec_neg1_0) * depthScalingFactor+initalZ;//ur
+			vAT3.BRVerInst[2] = (meshVec_neg1_0) * depthScalingFactor+initalZ;//ul*/
+
+			vAT3.ULVerInst[2] = (meshVec_1_0) * depthScalingFactor+initalZ;//bl
+			vAT3.URVerInst[2] = ((meshVec_0_1+meshVec_1_0)/2) * depthScalingFactor+initalZ;//br  ((meshVec_0_1+meshVec_1_0)/2)
+			vAT3.BLVerInst[2] = (meshVec_0_1) * depthScalingFactor+initalZ;//ur
+			vAT3.BRVerInst[2] = ((meshVec_0_neg1+meshVec_neg1_0)/2) * depthScalingFactor+initalZ;//ul
+
+			/*cout<<"\n_______\n";
+			cout<<"x\t";cout<<x;cout<<"\ty\t";cout<<y;cout<<"\n";
+			cout<<"\tmeshVec_0_0\t";cout<<meshVec_0_0;
+			cout<<"\tmeshVec_0_1\t";cout<<meshVec_0_1;
+			cout<<"\tmeshVec_1_0\t";cout<<meshVec_1_0;
+			cout<<"\tmeshVec_1_1\t";cout<<meshVec_1_1;*/
+
+			/*if (x > 0 & x< sizeOfMesh*expandMeshSize*imageToScenePixelDiff) {
+			//if (x > 0) {
+				//vAT3.ULVerInst[2] = grayLevel*depthScalingFactor+initalZ;
+				vAT3.ULVerInst[2] = priorAdjustedGrayLevel+initalZ;
+				vAT3.URVerInst[2] = grayLevel*depthScalingFactor+initalZ;
+				//vAT3.URVerInst[2] = priorAdjustedGrayLevel+initalZ;
+				vAT3.BLVerInst[2] = grayLevel*depthScalingFactor+initalZ;
+				//vAT3.BLVerInst[2] = priorAdjustedGrayLevel+initalZ;
+				//vAT3.BRVerInst[2] = grayLevel*depthScalingFactor+initalZ;
+				vAT3.BRVerInst[2] = priorAdjustedGrayLevel+initalZ;
+			}
+			else {
+				vAT3.ULVerInst[2] = 0+initalZ;
+				vAT3.URVerInst[2] = nextGrayLevel*depthScalingFactor+initalZ;
+				//vAT3.URVerInst[2] = priorAdjustedGrayLevel+initalZ;
+				vAT3.BLVerInst[2] = nextGrayLevel*depthScalingFactor+initalZ;
+				//vAT3.BLVerInst[2] = priorAdjustedGrayLevel+initalZ;
+				//vAT3.BRVerInst[2] = grayLevel*depthScalingFactor+initalZ;
+				vAT3.BRVerInst[2] = 0+initalZ;
+			}*/
+			//priorAdjustedGrayLevel = grayLevel*depthScalingFactor;
+
+
+			//cout<<"translatedY\t";cout<<translatedY;cout<<"\ttranslatedX\t";cout<<translatedX;cout<<"\tgrey level\t";cout<<grayLevel;cout<<"\tgrayLevel*depthScalingFactor\t";cout<<grayLevel*depthScalingFactor;cout<<"\n";
 			//vAT3.BRVerInst[2] (int)image.at<Vec3b>(y,x).val[0]
 
 			/*cout << "iteration y:";cout<<y;cout<<" x:";cout<<x;cout<<"\n";
@@ -368,6 +539,7 @@ void drawScene() {
 			cout<<"_____________________\n";*/
 
 			createMesh(vAT3);
+			//priorAdjustedGrayLevel = grayLevel*depthScalingFactor;
 		}
 	}
 	glEnd();
@@ -377,9 +549,9 @@ void drawScene() {
 
 //Called every 25 milliseconds
 void update(int value) {
-	_angle += 0.330f;
-	if (_angle > 50) {
-		_angle -= 50;
+	_angle += 0.2f;//0.1f;//0.330f;
+	if (_angle > -40) {
+		_angle -= 10;
 	}
 	glutPostRedisplay();
 	glutTimerFunc(25, update, 0);
@@ -396,6 +568,7 @@ int main(int argc, char** argv) {
 	glutDisplayFunc(drawScene);
 	glutKeyboardFunc(handleKeypress);
 	glutReshapeFunc(handleResize);
+	_angle = -45.330f;//25.330f;
 	glutTimerFunc(25, update, 0);
 
 	glutMainLoop();
