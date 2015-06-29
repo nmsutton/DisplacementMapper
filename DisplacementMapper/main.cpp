@@ -505,16 +505,21 @@ void drawScene() {
 			if (x2 > 0) {
 				vAT3.BLVerInst[2] = verZLevels[y2][x2+1];//verZLevels[y2][x2+1] = meshVec_0_0;
 			}
-			if ((y2 < maxYSize) & (x2 < (maxXSize))) {
+			if ((y2 < maxYSize-1) & (x2 < (maxXSize-1))) {
 				vAT3.URVerInst[2] = verZLevels[y2+1][x2+1];// = meshVec_0_0;
 			}
-			if (y2 > 0) {
+			if (y2 > 0 & y2 < maxYSize-1) {
 				vAT3.ULVerInst[2] = verZLevels[y2+1][x2];// = meshVec_0_0;
 			}
-			vAT3.BRVerInst[2] = verZLevels[y2][x2];
+			/*vAT3.BRVerInst[2] = verZLevels[y2][x2];
 			vAT3.BLVerInst[2] = verZLevels[y2][x2+1];
 			vAT3.URVerInst[2] = verZLevels[y2+1][x2+1];
-			vAT3.ULVerInst[2] = verZLevels[y2+1][x2];
+			vAT3.ULVerInst[2] = verZLevels[y2+1][x2];*/
+			/*vAT3.BRVerInst[2] = 0;
+			vAT3.BLVerInst[2] = 0;
+			vAT3.URVerInst[2] = 0;
+			vAT3.ULVerInst[2] = 0;*/
+
 			/*cout<<"\n_______\n";
 			cout<<"x\t";cout<<x;cout<<"\ty\t";cout<<y;cout<<"\n";
 			cout<<"\tmeshVec_0_0\t";cout<<meshVec_0_0;

@@ -29779,3 +29779,890 @@ make: Nothing to be done for 'all'.
 22:21:24 **** Incremental Build of configuration Debug for project DisplacementMapper ****
 make all 
 make: Nothing to be done for 'all'.
+19:41:37 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+make all 
+Building file: ../main.cpp
+Invoking: Cross G++ Compiler
+g++ -I/usr/local/include/opencv -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.cpp"
+../main.cpp: In function ‘void drawScene()’:
+../main.cpp:325:30: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    if ((x < maxYSize/2) | (x < (maxYSize/2+(maxXSize-maxYSize)) & x > (maxXSize-maxYSize))) {
+                              ^
+../main.cpp:341:16: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                ^
+../main.cpp:341:51: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                                                   ^
+../main.cpp:358:15: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if (x > (maxYSize) & x < (maxXSize-maxYSize)) {
+               ^
+../main.cpp:388:11: warning: unused variable ‘tempVal’ [-Wunused-variable]
+    double tempVal = 0;
+           ^
+../main.cpp:114:9: warning: variable ‘meshVec_neg1_neg1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_neg1_neg1 = 0;
+         ^
+../main.cpp:115:9: warning: variable ‘meshVec_neg1_0’ set but not used [-Wunused-but-set-variable]
+  double meshVec_neg1_0 = 0;
+         ^
+../main.cpp:116:9: warning: variable ‘meshVec_neg1_1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_neg1_1 = 0;
+         ^
+../main.cpp:117:9: warning: variable ‘meshVec_0_neg1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_0_neg1 = 0;
+         ^
+../main.cpp:118:9: warning: variable ‘meshVec_0_0’ set but not used [-Wunused-but-set-variable]
+  double meshVec_0_0 = 0;
+         ^
+../main.cpp:119:9: warning: variable ‘meshVec_0_1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_0_1 = 0;
+         ^
+../main.cpp:120:9: warning: variable ‘meshVec_1_neg1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_1_neg1 = 0;
+         ^
+../main.cpp:121:9: warning: variable ‘meshVec_1_0’ set but not used [-Wunused-but-set-variable]
+  double meshVec_1_0 = 0;
+         ^
+../main.cpp:122:9: warning: variable ‘meshVec_1_1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_1_1 = 0;
+         ^
+../main.cpp:169:9: warning: unused variable ‘depthScalingFactor’ [-Wunused-variable]
+  double depthScalingFactor = .025;//.3;//0.1;
+         ^
+../main.cpp:173:8: warning: unused variable ‘verZIncrement’ [-Wunused-variable]
+  float verZIncrement = 1.0f;//3.5f;//0.5f;//3.5f;
+        ^
+../main.cpp:190:8: warning: unused variable ‘initVerZUL’ [-Wunused-variable]
+  float initVerZUL = -4.50f+initalZ;
+        ^
+../main.cpp:191:8: warning: unused variable ‘initVerZUR’ [-Wunused-variable]
+  float initVerZUR = -4.50f+initalZ;//initVerZUL+verZIncrement;
+        ^
+../main.cpp:192:8: warning: unused variable ‘initVerZBL’ [-Wunused-variable]
+  float initVerZBL = -4.50f+initalZ;
+        ^
+../main.cpp:193:8: warning: unused variable ‘initVerZBR’ [-Wunused-variable]
+  float initVerZBR = -4.50f+initalZ;
+        ^
+Finished building: ../main.cpp
+ 
+Building target: DisplacementMapper
+Invoking: Cross G++ Linker
+g++ -L/usr/lib/x86_64-linux-gnu -L/usr/local/lib -o "DisplacementMapper"  ./imageloader.o ./main.o   -lGL -lopencv_core -lopencv_imgcodecs -lopencv_imgproc -lopencv_highgui -lGLU -lglut
+Finished building target: DisplacementMapper
+ 
+19:41:42 **** Incremental Build of configuration Debug for project ImagePreprocessor ****
+make all 
+make: Nothing to be done for 'all'.
+19:41:44 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+make all 
+make: Nothing to be done for 'all'.
+19:42:15 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+make all 
+Building file: ../main.cpp
+Invoking: Cross G++ Compiler
+g++ -I/usr/local/include/opencv -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.cpp"
+../main.cpp: In function ‘void drawScene()’:
+../main.cpp:325:30: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    if ((x < maxYSize/2) | (x < (maxYSize/2+(maxXSize-maxYSize)) & x > (maxXSize-maxYSize))) {
+                              ^
+../main.cpp:341:16: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                ^
+../main.cpp:341:51: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                                                   ^
+../main.cpp:358:15: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if (x > (maxYSize) & x < (maxXSize-maxYSize)) {
+               ^
+../main.cpp:388:11: warning: unused variable ‘tempVal’ [-Wunused-variable]
+    double tempVal = 0;
+           ^
+../main.cpp:114:9: warning: variable ‘meshVec_neg1_neg1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_neg1_neg1 = 0;
+         ^
+../main.cpp:115:9: warning: variable ‘meshVec_neg1_0’ set but not used [-Wunused-but-set-variable]
+  double meshVec_neg1_0 = 0;
+         ^
+../main.cpp:116:9: warning: variable ‘meshVec_neg1_1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_neg1_1 = 0;
+         ^
+../main.cpp:117:9: warning: variable ‘meshVec_0_neg1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_0_neg1 = 0;
+         ^
+../main.cpp:118:9: warning: variable ‘meshVec_0_0’ set but not used [-Wunused-but-set-variable]
+  double meshVec_0_0 = 0;
+         ^
+../main.cpp:119:9: warning: variable ‘meshVec_0_1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_0_1 = 0;
+         ^
+../main.cpp:120:9: warning: variable ‘meshVec_1_neg1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_1_neg1 = 0;
+         ^
+../main.cpp:121:9: warning: variable ‘meshVec_1_0’ set but not used [-Wunused-but-set-variable]
+  double meshVec_1_0 = 0;
+         ^
+../main.cpp:122:9: warning: variable ‘meshVec_1_1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_1_1 = 0;
+         ^
+../main.cpp:169:9: warning: unused variable ‘depthScalingFactor’ [-Wunused-variable]
+  double depthScalingFactor = .025;//.3;//0.1;
+         ^
+../main.cpp:173:8: warning: unused variable ‘verZIncrement’ [-Wunused-variable]
+  float verZIncrement = 1.0f;//3.5f;//0.5f;//3.5f;
+        ^
+../main.cpp:190:8: warning: unused variable ‘initVerZUL’ [-Wunused-variable]
+  float initVerZUL = -4.50f+initalZ;
+        ^
+../main.cpp:191:8: warning: unused variable ‘initVerZUR’ [-Wunused-variable]
+  float initVerZUR = -4.50f+initalZ;//initVerZUL+verZIncrement;
+        ^
+../main.cpp:192:8: warning: unused variable ‘initVerZBL’ [-Wunused-variable]
+  float initVerZBL = -4.50f+initalZ;
+        ^
+../main.cpp:193:8: warning: unused variable ‘initVerZBR’ [-Wunused-variable]
+  float initVerZBR = -4.50f+initalZ;
+        ^
+Finished building: ../main.cpp
+ 
+Building target: DisplacementMapper
+Invoking: Cross G++ Linker
+g++ -L/usr/lib/x86_64-linux-gnu -L/usr/local/lib -o "DisplacementMapper"  ./imageloader.o ./main.o   -lGL -lopencv_core -lopencv_imgcodecs -lopencv_imgproc -lopencv_highgui -lGLU -lglut
+Finished building target: DisplacementMapper
+ 
+19:42:16 **** Incremental Build of configuration Debug for project ImagePreprocessor ****
+make all 
+make: Nothing to be done for 'all'.
+19:42:17 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+make all 
+make: Nothing to be done for 'all'.
+19:42:31 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+make all 
+Building file: ../main.cpp
+Invoking: Cross G++ Compiler
+g++ -I/usr/local/include/opencv -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.cpp"
+../main.cpp: In function ‘void drawScene()’:
+../main.cpp:325:30: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    if ((x < maxYSize/2) | (x < (maxYSize/2+(maxXSize-maxYSize)) & x > (maxXSize-maxYSize))) {
+                              ^
+../main.cpp:341:16: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                ^
+../main.cpp:341:51: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                                                   ^
+../main.cpp:358:15: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if (x > (maxYSize) & x < (maxXSize-maxYSize)) {
+               ^
+../main.cpp:388:11: warning: unused variable ‘tempVal’ [-Wunused-variable]
+    double tempVal = 0;
+           ^
+../main.cpp:114:9: warning: variable ‘meshVec_neg1_neg1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_neg1_neg1 = 0;
+         ^
+../main.cpp:115:9: warning: variable ‘meshVec_neg1_0’ set but not used [-Wunused-but-set-variable]
+  double meshVec_neg1_0 = 0;
+         ^
+../main.cpp:116:9: warning: variable ‘meshVec_neg1_1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_neg1_1 = 0;
+         ^
+../main.cpp:117:9: warning: variable ‘meshVec_0_neg1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_0_neg1 = 0;
+         ^
+../main.cpp:118:9: warning: variable ‘meshVec_0_0’ set but not used [-Wunused-but-set-variable]
+  double meshVec_0_0 = 0;
+         ^
+../main.cpp:119:9: warning: variable ‘meshVec_0_1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_0_1 = 0;
+         ^
+../main.cpp:120:9: warning: variable ‘meshVec_1_neg1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_1_neg1 = 0;
+         ^
+../main.cpp:121:9: warning: variable ‘meshVec_1_0’ set but not used [-Wunused-but-set-variable]
+  double meshVec_1_0 = 0;
+         ^
+../main.cpp:122:9: warning: variable ‘meshVec_1_1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_1_1 = 0;
+         ^
+../main.cpp:169:9: warning: unused variable ‘depthScalingFactor’ [-Wunused-variable]
+  double depthScalingFactor = .025;//.3;//0.1;
+         ^
+../main.cpp:173:8: warning: unused variable ‘verZIncrement’ [-Wunused-variable]
+  float verZIncrement = 1.0f;//3.5f;//0.5f;//3.5f;
+        ^
+../main.cpp:190:8: warning: unused variable ‘initVerZUL’ [-Wunused-variable]
+  float initVerZUL = -4.50f+initalZ;
+        ^
+../main.cpp:191:8: warning: unused variable ‘initVerZUR’ [-Wunused-variable]
+  float initVerZUR = -4.50f+initalZ;//initVerZUL+verZIncrement;
+        ^
+../main.cpp:192:8: warning: unused variable ‘initVerZBL’ [-Wunused-variable]
+  float initVerZBL = -4.50f+initalZ;
+        ^
+../main.cpp:193:8: warning: unused variable ‘initVerZBR’ [-Wunused-variable]
+  float initVerZBR = -4.50f+initalZ;
+        ^
+Finished building: ../main.cpp
+ 
+Building target: DisplacementMapper
+Invoking: Cross G++ Linker
+g++ -L/usr/lib/x86_64-linux-gnu -L/usr/local/lib -o "DisplacementMapper"  ./imageloader.o ./main.o   -lGL -lopencv_core -lopencv_imgcodecs -lopencv_imgproc -lopencv_highgui -lGLU -lglut
+Finished building target: DisplacementMapper
+ 
+19:42:32 **** Incremental Build of configuration Debug for project ImagePreprocessor ****
+make all 
+make: Nothing to be done for 'all'.
+19:42:33 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+make all 
+make: Nothing to be done for 'all'.
+19:43:47 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+make all 
+Building file: ../main.cpp
+Invoking: Cross G++ Compiler
+g++ -I/usr/local/include/opencv -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.cpp"
+../main.cpp: In function ‘void drawScene()’:
+../main.cpp:325:30: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    if ((x < maxYSize/2) | (x < (maxYSize/2+(maxXSize-maxYSize)) & x > (maxXSize-maxYSize))) {
+                              ^
+../main.cpp:341:16: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                ^
+../main.cpp:341:51: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                                                   ^
+../main.cpp:358:15: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if (x > (maxYSize) & x < (maxXSize-maxYSize)) {
+               ^
+../main.cpp:388:11: warning: unused variable ‘tempVal’ [-Wunused-variable]
+    double tempVal = 0;
+           ^
+../main.cpp:501:8: warning: unused variable ‘x2’ [-Wunused-variable]
+    int x2 = x, y2 = y;
+        ^
+../main.cpp:501:16: warning: unused variable ‘y2’ [-Wunused-variable]
+    int x2 = x, y2 = y;
+                ^
+../main.cpp:114:9: warning: variable ‘meshVec_neg1_neg1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_neg1_neg1 = 0;
+         ^
+../main.cpp:115:9: warning: variable ‘meshVec_neg1_0’ set but not used [-Wunused-but-set-variable]
+  double meshVec_neg1_0 = 0;
+         ^
+../main.cpp:116:9: warning: variable ‘meshVec_neg1_1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_neg1_1 = 0;
+         ^
+../main.cpp:117:9: warning: variable ‘meshVec_0_neg1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_0_neg1 = 0;
+         ^
+../main.cpp:118:9: warning: variable ‘meshVec_0_0’ set but not used [-Wunused-but-set-variable]
+  double meshVec_0_0 = 0;
+         ^
+../main.cpp:119:9: warning: variable ‘meshVec_0_1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_0_1 = 0;
+         ^
+../main.cpp:120:9: warning: variable ‘meshVec_1_neg1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_1_neg1 = 0;
+         ^
+../main.cpp:121:9: warning: variable ‘meshVec_1_0’ set but not used [-Wunused-but-set-variable]
+  double meshVec_1_0 = 0;
+         ^
+../main.cpp:122:9: warning: variable ‘meshVec_1_1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_1_1 = 0;
+         ^
+../main.cpp:169:9: warning: unused variable ‘depthScalingFactor’ [-Wunused-variable]
+  double depthScalingFactor = .025;//.3;//0.1;
+         ^
+../main.cpp:173:8: warning: unused variable ‘verZIncrement’ [-Wunused-variable]
+  float verZIncrement = 1.0f;//3.5f;//0.5f;//3.5f;
+        ^
+../main.cpp:190:8: warning: unused variable ‘initVerZUL’ [-Wunused-variable]
+  float initVerZUL = -4.50f+initalZ;
+        ^
+../main.cpp:191:8: warning: unused variable ‘initVerZUR’ [-Wunused-variable]
+  float initVerZUR = -4.50f+initalZ;//initVerZUL+verZIncrement;
+        ^
+../main.cpp:192:8: warning: unused variable ‘initVerZBL’ [-Wunused-variable]
+  float initVerZBL = -4.50f+initalZ;
+        ^
+../main.cpp:193:8: warning: unused variable ‘initVerZBR’ [-Wunused-variable]
+  float initVerZBR = -4.50f+initalZ;
+        ^
+Finished building: ../main.cpp
+ 
+Building target: DisplacementMapper
+Invoking: Cross G++ Linker
+g++ -L/usr/lib/x86_64-linux-gnu -L/usr/local/lib -o "DisplacementMapper"  ./imageloader.o ./main.o   -lGL -lopencv_core -lopencv_imgcodecs -lopencv_imgproc -lopencv_highgui -lGLU -lglut
+Finished building target: DisplacementMapper
+ 
+19:43:48 **** Incremental Build of configuration Debug for project ImagePreprocessor ****
+make all 
+make: Nothing to be done for 'all'.
+19:43:49 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+make all 
+make: Nothing to be done for 'all'.
+19:51:31 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+make all 
+Building file: ../main.cpp
+Invoking: Cross G++ Compiler
+g++ -I/usr/local/include/opencv -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.cpp"
+../main.cpp: In function ‘void drawScene()’:
+../main.cpp:325:30: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    if ((x < maxYSize/2) | (x < (maxYSize/2+(maxXSize-maxYSize)) & x > (maxXSize-maxYSize))) {
+                              ^
+../main.cpp:341:16: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                ^
+../main.cpp:341:51: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                                                   ^
+../main.cpp:358:15: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if (x > (maxYSize) & x < (maxXSize-maxYSize)) {
+               ^
+../main.cpp:511:11: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    if (y2 > 0 & y2 < maxYSize) {
+           ^
+../main.cpp:388:11: warning: unused variable ‘tempVal’ [-Wunused-variable]
+    double tempVal = 0;
+           ^
+../main.cpp:114:9: warning: variable ‘meshVec_neg1_neg1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_neg1_neg1 = 0;
+         ^
+../main.cpp:115:9: warning: variable ‘meshVec_neg1_0’ set but not used [-Wunused-but-set-variable]
+  double meshVec_neg1_0 = 0;
+         ^
+../main.cpp:116:9: warning: variable ‘meshVec_neg1_1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_neg1_1 = 0;
+         ^
+../main.cpp:117:9: warning: variable ‘meshVec_0_neg1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_0_neg1 = 0;
+         ^
+../main.cpp:118:9: warning: variable ‘meshVec_0_0’ set but not used [-Wunused-but-set-variable]
+  double meshVec_0_0 = 0;
+         ^
+../main.cpp:119:9: warning: variable ‘meshVec_0_1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_0_1 = 0;
+         ^
+../main.cpp:120:9: warning: variable ‘meshVec_1_neg1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_1_neg1 = 0;
+         ^
+../main.cpp:121:9: warning: variable ‘meshVec_1_0’ set but not used [-Wunused-but-set-variable]
+  double meshVec_1_0 = 0;
+         ^
+../main.cpp:122:9: warning: variable ‘meshVec_1_1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_1_1 = 0;
+         ^
+../main.cpp:169:9: warning: unused variable ‘depthScalingFactor’ [-Wunused-variable]
+  double depthScalingFactor = .025;//.3;//0.1;
+         ^
+../main.cpp:173:8: warning: unused variable ‘verZIncrement’ [-Wunused-variable]
+  float verZIncrement = 1.0f;//3.5f;//0.5f;//3.5f;
+        ^
+../main.cpp:190:8: warning: unused variable ‘initVerZUL’ [-Wunused-variable]
+  float initVerZUL = -4.50f+initalZ;
+        ^
+../main.cpp:191:8: warning: unused variable ‘initVerZUR’ [-Wunused-variable]
+  float initVerZUR = -4.50f+initalZ;//initVerZUL+verZIncrement;
+        ^
+../main.cpp:192:8: warning: unused variable ‘initVerZBL’ [-Wunused-variable]
+  float initVerZBL = -4.50f+initalZ;
+        ^
+../main.cpp:193:8: warning: unused variable ‘initVerZBR’ [-Wunused-variable]
+  float initVerZBR = -4.50f+initalZ;
+        ^
+Finished building: ../main.cpp
+ 
+Building target: DisplacementMapper
+Invoking: Cross G++ Linker
+g++ -L/usr/lib/x86_64-linux-gnu -L/usr/local/lib -o "DisplacementMapper"  ./imageloader.o ./main.o   -lGL -lopencv_core -lopencv_imgcodecs -lopencv_imgproc -lopencv_highgui -lGLU -lglut
+Finished building target: DisplacementMapper
+ 
+19:51:32 **** Incremental Build of configuration Debug for project ImagePreprocessor ****
+make all 
+make: Nothing to be done for 'all'.
+19:51:33 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+make all 
+make: Nothing to be done for 'all'.
+19:52:08 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+make all 
+Building file: ../main.cpp
+Invoking: Cross G++ Compiler
+g++ -I/usr/local/include/opencv -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.cpp"
+../main.cpp: In function ‘void drawScene()’:
+../main.cpp:325:30: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    if ((x < maxYSize/2) | (x < (maxYSize/2+(maxXSize-maxYSize)) & x > (maxXSize-maxYSize))) {
+                              ^
+../main.cpp:341:16: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                ^
+../main.cpp:341:51: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                                                   ^
+../main.cpp:358:15: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if (x > (maxYSize) & x < (maxXSize-maxYSize)) {
+               ^
+../main.cpp:511:11: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    if (y2 > 0 & y2 < maxYSize-5) {
+           ^
+../main.cpp:388:11: warning: unused variable ‘tempVal’ [-Wunused-variable]
+    double tempVal = 0;
+           ^
+../main.cpp:114:9: warning: variable ‘meshVec_neg1_neg1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_neg1_neg1 = 0;
+         ^
+../main.cpp:115:9: warning: variable ‘meshVec_neg1_0’ set but not used [-Wunused-but-set-variable]
+  double meshVec_neg1_0 = 0;
+         ^
+../main.cpp:116:9: warning: variable ‘meshVec_neg1_1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_neg1_1 = 0;
+         ^
+../main.cpp:117:9: warning: variable ‘meshVec_0_neg1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_0_neg1 = 0;
+         ^
+../main.cpp:118:9: warning: variable ‘meshVec_0_0’ set but not used [-Wunused-but-set-variable]
+  double meshVec_0_0 = 0;
+         ^
+../main.cpp:119:9: warning: variable ‘meshVec_0_1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_0_1 = 0;
+         ^
+../main.cpp:120:9: warning: variable ‘meshVec_1_neg1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_1_neg1 = 0;
+         ^
+../main.cpp:121:9: warning: variable ‘meshVec_1_0’ set but not used [-Wunused-but-set-variable]
+  double meshVec_1_0 = 0;
+         ^
+../main.cpp:122:9: warning: variable ‘meshVec_1_1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_1_1 = 0;
+         ^
+../main.cpp:169:9: warning: unused variable ‘depthScalingFactor’ [-Wunused-variable]
+  double depthScalingFactor = .025;//.3;//0.1;
+         ^
+../main.cpp:173:8: warning: unused variable ‘verZIncrement’ [-Wunused-variable]
+  float verZIncrement = 1.0f;//3.5f;//0.5f;//3.5f;
+        ^
+../main.cpp:190:8: warning: unused variable ‘initVerZUL’ [-Wunused-variable]
+  float initVerZUL = -4.50f+initalZ;
+        ^
+../main.cpp:191:8: warning: unused variable ‘initVerZUR’ [-Wunused-variable]
+  float initVerZUR = -4.50f+initalZ;//initVerZUL+verZIncrement;
+        ^
+../main.cpp:192:8: warning: unused variable ‘initVerZBL’ [-Wunused-variable]
+  float initVerZBL = -4.50f+initalZ;
+        ^
+../main.cpp:193:8: warning: unused variable ‘initVerZBR’ [-Wunused-variable]
+  float initVerZBR = -4.50f+initalZ;
+        ^
+Finished building: ../main.cpp
+ 
+Building target: DisplacementMapper
+Invoking: Cross G++ Linker
+g++ -L/usr/lib/x86_64-linux-gnu -L/usr/local/lib -o "DisplacementMapper"  ./imageloader.o ./main.o   -lGL -lopencv_core -lopencv_imgcodecs -lopencv_imgproc -lopencv_highgui -lGLU -lglut
+Finished building target: DisplacementMapper
+ 
+19:52:09 **** Incremental Build of configuration Debug for project ImagePreprocessor ****
+make all 
+make: Nothing to be done for 'all'.
+19:52:10 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+make all 
+make: Nothing to be done for 'all'.
+19:52:26 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+make all 
+Building file: ../main.cpp
+Invoking: Cross G++ Compiler
+g++ -I/usr/local/include/opencv -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.cpp"
+../main.cpp: In function ‘void drawScene()’:
+../main.cpp:325:30: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    if ((x < maxYSize/2) | (x < (maxYSize/2+(maxXSize-maxYSize)) & x > (maxXSize-maxYSize))) {
+                              ^
+../main.cpp:341:16: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                ^
+../main.cpp:341:51: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                                                   ^
+../main.cpp:358:15: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if (x > (maxYSize) & x < (maxXSize-maxYSize)) {
+               ^
+../main.cpp:511:11: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    if (y2 > 0 & y2 < maxYSize-1) {
+           ^
+../main.cpp:388:11: warning: unused variable ‘tempVal’ [-Wunused-variable]
+    double tempVal = 0;
+           ^
+../main.cpp:114:9: warning: variable ‘meshVec_neg1_neg1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_neg1_neg1 = 0;
+         ^
+../main.cpp:115:9: warning: variable ‘meshVec_neg1_0’ set but not used [-Wunused-but-set-variable]
+  double meshVec_neg1_0 = 0;
+         ^
+../main.cpp:116:9: warning: variable ‘meshVec_neg1_1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_neg1_1 = 0;
+         ^
+../main.cpp:117:9: warning: variable ‘meshVec_0_neg1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_0_neg1 = 0;
+         ^
+../main.cpp:118:9: warning: variable ‘meshVec_0_0’ set but not used [-Wunused-but-set-variable]
+  double meshVec_0_0 = 0;
+         ^
+../main.cpp:119:9: warning: variable ‘meshVec_0_1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_0_1 = 0;
+         ^
+../main.cpp:120:9: warning: variable ‘meshVec_1_neg1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_1_neg1 = 0;
+         ^
+../main.cpp:121:9: warning: variable ‘meshVec_1_0’ set but not used [-Wunused-but-set-variable]
+  double meshVec_1_0 = 0;
+         ^
+../main.cpp:122:9: warning: variable ‘meshVec_1_1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_1_1 = 0;
+         ^
+../main.cpp:169:9: warning: unused variable ‘depthScalingFactor’ [-Wunused-variable]
+  double depthScalingFactor = .025;//.3;//0.1;
+         ^
+../main.cpp:173:8: warning: unused variable ‘verZIncrement’ [-Wunused-variable]
+  float verZIncrement = 1.0f;//3.5f;//0.5f;//3.5f;
+        ^
+../main.cpp:190:8: warning: unused variable ‘initVerZUL’ [-Wunused-variable]
+  float initVerZUL = -4.50f+initalZ;
+        ^
+../main.cpp:191:8: warning: unused variable ‘initVerZUR’ [-Wunused-variable]
+  float initVerZUR = -4.50f+initalZ;//initVerZUL+verZIncrement;
+        ^
+../main.cpp:192:8: warning: unused variable ‘initVerZBL’ [-Wunused-variable]
+  float initVerZBL = -4.50f+initalZ;
+        ^
+../main.cpp:193:8: warning: unused variable ‘initVerZBR’ [-Wunused-variable]
+  float initVerZBR = -4.50f+initalZ;
+        ^
+Finished building: ../main.cpp
+ 
+Building target: DisplacementMapper
+Invoking: Cross G++ Linker
+g++ -L/usr/lib/x86_64-linux-gnu -L/usr/local/lib -o "DisplacementMapper"  ./imageloader.o ./main.o   -lGL -lopencv_core -lopencv_imgcodecs -lopencv_imgproc -lopencv_highgui -lGLU -lglut
+Finished building target: DisplacementMapper
+ 
+19:52:27 **** Incremental Build of configuration Debug for project ImagePreprocessor ****
+make all 
+make: Nothing to be done for 'all'.
+19:52:27 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+make all 
+make: Nothing to be done for 'all'.
+19:53:06 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+make all 
+Building file: ../main.cpp
+Invoking: Cross G++ Compiler
+g++ -I/usr/local/include/opencv -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.cpp"
+../main.cpp: In function ‘void drawScene()’:
+../main.cpp:325:30: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    if ((x < maxYSize/2) | (x < (maxYSize/2+(maxXSize-maxYSize)) & x > (maxXSize-maxYSize))) {
+                              ^
+../main.cpp:341:16: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                ^
+../main.cpp:341:51: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                                                   ^
+../main.cpp:358:15: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if (x > (maxYSize) & x < (maxXSize-maxYSize)) {
+               ^
+../main.cpp:388:11: warning: unused variable ‘tempVal’ [-Wunused-variable]
+    double tempVal = 0;
+           ^
+../main.cpp:114:9: warning: variable ‘meshVec_neg1_neg1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_neg1_neg1 = 0;
+         ^
+../main.cpp:115:9: warning: variable ‘meshVec_neg1_0’ set but not used [-Wunused-but-set-variable]
+  double meshVec_neg1_0 = 0;
+         ^
+../main.cpp:116:9: warning: variable ‘meshVec_neg1_1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_neg1_1 = 0;
+         ^
+../main.cpp:117:9: warning: variable ‘meshVec_0_neg1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_0_neg1 = 0;
+         ^
+../main.cpp:118:9: warning: variable ‘meshVec_0_0’ set but not used [-Wunused-but-set-variable]
+  double meshVec_0_0 = 0;
+         ^
+../main.cpp:119:9: warning: variable ‘meshVec_0_1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_0_1 = 0;
+         ^
+../main.cpp:120:9: warning: variable ‘meshVec_1_neg1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_1_neg1 = 0;
+         ^
+../main.cpp:121:9: warning: variable ‘meshVec_1_0’ set but not used [-Wunused-but-set-variable]
+  double meshVec_1_0 = 0;
+         ^
+../main.cpp:122:9: warning: variable ‘meshVec_1_1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_1_1 = 0;
+         ^
+../main.cpp:169:9: warning: unused variable ‘depthScalingFactor’ [-Wunused-variable]
+  double depthScalingFactor = .025;//.3;//0.1;
+         ^
+../main.cpp:173:8: warning: unused variable ‘verZIncrement’ [-Wunused-variable]
+  float verZIncrement = 1.0f;//3.5f;//0.5f;//3.5f;
+        ^
+../main.cpp:190:8: warning: unused variable ‘initVerZUL’ [-Wunused-variable]
+  float initVerZUL = -4.50f+initalZ;
+        ^
+../main.cpp:191:8: warning: unused variable ‘initVerZUR’ [-Wunused-variable]
+  float initVerZUR = -4.50f+initalZ;//initVerZUL+verZIncrement;
+        ^
+../main.cpp:192:8: warning: unused variable ‘initVerZBL’ [-Wunused-variable]
+  float initVerZBL = -4.50f+initalZ;
+        ^
+../main.cpp:193:8: warning: unused variable ‘initVerZBR’ [-Wunused-variable]
+  float initVerZBR = -4.50f+initalZ;
+        ^
+Finished building: ../main.cpp
+ 
+Building target: DisplacementMapper
+Invoking: Cross G++ Linker
+g++ -L/usr/lib/x86_64-linux-gnu -L/usr/local/lib -o "DisplacementMapper"  ./imageloader.o ./main.o   -lGL -lopencv_core -lopencv_imgcodecs -lopencv_imgproc -lopencv_highgui -lGLU -lglut
+Finished building target: DisplacementMapper
+ 
+19:53:06 **** Incremental Build of configuration Debug for project ImagePreprocessor ****
+make all 
+make: Nothing to be done for 'all'.
+19:53:07 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+make all 
+make: Nothing to be done for 'all'.
+19:53:32 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+make all 
+Building file: ../main.cpp
+Invoking: Cross G++ Compiler
+g++ -I/usr/local/include/opencv -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.cpp"
+../main.cpp: In function ‘void drawScene()’:
+../main.cpp:325:30: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    if ((x < maxYSize/2) | (x < (maxYSize/2+(maxXSize-maxYSize)) & x > (maxXSize-maxYSize))) {
+                              ^
+../main.cpp:341:16: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                ^
+../main.cpp:341:51: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                                                   ^
+../main.cpp:358:15: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if (x > (maxYSize) & x < (maxXSize-maxYSize)) {
+               ^
+../main.cpp:388:11: warning: unused variable ‘tempVal’ [-Wunused-variable]
+    double tempVal = 0;
+           ^
+../main.cpp:114:9: warning: variable ‘meshVec_neg1_neg1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_neg1_neg1 = 0;
+         ^
+../main.cpp:115:9: warning: variable ‘meshVec_neg1_0’ set but not used [-Wunused-but-set-variable]
+  double meshVec_neg1_0 = 0;
+         ^
+../main.cpp:116:9: warning: variable ‘meshVec_neg1_1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_neg1_1 = 0;
+         ^
+../main.cpp:117:9: warning: variable ‘meshVec_0_neg1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_0_neg1 = 0;
+         ^
+../main.cpp:118:9: warning: variable ‘meshVec_0_0’ set but not used [-Wunused-but-set-variable]
+  double meshVec_0_0 = 0;
+         ^
+../main.cpp:119:9: warning: variable ‘meshVec_0_1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_0_1 = 0;
+         ^
+../main.cpp:120:9: warning: variable ‘meshVec_1_neg1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_1_neg1 = 0;
+         ^
+../main.cpp:121:9: warning: variable ‘meshVec_1_0’ set but not used [-Wunused-but-set-variable]
+  double meshVec_1_0 = 0;
+         ^
+../main.cpp:122:9: warning: variable ‘meshVec_1_1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_1_1 = 0;
+         ^
+../main.cpp:169:9: warning: unused variable ‘depthScalingFactor’ [-Wunused-variable]
+  double depthScalingFactor = .025;//.3;//0.1;
+         ^
+../main.cpp:173:8: warning: unused variable ‘verZIncrement’ [-Wunused-variable]
+  float verZIncrement = 1.0f;//3.5f;//0.5f;//3.5f;
+        ^
+../main.cpp:190:8: warning: unused variable ‘initVerZUL’ [-Wunused-variable]
+  float initVerZUL = -4.50f+initalZ;
+        ^
+../main.cpp:191:8: warning: unused variable ‘initVerZUR’ [-Wunused-variable]
+  float initVerZUR = -4.50f+initalZ;//initVerZUL+verZIncrement;
+        ^
+../main.cpp:192:8: warning: unused variable ‘initVerZBL’ [-Wunused-variable]
+  float initVerZBL = -4.50f+initalZ;
+        ^
+../main.cpp:193:8: warning: unused variable ‘initVerZBR’ [-Wunused-variable]
+  float initVerZBR = -4.50f+initalZ;
+        ^
+Finished building: ../main.cpp
+ 
+Building target: DisplacementMapper
+Invoking: Cross G++ Linker
+g++ -L/usr/lib/x86_64-linux-gnu -L/usr/local/lib -o "DisplacementMapper"  ./imageloader.o ./main.o   -lGL -lopencv_core -lopencv_imgcodecs -lopencv_imgproc -lopencv_highgui -lGLU -lglut
+Finished building target: DisplacementMapper
+ 
+19:53:33 **** Incremental Build of configuration Debug for project ImagePreprocessor ****
+make all 
+make: Nothing to be done for 'all'.
+19:53:34 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+make all 
+make: Nothing to be done for 'all'.
+19:53:58 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+make all 
+Building file: ../main.cpp
+Invoking: Cross G++ Compiler
+g++ -I/usr/local/include/opencv -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.cpp"
+../main.cpp: In function ‘void drawScene()’:
+../main.cpp:325:30: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    if ((x < maxYSize/2) | (x < (maxYSize/2+(maxXSize-maxYSize)) & x > (maxXSize-maxYSize))) {
+                              ^
+../main.cpp:341:16: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                ^
+../main.cpp:341:51: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                                                   ^
+../main.cpp:358:15: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if (x > (maxYSize) & x < (maxXSize-maxYSize)) {
+               ^
+../main.cpp:388:11: warning: unused variable ‘tempVal’ [-Wunused-variable]
+    double tempVal = 0;
+           ^
+../main.cpp:114:9: warning: variable ‘meshVec_neg1_neg1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_neg1_neg1 = 0;
+         ^
+../main.cpp:115:9: warning: variable ‘meshVec_neg1_0’ set but not used [-Wunused-but-set-variable]
+  double meshVec_neg1_0 = 0;
+         ^
+../main.cpp:116:9: warning: variable ‘meshVec_neg1_1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_neg1_1 = 0;
+         ^
+../main.cpp:117:9: warning: variable ‘meshVec_0_neg1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_0_neg1 = 0;
+         ^
+../main.cpp:118:9: warning: variable ‘meshVec_0_0’ set but not used [-Wunused-but-set-variable]
+  double meshVec_0_0 = 0;
+         ^
+../main.cpp:119:9: warning: variable ‘meshVec_0_1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_0_1 = 0;
+         ^
+../main.cpp:120:9: warning: variable ‘meshVec_1_neg1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_1_neg1 = 0;
+         ^
+../main.cpp:121:9: warning: variable ‘meshVec_1_0’ set but not used [-Wunused-but-set-variable]
+  double meshVec_1_0 = 0;
+         ^
+../main.cpp:122:9: warning: variable ‘meshVec_1_1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_1_1 = 0;
+         ^
+../main.cpp:169:9: warning: unused variable ‘depthScalingFactor’ [-Wunused-variable]
+  double depthScalingFactor = .025;//.3;//0.1;
+         ^
+../main.cpp:173:8: warning: unused variable ‘verZIncrement’ [-Wunused-variable]
+  float verZIncrement = 1.0f;//3.5f;//0.5f;//3.5f;
+        ^
+../main.cpp:190:8: warning: unused variable ‘initVerZUL’ [-Wunused-variable]
+  float initVerZUL = -4.50f+initalZ;
+        ^
+../main.cpp:191:8: warning: unused variable ‘initVerZUR’ [-Wunused-variable]
+  float initVerZUR = -4.50f+initalZ;//initVerZUL+verZIncrement;
+        ^
+../main.cpp:192:8: warning: unused variable ‘initVerZBL’ [-Wunused-variable]
+  float initVerZBL = -4.50f+initalZ;
+        ^
+../main.cpp:193:8: warning: unused variable ‘initVerZBR’ [-Wunused-variable]
+  float initVerZBR = -4.50f+initalZ;
+        ^
+Finished building: ../main.cpp
+ 
+Building target: DisplacementMapper
+Invoking: Cross G++ Linker
+g++ -L/usr/lib/x86_64-linux-gnu -L/usr/local/lib -o "DisplacementMapper"  ./imageloader.o ./main.o   -lGL -lopencv_core -lopencv_imgcodecs -lopencv_imgproc -lopencv_highgui -lGLU -lglut
+Finished building target: DisplacementMapper
+ 
+19:53:59 **** Incremental Build of configuration Debug for project ImagePreprocessor ****
+make all 
+make: Nothing to be done for 'all'.
+19:53:59 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+make all 
+make: Nothing to be done for 'all'.
+19:54:13 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+make all 
+Building file: ../main.cpp
+Invoking: Cross G++ Compiler
+g++ -I/usr/local/include/opencv -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.cpp"
+../main.cpp: In function ‘void drawScene()’:
+../main.cpp:325:30: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    if ((x < maxYSize/2) | (x < (maxYSize/2+(maxXSize-maxYSize)) & x > (maxXSize-maxYSize))) {
+                              ^
+../main.cpp:341:16: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                ^
+../main.cpp:341:51: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                                                   ^
+../main.cpp:358:15: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if (x > (maxYSize) & x < (maxXSize-maxYSize)) {
+               ^
+../main.cpp:511:11: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    if (y2 > 0 & y2 < maxYSize-1) {
+           ^
+../main.cpp:388:11: warning: unused variable ‘tempVal’ [-Wunused-variable]
+    double tempVal = 0;
+           ^
+../main.cpp:114:9: warning: variable ‘meshVec_neg1_neg1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_neg1_neg1 = 0;
+         ^
+../main.cpp:115:9: warning: variable ‘meshVec_neg1_0’ set but not used [-Wunused-but-set-variable]
+  double meshVec_neg1_0 = 0;
+         ^
+../main.cpp:116:9: warning: variable ‘meshVec_neg1_1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_neg1_1 = 0;
+         ^
+../main.cpp:117:9: warning: variable ‘meshVec_0_neg1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_0_neg1 = 0;
+         ^
+../main.cpp:118:9: warning: variable ‘meshVec_0_0’ set but not used [-Wunused-but-set-variable]
+  double meshVec_0_0 = 0;
+         ^
+../main.cpp:119:9: warning: variable ‘meshVec_0_1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_0_1 = 0;
+         ^
+../main.cpp:120:9: warning: variable ‘meshVec_1_neg1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_1_neg1 = 0;
+         ^
+../main.cpp:121:9: warning: variable ‘meshVec_1_0’ set but not used [-Wunused-but-set-variable]
+  double meshVec_1_0 = 0;
+         ^
+../main.cpp:122:9: warning: variable ‘meshVec_1_1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_1_1 = 0;
+         ^
+../main.cpp:169:9: warning: unused variable ‘depthScalingFactor’ [-Wunused-variable]
+  double depthScalingFactor = .025;//.3;//0.1;
+         ^
+../main.cpp:173:8: warning: unused variable ‘verZIncrement’ [-Wunused-variable]
+  float verZIncrement = 1.0f;//3.5f;//0.5f;//3.5f;
+        ^
+../main.cpp:190:8: warning: unused variable ‘initVerZUL’ [-Wunused-variable]
+  float initVerZUL = -4.50f+initalZ;
+        ^
+../main.cpp:191:8: warning: unused variable ‘initVerZUR’ [-Wunused-variable]
+  float initVerZUR = -4.50f+initalZ;//initVerZUL+verZIncrement;
+        ^
+../main.cpp:192:8: warning: unused variable ‘initVerZBL’ [-Wunused-variable]
+  float initVerZBL = -4.50f+initalZ;
+        ^
+../main.cpp:193:8: warning: unused variable ‘initVerZBR’ [-Wunused-variable]
+  float initVerZBR = -4.50f+initalZ;
+        ^
+Finished building: ../main.cpp
+ 
+Building target: DisplacementMapper
+Invoking: Cross G++ Linker
+g++ -L/usr/lib/x86_64-linux-gnu -L/usr/local/lib -o "DisplacementMapper"  ./imageloader.o ./main.o   -lGL -lopencv_core -lopencv_imgcodecs -lopencv_imgproc -lopencv_highgui -lGLU -lglut
+Finished building target: DisplacementMapper
+ 
+19:54:14 **** Incremental Build of configuration Debug for project ImagePreprocessor ****
+make all 
+make: Nothing to be done for 'all'.
+19:54:15 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+make all 
+make: Nothing to be done for 'all'.
