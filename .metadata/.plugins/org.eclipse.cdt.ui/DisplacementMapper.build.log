@@ -1,6 +1,79 @@
-01:11:58 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+01:13:40 **** Incremental Build of configuration Debug for project DisplacementMapper ****
 make all 
-make: Nothing to be done for 'all'.
+Building file: ../main.cpp
+Invoking: Cross G++ Compiler
+g++ -I/usr/local/include/opencv -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.cpp"
+../main.cpp: In function ‘void drawScene()’:
+../main.cpp:327:30: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    if ((x < maxYSize/2) | (x < (maxYSize/2+(maxXSize-maxYSize)) & x > (maxXSize-maxYSize))) {
+                              ^
+../main.cpp:343:16: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                ^
+../main.cpp:343:51: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                                                   ^
+../main.cpp:360:15: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if (x > (maxYSize) & x < (maxXSize-maxYSize)) {
+               ^
+../main.cpp:513:11: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    if (y2 > 0 & y2 < maxYSize-1) {
+           ^
+../main.cpp:390:11: warning: unused variable ‘tempVal’ [-Wunused-variable]
+    double tempVal = 0;
+           ^
+../main.cpp:114:9: warning: variable ‘meshVec_neg1_neg1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_neg1_neg1 = 0;
+         ^
+../main.cpp:115:9: warning: variable ‘meshVec_neg1_0’ set but not used [-Wunused-but-set-variable]
+  double meshVec_neg1_0 = 0;
+         ^
+../main.cpp:116:9: warning: variable ‘meshVec_neg1_1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_neg1_1 = 0;
+         ^
+../main.cpp:117:9: warning: variable ‘meshVec_0_neg1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_0_neg1 = 0;
+         ^
+../main.cpp:118:9: warning: variable ‘meshVec_0_0’ set but not used [-Wunused-but-set-variable]
+  double meshVec_0_0 = 0;
+         ^
+../main.cpp:119:9: warning: variable ‘meshVec_0_1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_0_1 = 0;
+         ^
+../main.cpp:120:9: warning: variable ‘meshVec_1_neg1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_1_neg1 = 0;
+         ^
+../main.cpp:121:9: warning: variable ‘meshVec_1_0’ set but not used [-Wunused-but-set-variable]
+  double meshVec_1_0 = 0;
+         ^
+../main.cpp:122:9: warning: variable ‘meshVec_1_1’ set but not used [-Wunused-but-set-variable]
+  double meshVec_1_1 = 0;
+         ^
+../main.cpp:169:9: warning: unused variable ‘depthScalingFactor’ [-Wunused-variable]
+  double depthScalingFactor = .015;//.025;//.3;//0.1;
+         ^
+../main.cpp:173:8: warning: unused variable ‘verZIncrement’ [-Wunused-variable]
+  float verZIncrement = 1.0f;//3.5f;//0.5f;//3.5f;
+        ^
+../main.cpp:190:8: warning: unused variable ‘initVerZUL’ [-Wunused-variable]
+  float initVerZUL = -4.50f+initalZ;
+        ^
+../main.cpp:191:8: warning: unused variable ‘initVerZUR’ [-Wunused-variable]
+  float initVerZUR = -4.50f+initalZ;//initVerZUL+verZIncrement;
+        ^
+../main.cpp:192:8: warning: unused variable ‘initVerZBL’ [-Wunused-variable]
+  float initVerZBL = -4.50f+initalZ;
+        ^
+../main.cpp:193:8: warning: unused variable ‘initVerZBR’ [-Wunused-variable]
+  float initVerZBR = -4.50f+initalZ;
+        ^
+Finished building: ../main.cpp
+ 
+Building target: DisplacementMapper
+Invoking: Cross G++ Linker
+g++ -L/usr/lib/x86_64-linux-gnu -L/usr/local/lib -o "DisplacementMapper"  ./imageloader.o ./main.o   -lGL -lopencv_core -lopencv_imgcodecs -lopencv_imgproc -lopencv_highgui -lGLU -lglut
+Finished building target: DisplacementMapper
+ 
 
-01:11:59 Build Finished (took 75ms)
+01:13:41 Build Finished (took 820ms)
 
