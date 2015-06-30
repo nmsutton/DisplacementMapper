@@ -219,9 +219,9 @@ void drawScene() {
 
 	//double incrementValue = 0.5;
 	int incrementValue = 1;
-	//double maxColorValue = 255;
+	double maxColorValue = 255;
 	double imageXPixels = 512;
-	double imageYPixels = 255;//512;
+	double imageYPixels = 256;//512;
 
 	// Build displacement map.  *2 is due to 2 rectangle verticies for each x and y axis used for the later Z level mapping.
 	double verticiesInRectangle = 2;
