@@ -48,7 +48,7 @@ void handleKeypress(unsigned char key, int x, int y) {
 	}
 }
 
-String imageName6 = "/home/nmsutton/Documents/Software/OpenGL/Media/GeneralProcessed.bmp";
+String imageName6 = "/home/nmsutton/Documents/Software/OpenGL/Media/GeneralProcessed90.bmp";
 Mat dispMapImage;
 
 //Makes the image into a texture, and returns the id of the texture
@@ -81,7 +81,7 @@ void initRendering() {
 	glEnable(GL_COLOR_MATERIAL);
 	glShadeModel(GL_SMOOTH); //Enable smooth shading
 
-	Image* image = loadBMP("/home/nmsutton/Documents/Software/OpenGL/Media/generalImg2.bmp");
+	Image* image = loadBMP("/home/nmsutton/Documents/Software/OpenGL/Media/generalImg3.bmp");
 	_textureId = loadTexture(image);
 	delete image;
 }
@@ -162,6 +162,8 @@ void drawScene() {
 	double sizeOfMesh = 10;//6;//50;
 	//sizeOfMesh = sizeOfMesh/sizeScalingFactor;
 	double sizeOfMesh2 = sizeOfMesh*2;
+	double texYScaling = 2*.9;
+	double texXScaling = 1.5*.9;
 	//double x = 0, y = 0;
 	int x = 0, y = 0;
 	double expandMeshSize = 2.0;//2.5;
@@ -172,20 +174,20 @@ void drawScene() {
 	float verYIncrement = 1.5f;//2.0f;//0.5f;//2.0f;
 	float verZIncrement = 1.0f;//3.5f;//0.5f;//3.5f;
 	//float texXIncrement = 1.1*(1.00f/(sizeOfMesh*expandMeshSize));
-	float texXIncrement = 1.07*(1.00f/(sizeOfMesh2*expandMeshSize));
-	float texYIncrement = 1.00f/sizeOfMesh2;
+	float texXIncrement = (1.07*(1.00f/(sizeOfMesh2*expandMeshSize)))/texXScaling;
+	float texYIncrement = (1.00f/sizeOfMesh2)/texYScaling;
 
 	float initVerXUL = -2.50f;
 	float initVerXBR = -2.50f;
 	float initVerXUR = initVerXUL+verXIncrement;
 	float initVerXBL = initVerXBR+verXIncrement;
-	float initTexXUL = -0.05f;//-0.05f;//0.0f;//
-	float initTexXBR = -0.05f;//-0.05f;//-0.10f;
+	float initTexXUL = 0.10f;//-0.05f;//0.0f;//
+	float initTexXBR = 0.10f;//-0.05f;//-0.10f;
 	float initTexXUR = initTexXUL+texXIncrement;
 	float initTexXBL = initTexXBR+texXIncrement;
-	float initTexYBR = 1.0f;//1.10f;
+	float initTexYBR = 0.78f;//1.0f;//1.10f;
 	float initTexYUL = initTexYBR-texYIncrement;
-	float initTexYBL = 1.0f;//1.10f;
+	float initTexYBL = 0.78f;//1.0f;//1.10f;
 	float initTexYUR = initTexYBL-texYIncrement;
 	float initVerZUL = -4.50f+initalZ;
 	float initVerZUR = -4.50f+initalZ;//initVerZUL+verZIncrement;
@@ -256,7 +258,7 @@ void drawScene() {
 	//cout<<"\txAmount\t";cout<<xAmount;
 	//cout<<"\n";
 
-	// print out
+	// print out section
 	/*for (int y = 0; y < yAmount; y += 1) {
 		for (x = 0; x < xAmount; x += 1) {
 			double imageToScenePixelDiff = (255/(double)sizeOfMesh)*(1/verticiesInRectangle);
@@ -388,18 +390,7 @@ void drawScene() {
 			}*/
 			// Avoid edge problems
 			double tempVal = 0;
-			/*if (x >= ((maxYSize-1)*expandMeshSize)) {
-				nextTranslatedX = tempVal;//translatedX;
-			}
-			if (x == 0) {
-				priorTranslatedX = tempVal;//translatedX;
-			}
-			if (y >= ((maxYSize-1))) {
-				nextTranslatedY = tempVal;//translatedY;
-			}
-			if (y == 0) {
-				priorTranslatedY = tempVal;//translatedY;
-			}*/
+
 			meshVec_neg1_neg1 = dispMapImage.at<Vec3b>(priorTranslatedY,priorTranslatedX).val[0];
 			meshVec_neg1_0 = dispMapImage.at<Vec3b>(priorTranslatedY,translatedX).val[0];
 			meshVec_neg1_1 = dispMapImage.at<Vec3b>(priorTranslatedY,nextTranslatedX).val[0];
@@ -410,177 +401,20 @@ void drawScene() {
 			meshVec_1_0 = dispMapImage.at<Vec3b>(nextTranslatedY,translatedX).val[0];
 			meshVec_1_1 = dispMapImage.at<Vec3b>(nextTranslatedY,nextTranslatedX).val[0];
 
-			/*double vectorSlope = .25;
-			vAT3.ULVerInst[2] = vectorSlope*((meshVec_1_1-meshVec_neg1_neg1)*.5+(meshVec_1_neg1-meshVec_neg1_1)*.5);*/
-
-			/*vAT3.ULVerInst[2] = ((meshVec_neg1_neg1)*.5+(meshVec_0_0)*.5) * depthScalingFactor+initalZ;
-			vAT3.URVerInst[2] = ((meshVec_neg1_1)*.5+(meshVec_0_0)*.5) * depthScalingFactor+initalZ;
-			vAT3.BLVerInst[2] = ((meshVec_1_neg1)*.5+(meshVec_0_0)*.5) * depthScalingFactor+initalZ;
-			vAT3.BRVerInst[2] = ((meshVec_1_1)*.5+(meshVec_0_0)*.5) * depthScalingFactor+initalZ;*/
-
-			/*vAT3.ULVerInst[2] = ((meshVec_0_0)*.5+(meshVec_0_0)*.5) * depthScalingFactor+initalZ;
-			vAT3.URVerInst[2] = ((meshVec_neg1_neg1)*.5+(meshVec_0_0)*.5) * depthScalingFactor+initalZ;
-			vAT3.BLVerInst[2] = ((meshVec_neg1_neg1)*.5+(meshVec_0_0)*.5) * depthScalingFactor+initalZ;
-			vAT3.BRVerInst[2] = ((meshVec_0_0)*.5+(meshVec_0_0)*.5) * depthScalingFactor+initalZ;*/
-
-			/*vAT3.ULVerInst[2] = ((meshVec_neg1_1)*.5+(meshVec_0_0)*.5) * depthScalingFactor+initalZ;
-			vAT3.BRVerInst[2] = ((meshVec_1_neg1)*.5+(meshVec_0_0)*.5) * depthScalingFactor+initalZ;
-			vAT3.BLVerInst[2] = ((meshVec_1_1)*.5+(meshVec_0_0)*.5) * depthScalingFactor+initalZ;*/
-
-			/*vAT3.ULVerInst[2] = ((meshVec_neg1_neg1)*.5+(meshVec_0_0)*.5) * depthScalingFactor+initalZ;
-			vAT3.URVerInst[2] = ((meshVec_0_0)*.5+(meshVec_0_0)*.5) * depthScalingFactor+initalZ;
-			vAT3.BLVerInst[2] = ((meshVec_0_0)*.5+(meshVec_0_0)*.5) * depthScalingFactor+initalZ;
-			vAT3.BRVerInst[2] = ((meshVec_neg1_neg1)*.5+(meshVec_0_0)*.5) * depthScalingFactor+initalZ;*/
-
-			/*vAT3.ULVerInst[2] = ((meshVec_0_0)*.5+(meshVec_0_0)*.5) * depthScalingFactor+initalZ;
-			vAT3.URVerInst[2] = ((meshVec_0_0)*.5+(meshVec_0_0)*.5) * depthScalingFactor+initalZ;
-			vAT3.BLVerInst[2] = ((meshVec_neg1_neg1)*.5+(meshVec_0_0)*.5) * depthScalingFactor+initalZ;
-			vAT3.BRVerInst[2] = ((meshVec_neg1_neg1)*.5+(meshVec_0_0)*.5) * depthScalingFactor+initalZ;*/
-
-			/*vAT3.ULVerInst[2] = ((meshVec_neg1_neg1)*.5+(meshVec_0_0)*.5) * depthScalingFactor+initalZ;
-			vAT3.URVerInst[2] = ((meshVec_neg1_neg1)*.5+(meshVec_0_0)*.5) * depthScalingFactor+initalZ;
-			vAT3.BLVerInst[2] = ((meshVec_0_0)*.5+(meshVec_0_0)*.5) * depthScalingFactor+initalZ;
-			vAT3.BRVerInst[2] = ((meshVec_0_0)*.5+(meshVec_0_0)*.5) * depthScalingFactor+initalZ;*/
-
-			/*vAT3.ULVerInst[2] = ((meshVec_neg1_neg1)*.5+(meshVec_0_0)*.5) * depthScalingFactor+initalZ;
-			vAT3.URVerInst[2] = ((meshVec_0_0)*.5+(meshVec_1_1)*.5) * depthScalingFactor+initalZ;
-			vAT3.BLVerInst[2] = ((meshVec_0_0)*.5+(meshVec_1_1)*.5) * depthScalingFactor+initalZ;
-			vAT3.BRVerInst[2] = ((meshVec_neg1_neg1)*.5+(meshVec_0_0)*.5) * depthScalingFactor+initalZ;*/
-
-			/*vAT3.ULVerInst[2] = (meshVec_neg1_neg1) * depthScalingFactor+initalZ;
-			vAT3.URVerInst[2] = (meshVec_neg1_1) * depthScalingFactor+initalZ;
-			vAT3.BLVerInst[2] = (meshVec_1_neg1) * depthScalingFactor+initalZ;
-			vAT3.BRVerInst[2] = (meshVec_1_1) * depthScalingFactor+initalZ;*/
-
-			/*vAT3.ULVerInst[2] = (meshVec_neg1_1) * depthScalingFactor+initalZ;
-			vAT3.URVerInst[2] = (meshVec_neg1_neg1) * depthScalingFactor+initalZ;
-			vAT3.BLVerInst[2] = (meshVec_1_neg1) * depthScalingFactor+initalZ;
-			vAT3.BRVerInst[2] = (meshVec_1_1) * depthScalingFactor+initalZ;*/
-
-			/*double sharedVert = meshVec_1_1;
-			vAT3.ULVerInst[2] = (sharedVert) * depthScalingFactor+initalZ;
-			vAT3.URVerInst[2] = (sharedVert) * depthScalingFactor+initalZ;
-			vAT3.BLVerInst[2] = (sharedVert) * depthScalingFactor+initalZ;
-			vAT3.BRVerInst[2] = (sharedVert) * depthScalingFactor+initalZ;*/
-
-			/*vAT3.ULVerInst[2] = (meshVec_neg1_neg1) * depthScalingFactor+initalZ;
-			vAT3.URVerInst[2] = (meshVec_neg1_0) * depthScalingFactor+initalZ;
-			vAT3.BLVerInst[2] = (meshVec_0_neg1) * depthScalingFactor+initalZ;
-			vAT3.BRVerInst[2] = (meshVec_0_0) * depthScalingFactor+initalZ;*/
-
-			/*vAT3.ULVerInst[2] = (meshVec_0_0) * depthScalingFactor+initalZ;
-			vAT3.URVerInst[2] = (meshVec_0_0) * depthScalingFactor+initalZ;
-			vAT3.BLVerInst[2] = (meshVec_1_1) * depthScalingFactor+initalZ;
-			vAT3.BRVerInst[2] = (meshVec_1_1) * depthScalingFactor+initalZ;*/
-
-			/*vAT3.ULVerInst[2] = (meshVec_0_0) * depthScalingFactor+initalZ;
-			vAT3.URVerInst[2] = (meshVec_1_1) * depthScalingFactor+initalZ;
-			vAT3.BLVerInst[2] = (meshVec_1_1) * depthScalingFactor+initalZ;
-			vAT3.BRVerInst[2] = (meshVec_0_0) * depthScalingFactor+initalZ;*/
-			/*vAT3.ULVerInst[2] = initalZ;//(meshVec_0_0) * depthScalingFactor+initalZ;//bl
-			vAT3.URVerInst[2] = initalZ+3;//(meshVec_0_0) * depthScalingFactor+initalZ;//br
-			vAT3.BLVerInst[2] = initalZ+3;//(meshVec_0_0) * depthScalingFactor+initalZ;//ur
-			vAT3.BRVerInst[2] = initalZ;//(meshVec_0_0) * depthScalingFactor+initalZ;//ul*/
-			/*vAT3.ULVerInst[2] = (meshVec_0_0) * depthScalingFactor+initalZ;//bl
-			vAT3.URVerInst[2] = (meshVec_1_1) * depthScalingFactor+initalZ;//br
-			vAT3.BLVerInst[2] = (meshVec_1_1) * depthScalingFactor+initalZ;//ur
-			vAT3.BRVerInst[2] = (meshVec_0_0) * depthScalingFactor+initalZ;//ul*/
-			/*vAT3.ULVerInst[2] = (meshVec_0_0) * depthScalingFactor+initalZ;
-			vAT3.URVerInst[2] = (meshVec_neg1_neg1) * depthScalingFactor+initalZ;
-			vAT3.BLVerInst[2] = (meshVec_0_0) * depthScalingFactor+initalZ;
-			vAT3.BRVerInst[2] = (meshVec_0_0) * depthScalingFactor+initalZ;*/
-
-			/*vAT3.ULVerInst[2] = (meshVec_0_0) * depthScalingFactor+initalZ;//bl
-			vAT3.URVerInst[2] = (meshVec_0_1) * depthScalingFactor+initalZ;//br
-			vAT3.BLVerInst[2] = (meshVec_neg1_0) * depthScalingFactor+initalZ;//ur
-			vAT3.BRVerInst[2] = (meshVec_neg1_0) * depthScalingFactor+initalZ;//ul*/
-
-			/*vAT3.ULVerInst[2] = (meshVec_1_0) * depthScalingFactor+initalZ;//bl
-			vAT3.URVerInst[2] = ((meshVec_0_1+meshVec_1_0)/2) * depthScalingFactor+initalZ;//br  ((meshVec_0_1+meshVec_1_0)/2)
-			vAT3.BLVerInst[2] = (meshVec_0_1) * depthScalingFactor+initalZ;//ur
-			vAT3.BRVerInst[2] = ((meshVec_0_neg1+meshVec_neg1_0)/2) * depthScalingFactor+initalZ;//ul*/
-
 			int x2 = x, y2 = y;
-			if (x2 < (maxXSize)) {
+			double borderToCrop = 1;
+			if (x2 < (maxXSize-borderToCrop)) {
 				vAT3.BRVerInst[2] = verZLevels[y2][x2];//verZLevels[y2][x2] = meshVec_0_0;
 			}
-			if (x2 > 0) {
+			if ((x2 > 0) & (x2 < (maxXSize-borderToCrop))) {
 				vAT3.BLVerInst[2] = verZLevels[y2][x2+1];//verZLevels[y2][x2+1] = meshVec_0_0;
 			}
-			if ((y2 < maxYSize-1) & (x2 < (maxXSize-1))) {
-				vAT3.URVerInst[2] = verZLevels[y2+1][x2+1];// = meshVec_0_0;
-			}
-			if (y2 > 0 & y2 < maxYSize-1) {
+			if (y2 > 0 & y2 < maxYSize-borderToCrop) {
 				vAT3.ULVerInst[2] = verZLevels[y2+1][x2];// = meshVec_0_0;
 			}
-			/*vAT3.BRVerInst[2] = verZLevels[y2][x2];
-			vAT3.BLVerInst[2] = verZLevels[y2][x2+1];
-			vAT3.URVerInst[2] = verZLevels[y2+1][x2+1];
-			vAT3.ULVerInst[2] = verZLevels[y2+1][x2];*/
-			/*vAT3.BRVerInst[2] = 0;
-			vAT3.BLVerInst[2] = 0;
-			vAT3.URVerInst[2] = 0;
-			vAT3.ULVerInst[2] = 0;*/
-
-			/*cout<<"\n_______\n";
-			cout<<"x\t";cout<<x;cout<<"\ty\t";cout<<y;cout<<"\n";
-			cout<<"\tmeshVec_0_0\t";cout<<meshVec_0_0;
-			cout<<"\tmeshVec_0_1\t";cout<<meshVec_0_1;
-			cout<<"\tmeshVec_1_0\t";cout<<meshVec_1_0;
-			cout<<"\tmeshVec_1_1\t";cout<<meshVec_1_1;*/
-
-			/*if (x > 0 & x< maxXSize*imageToScenePixelDiff) {
-			//if (x > 0) {
-				//vAT3.ULVerInst[2] = grayLevel*depthScalingFactor+initalZ;
-				vAT3.ULVerInst[2] = priorAdjustedGrayLevel+initalZ;
-				vAT3.URVerInst[2] = grayLevel*depthScalingFactor+initalZ;
-				//vAT3.URVerInst[2] = priorAdjustedGrayLevel+initalZ;
-				vAT3.BLVerInst[2] = grayLevel*depthScalingFactor+initalZ;
-				//vAT3.BLVerInst[2] = priorAdjustedGrayLevel+initalZ;
-				//vAT3.BRVerInst[2] = grayLevel*depthScalingFactor+initalZ;
-				vAT3.BRVerInst[2] = priorAdjustedGrayLevel+initalZ;
+			if ((y2 < maxYSize-borderToCrop) & (x2 < (maxXSize-borderToCrop))) {
+				vAT3.URVerInst[2] = verZLevels[y2+1][x2+1];// = meshVec_0_0;
 			}
-			else {
-				vAT3.ULVerInst[2] = 0+initalZ;
-				vAT3.URVerInst[2] = nextGrayLevel*depthScalingFactor+initalZ;
-				//vAT3.URVerInst[2] = priorAdjustedGrayLevel+initalZ;
-				vAT3.BLVerInst[2] = nextGrayLevel*depthScalingFactor+initalZ;
-				//vAT3.BLVerInst[2] = priorAdjustedGrayLevel+initalZ;
-				//vAT3.BRVerInst[2] = grayLevel*depthScalingFactor+initalZ;
-				vAT3.BRVerInst[2] = 0+initalZ;
-			}*/
-			//priorAdjustedGrayLevel = grayLevel*depthScalingFactor;
-
-
-			//cout<<"translatedY\t";cout<<translatedY;cout<<"\ttranslatedX\t";cout<<translatedX;cout<<"\tgrey level\t";cout<<grayLevel;cout<<"\tgrayLevel*depthScalingFactor\t";cout<<grayLevel*depthScalingFactor;cout<<"\n";
-			//vAT3.BRVerInst[2] (int)image.at<Vec3b>(y,x).val[0]
-
-			/*cout << "iteration y:";cout<<y;cout<<" x:";cout<<x;cout<<"\n";
-			cout<<"maxYSize/2: ";cout<<maxYSize/2;cout<<"\ty>=maxYSize/2:\t";cout<<(y>=maxYSize/2);cout<<"\t(x>=maxYSize/2):\t";cout<<(x>=maxYSize/2);cout<<"\n";
-			cout<<"UL_X:   ";cout << vAT3.ULVerInst[0];cout<<"\n";
-			cout<<"UL_Y:   ";cout << vAT3.ULVerInst[1];cout<<"\n";
-			cout<<"UL_Z:   ";cout << vAT3.ULVerInst[2];cout<<"\n";
-			cout<<"UL_texX:   ";cout << vAT3.ULTexInst[0];cout<<"\n";
-			cout<<"UL_texY:   ";cout << vAT3.ULTexInst[1];cout<<"\n";
-
-			cout<<"UR_X:   ";cout << vAT3.URVerInst[0];cout<<"\n";
-			cout<<"UR_Y:   ";cout << vAT3.URVerInst[1];cout<<"\n";
-			cout<<"UR_Z:   ";cout << vAT3.URVerInst[2];cout<<"\n";
-			cout<<"UR_texX:   ";cout << vAT3.URTexInst[0];cout<<"\n";
-			cout<<"UR_texY:   ";cout << vAT3.URTexInst[1];cout<<"\n";
-
-			cout<<"BL_X:   ";cout << vAT3.BLVerInst[0];cout<<"\n";
-			cout<<"BL_Y:   ";cout << vAT3.BLVerInst[1];cout<<"\n";
-			cout<<"BL_Z:   ";cout << vAT3.BLVerInst[2];cout<<"\n";
-			cout<<"BL_texX:   ";cout << vAT3.BLTexInst[0];cout<<"\n";
-			cout<<"BL_texY:   ";cout << vAT3.BLTexInst[1];cout<<"\n";
-
-			cout<<"BR_X:   ";cout << vAT3.BRVerInst[0];cout<<"\n";
-			cout<<"BR_Y:   ";cout << vAT3.BRVerInst[1];cout<<"\n";
-			cout<<"BR_Z:   ";cout << vAT3.BRVerInst[2];cout<<"\n";
-			cout<<"BR_texX:   ";cout << vAT3.BRTexInst[0];cout<<"\n";
-			cout<<"BR_texY:   ";cout << vAT3.BRTexInst[1];cout<<"\n";
-			cout<<"_____________________\n";*/
 
 			createMesh(vAT3);
 			//priorAdjustedGrayLevel = grayLevel*depthScalingFactor;

@@ -23,7 +23,7 @@ int main(int argc, char** argv) {
 	//! [load]
 
 	String imageName5 = "/home/nmsutton/Documents/Software/OpenGL/DisplacementMapper/ImagePreprocessor/src/blank.jpg";
-	String imageName6 = "/home/nmsutton/Documents/Software/OpenGL/Media/general3.bmp";
+	String imageName6 = "/home/nmsutton/Documents/Software/OpenGL/Media/general3.bmp";//general3.bmp";
 	Mat image;
 	image = imread(imageName6, CV_LOAD_IMAGE_COLOR);
 
