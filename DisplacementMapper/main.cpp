@@ -168,7 +168,7 @@ void drawScene() {
 	int x = 0, y = 0;
 	double expandMeshSize = 2.0;//2.5;
 	float initalZ = 40.0f;
-	double depthScalingFactor = .015;//.025;//.3;//0.1;
+	double depthScalingFactor = .7;//.025;//.3;//0.1;
 
 	float verXIncrement = 1.5f;//0.5f;//1.5f;
 	float verYIncrement = 1.5f;//2.0f;//0.5f;//2.0f;
@@ -404,16 +404,16 @@ void drawScene() {
 			int x2 = x, y2 = y;
 			double borderToCrop = 1;
 			if (x2 < (maxXSize-borderToCrop)) {
-				vAT3.BRVerInst[2] = verZLevels[y2][x2];//verZLevels[y2][x2] = meshVec_0_0;
+				vAT3.BRVerInst[2] = verZLevels[y2][x2]*depthScalingFactor;//verZLevels[y2][x2] = meshVec_0_0;
 			}
 			if ((x2 > 0) & (x2 < (maxXSize-borderToCrop))) {
-				vAT3.BLVerInst[2] = verZLevels[y2][x2+1];//verZLevels[y2][x2+1] = meshVec_0_0;
+				vAT3.BLVerInst[2] = verZLevels[y2][x2+1]*depthScalingFactor;//verZLevels[y2][x2+1] = meshVec_0_0;
 			}
 			if (y2 > 0 & y2 < maxYSize-borderToCrop) {
-				vAT3.ULVerInst[2] = verZLevels[y2+1][x2];// = meshVec_0_0;
+				vAT3.ULVerInst[2] = verZLevels[y2+1][x2]*depthScalingFactor;// = meshVec_0_0;
 			}
 			if ((y2 < maxYSize-borderToCrop) & (x2 < (maxXSize-borderToCrop))) {
-				vAT3.URVerInst[2] = verZLevels[y2+1][x2+1];// = meshVec_0_0;
+				vAT3.URVerInst[2] = verZLevels[y2+1][x2+1]*depthScalingFactor;// = meshVec_0_0;
 			}
 
 			createMesh(vAT3);
