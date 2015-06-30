@@ -1,6 +1,37 @@
-19:54:14 **** Incremental Build of configuration Debug for project ImagePreprocessor ****
+20:06:12 **** Incremental Build of configuration Debug for project ImagePreprocessor ****
 make all 
-make: Nothing to be done for 'all'.
+Building file: ../src/ImagePreprocessor.cpp
+Invoking: Cross G++ Compiler
+g++ -I/usr/local/include/opencv -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/ImagePreprocessor.d" -MT"src/ImagePreprocessor.d" -o "src/ImagePreprocessor.o" "../src/ImagePreprocessor.cpp"
+../src/ImagePreprocessor.cpp: In function ‘int main(int, char**)’:
+../src/ImagePreprocessor.cpp:40:30: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    if ((image.at<Vec3b>(y,x) == Vec3b(0,0,0) & anchorXAxisFound == false) &
+                              ^
+../src/ImagePreprocessor.cpp:44:32: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+      if (image.at<Vec3b>(y,x2) == Vec3b(0,0,0) & anchorXAxisFound == false) {
+                                ^
+../src/ImagePreprocessor.cpp:32:6: warning: variable ‘leftAnchorXAxis’ set but not used [-Wunused-but-set-variable]
+  int leftAnchorXAxis[2] = {0,0};
+      ^
+../src/ImagePreprocessor.cpp:33:6: warning: variable ‘rightAnchorXAxis’ set but not used [-Wunused-but-set-variable]
+  int rightAnchorXAxis[2] = {0,0};
+      ^
+../src/ImagePreprocessor.cpp:93:6: warning: unused variable ‘rotatedX’ [-Wunused-variable]
+  int rotatedX = 0.0, rotatedY = 0.0;
+      ^
+../src/ImagePreprocessor.cpp:93:22: warning: unused variable ‘rotatedY’ [-Wunused-variable]
+  int rotatedX = 0.0, rotatedY = 0.0;
+                      ^
+../src/ImagePreprocessor.cpp:94:6: warning: unused variable ‘rotationAngle’ [-Wunused-variable]
+  int rotationAngle = 45.0;
+      ^
+Finished building: ../src/ImagePreprocessor.cpp
+ 
+Building target: ImagePreprocessor
+Invoking: Cross G++ Linker
+g++ -L/usr/local/lib -o "ImagePreprocessor"  ./src/ImagePreprocessor.o   -lopencv_core -lopencv_imgcodecs -lopencv_imgproc -lopencv_highgui
+Finished building target: ImagePreprocessor
+ 
 
-19:54:14 Build Finished (took 84ms)
+20:06:13 Build Finished (took 816ms)
 

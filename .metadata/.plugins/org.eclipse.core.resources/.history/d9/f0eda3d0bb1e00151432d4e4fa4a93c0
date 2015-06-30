@@ -158,7 +158,7 @@ int main(int argc, char** argv) {
 
 			image.at<Vec3b>(y,x) = Vec3b(yScaleConvertedGrey+xScaleConvertedGrey,yScaleConvertedGrey+xScaleConvertedGrey,yScaleConvertedGrey+xScaleConvertedGrey);
 
-			// Mirror image verically.  Pixels on one side placed on the other.
+			// Mirror image verically
 			if (x > (image.cols/2)) {
 				image.at<Vec3b>(y,x) = image.at<Vec3b>(y,(image.cols-x));
 			}
