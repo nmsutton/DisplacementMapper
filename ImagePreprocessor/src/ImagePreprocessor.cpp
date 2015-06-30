@@ -78,10 +78,19 @@ int main(int argc, char** argv) {
 
 	// Create displacement map from anchor points
 	double yGrayLevel = 0;
+	double yGrayLevel2 = 0;
+	double yGrayLevel3 = 0;
+	double yGrayLevel2Fade = 2;
 	double xGrayLevel = 0;
+	double xGrayLevel2 = 0;
 	double mu = 3.0;
+	double muY2 = 0.0;
+	double muY3 = 3.0;
 	double muX = 2.0;
+	double muX2 = 6.0;
 	double sigma = 1.1;
+	double sigmaY3 = 5.1;
+	double sigmaX2 = 1.5;
 	double normalizedY = -1.0;
 	double yScaleConvertedGrey = 0.0;
 	double yScaleConvertedGreyTemp = 0.0;
@@ -100,6 +109,12 @@ int main(int argc, char** argv) {
 
 		// applying gausian
 		yGrayLevel = (1.0/(sigma*pow((2.0*pi),0.5)))*(exp(-(pow((normalizedY-mu),2.0)/pow((2*sigma),2.0))));
+		yGrayLevel2 = (1.0/(sigma*pow((2.0*pi),0.5)))*(exp(-(pow((normalizedY-muY2),2.0)/pow((2*sigma),2.0))));
+		yGrayLevel3 = -(1.0/(sigmaY3*pow((2.0*pi),0.5)))*(exp(-(pow((normalizedY-muY3),2.0)/pow((2*sigmaY3),2.0))));
+
+
+
+		//yGrayLevel += yGrayLevel2/yGrayLevel2Fade;
 
 		yScaleConvertedGrey = yGrayLevel * 255.0/2.0 + baseAdjustment;
 
@@ -108,10 +123,6 @@ int main(int argc, char** argv) {
 		//if (y > 50) {
 		yDouble = y;
 		yScaleConvertedGrey += (1/((yDouble*.007)+.5))*15;//50;//-= (6.0/255.0)*30;
-		//}
-		if (y > 49) {
-			//baseAdjustment = -20;
-		}
 
 		if (y > bottomAnchorYAxis[0]) {
 			//yScaleConvertedGrey -= (150 - ((y-244)*16));//4;//8;
@@ -129,10 +140,40 @@ int main(int argc, char** argv) {
 			normalizedX += 6.0/255.0;
 
 			xGrayLevel = (1.0/(sigma*pow((2.0*pi),0.5)))*(exp(-(pow((normalizedX-muX),2.0)/pow((2*sigma),2.0))));
-
 			xScaleConvertedGrey = xGrayLevel * 255.0/2.0 + baseAdjustment;
 
 			xScaleConvertedGrey += x*.1;
+
+			if (image.at<Vec3b>(y,x) != Vec3b(255,255,255)) {
+				yScaleConvertedGrey = yScaleConvertedGreyTemp;
+			}
+
+			int adjustmentXLowerBound = 150, adjustmentXUpperBound = 350;
+			if (image.at<Vec3b>(y,x) != Vec3b(255,255,255)) {
+				if (x > adjustmentXLowerBound & x < adjustmentXUpperBound) {
+					sigmaX2 = -400;
+					//xGrayLevel2 = -((1.0/(sigmaX2*pow((2.0*pi),0.5)))*(exp(-(pow((normalizedX-muX2),2.0)/pow((2*sigmaX2),2.0)))));
+					//yGrayLevel += yGrayLevel3;
+
+					//xScaleConvertedGrey -= -70 + (pow(x,1.5)/50);
+					xScaleConvertedGrey -= (-adjustmentXLowerBound+x)*.2;//(pow((-adjustmentXLowerBound+x),.25));
+					yScaleConvertedGrey -= (-10+(y*.16))*(((-adjustmentXLowerBound+x)*.2)*.1);
+					//xScaleConvertedGrey = 0;
+					//yScaleConvertedGrey = 0;
+					//yScaleConvertedGrey -= (-adjustmentXLowerBound+y)*.2;
+					//yScaleConvertedGrey -= 50;
+					//yScaleConvertedGrey -= pow(y,1.55)/100;
+					//yScaleConvertedGrey += 30-(y*.4);
+
+					//yScaleConvertedGrey += ((yGrayLevel3) * (255.0/2.0));
+
+					if (image.at<Vec3b>(y,x) != Vec3b(255,255,255)) {
+						//xGrayLevel += xGrayLevel2/3 + xScaleConvertedGrey;
+						//xScaleConvertedGrey -= -10 + xGrayLevel2;
+						//yScaleConvertedGrey += xGrayLevel2/2;
+					}
+				}
+			}
 
 			//if (x < leftAnchorXAxis[1]) {
 			if (image.at<Vec3b>(y,x) == Vec3b(255,255,255)) {
@@ -143,19 +184,42 @@ int main(int argc, char** argv) {
 				//xScaleConvertedGrey = -4000;
 				//yScaleConvertedGrey = -4000;
 				//xScaleConvertedGrey -= (100 - x*15);
-				yScaleConvertedGrey = 0;
+				yScaleConvertedGrey = (image.at<Vec3b>((topAnchorYAxis[0]-2),(512/2)).val[0])/2;//0;
+				xScaleConvertedGrey = 0;//(image.at<Vec3b>((topAnchorYAxis[0]-2),(512/2)).val[0])/2;
+				double maxX = (image.at<Vec3b>((topAnchorYAxis[0]-2),(460/2)).val[0])/2;
+				double xOffset = 15;
+				double newX = -xOffset + (x*.6);
+				if (newX < maxX & x >= xOffset) {
+					xScaleConvertedGrey = newX;
+				}
+				else if (x < xOffset) {
+					xScaleConvertedGrey = 0;
+				}
+				else {
+					xScaleConvertedGrey = maxX;
+				}
 				//xScaleConvertedGrey = 300;
 			}
-			else {
-				yScaleConvertedGrey = yScaleConvertedGreyTemp;
+
+
+			//xScaleConvertedGrey -= 20;
+			//xGrayLevel2 = 251.0 - ((1.0/(sigmaX2*pow((2.0*pi),0.5)))*(exp(-(pow((normalizedX-muX2),2.0)/pow((2*sigmaX2),2.0)))));
+			//xScaleConvertedGrey -= xGrayLevel2*.1;
+
+			if (yScaleConvertedGrey > 255) {
+				yScaleConvertedGrey = 255;
+			}
+			if (xScaleConvertedGrey > 255) {
+				xScaleConvertedGrey = 255;
+			}
+			if (yScaleConvertedGrey < 0) {
+				yScaleConvertedGrey = 0;
+			}
+			if (xScaleConvertedGrey < 0) {
+				xScaleConvertedGrey = 0;
 			}
 
-			if (x < 30) {
-				if (xScaleConvertedGrey < 0) {xScaleConvertedGrey = 0;}
-				//cout << leftAnchorXAxis[1];//xScaleConvertedGrey;
-				//cout << " ";
-			}
-
+			// apply shading updates
 			image.at<Vec3b>(y,x) = Vec3b(yScaleConvertedGrey+xScaleConvertedGrey,yScaleConvertedGrey+xScaleConvertedGrey,yScaleConvertedGrey+xScaleConvertedGrey);
 
 			// Mirror image verically.  Pixels on one side placed on the other.

@@ -1,6 +1,6 @@
-20:06:12 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+00:51:04 **** Incremental Build of configuration Debug for project DisplacementMapper ****
 make all 
 make: Nothing to be done for 'all'.
 
-20:06:12 Build Finished (took 71ms)
+00:51:04 Build Finished (took 63ms)
 

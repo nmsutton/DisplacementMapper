@@ -81,7 +81,7 @@ void initRendering() {
 	glEnable(GL_COLOR_MATERIAL);
 	glShadeModel(GL_SMOOTH); //Enable smooth shading
 
-	Image* image = loadBMP("/home/nmsutton/Documents/Software/OpenGL/Media/generalImg.bmp");
+	Image* image = loadBMP("/home/nmsutton/Documents/Software/OpenGL/Media/generalImg2.bmp");
 	_textureId = loadTexture(image);
 	delete image;
 }
@@ -160,19 +160,20 @@ void drawScene() {
 
 	//double sizeScalingFactor = 5;
 	double sizeOfMesh = 10;//6;//50;
+	double expandMeshSizeY = 2.0;//2.5;
+	double expandMeshSizeX = 2.0;//2.5;
 	//sizeOfMesh = sizeOfMesh/sizeScalingFactor;
-	double sizeOfMesh2 = sizeOfMesh*2;
+	double sizeOfMesh2 = sizeOfMesh*expandMeshSizeY*2;
 	//double x = 0, y = 0;
 	int x = 0, y = 0;
-	double expandMeshSize = 2.0;//2.5;
 	float initalZ = 40.0f;
-	double depthScalingFactor = .025;//.3;//0.1;
+	double depthScalingFactor = .015;//.025;//.3;//0.1;
 
 	float verXIncrement = 1.5f;//0.5f;//1.5f;
 	float verYIncrement = 1.5f;//2.0f;//0.5f;//2.0f;
 	float verZIncrement = 1.0f;//3.5f;//0.5f;//3.5f;
 	//float texXIncrement = 1.1*(1.00f/(sizeOfMesh*expandMeshSize));
-	float texXIncrement = 1.07*(1.00f/(sizeOfMesh2*expandMeshSize));
+	float texXIncrement = 1.07*(1.00f/(sizeOfMesh2*expandMeshSizeX));
 	float texYIncrement = 1.00f/sizeOfMesh2;
 
 	float initVerXUL = -2.50f;
@@ -183,9 +184,9 @@ void drawScene() {
 	float initTexXBR = -0.05f;//-0.05f;//-0.10f;
 	float initTexXUR = initTexXUL+texXIncrement;
 	float initTexXBL = initTexXBR+texXIncrement;
-	float initTexYBR = 1.25f;//1.10f;
+	float initTexYBR = 1.0f;//1.10f;
 	float initTexYUL = initTexYBR-texYIncrement;
-	float initTexYBL = 1.25f;//1.10f;
+	float initTexYBL = 1.0f;//1.10f;
 	float initTexYUR = initTexYBL-texYIncrement;
 	float initVerZUL = -4.50f+initalZ;
 	float initVerZUR = -4.50f+initalZ;//initVerZUL+verZIncrement;
@@ -218,14 +219,17 @@ void drawScene() {
 
 	//double incrementValue = 0.5;
 	int incrementValue = 1;
+	double maxColorValue = 255;
+	double imageXPixels = 512;
+	double imageYPixels = 512;
 
 	// Build displacement map.  *2 is due to 2 rectangle verticies for each x and y axis used for the later Z level mapping.
 	double verticiesInRectangle = 2;
-	int xAmount = ceil(sizeOfMesh*expandMeshSize*(1/incrementValue))*2, yAmount = ceil(sizeOfMesh*(1/incrementValue))*2;
+	int xAmount = ceil(sizeOfMesh*expandMeshSizeX*(1/incrementValue))*2, yAmount = ceil(sizeOfMesh*expandMeshSizeY*(1/incrementValue))*2;
 	double verZLevels[yAmount][xAmount] = {0};
 	for (int y = 0; y < yAmount; y += 2) {
 		for (x = 0; x < xAmount; x += 2) {
-			double imageToScenePixelDiff = (255/(double)sizeOfMesh)*(1/verticiesInRectangle);
+			double imageToScenePixelDiff = (imageXPixels/(double)sizeOfMesh*expandMeshSizeY)*(1/verticiesInRectangle);
 			//double translatedX = x * imageToScenePixelDiff; double translatedY = y * imageToScenePixelDiff;
 			double translatedX = ceil(x * imageToScenePixelDiff); double translatedY = ceil(y * imageToScenePixelDiff);
 			////cout << "translatedX\t";cout<<translatedX;cout<<"\ttranslatedY\t";cout<<translatedY;cout<<"\n";
@@ -255,9 +259,11 @@ void drawScene() {
 	//cout << "yAmount\t";cout << yAmount;
 	//cout<<"\txAmount\t";cout<<xAmount;
 	//cout<<"\n";
-	for (int y = 0; y < yAmount; y += 1) {
+
+	// print out
+	/*for (int y = 0; y < yAmount; y += 1) {
 		for (x = 0; x < xAmount; x += 1) {
-			double imageToScenePixelDiff = (255/(double)sizeOfMesh)*(1/verticiesInRectangle);
+			double imageToScenePixelDiff = (255/(double)sizeOfMesh*expandMeshSizeY)*(1/verticiesInRectangle);
 			double translatedX = ceil(x * imageToScenePixelDiff); double translatedY = ceil(y * imageToScenePixelDiff);
 			double meshVec_0_0_b = dispMapImage.at<Vec3b>((int)translatedY,(int)translatedX).val[0];
 			//cout<<"(";cout<<y;cout<<",";cout<<x;cout<<"):";
@@ -265,12 +271,12 @@ void drawScene() {
 		}
 		cout<<"\n";
 	}
-	cout<<"_ _ _\n";
+	cout<<"_ _ _\n";*/
 
 	int scalingF = 2;
 	int incrementValue2 = 1;
-	double maxYSize = sizeOfMesh*scalingF;
-	double maxXSize = (sizeOfMesh*expandMeshSize*scalingF);
+	double maxYSize = sizeOfMesh*expandMeshSizeY*scalingF;
+	double maxXSize = (sizeOfMesh*expandMeshSizeX*scalingF);
 	for (y = 0; y < (maxYSize); y += incrementValue2) {
 		//createMesh(vAT3);
 		// Reinitialze X dimension before the x value loop
@@ -376,10 +382,10 @@ void drawScene() {
 
 			// Apply displacement map
 
-			double imageToScenePixelDiff = 255/maxYSize;
-			double translatedX = x * imageToScenePixelDiff; double translatedY = y * imageToScenePixelDiff;
-			double nextTranslatedX = (x+incrementValue) * imageToScenePixelDiff; double nextTranslatedY = (y+incrementValue) * imageToScenePixelDiff;
-			double priorTranslatedX = (x-incrementValue) * imageToScenePixelDiff; double priorTranslatedY = (y-incrementValue) * imageToScenePixelDiff;
+			double imageToScenePixelDiff_X = imageXPixels/sizeOfMesh; double imageToScenePixelDiff_Y = imageYPixels/sizeOfMesh;
+			double translatedX = x * imageToScenePixelDiff_X; double translatedY = y * imageToScenePixelDiff_Y;
+			//double nextTranslatedX = (x+incrementValue) * imageToScenePixelDiff; double nextTranslatedY = (y+incrementValue) * imageToScenePixelDiff;
+			//double priorTranslatedX = (x-incrementValue) * imageToScenePixelDiff; double priorTranslatedY = (y-incrementValue) * imageToScenePixelDiff;
 			/*grayLevel = dispMapImage.at<Vec3b>(translatedY,translatedX).val[0];
 			if (x != (maxYSize-1)*expandMeshSize) {
 				nextGrayLevel = dispMapImage.at<Vec3b>(nextTranslatedY,nextTranslatedX).val[0];
