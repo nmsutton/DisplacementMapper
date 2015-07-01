@@ -280,8 +280,6 @@ void applyDispMap(double maxXSize, double maxYSize, double borderToCrop) {
 		// Euclidean distance from most direct path of motion from starting anchor point to ending anchor point
 		double distance = sqrt(pow(yDirPath-y,2)+pow(xDirPath-x,2));
 		double furthestDistPossible = sqrt(pow(yMaxAmount,2)+pow(xMaxAmount,2));
-		// normalize distance with furthest possible in image giving it a 0-1 range
-		distance = distance/furthestDistPossible;
 		double distanceRestraint = distance*(.2);
 		double learningRestraint = 1.0;
 

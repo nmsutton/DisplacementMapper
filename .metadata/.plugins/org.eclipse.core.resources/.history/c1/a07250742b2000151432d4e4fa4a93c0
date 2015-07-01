@@ -282,7 +282,7 @@ void applyDispMap(double maxXSize, double maxYSize, double borderToCrop) {
 		double furthestDistPossible = sqrt(pow(yMaxAmount,2)+pow(xMaxAmount,2));
 		// normalize distance with furthest possible in image giving it a 0-1 range
 		distance = distance/furthestDistPossible;
-		double distanceRestraint = distance*(.2);
+		double distanceRestraint = distance*(.8);
 		double learningRestraint = 1.0;
 
 		double amountTransitioned = ((1.0/animationDelay)*timeInMs)*distanceRestraint;

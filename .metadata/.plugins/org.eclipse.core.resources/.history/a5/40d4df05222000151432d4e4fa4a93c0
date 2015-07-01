@@ -77,9 +77,9 @@ double texXScaling = 1.5*.9;
 int x = 0, y = 0;
 float initalZ = 40.0f;
 double depthScalingFactor = .7;//.025;//.3;//0.1;
-const int xMaxAmount = ceil(sizeOfMesh*expandMeshSize*(1/incrementValue))*2, yMaxAmount = ceil(sizeOfMesh*(1/incrementValue))*2;
-double startingVerZLevels[yMaxAmount][xMaxAmount] = {0};
-double endingVerZLevels[yMaxAmount][xMaxAmount] = {0};
+const int xAmount = ceil(sizeOfMesh*expandMeshSize*(1/incrementValue))*2, yAmount = ceil(sizeOfMesh*(1/incrementValue))*2;
+double startingVerZLevels[yAmount][xAmount] = {0};
+double endingVerZLevels[yAmount][xAmount] = {0};
 double animationDelay = 50.0;
 struct vertsAndTextures { double ULVerInst[3]; double URVerInst[3]; double BLVerInst[3]; double BRVerInst[3];
 double ULTexInst[2]; double URTexInst[2]; double BLTexInst[2]; double BRTexInst[2];};
@@ -145,9 +145,9 @@ void createMesh(vertsAndTextures vAT) {
 }
 
 void buildDispMap(Mat startingDispMap, string startingOrEndPoint) {
-	double verZLevels[yMaxAmount][xMaxAmount] = {0};
-	for (int y = 0; y < yMaxAmount; y += 2) {
-		for (int x = 0; x < xMaxAmount; x += 2) {
+	double verZLevels[yAmount][xAmount] = {0};
+	for (int y = 0; y < yAmount; y += 2) {
+		for (int x = 0; x < xAmount; x += 2) {
 			double imageToScenePixelDiff = (255/(double)sizeOfMesh)*(1/verticiesInRectangle);
 			//double translatedX = x * imageToScenePixelDiff; double translatedY = y * imageToScenePixelDiff;
 			double translatedX = ceil(x * imageToScenePixelDiff); double translatedY = ceil(y * imageToScenePixelDiff);
@@ -161,13 +161,13 @@ void buildDispMap(Mat startingDispMap, string startingOrEndPoint) {
 			//cout<<"\ny: ";cout<<y;cout<<" x: ";cout<<x;cout<<"\n";
 
 			////cout<<"[y+1][x+1]\t";cout<<x+1;cout<<" ";cout<<y+1;cout<<" ";cout<<" meshVec_0_0 ";cout<<meshVec_0_0_b;cout<<"\n";
-			if (x < xMaxAmount) {
+			if (x < xAmount) {
 				verZLevels[y][x] = meshVec_0_0_b;
 			}
 			if (x > 0) {
 				verZLevels[y][x+1] = meshVec_0_0_b;
 			}
-			if ((y < yMaxAmount) & (x < xMaxAmount)) {
+			if ((y < yAmount) & (x < xAmount)) {
 				verZLevels[y+1][x+1] = meshVec_0_0_b;
 			}
 			if (y > 0) {
@@ -178,24 +178,24 @@ void buildDispMap(Mat startingDispMap, string startingOrEndPoint) {
 
 	if (startingOrEndPoint == "start") {
 		//startingVerZLevels = verZLevels;
-		copy(verZLevels[0], verZLevels[yMaxAmount], startingVerZLevels[0]);
+		copy(verZLevels[0], verZLevels[yAmount], startingVerZLevels[0]);
 	}
 	else if (startingOrEndPoint == "end") {
 		//endingVerZLevels = verZLevels;
-		copy(verZLevels[0], verZLevels[yMaxAmount], endingVerZLevels[0]);
+		copy(verZLevels[0], verZLevels[yAmount], endingVerZLevels[0]);
 	};
 }
 
-double weightsBR[yMaxAmount][xMaxAmount] = {1};
-double weightsBL[yMaxAmount][xMaxAmount] = {1};
-double weightsUL[yMaxAmount][xMaxAmount] = {1};
-double weightsUR[yMaxAmount][xMaxAmount] = {1};
+double weightsBR[yAmount][xAmount] = {1};
+double weightsBL[yAmount][xAmount] = {1};
+double weightsUL[yAmount][xAmount] = {1};
+double weightsUR[yAmount][xAmount] = {1};
 
 void initWeights() {
-	for (int weightY = 0;weightY < yMaxAmount;weightY++) {fill_n(weightsBR[weightY], xMaxAmount, 1.0);};
-	for (int weightY = 0;weightY < yMaxAmount;weightY++) {fill_n(weightsBL[weightY], xMaxAmount, 1.0);};
-	for (int weightY = 0;weightY < yMaxAmount;weightY++) {fill_n(weightsUL[weightY], xMaxAmount, 1.0);};
-	for (int weightY = 0;weightY < yMaxAmount;weightY++) {fill_n(weightsUR[weightY], xMaxAmount, 1.0);};
+	for (int weightY = 0;weightY < yAmount;weightY++) {fill_n(weightsBR[weightY], xAmount, 1.0);};
+	for (int weightY = 0;weightY < yAmount;weightY++) {fill_n(weightsBL[weightY], xAmount, 1.0);};
+	for (int weightY = 0;weightY < yAmount;weightY++) {fill_n(weightsUL[weightY], xAmount, 1.0);};
+	for (int weightY = 0;weightY < yAmount;weightY++) {fill_n(weightsUR[weightY], xAmount, 1.0);};
 }
 
 void extractAnchorPoint(Mat anchorPointImage, String anchorPointPosition) {
@@ -247,16 +247,15 @@ void findAnchorPoints() {
 void applyDispMap(double maxXSize, double maxYSize, double borderToCrop) {
 	// Use self organizing maps to apply disp map movement transition
 
-	/*
-	s is the current iteration
-	L is the iteration limit
+	/*s is the current iteration
+	lambda is the iteration limit
 	t is the index of the target input data vector in the input data set \mathbf{D}
 	D(t) is a target input data vector
 	v is the index of the node in the map
-	W_v is the current weight vector of node v
+	\mathbf{W_v} is the current weight vector of node v
 	u is the index of the best matching unit (BMU) in the map
-	Θ(u, v, s) is a restraint due to distance from BMU, usually called the neighborhood function, and
-	α (s) is a learning restraint due to iteration progress.*/
+	\Theta (u, v, s) is a restraint due to distance from BMU, usually called the neighborhood function, and
+	\alpha (s) is a learning restraint due to iteration progress.*/
 
 
 
@@ -265,60 +264,37 @@ void applyDispMap(double maxXSize, double maxYSize, double borderToCrop) {
 	double range = 20;
 	if (x < (maxXSize-borderToCrop)) {
 		// weights are applied as (oldPositionPercentage+newPositionPercentage)/oldPosition and then multiplied by oldPosition to change it
-		/*if ((abs((((double)x/(double)xAmount) * imageXPixels) - endingDispMapAnchorPoint1[1]) <= range) & (abs((((double)y/(double)yAmount) * imageYPixels) - endingDispMapAnchorPoint1[0]) <= range)) {
+		if ((abs((((double)x/(double)xAmount) * imageXPixels) - endingDispMapAnchorPoint1[1]) <= range) & (abs((((double)y/(double)yAmount) * imageYPixels) - endingDispMapAnchorPoint1[0]) <= range)) {
 			cout<<"end\t";cout<<endingDispMapAnchorPoint1[0];cout<<" ((x/xAmount) * imageXPixels) ";cout<<((x/xAmount) * imageXPixels);cout<<"\n";//y 141 x 400
 		//if (true) {
 			weightsBR[y][x] = (((startingVerZLevels[y][x]*depthScalingFactor)*(1.0-((1.0/animationDelay)*timeInMs))) + ((endingVerZLevels[y][x]*depthScalingFactor)*((1.0/animationDelay)*timeInMs)))/(startingVerZLevels[y][x]*depthScalingFactor);
-		}*/
-		// Current point in most direct motion path using anchor points
-		double startY = startingDispMapAnchorPoint1[0];
-		double startX = startingDispMapAnchorPoint1[1];
-		double endY = endingDispMapAnchorPoint1[0];
-		double endX = endingDispMapAnchorPoint1[1];
-		double yDirPath = startY*(1.0-((1.0/animationDelay)*timeInMs))+endY*((1.0/animationDelay)*timeInMs);
-		double xDirPath = startX*(1.0-((1.0/animationDelay)*timeInMs))+endX*((1.0/animationDelay)*timeInMs);
-		// Euclidean distance from most direct path of motion from starting anchor point to ending anchor point
-		double distance = sqrt(pow(yDirPath-y,2)+pow(xDirPath-x,2));
-		double furthestDistPossible = sqrt(pow(yMaxAmount,2)+pow(xMaxAmount,2));
-		// normalize distance with furthest possible in image giving it a 0-1 range
-		distance = distance/furthestDistPossible;
-		double distanceRestraint = distance*(.2);
-		double learningRestraint = 1.0;
-
-		double amountTransitioned = ((1.0/animationDelay)*timeInMs)*distanceRestraint;
-		if (amountTransitioned > 1.0) {amountTransitioned = 1.0;}
-		// Difference with starting and ending weights
-		double startDispMapWeights = 1.0;
-		double endDispMapWeights = (endingVerZLevels[y][x]*depthScalingFactor)/(startingVerZLevels[y][x]*depthScalingFactor);
-		// Position is based on transistion degree including distance retraint limit
-		weightsBR[y][x] = ((distanceRestraint*learningRestraint*startDispMapWeights)*(1-amountTransitioned)) +
-					((distanceRestraint*learningRestraint*endDispMapWeights)*(amountTransitioned));
+		}
 		vAT3.BRVerInst[2] = (startingVerZLevels[y][x]*depthScalingFactor)*weightsBR[y][x];
 		///cout<<"weightsBR[5][5]\t";cout<<weightsBR[5][5];cout<<"\n";
-		cout<<"weightsBR[y][x]\t";cout<<weightsBR[y][x];cout<<"\ty x: ";cout<<y;cout<<" ";cout<<x;cout<<"\n";
+		//cout<<"weightsBR[y][x]\t";cout<<weightsBR[y][x];cout<<"\ty x: ";cout<<y;cout<<" ";cout<<x;cout<<"\n";
 		//((startingVerZLevels[y][x]*depthScalingFactor)*(1.0-((1.0/animationDelay)*timeInMs))) + ((endingVerZLevels[y][x]*depthScalingFactor)*((1.0/animationDelay)*timeInMs));//verZLevels[y][x] = meshVec_0_0;
 		//cout<<"timeInMs:\t";cout<<timeInMs;cout<<"\t(1-(1/50*timeInMs))\t";cout<<(double)(1.0-((1.0/50.0)*timeInMs));cout << "\tvAT3.BRVerInst[2]:\t";cout<<vAT3.BRVerInst[2];cout<<"\n";
 	}
 	if ((x > 0) & (x < (maxXSize-borderToCrop))) {
-		if ((abs((((double)x/(double)xMaxAmount) * imageXPixels) - endingDispMapAnchorPoint1[1]) <= range) & (abs((((double)y/(double)yMaxAmount) * imageYPixels) - endingDispMapAnchorPoint1[0]) <= range)) {
+		if ((abs((((double)x/(double)xAmount) * imageXPixels) - endingDispMapAnchorPoint1[1]) <= range) & (abs((((double)y/(double)yAmount) * imageYPixels) - endingDispMapAnchorPoint1[0]) <= range)) {
 		//if (true) {
-			//weightsBL[y][x+1] = (((startingVerZLevels[y][x+1]*depthScalingFactor)*(1.0-((1.0/animationDelay)*timeInMs))) + ((endingVerZLevels[y][x+1]*depthScalingFactor)*((1.0/animationDelay)*timeInMs)))/(startingVerZLevels[y][x+1]*depthScalingFactor);
+			weightsBL[y][x+1] = (((startingVerZLevels[y][x+1]*depthScalingFactor)*(1.0-((1.0/animationDelay)*timeInMs))) + ((endingVerZLevels[y][x+1]*depthScalingFactor)*((1.0/animationDelay)*timeInMs)))/(startingVerZLevels[y][x+1]*depthScalingFactor);
 		}
 		vAT3.BLVerInst[2] = (startingVerZLevels[y][x+1]*depthScalingFactor)*weightsBL[y][x+1];
 		//((startingVerZLevels[y][x+1]*depthScalingFactor)*(1.0-((1.0/animationDelay)*timeInMs))) + ((endingVerZLevels[y][x+1]*depthScalingFactor)*((1.0/animationDelay)*timeInMs));//verZLevels[y][x+1] = meshVec_0_0;
 	}
 	if (y > 0 & y < maxYSize-borderToCrop) {
-		if ((abs((((double)x/(double)xMaxAmount) * imageXPixels) - endingDispMapAnchorPoint1[1]) <= range) & (abs((((double)y/(double)yMaxAmount) * imageYPixels) - endingDispMapAnchorPoint1[0]) <= range)) {
+		if ((abs((((double)x/(double)xAmount) * imageXPixels) - endingDispMapAnchorPoint1[1]) <= range) & (abs((((double)y/(double)yAmount) * imageYPixels) - endingDispMapAnchorPoint1[0]) <= range)) {
 		//if (true) {
-			//weightsUL[y+1][x] = (((startingVerZLevels[y+1][x]*depthScalingFactor)*(1.0-((1.0/animationDelay)*timeInMs))) + ((endingVerZLevels[y+1][x]*depthScalingFactor)*((1.0/animationDelay)*timeInMs)))/(startingVerZLevels[y+1][x]*depthScalingFactor);
+			weightsUL[y+1][x] = (((startingVerZLevels[y+1][x]*depthScalingFactor)*(1.0-((1.0/animationDelay)*timeInMs))) + ((endingVerZLevels[y+1][x]*depthScalingFactor)*((1.0/animationDelay)*timeInMs)))/(startingVerZLevels[y+1][x]*depthScalingFactor);
 		}
 		vAT3.ULVerInst[2] = (startingVerZLevels[y+1][x]*depthScalingFactor)*weightsUL[y+1][x];
 		//((startingVerZLevels[y+1][x]*depthScalingFactor)*(1.0-((1.0/animationDelay)*timeInMs))) + ((endingVerZLevels[y+1][x]*depthScalingFactor)*((1.0/animationDelay)*timeInMs));// = meshVec_0_0;
 	}
 	if ((y < maxYSize-borderToCrop) & (x < (maxXSize-borderToCrop))) {
-		if ((abs((((double)x/(double)xMaxAmount) * imageXPixels) - endingDispMapAnchorPoint1[1]) <= range) & (abs((((double)y/(double)yMaxAmount) * imageYPixels) - endingDispMapAnchorPoint1[0]) <= range)) {
+		if ((abs((((double)x/(double)xAmount) * imageXPixels) - endingDispMapAnchorPoint1[1]) <= range) & (abs((((double)y/(double)yAmount) * imageYPixels) - endingDispMapAnchorPoint1[0]) <= range)) {
 		//if (true) {
-			//weightsUR[y+1][x+1] = (((startingVerZLevels[y+1][x+1]*depthScalingFactor)*(1.0-((1.0/animationDelay)*timeInMs))) + ((endingVerZLevels[y+1][x+1]*depthScalingFactor)*((1.0/animationDelay)*timeInMs)))/(startingVerZLevels[y+1][x+1]*depthScalingFactor);
+			weightsUR[y+1][x+1] = (((startingVerZLevels[y+1][x+1]*depthScalingFactor)*(1.0-((1.0/animationDelay)*timeInMs))) + ((endingVerZLevels[y+1][x+1]*depthScalingFactor)*((1.0/animationDelay)*timeInMs)))/(startingVerZLevels[y+1][x+1]*depthScalingFactor);
 		}
 		vAT3.URVerInst[2] = (startingVerZLevels[y+1][x+1]*depthScalingFactor)*weightsUR[y+1][x+1];
 		//((startingVerZLevels[y+1][x+1]*depthScalingFactor)*(1.0-((1.0/animationDelay)*timeInMs))) + ((endingVerZLevels[y+1][x+1]*depthScalingFactor)*((1.0/animationDelay)*timeInMs));// = meshVec_0_0;
