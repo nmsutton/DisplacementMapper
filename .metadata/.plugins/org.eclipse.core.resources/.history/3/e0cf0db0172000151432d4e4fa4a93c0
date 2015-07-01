@@ -84,10 +84,8 @@ double animationDelay = 50.0;
 struct vertsAndTextures { double ULVerInst[3]; double URVerInst[3]; double BLVerInst[3]; double BRVerInst[3];
 double ULTexInst[2]; double URTexInst[2]; double BLTexInst[2]; double BRTexInst[2];};
 vertsAndTextures vAT3;
-int startingDispMapAnchorPoint1[2] = {0,0};
-int startingDispMapAnchorPoint2[2] = {0,0};
-int endingDispMapAnchorPoint1[2] = {0,0};
-int endingDispMapAnchorPoint2[2] = {0,0};
+int startingDispMapAnchorPoint[2] = {0,0};
+int endingDispMapAnchorPoint[2] = {0,0};
 
 //Makes the image into a texture, and returns the id of the texture
 GLuint loadTexture(Image* image) {
@@ -197,37 +195,22 @@ void initWeights() {
 }
 
 void extractAnchorPoint(Mat anchorPointImage, String anchorPointPosition) {
-	//cout<<"search started\n";
-	// Find anchor points.  Search for pixels that are red B,G,R for OpenGL (1,1,255)
-	bool anchorFound1 = false;
+	// Find anchor points.  Search for pixels that are red B,G,R for OpenGL (0,0,255)
+	bool anchorFound = false;
 	for(int y=0;y<anchorPointImage.rows;y++)
 	{
 		for (int x=0;x<anchorPointImage.cols;x++)
 		{
-			//if ((anchorPointImage.at<Vec3b>(y,x) != Vec3b(0,0,0)) & (anchorFound == false)) {
-			int blueLevel = anchorPointImage.at<Vec3b>(y,x).val[0];
-			int greenLevel = anchorPointImage.at<Vec3b>(y,x).val[1];
-			int redLevel = anchorPointImage.at<Vec3b>(y,x).val[2];
-			if ((blueLevel <= 50) & (greenLevel <= 50) & (redLevel >= 200)) {
-				if ((anchorPointPosition=="start") & (anchorFound1 == false)) {
-					startingDispMapAnchorPoint1[0]=y;
-					startingDispMapAnchorPoint1[1]=x;
-					anchorFound1 = true;
-					//cout<<"\n\nstart anchor found\t";cout<<anchorPointImage.at<Vec3b>(y,x);cout<<"\t";cout<<y;cout<<" ";cout<<x;cout<<"\n";
+			if ((anchorPointImage.at<Vec3b>(y,x) == Vec3b(0,0,255)) & (anchorFound == false)) {
+				anchorFound = true;
+				if (anchorPointPosition=="start") {
+					startingDispMapAnchorPoint[0]=y;
+					startingDispMapAnchorPoint[1]=x;
+					cout<<"start anchor found";
 				}
-				else if ((anchorPointPosition=="start") & (anchorFound1 == true)){
-					startingDispMapAnchorPoint2[0]=y;
-					startingDispMapAnchorPoint2[1]=x;
-					//cout<<"\n\nstart anchor 2 found\t";cout<<anchorPointImage.at<Vec3b>(y,x);cout<<"\t";cout<<y;cout<<" ";cout<<x;cout<<"\n";
-				}
-				else if ((anchorPointPosition=="end") & (anchorFound1 == false)) {
-					anchorFound1 = true;
-					endingDispMapAnchorPoint1[0]=y;
-					endingDispMapAnchorPoint1[1]=x;
-				}
-				else if ((anchorPointPosition=="end") & (anchorFound1 == true)) {
-					endingDispMapAnchorPoint2[0]=y;
-					endingDispMapAnchorPoint2[1]=x;
+				else if (anchorPointPosition=="end") {
+					endingDispMapAnchorPoint[0]=y;
+					endingDispMapAnchorPoint[1]=x;
 				}
 			}
 		}
@@ -500,7 +483,6 @@ int main(int argc, char** argv) {
 
 	glutCreateWindow("Textures - videotutorialsrock.com");
 	initWeights();
-	findAnchorPoints();
 
 	initRendering();
 

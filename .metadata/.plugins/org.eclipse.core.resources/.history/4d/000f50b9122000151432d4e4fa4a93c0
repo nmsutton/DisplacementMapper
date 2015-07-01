@@ -53,12 +53,6 @@ String startingDispMapImage = image2;
 String endingDispMapImage = image1;
 Mat startingDispMap;
 Mat endingDispMap;
-String anchorImage1 = "/home/nmsutton/Documents/Software/OpenGL/Media/anchorImage1.bmp";
-String anchorImage2 = "/home/nmsutton/Documents/Software/OpenGL/Media/anchorImage2.bmp";
-String startingDispMapAnchorImage = anchorImage2;
-String endingDispMapAnchorImage = anchorImage1;
-Mat startingDispMapAnchor;
-Mat endingDispMapAnchor;
 double timeInMs = 0;
 
 const int incrementValue = 1;
@@ -84,10 +78,6 @@ double animationDelay = 50.0;
 struct vertsAndTextures { double ULVerInst[3]; double URVerInst[3]; double BLVerInst[3]; double BRVerInst[3];
 double ULTexInst[2]; double URTexInst[2]; double BLTexInst[2]; double BRTexInst[2];};
 vertsAndTextures vAT3;
-int startingDispMapAnchorPoint1[2] = {0,0};
-int startingDispMapAnchorPoint2[2] = {0,0};
-int endingDispMapAnchorPoint1[2] = {0,0};
-int endingDispMapAnchorPoint2[2] = {0,0};
 
 //Makes the image into a texture, and returns the id of the texture
 GLuint loadTexture(Image* image) {
@@ -194,52 +184,6 @@ void initWeights() {
 	for (int weightY = 0;weightY < yAmount;weightY++) {fill_n(weightsBL[weightY], xAmount, 1.0);};
 	for (int weightY = 0;weightY < yAmount;weightY++) {fill_n(weightsUL[weightY], xAmount, 1.0);};
 	for (int weightY = 0;weightY < yAmount;weightY++) {fill_n(weightsUR[weightY], xAmount, 1.0);};
-}
-
-void extractAnchorPoint(Mat anchorPointImage, String anchorPointPosition) {
-	//cout<<"search started\n";
-	// Find anchor points.  Search for pixels that are red B,G,R for OpenGL (1,1,255)
-	bool anchorFound1 = false;
-	for(int y=0;y<anchorPointImage.rows;y++)
-	{
-		for (int x=0;x<anchorPointImage.cols;x++)
-		{
-			//if ((anchorPointImage.at<Vec3b>(y,x) != Vec3b(0,0,0)) & (anchorFound == false)) {
-			int blueLevel = anchorPointImage.at<Vec3b>(y,x).val[0];
-			int greenLevel = anchorPointImage.at<Vec3b>(y,x).val[1];
-			int redLevel = anchorPointImage.at<Vec3b>(y,x).val[2];
-			if ((blueLevel <= 50) & (greenLevel <= 50) & (redLevel >= 200)) {
-				if ((anchorPointPosition=="start") & (anchorFound1 == false)) {
-					startingDispMapAnchorPoint1[0]=y;
-					startingDispMapAnchorPoint1[1]=x;
-					anchorFound1 = true;
-					//cout<<"\n\nstart anchor found\t";cout<<anchorPointImage.at<Vec3b>(y,x);cout<<"\t";cout<<y;cout<<" ";cout<<x;cout<<"\n";
-				}
-				else if ((anchorPointPosition=="start") & (anchorFound1 == true)){
-					startingDispMapAnchorPoint2[0]=y;
-					startingDispMapAnchorPoint2[1]=x;
-					//cout<<"\n\nstart anchor 2 found\t";cout<<anchorPointImage.at<Vec3b>(y,x);cout<<"\t";cout<<y;cout<<" ";cout<<x;cout<<"\n";
-				}
-				else if ((anchorPointPosition=="end") & (anchorFound1 == false)) {
-					anchorFound1 = true;
-					endingDispMapAnchorPoint1[0]=y;
-					endingDispMapAnchorPoint1[1]=x;
-				}
-				else if ((anchorPointPosition=="end") & (anchorFound1 == true)) {
-					endingDispMapAnchorPoint2[0]=y;
-					endingDispMapAnchorPoint2[1]=x;
-				}
-			}
-		}
-	}
-}
-
-void findAnchorPoints() {
-	startingDispMapAnchor = imread(startingDispMapAnchorImage, CV_LOAD_IMAGE_COLOR);
-	endingDispMapAnchor = imread(endingDispMapAnchorImage, CV_LOAD_IMAGE_COLOR);
-
-	extractAnchorPoint(startingDispMapAnchor, "start");
-	extractAnchorPoint(endingDispMapAnchor, "end");
 }
 
 void applyDispMap(double maxXSize, double maxYSize, double borderToCrop) {
@@ -500,7 +444,6 @@ int main(int argc, char** argv) {
 
 	glutCreateWindow("Textures - videotutorialsrock.com");
 	initWeights();
-	findAnchorPoints();
 
 	initRendering();
 

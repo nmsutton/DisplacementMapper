@@ -65583,3 +65583,1712 @@ Finished building target: DisplacementMapper
 12:53:03 **** Incremental Build of configuration Debug for project ImagePreprocessor ****
 make all 
 make: Nothing to be done for 'all'.
+13:11:42 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+make all 
+Building file: ../main.cpp
+Invoking: Cross G++ Compiler
+g++ -I/usr/local/include/opencv -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.cpp"
+../main.cpp: In function ‘void findAnchorPoints()’:
+../main.cpp:194:24: error: ‘anchorImage1File’ was not declared in this scope
+  anchorImage1 = imread(anchorImage1File, CV_LOAD_IMAGE_COLOR);
+                        ^
+../main.cpp:195:24: error: ‘anchorImage2File’ was not declared in this scope
+  anchorImage2 = imread(anchorImage2File, CV_LOAD_IMAGE_COLOR);
+                        ^
+../main.cpp:202:16: error: ‘image’ was not declared in this scope
+  for(int y=0;y<image.rows;y++)
+                ^
+../main.cpp:206:23: error: expected primary-expression before ‘>’ token
+    if ((image.at<Vec3b>(y,x) == Vec3b(0,0,0) & anchorXAxisFound == false) &
+                       ^
+../main.cpp:206:27: warning: left operand of comma operator has no effect [-Wunused-value]
+    if ((image.at<Vec3b>(y,x) == Vec3b(0,0,0) & anchorXAxisFound == false) &
+                           ^
+../main.cpp:210:24: error: expected primary-expression before ‘>’ token
+      if (image.at<Vec3b>(y,x2) == Vec3b(0,0,0) & anchorXAxisFound == false) {
+                        ^
+../main.cpp:210:28: warning: left operand of comma operator has no effect [-Wunused-value]
+      if (image.at<Vec3b>(y,x2) == Vec3b(0,0,0) & anchorXAxisFound == false) {
+                            ^
+../main.cpp:214:22: error: expected primary-expression before ‘>’ token
+        image.at<Vec3b>(y,x3) = Vec3b(255,255,0);
+                      ^
+../main.cpp:214:26: warning: left operand of comma operator has no effect [-Wunused-value]
+        image.at<Vec3b>(y,x3) = Vec3b(255,255,0);
+                          ^
+../main.cpp:232:24: error: expected primary-expression before ‘>’ token
+      if (image.at<Vec3b>(y2,targetX) == Vec3b(0,0,0)) {
+                        ^
+../main.cpp:232:29: warning: left operand of comma operator has no effect [-Wunused-value]
+      if (image.at<Vec3b>(y2,targetX) == Vec3b(0,0,0)) {
+                             ^
+../main.cpp:239:20: error: expected primary-expression before ‘>’ token
+      image.at<Vec3b>(y2,targetX) = Vec3b(255,0,0);
+                    ^
+../main.cpp:239:25: warning: left operand of comma operator has no effect [-Wunused-value]
+      image.at<Vec3b>(y2,targetX) = Vec3b(255,0,0);
+                         ^
+../main.cpp: In function ‘void applyDispMap(double, double, double)’:
+../main.cpp:276:8: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+  if (y > 0 & y < maxYSize-borderToCrop) {
+        ^
+../main.cpp: In function ‘void createMeshOfRect()’:
+../main.cpp:379:30: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    if ((x < maxYSize/2) | (x < (maxYSize/2+(maxXSize-maxYSize)) & x > (maxXSize-maxYSize))) {
+                              ^
+../main.cpp:390:16: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                ^
+../main.cpp:390:51: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                                                   ^
+../main.cpp:402:15: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if (x > (maxYSize) & x < (maxXSize-maxYSize)) {
+               ^
+../main.cpp:292:8: warning: unused variable ‘verZIncrement’ [-Wunused-variable]
+  float verZIncrement = 1.0f;//3.5f;//0.5f;//3.5f;
+        ^
+../main.cpp:309:8: warning: unused variable ‘initVerZUL’ [-Wunused-variable]
+  float initVerZUL = -4.50f+initalZ;
+        ^
+../main.cpp:310:8: warning: unused variable ‘initVerZUR’ [-Wunused-variable]
+  float initVerZUR = -4.50f+initalZ;//initVerZUL+verZIncrement;
+        ^
+../main.cpp:311:8: warning: unused variable ‘initVerZBL’ [-Wunused-variable]
+  float initVerZBL = -4.50f+initalZ;
+        ^
+../main.cpp:312:8: warning: unused variable ‘initVerZBR’ [-Wunused-variable]
+  float initVerZBR = -4.50f+initalZ;
+        ^
+subdir.mk:21: recipe for target 'main.o' failed
+make: *** [main.o] Error 1
+13:11:42 **** Incremental Build of configuration Debug for project ImagePreprocessor ****
+make all 
+make: Nothing to be done for 'all'.
+13:12:35 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+make all 
+Building file: ../main.cpp
+Invoking: Cross G++ Compiler
+g++ -I/usr/local/include/opencv -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.cpp"
+../main.cpp: In function ‘void findAnchorPoints()’:
+../main.cpp:194:24: error: no match for ‘operator=’ (operand types are ‘cv::String’ and ‘cv::Mat’)
+  startingDispMapAnchor = imread(anchorImage1, CV_LOAD_IMAGE_COLOR);
+                        ^
+../main.cpp:194:24: note: candidates are:
+In file included from /usr/local/include/opencv2/core/base.hpp:55:0,
+                 from /usr/local/include/opencv2/core.hpp:54,
+                 from /usr/local/include/opencv2/core/core.hpp:48,
+                 from ../main.cpp:23:
+/usr/local/include/opencv2/core/cvstd.hpp:664:9: note: cv::String& cv::String::operator=(const cv::String&)
+ String& String::operator=(const String& str)
+         ^
+/usr/local/include/opencv2/core/cvstd.hpp:664:9: note:   no known conversion for argument 1 from ‘cv::Mat’ to ‘const cv::String&’
+/usr/local/include/opencv2/core/cvstd.hpp:676:9: note: cv::String& cv::String::operator=(const char*)
+ String& String::operator=(const char* s)
+         ^
+/usr/local/include/opencv2/core/cvstd.hpp:676:9: note:   no known conversion for argument 1 from ‘cv::Mat’ to ‘const char*’
+/usr/local/include/opencv2/core/cvstd.hpp:686:9: note: cv::String& cv::String::operator=(char)
+ String& String::operator=(char c)
+         ^
+/usr/local/include/opencv2/core/cvstd.hpp:686:9: note:   no known conversion for argument 1 from ‘cv::Mat’ to ‘char’
+In file included from /usr/local/include/opencv2/core.hpp:3107:0,
+                 from /usr/local/include/opencv2/core/core.hpp:48,
+                 from ../main.cpp:23:
+/usr/local/include/opencv2/core/cvstd.inl.hpp:97:9: note: cv::String& cv::String::operator=(const string&)
+ String& String::operator = (const std::string& str)
+         ^
+/usr/local/include/opencv2/core/cvstd.inl.hpp:97:9: note:   no known conversion for argument 1 from ‘cv::Mat’ to ‘const string& {aka const std::basic_string<char>&}’
+../main.cpp:195:22: error: no match for ‘operator=’ (operand types are ‘cv::String’ and ‘cv::Mat’)
+  endingDispMapAnchor = imread(anchorImage2, CV_LOAD_IMAGE_COLOR);
+                      ^
+../main.cpp:195:22: note: candidates are:
+In file included from /usr/local/include/opencv2/core/base.hpp:55:0,
+                 from /usr/local/include/opencv2/core.hpp:54,
+                 from /usr/local/include/opencv2/core/core.hpp:48,
+                 from ../main.cpp:23:
+/usr/local/include/opencv2/core/cvstd.hpp:664:9: note: cv::String& cv::String::operator=(const cv::String&)
+ String& String::operator=(const String& str)
+         ^
+/usr/local/include/opencv2/core/cvstd.hpp:664:9: note:   no known conversion for argument 1 from ‘cv::Mat’ to ‘const cv::String&’
+/usr/local/include/opencv2/core/cvstd.hpp:676:9: note: cv::String& cv::String::operator=(const char*)
+ String& String::operator=(const char* s)
+         ^
+/usr/local/include/opencv2/core/cvstd.hpp:676:9: note:   no known conversion for argument 1 from ‘cv::Mat’ to ‘const char*’
+/usr/local/include/opencv2/core/cvstd.hpp:686:9: note: cv::String& cv::String::operator=(char)
+ String& String::operator=(char c)
+         ^
+/usr/local/include/opencv2/core/cvstd.hpp:686:9: note:   no known conversion for argument 1 from ‘cv::Mat’ to ‘char’
+In file included from /usr/local/include/opencv2/core.hpp:3107:0,
+                 from /usr/local/include/opencv2/core/core.hpp:48,
+                 from ../main.cpp:23:
+/usr/local/include/opencv2/core/cvstd.inl.hpp:97:9: note: cv::String& cv::String::operator=(const string&)
+ String& String::operator = (const std::string& str)
+         ^
+/usr/local/include/opencv2/core/cvstd.inl.hpp:97:9: note:   no known conversion for argument 1 from ‘cv::Mat’ to ‘const string& {aka const std::basic_string<char>&}’
+../main.cpp:202:16: error: ‘image’ was not declared in this scope
+  for(int y=0;y<image.rows;y++)
+                ^
+../main.cpp:206:23: error: expected primary-expression before ‘>’ token
+    if ((image.at<Vec3b>(y,x) == Vec3b(0,0,0) & anchorXAxisFound == false) &
+                       ^
+../main.cpp:206:27: warning: left operand of comma operator has no effect [-Wunused-value]
+    if ((image.at<Vec3b>(y,x) == Vec3b(0,0,0) & anchorXAxisFound == false) &
+                           ^
+../main.cpp:210:24: error: expected primary-expression before ‘>’ token
+      if (image.at<Vec3b>(y,x2) == Vec3b(0,0,0) & anchorXAxisFound == false) {
+                        ^
+../main.cpp:210:28: warning: left operand of comma operator has no effect [-Wunused-value]
+      if (image.at<Vec3b>(y,x2) == Vec3b(0,0,0) & anchorXAxisFound == false) {
+                            ^
+../main.cpp:214:22: error: expected primary-expression before ‘>’ token
+        image.at<Vec3b>(y,x3) = Vec3b(255,255,0);
+                      ^
+../main.cpp:214:26: warning: left operand of comma operator has no effect [-Wunused-value]
+        image.at<Vec3b>(y,x3) = Vec3b(255,255,0);
+                          ^
+../main.cpp:232:24: error: expected primary-expression before ‘>’ token
+      if (image.at<Vec3b>(y2,targetX) == Vec3b(0,0,0)) {
+                        ^
+../main.cpp:232:29: warning: left operand of comma operator has no effect [-Wunused-value]
+      if (image.at<Vec3b>(y2,targetX) == Vec3b(0,0,0)) {
+                             ^
+../main.cpp:239:20: error: expected primary-expression before ‘>’ token
+      image.at<Vec3b>(y2,targetX) = Vec3b(255,0,0);
+                    ^
+../main.cpp:239:25: warning: left operand of comma operator has no effect [-Wunused-value]
+      image.at<Vec3b>(y2,targetX) = Vec3b(255,0,0);
+                         ^
+../main.cpp: In function ‘void applyDispMap(double, double, double)’:
+../main.cpp:276:8: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+  if (y > 0 & y < maxYSize-borderToCrop) {
+        ^
+../main.cpp: In function ‘void createMeshOfRect()’:
+../main.cpp:379:30: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    if ((x < maxYSize/2) | (x < (maxYSize/2+(maxXSize-maxYSize)) & x > (maxXSize-maxYSize))) {
+                              ^
+../main.cpp:390:16: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                ^
+../main.cpp:390:51: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                                                   ^
+../main.cpp:402:15: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if (x > (maxYSize) & x < (maxXSize-maxYSize)) {
+               ^
+../main.cpp:292:8: warning: unused variable ‘verZIncrement’ [-Wunused-variable]
+  float verZIncrement = 1.0f;//3.5f;//0.5f;//3.5f;
+        ^
+../main.cpp:309:8: warning: unused variable ‘initVerZUL’ [-Wunused-variable]
+  float initVerZUL = -4.50f+initalZ;
+        ^
+../main.cpp:310:8: warning: unused variable ‘initVerZUR’ [-Wunused-variable]
+  float initVerZUR = -4.50f+initalZ;//initVerZUL+verZIncrement;
+        ^
+../main.cpp:311:8: warning: unused variable ‘initVerZBL’ [-Wunused-variable]
+  float initVerZBL = -4.50f+initalZ;
+        ^
+../main.cpp:312:8: warning: unused variable ‘initVerZBR’ [-Wunused-variable]
+  float initVerZBR = -4.50f+initalZ;
+        ^
+subdir.mk:21: recipe for target 'main.o' failed
+make: *** [main.o] Error 1
+13:12:35 **** Incremental Build of configuration Debug for project ImagePreprocessor ****
+make all 
+make: Nothing to be done for 'all'.
+13:14:10 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+make all 
+Building file: ../main.cpp
+Invoking: Cross G++ Compiler
+g++ -I/usr/local/include/opencv -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.cpp"
+../main.cpp: In function ‘void findAnchorPoints()’:
+../main.cpp:204:16: error: ‘image’ was not declared in this scope
+  for(int y=0;y<image.rows;y++)
+                ^
+../main.cpp:208:23: error: expected primary-expression before ‘>’ token
+    if ((image.at<Vec3b>(y,x) == Vec3b(0,0,0) & anchorXAxisFound == false) &
+                       ^
+../main.cpp:208:27: warning: left operand of comma operator has no effect [-Wunused-value]
+    if ((image.at<Vec3b>(y,x) == Vec3b(0,0,0) & anchorXAxisFound == false) &
+                           ^
+../main.cpp:212:24: error: expected primary-expression before ‘>’ token
+      if (image.at<Vec3b>(y,x2) == Vec3b(0,0,0) & anchorXAxisFound == false) {
+                        ^
+../main.cpp:212:28: warning: left operand of comma operator has no effect [-Wunused-value]
+      if (image.at<Vec3b>(y,x2) == Vec3b(0,0,0) & anchorXAxisFound == false) {
+                            ^
+../main.cpp:216:22: error: expected primary-expression before ‘>’ token
+        image.at<Vec3b>(y,x3) = Vec3b(255,255,0);
+                      ^
+../main.cpp:216:26: warning: left operand of comma operator has no effect [-Wunused-value]
+        image.at<Vec3b>(y,x3) = Vec3b(255,255,0);
+                          ^
+../main.cpp:234:24: error: expected primary-expression before ‘>’ token
+      if (image.at<Vec3b>(y2,targetX) == Vec3b(0,0,0)) {
+                        ^
+../main.cpp:234:29: warning: left operand of comma operator has no effect [-Wunused-value]
+      if (image.at<Vec3b>(y2,targetX) == Vec3b(0,0,0)) {
+                             ^
+../main.cpp:241:20: error: expected primary-expression before ‘>’ token
+      image.at<Vec3b>(y2,targetX) = Vec3b(255,0,0);
+                    ^
+../main.cpp:241:25: warning: left operand of comma operator has no effect [-Wunused-value]
+      image.at<Vec3b>(y2,targetX) = Vec3b(255,0,0);
+                         ^
+../main.cpp: In function ‘void applyDispMap(double, double, double)’:
+../main.cpp:278:8: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+  if (y > 0 & y < maxYSize-borderToCrop) {
+        ^
+../main.cpp: In function ‘void createMeshOfRect()’:
+../main.cpp:381:30: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    if ((x < maxYSize/2) | (x < (maxYSize/2+(maxXSize-maxYSize)) & x > (maxXSize-maxYSize))) {
+                              ^
+../main.cpp:392:16: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                ^
+../main.cpp:392:51: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                                                   ^
+../main.cpp:404:15: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if (x > (maxYSize) & x < (maxXSize-maxYSize)) {
+               ^
+../main.cpp:294:8: warning: unused variable ‘verZIncrement’ [-Wunused-variable]
+  float verZIncrement = 1.0f;//3.5f;//0.5f;//3.5f;
+        ^
+../main.cpp:311:8: warning: unused variable ‘initVerZUL’ [-Wunused-variable]
+  float initVerZUL = -4.50f+initalZ;
+        ^
+../main.cpp:312:8: warning: unused variable ‘initVerZUR’ [-Wunused-variable]
+  float initVerZUR = -4.50f+initalZ;//initVerZUL+verZIncrement;
+        ^
+../main.cpp:313:8: warning: unused variable ‘initVerZBL’ [-Wunused-variable]
+  float initVerZBL = -4.50f+initalZ;
+        ^
+../main.cpp:314:8: warning: unused variable ‘initVerZBR’ [-Wunused-variable]
+  float initVerZBR = -4.50f+initalZ;
+        ^
+subdir.mk:21: recipe for target 'main.o' failed
+make: *** [main.o] Error 1
+13:14:11 **** Incremental Build of configuration Debug for project ImagePreprocessor ****
+make all 
+make: Nothing to be done for 'all'.
+13:21:51 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+make all 
+Building file: ../main.cpp
+Invoking: Cross G++ Compiler
+g++ -I/usr/local/include/opencv -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.cpp"
+../main.cpp:197:45: error: expected ‘)’ before ‘;’ token
+ void extractAnchorPoint(Mat anchorPointImage; String anchorPointPosition) {
+                                             ^
+../main.cpp:197:73: error: expected initializer before ‘)’ token
+ void extractAnchorPoint(Mat anchorPointImage; String anchorPointPosition) {
+                                                                         ^
+make: *** [main.o] Error 1
+subdir.mk:21: recipe for target 'main.o' failed
+13:21:51 **** Incremental Build of configuration Debug for project ImagePreprocessor ****
+make all 
+make: Nothing to be done for 'all'.
+13:22:14 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+make all 
+Building file: ../main.cpp
+Invoking: Cross G++ Compiler
+g++ -I/usr/local/include/opencv -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.cpp"
+../main.cpp: In function ‘void extractAnchorPoint(cv::Mat, cv::String)’:
+../main.cpp:202:18: error: ‘image’ was not declared in this scope
+   for (int x=0;x<image.cols;x++)
+                  ^
+../main.cpp:204:23: error: expected primary-expression before ‘>’ token
+    if ((image.at<Vec3b>(y,x) == Vec3b(0,0,0) & anchorXAxisFound == false) &
+                       ^
+../main.cpp:204:27: warning: left operand of comma operator has no effect [-Wunused-value]
+    if ((image.at<Vec3b>(y,x) == Vec3b(0,0,0) & anchorXAxisFound == false) &
+                           ^
+../main.cpp:208:24: error: expected primary-expression before ‘>’ token
+      if (image.at<Vec3b>(y,x2) == Vec3b(0,0,0) & anchorXAxisFound == false) {
+                        ^
+../main.cpp:208:28: warning: left operand of comma operator has no effect [-Wunused-value]
+      if (image.at<Vec3b>(y,x2) == Vec3b(0,0,0) & anchorXAxisFound == false) {
+                            ^
+../main.cpp:212:22: error: expected primary-expression before ‘>’ token
+        image.at<Vec3b>(y,x3) = Vec3b(255,255,0);
+                      ^
+../main.cpp:212:26: warning: left operand of comma operator has no effect [-Wunused-value]
+        image.at<Vec3b>(y,x3) = Vec3b(255,255,0);
+                          ^
+../main.cpp:217:7: error: ‘leftAnchorXAxis’ was not declared in this scope
+       leftAnchorXAxis[0] = y;
+       ^
+../main.cpp:219:7: error: ‘rightAnchorXAxis’ was not declared in this scope
+       rightAnchorXAxis[0] = y;
+       ^
+../main.cpp:221:7: error: ‘topAnchorYAxis’ was not declared in this scope
+       topAnchorYAxis[0] = y;
+       ^
+../main.cpp:227:13: error: ‘topAnchorYAxis’ was not declared in this scope
+    if (x == topAnchorYAxis[1]) {
+             ^
+../main.cpp:230:24: error: expected primary-expression before ‘>’ token
+      if (image.at<Vec3b>(y2,targetX) == Vec3b(0,0,0)) {
+                        ^
+../main.cpp:230:29: warning: left operand of comma operator has no effect [-Wunused-value]
+      if (image.at<Vec3b>(y2,targetX) == Vec3b(0,0,0)) {
+                             ^
+../main.cpp:231:7: error: ‘bottomAnchorYAxis’ was not declared in this scope
+       bottomAnchorYAxis[0] = y2;
+       ^
+../main.cpp:236:21: error: ‘bottomAnchorYAxis’ was not declared in this scope
+     for(int y2=y;y2<bottomAnchorYAxis[0];y2++) {
+                     ^
+../main.cpp:237:20: error: expected primary-expression before ‘>’ token
+      image.at<Vec3b>(y2,targetX) = Vec3b(255,0,0);
+                    ^
+../main.cpp:237:25: warning: left operand of comma operator has no effect [-Wunused-value]
+      image.at<Vec3b>(y2,targetX) = Vec3b(255,0,0);
+                         ^
+../main.cpp: In function ‘void findAnchorPoints()’:
+../main.cpp:248:42: error: expected ‘)’ before ‘;’ token
+  extractAnchorPoint(startingDispMapAnchor; "start");
+                                          ^
+../main.cpp:248:51: error: expected ‘;’ before ‘)’ token
+  extractAnchorPoint(startingDispMapAnchor; "start");
+                                                   ^
+../main.cpp:248:52: warning: statement has no effect [-Wunused-value]
+  extractAnchorPoint(startingDispMapAnchor; "start");
+                                                    ^
+../main.cpp:249:40: error: expected ‘)’ before ‘;’ token
+  extractAnchorPoint(endingDispMapAnchor; "end");
+                                        ^
+../main.cpp:249:47: error: expected ‘;’ before ‘)’ token
+  extractAnchorPoint(endingDispMapAnchor; "end");
+                                               ^
+../main.cpp:249:48: warning: statement has no effect [-Wunused-value]
+  extractAnchorPoint(endingDispMapAnchor; "end");
+                                                ^
+../main.cpp: In function ‘void applyDispMap(double, double, double)’:
+../main.cpp:282:8: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+  if (y > 0 & y < maxYSize-borderToCrop) {
+        ^
+../main.cpp: In function ‘void createMeshOfRect()’:
+../main.cpp:385:30: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    if ((x < maxYSize/2) | (x < (maxYSize/2+(maxXSize-maxYSize)) & x > (maxXSize-maxYSize))) {
+                              ^
+../main.cpp:396:16: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                ^
+../main.cpp:396:51: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                                                   ^
+../main.cpp:408:15: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if (x > (maxYSize) & x < (maxXSize-maxYSize)) {
+               ^
+../main.cpp:298:8: warning: unused variable ‘verZIncrement’ [-Wunused-variable]
+  float verZIncrement = 1.0f;//3.5f;//0.5f;//3.5f;
+        ^
+../main.cpp:315:8: warning: unused variable ‘initVerZUL’ [-Wunused-variable]
+  float initVerZUL = -4.50f+initalZ;
+        ^
+../main.cpp:316:8: warning: unused variable ‘initVerZUR’ [-Wunused-variable]
+  float initVerZUR = -4.50f+initalZ;//initVerZUL+verZIncrement;
+        ^
+../main.cpp:317:8: warning: unused variable ‘initVerZBL’ [-Wunused-variable]
+  float initVerZBL = -4.50f+initalZ;
+        ^
+../main.cpp:318:8: warning: unused variable ‘initVerZBR’ [-Wunused-variable]
+  float initVerZBR = -4.50f+initalZ;
+        ^
+subdir.mk:21: recipe for target 'main.o' failed
+make: *** [main.o] Error 1
+13:22:14 **** Incremental Build of configuration Debug for project ImagePreprocessor ****
+make all 
+make: Nothing to be done for 'all'.
+13:23:04 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+make all 
+Building file: ../main.cpp
+Invoking: Cross G++ Compiler
+g++ -I/usr/local/include/opencv -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.cpp"
+../main.cpp: In function ‘void extractAnchorPoint(cv::Mat, cv::String)’:
+../main.cpp:204:41: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    if ((anchorPointImage.at<Vec3b>(y,x) == Vec3b(0,0,0) & anchorXAxisFound == false) &
+                                         ^
+../main.cpp:208:43: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+      if (anchorPointImage.at<Vec3b>(y,x2) == Vec3b(0,0,0) & anchorXAxisFound == false) {
+                                           ^
+../main.cpp:217:7: error: ‘leftAnchorXAxis’ was not declared in this scope
+       leftAnchorXAxis[0] = y;
+       ^
+../main.cpp:219:7: error: ‘rightAnchorXAxis’ was not declared in this scope
+       rightAnchorXAxis[0] = y;
+       ^
+../main.cpp:221:7: error: ‘topAnchorYAxis’ was not declared in this scope
+       topAnchorYAxis[0] = y;
+       ^
+../main.cpp:227:13: error: ‘topAnchorYAxis’ was not declared in this scope
+    if (x == topAnchorYAxis[1]) {
+             ^
+../main.cpp:231:7: error: ‘bottomAnchorYAxis’ was not declared in this scope
+       bottomAnchorYAxis[0] = y2;
+       ^
+../main.cpp:236:21: error: ‘bottomAnchorYAxis’ was not declared in this scope
+     for(int y2=y;y2<bottomAnchorYAxis[0];y2++) {
+                     ^
+../main.cpp: In function ‘void findAnchorPoints()’:
+../main.cpp:248:42: error: expected ‘)’ before ‘;’ token
+  extractAnchorPoint(startingDispMapAnchor; "start");
+                                          ^
+../main.cpp:248:51: error: expected ‘;’ before ‘)’ token
+  extractAnchorPoint(startingDispMapAnchor; "start");
+                                                   ^
+../main.cpp:248:52: warning: statement has no effect [-Wunused-value]
+  extractAnchorPoint(startingDispMapAnchor; "start");
+                                                    ^
+../main.cpp:249:40: error: expected ‘)’ before ‘;’ token
+  extractAnchorPoint(endingDispMapAnchor; "end");
+                                        ^
+../main.cpp:249:47: error: expected ‘;’ before ‘)’ token
+  extractAnchorPoint(endingDispMapAnchor; "end");
+                                               ^
+../main.cpp:249:48: warning: statement has no effect [-Wunused-value]
+  extractAnchorPoint(endingDispMapAnchor; "end");
+                                                ^
+../main.cpp: In function ‘void applyDispMap(double, double, double)’:
+../main.cpp:282:8: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+  if (y > 0 & y < maxYSize-borderToCrop) {
+        ^
+../main.cpp: In function ‘void createMeshOfRect()’:
+../main.cpp:385:30: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    if ((x < maxYSize/2) | (x < (maxYSize/2+(maxXSize-maxYSize)) & x > (maxXSize-maxYSize))) {
+                              ^
+../main.cpp:396:16: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                ^
+../main.cpp:396:51: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                                                   ^
+../main.cpp:408:15: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if (x > (maxYSize) & x < (maxXSize-maxYSize)) {
+               ^
+../main.cpp:298:8: warning: unused variable ‘verZIncrement’ [-Wunused-variable]
+  float verZIncrement = 1.0f;//3.5f;//0.5f;//3.5f;
+        ^
+../main.cpp:315:8: warning: unused variable ‘initVerZUL’ [-Wunused-variable]
+  float initVerZUL = -4.50f+initalZ;
+        ^
+../main.cpp:316:8: warning: unused variable ‘initVerZUR’ [-Wunused-variable]
+  float initVerZUR = -4.50f+initalZ;//initVerZUL+verZIncrement;
+        ^
+../main.cpp:317:8: warning: unused variable ‘initVerZBL’ [-Wunused-variable]
+  float initVerZBL = -4.50f+initalZ;
+        ^
+../main.cpp:318:8: warning: unused variable ‘initVerZBR’ [-Wunused-variable]
+  float initVerZBR = -4.50f+initalZ;
+        ^
+subdir.mk:21: recipe for target 'main.o' failed
+make: *** [main.o] Error 1
+13:23:04 **** Incremental Build of configuration Debug for project ImagePreprocessor ****
+make all 
+make: Nothing to be done for 'all'.
+13:26:34 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+make all 
+Building file: ../main.cpp
+Invoking: Cross G++ Compiler
+g++ -I/usr/local/include/opencv -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.cpp"
+../main.cpp: In function ‘void extractAnchorPoint(cv::Mat, cv::String)’:
+../main.cpp:204:59: error: ‘anchorXAxisFound’ was not declared in this scope
+    if ((anchorPointImage.at<Vec3b>(y,x) == Vec3b(0,0,0) & anchorXAxisFound == false) {
+                                                           ^
+../main.cpp:204:86: error: expected ‘)’ before ‘{’ token
+    if ((anchorPointImage.at<Vec3b>(y,x) == Vec3b(0,0,0) & anchorXAxisFound == false) {
+                                                                                      ^
+../main.cpp:215:3: error: expected primary-expression before ‘}’ token
+   }
+   ^
+../main.cpp:199:7: warning: unused variable ‘anchorFound’ [-Wunused-variable]
+  bool anchorFound = false;
+       ^
+../main.cpp: In function ‘void findAnchorPoints()’:
+../main.cpp:223:42: error: expected ‘)’ before ‘;’ token
+  extractAnchorPoint(startingDispMapAnchor; "start");
+                                          ^
+../main.cpp:223:51: error: expected ‘;’ before ‘)’ token
+  extractAnchorPoint(startingDispMapAnchor; "start");
+                                                   ^
+../main.cpp:223:52: warning: statement has no effect [-Wunused-value]
+  extractAnchorPoint(startingDispMapAnchor; "start");
+                                                    ^
+../main.cpp:224:40: error: expected ‘)’ before ‘;’ token
+  extractAnchorPoint(endingDispMapAnchor; "end");
+                                        ^
+../main.cpp:224:47: error: expected ‘;’ before ‘)’ token
+  extractAnchorPoint(endingDispMapAnchor; "end");
+                                               ^
+../main.cpp:224:48: warning: statement has no effect [-Wunused-value]
+  extractAnchorPoint(endingDispMapAnchor; "end");
+                                                ^
+../main.cpp: In function ‘void applyDispMap(double, double, double)’:
+../main.cpp:257:8: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+  if (y > 0 & y < maxYSize-borderToCrop) {
+        ^
+../main.cpp: In function ‘void createMeshOfRect()’:
+../main.cpp:360:30: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    if ((x < maxYSize/2) | (x < (maxYSize/2+(maxXSize-maxYSize)) & x > (maxXSize-maxYSize))) {
+                              ^
+../main.cpp:371:16: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                ^
+../main.cpp:371:51: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                                                   ^
+../main.cpp:383:15: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if (x > (maxYSize) & x < (maxXSize-maxYSize)) {
+               ^
+../main.cpp:273:8: warning: unused variable ‘verZIncrement’ [-Wunused-variable]
+  float verZIncrement = 1.0f;//3.5f;//0.5f;//3.5f;
+        ^
+../main.cpp:290:8: warning: unused variable ‘initVerZUL’ [-Wunused-variable]
+  float initVerZUL = -4.50f+initalZ;
+        ^
+../main.cpp:291:8: warning: unused variable ‘initVerZUR’ [-Wunused-variable]
+  float initVerZUR = -4.50f+initalZ;//initVerZUL+verZIncrement;
+        ^
+../main.cpp:292:8: warning: unused variable ‘initVerZBL’ [-Wunused-variable]
+  float initVerZBL = -4.50f+initalZ;
+        ^
+../main.cpp:293:8: warning: unused variable ‘initVerZBR’ [-Wunused-variable]
+  float initVerZBR = -4.50f+initalZ;
+        ^
+subdir.mk:21: recipe for target 'main.o' failed
+make: *** [main.o] Error 1
+13:26:34 **** Incremental Build of configuration Debug for project ImagePreprocessor ****
+make all 
+make: Nothing to be done for 'all'.
+13:27:03 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+make all 
+Building file: ../main.cpp
+Invoking: Cross G++ Compiler
+g++ -I/usr/local/include/opencv -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.cpp"
+../main.cpp: In function ‘void findAnchorPoints()’:
+../main.cpp:223:42: error: expected ‘)’ before ‘;’ token
+  extractAnchorPoint(startingDispMapAnchor; "start");
+                                          ^
+../main.cpp:223:51: error: expected ‘;’ before ‘)’ token
+  extractAnchorPoint(startingDispMapAnchor; "start");
+                                                   ^
+../main.cpp:223:52: warning: statement has no effect [-Wunused-value]
+  extractAnchorPoint(startingDispMapAnchor; "start");
+                                                    ^
+../main.cpp:224:40: error: expected ‘)’ before ‘;’ token
+  extractAnchorPoint(endingDispMapAnchor; "end");
+                                        ^
+../main.cpp:224:47: error: expected ‘;’ before ‘)’ token
+  extractAnchorPoint(endingDispMapAnchor; "end");
+                                               ^
+../main.cpp:224:48: warning: statement has no effect [-Wunused-value]
+  extractAnchorPoint(endingDispMapAnchor; "end");
+                                                ^
+../main.cpp: In function ‘void applyDispMap(double, double, double)’:
+../main.cpp:257:8: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+  if (y > 0 & y < maxYSize-borderToCrop) {
+        ^
+../main.cpp: In function ‘void createMeshOfRect()’:
+../main.cpp:360:30: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    if ((x < maxYSize/2) | (x < (maxYSize/2+(maxXSize-maxYSize)) & x > (maxXSize-maxYSize))) {
+                              ^
+../main.cpp:371:16: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                ^
+../main.cpp:371:51: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                                                   ^
+../main.cpp:383:15: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if (x > (maxYSize) & x < (maxXSize-maxYSize)) {
+               ^
+../main.cpp:273:8: warning: unused variable ‘verZIncrement’ [-Wunused-variable]
+  float verZIncrement = 1.0f;//3.5f;//0.5f;//3.5f;
+        ^
+../main.cpp:290:8: warning: unused variable ‘initVerZUL’ [-Wunused-variable]
+  float initVerZUL = -4.50f+initalZ;
+        ^
+../main.cpp:291:8: warning: unused variable ‘initVerZUR’ [-Wunused-variable]
+  float initVerZUR = -4.50f+initalZ;//initVerZUL+verZIncrement;
+        ^
+../main.cpp:292:8: warning: unused variable ‘initVerZBL’ [-Wunused-variable]
+  float initVerZBL = -4.50f+initalZ;
+        ^
+../main.cpp:293:8: warning: unused variable ‘initVerZBR’ [-Wunused-variable]
+  float initVerZBR = -4.50f+initalZ;
+        ^
+subdir.mk:21: recipe for target 'main.o' failed
+make: *** [main.o] Error 1
+13:27:04 **** Incremental Build of configuration Debug for project ImagePreprocessor ****
+make all 
+make: Nothing to be done for 'all'.
+13:35:37 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+make all 
+Building file: ../main.cpp
+Invoking: Cross G++ Compiler
+g++ -I/usr/local/include/opencv -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.cpp"
+../main.cpp: In function ‘void findAnchorPoints()’:
+../main.cpp:224:42: error: expected ‘)’ before ‘;’ token
+  extractAnchorPoint(startingDispMapAnchor; "start");
+                                          ^
+../main.cpp:224:51: error: expected ‘;’ before ‘)’ token
+  extractAnchorPoint(startingDispMapAnchor; "start");
+                                                   ^
+../main.cpp:224:52: warning: statement has no effect [-Wunused-value]
+  extractAnchorPoint(startingDispMapAnchor; "start");
+                                                    ^
+../main.cpp:225:40: error: expected ‘)’ before ‘;’ token
+  extractAnchorPoint(endingDispMapAnchor; "end");
+                                        ^
+../main.cpp:225:47: error: expected ‘;’ before ‘)’ token
+  extractAnchorPoint(endingDispMapAnchor; "end");
+                                               ^
+../main.cpp:225:48: warning: statement has no effect [-Wunused-value]
+  extractAnchorPoint(endingDispMapAnchor; "end");
+                                                ^
+../main.cpp: In function ‘void applyDispMap(double, double, double)’:
+../main.cpp:258:8: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+  if (y > 0 & y < maxYSize-borderToCrop) {
+        ^
+../main.cpp: In function ‘void createMeshOfRect()’:
+../main.cpp:361:30: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    if ((x < maxYSize/2) | (x < (maxYSize/2+(maxXSize-maxYSize)) & x > (maxXSize-maxYSize))) {
+                              ^
+../main.cpp:372:16: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                ^
+../main.cpp:372:51: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                                                   ^
+../main.cpp:384:15: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if (x > (maxYSize) & x < (maxXSize-maxYSize)) {
+               ^
+../main.cpp:274:8: warning: unused variable ‘verZIncrement’ [-Wunused-variable]
+  float verZIncrement = 1.0f;//3.5f;//0.5f;//3.5f;
+        ^
+../main.cpp:291:8: warning: unused variable ‘initVerZUL’ [-Wunused-variable]
+  float initVerZUL = -4.50f+initalZ;
+        ^
+../main.cpp:292:8: warning: unused variable ‘initVerZUR’ [-Wunused-variable]
+  float initVerZUR = -4.50f+initalZ;//initVerZUL+verZIncrement;
+        ^
+../main.cpp:293:8: warning: unused variable ‘initVerZBL’ [-Wunused-variable]
+  float initVerZBL = -4.50f+initalZ;
+        ^
+../main.cpp:294:8: warning: unused variable ‘initVerZBR’ [-Wunused-variable]
+  float initVerZBR = -4.50f+initalZ;
+        ^
+subdir.mk:21: recipe for target 'main.o' failed
+make: *** [main.o] Error 1
+13:35:37 **** Incremental Build of configuration Debug for project ImagePreprocessor ****
+make all 
+make: Nothing to be done for 'all'.
+13:35:38 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+make all 
+Building file: ../main.cpp
+Invoking: Cross G++ Compiler
+g++ -I/usr/local/include/opencv -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.cpp"
+../main.cpp: In function ‘void findAnchorPoints()’:
+../main.cpp:224:42: error: expected ‘)’ before ‘;’ token
+  extractAnchorPoint(startingDispMapAnchor; "start");
+                                          ^
+../main.cpp:224:51: error: expected ‘;’ before ‘)’ token
+  extractAnchorPoint(startingDispMapAnchor; "start");
+                                                   ^
+../main.cpp:224:52: warning: statement has no effect [-Wunused-value]
+  extractAnchorPoint(startingDispMapAnchor; "start");
+                                                    ^
+../main.cpp:225:40: error: expected ‘)’ before ‘;’ token
+  extractAnchorPoint(endingDispMapAnchor; "end");
+                                        ^
+../main.cpp:225:47: error: expected ‘;’ before ‘)’ token
+  extractAnchorPoint(endingDispMapAnchor; "end");
+                                               ^
+../main.cpp:225:48: warning: statement has no effect [-Wunused-value]
+  extractAnchorPoint(endingDispMapAnchor; "end");
+                                                ^
+../main.cpp: In function ‘void applyDispMap(double, double, double)’:
+../main.cpp:258:8: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+  if (y > 0 & y < maxYSize-borderToCrop) {
+        ^
+../main.cpp: In function ‘void createMeshOfRect()’:
+../main.cpp:361:30: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    if ((x < maxYSize/2) | (x < (maxYSize/2+(maxXSize-maxYSize)) & x > (maxXSize-maxYSize))) {
+                              ^
+../main.cpp:372:16: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                ^
+../main.cpp:372:51: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                                                   ^
+../main.cpp:384:15: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if (x > (maxYSize) & x < (maxXSize-maxYSize)) {
+               ^
+../main.cpp:274:8: warning: unused variable ‘verZIncrement’ [-Wunused-variable]
+  float verZIncrement = 1.0f;//3.5f;//0.5f;//3.5f;
+        ^
+../main.cpp:291:8: warning: unused variable ‘initVerZUL’ [-Wunused-variable]
+  float initVerZUL = -4.50f+initalZ;
+        ^
+../main.cpp:292:8: warning: unused variable ‘initVerZUR’ [-Wunused-variable]
+  float initVerZUR = -4.50f+initalZ;//initVerZUL+verZIncrement;
+        ^
+../main.cpp:293:8: warning: unused variable ‘initVerZBL’ [-Wunused-variable]
+  float initVerZBL = -4.50f+initalZ;
+        ^
+../main.cpp:294:8: warning: unused variable ‘initVerZBR’ [-Wunused-variable]
+  float initVerZBR = -4.50f+initalZ;
+        ^
+make: *** [main.o] Error 1
+subdir.mk:21: recipe for target 'main.o' failed
+13:35:50 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+make all 
+Building file: ../main.cpp
+Invoking: Cross G++ Compiler
+g++ -I/usr/local/include/opencv -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.cpp"
+../main.cpp: In function ‘void applyDispMap(double, double, double)’:
+../main.cpp:258:8: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+  if (y > 0 & y < maxYSize-borderToCrop) {
+        ^
+../main.cpp: In function ‘void createMeshOfRect()’:
+../main.cpp:361:30: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    if ((x < maxYSize/2) | (x < (maxYSize/2+(maxXSize-maxYSize)) & x > (maxXSize-maxYSize))) {
+                              ^
+../main.cpp:372:16: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                ^
+../main.cpp:372:51: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                                                   ^
+../main.cpp:384:15: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if (x > (maxYSize) & x < (maxXSize-maxYSize)) {
+               ^
+../main.cpp:274:8: warning: unused variable ‘verZIncrement’ [-Wunused-variable]
+  float verZIncrement = 1.0f;//3.5f;//0.5f;//3.5f;
+        ^
+../main.cpp:291:8: warning: unused variable ‘initVerZUL’ [-Wunused-variable]
+  float initVerZUL = -4.50f+initalZ;
+        ^
+../main.cpp:292:8: warning: unused variable ‘initVerZUR’ [-Wunused-variable]
+  float initVerZUR = -4.50f+initalZ;//initVerZUL+verZIncrement;
+        ^
+../main.cpp:293:8: warning: unused variable ‘initVerZBL’ [-Wunused-variable]
+  float initVerZBL = -4.50f+initalZ;
+        ^
+../main.cpp:294:8: warning: unused variable ‘initVerZBR’ [-Wunused-variable]
+  float initVerZBR = -4.50f+initalZ;
+        ^
+Finished building: ../main.cpp
+ 
+Building target: DisplacementMapper
+Invoking: Cross G++ Linker
+g++ -L/usr/lib/x86_64-linux-gnu -L/usr/local/lib -o "DisplacementMapper"  ./imageloader.o ./main.o   -lGL -lopencv_core -lopencv_imgcodecs -lopencv_imgproc -lopencv_highgui -lGLU -lglut
+Finished building target: DisplacementMapper
+ 
+13:35:51 **** Incremental Build of configuration Debug for project ImagePreprocessor ****
+make all 
+make: Nothing to be done for 'all'.
+13:35:53 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+make all 
+make: Nothing to be done for 'all'.
+13:36:22 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+make all 
+Building file: ../main.cpp
+Invoking: Cross G++ Compiler
+g++ -I/usr/local/include/opencv -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.cpp"
+../main.cpp: In function ‘void applyDispMap(double, double, double)’:
+../main.cpp:258:8: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+  if (y > 0 & y < maxYSize-borderToCrop) {
+        ^
+../main.cpp: In function ‘void createMeshOfRect()’:
+../main.cpp:361:30: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    if ((x < maxYSize/2) | (x < (maxYSize/2+(maxXSize-maxYSize)) & x > (maxXSize-maxYSize))) {
+                              ^
+../main.cpp:372:16: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                ^
+../main.cpp:372:51: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                                                   ^
+../main.cpp:384:15: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if (x > (maxYSize) & x < (maxXSize-maxYSize)) {
+               ^
+../main.cpp:274:8: warning: unused variable ‘verZIncrement’ [-Wunused-variable]
+  float verZIncrement = 1.0f;//3.5f;//0.5f;//3.5f;
+        ^
+../main.cpp:291:8: warning: unused variable ‘initVerZUL’ [-Wunused-variable]
+  float initVerZUL = -4.50f+initalZ;
+        ^
+../main.cpp:292:8: warning: unused variable ‘initVerZUR’ [-Wunused-variable]
+  float initVerZUR = -4.50f+initalZ;//initVerZUL+verZIncrement;
+        ^
+../main.cpp:293:8: warning: unused variable ‘initVerZBL’ [-Wunused-variable]
+  float initVerZBL = -4.50f+initalZ;
+        ^
+../main.cpp:294:8: warning: unused variable ‘initVerZBR’ [-Wunused-variable]
+  float initVerZBR = -4.50f+initalZ;
+        ^
+Finished building: ../main.cpp
+ 
+Building target: DisplacementMapper
+Invoking: Cross G++ Linker
+g++ -L/usr/lib/x86_64-linux-gnu -L/usr/local/lib -o "DisplacementMapper"  ./imageloader.o ./main.o   -lGL -lopencv_core -lopencv_imgcodecs -lopencv_imgproc -lopencv_highgui -lGLU -lglut
+Finished building target: DisplacementMapper
+ 
+13:36:23 **** Incremental Build of configuration Debug for project ImagePreprocessor ****
+make all 
+make: Nothing to be done for 'all'.
+13:36:23 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+make all 
+make: Nothing to be done for 'all'.
+13:37:02 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+make all 
+Building file: ../main.cpp
+Invoking: Cross G++ Compiler
+g++ -I/usr/local/include/opencv -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.cpp"
+../main.cpp: In function ‘void extractAnchorPoint(cv::Mat, cv::String)’:
+../main.cpp:200:2: error: expected ‘;’ before ‘bool’
+  bool anchorFound = false;
+  ^
+../main.cpp:205:63: error: ‘anchorFound’ was not declared in this scope
+    if ((anchorPointImage.at<Vec3b>(y,x) == Vec3b(0,0,255)) & (anchorFound == false)) {
+                                                               ^
+../main.cpp: In function ‘void applyDispMap(double, double, double)’:
+../main.cpp:259:8: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+  if (y > 0 & y < maxYSize-borderToCrop) {
+        ^
+../main.cpp: In function ‘void createMeshOfRect()’:
+../main.cpp:362:30: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    if ((x < maxYSize/2) | (x < (maxYSize/2+(maxXSize-maxYSize)) & x > (maxXSize-maxYSize))) {
+                              ^
+../main.cpp:373:16: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                ^
+../main.cpp:373:51: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                                                   ^
+../main.cpp:385:15: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if (x > (maxYSize) & x < (maxXSize-maxYSize)) {
+               ^
+../main.cpp:275:8: warning: unused variable ‘verZIncrement’ [-Wunused-variable]
+  float verZIncrement = 1.0f;//3.5f;//0.5f;//3.5f;
+        ^
+../main.cpp:292:8: warning: unused variable ‘initVerZUL’ [-Wunused-variable]
+  float initVerZUL = -4.50f+initalZ;
+        ^
+../main.cpp:293:8: warning: unused variable ‘initVerZUR’ [-Wunused-variable]
+  float initVerZUR = -4.50f+initalZ;//initVerZUL+verZIncrement;
+        ^
+../main.cpp:294:8: warning: unused variable ‘initVerZBL’ [-Wunused-variable]
+  float initVerZBL = -4.50f+initalZ;
+        ^
+../main.cpp:295:8: warning: unused variable ‘initVerZBR’ [-Wunused-variable]
+  float initVerZBR = -4.50f+initalZ;
+        ^
+subdir.mk:21: recipe for target 'main.o' failed
+make: *** [main.o] Error 1
+13:37:02 **** Incremental Build of configuration Debug for project ImagePreprocessor ****
+make all 
+make: Nothing to be done for 'all'.
+13:37:03 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+make all 
+Building file: ../main.cpp
+Invoking: Cross G++ Compiler
+g++ -I/usr/local/include/opencv -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.cpp"
+../main.cpp: In function ‘void extractAnchorPoint(cv::Mat, cv::String)’:
+../main.cpp:200:2: error: expected ‘;’ before ‘bool’
+  bool anchorFound = false;
+  ^
+../main.cpp:205:63: error: ‘anchorFound’ was not declared in this scope
+    if ((anchorPointImage.at<Vec3b>(y,x) == Vec3b(0,0,255)) & (anchorFound == false)) {
+                                                               ^
+../main.cpp: In function ‘void applyDispMap(double, double, double)’:
+../main.cpp:259:8: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+  if (y > 0 & y < maxYSize-borderToCrop) {
+        ^
+../main.cpp: In function ‘void createMeshOfRect()’:
+../main.cpp:362:30: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    if ((x < maxYSize/2) | (x < (maxYSize/2+(maxXSize-maxYSize)) & x > (maxXSize-maxYSize))) {
+                              ^
+../main.cpp:373:16: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                ^
+../main.cpp:373:51: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                                                   ^
+../main.cpp:385:15: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if (x > (maxYSize) & x < (maxXSize-maxYSize)) {
+               ^
+../main.cpp:275:8: warning: unused variable ‘verZIncrement’ [-Wunused-variable]
+  float verZIncrement = 1.0f;//3.5f;//0.5f;//3.5f;
+        ^
+../main.cpp:292:8: warning: unused variable ‘initVerZUL’ [-Wunused-variable]
+  float initVerZUL = -4.50f+initalZ;
+        ^
+../main.cpp:293:8: warning: unused variable ‘initVerZUR’ [-Wunused-variable]
+  float initVerZUR = -4.50f+initalZ;//initVerZUL+verZIncrement;
+        ^
+../main.cpp:294:8: warning: unused variable ‘initVerZBL’ [-Wunused-variable]
+  float initVerZBL = -4.50f+initalZ;
+        ^
+../main.cpp:295:8: warning: unused variable ‘initVerZBR’ [-Wunused-variable]
+  float initVerZBR = -4.50f+initalZ;
+        ^
+make: *** [main.o] Error 1
+subdir.mk:21: recipe for target 'main.o' failed
+13:37:09 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+make all 
+Building file: ../main.cpp
+Invoking: Cross G++ Compiler
+g++ -I/usr/local/include/opencv -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.cpp"
+../main.cpp: In function ‘void applyDispMap(double, double, double)’:
+../main.cpp:259:8: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+  if (y > 0 & y < maxYSize-borderToCrop) {
+        ^
+../main.cpp: In function ‘void createMeshOfRect()’:
+../main.cpp:362:30: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    if ((x < maxYSize/2) | (x < (maxYSize/2+(maxXSize-maxYSize)) & x > (maxXSize-maxYSize))) {
+                              ^
+../main.cpp:373:16: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                ^
+../main.cpp:373:51: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                                                   ^
+../main.cpp:385:15: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if (x > (maxYSize) & x < (maxXSize-maxYSize)) {
+               ^
+../main.cpp:275:8: warning: unused variable ‘verZIncrement’ [-Wunused-variable]
+  float verZIncrement = 1.0f;//3.5f;//0.5f;//3.5f;
+        ^
+../main.cpp:292:8: warning: unused variable ‘initVerZUL’ [-Wunused-variable]
+  float initVerZUL = -4.50f+initalZ;
+        ^
+../main.cpp:293:8: warning: unused variable ‘initVerZUR’ [-Wunused-variable]
+  float initVerZUR = -4.50f+initalZ;//initVerZUL+verZIncrement;
+        ^
+../main.cpp:294:8: warning: unused variable ‘initVerZBL’ [-Wunused-variable]
+  float initVerZBL = -4.50f+initalZ;
+        ^
+../main.cpp:295:8: warning: unused variable ‘initVerZBR’ [-Wunused-variable]
+  float initVerZBR = -4.50f+initalZ;
+        ^
+Finished building: ../main.cpp
+ 
+Building target: DisplacementMapper
+Invoking: Cross G++ Linker
+g++ -L/usr/lib/x86_64-linux-gnu -L/usr/local/lib -o "DisplacementMapper"  ./imageloader.o ./main.o   -lGL -lopencv_core -lopencv_imgcodecs -lopencv_imgproc -lopencv_highgui -lGLU -lglut
+Finished building target: DisplacementMapper
+ 
+13:37:09 **** Incremental Build of configuration Debug for project ImagePreprocessor ****
+make all 
+make: Nothing to be done for 'all'.
+13:37:10 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+make all 
+make: Nothing to be done for 'all'.
+13:38:12 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+make all 
+Building file: ../main.cpp
+Invoking: Cross G++ Compiler
+g++ -I/usr/local/include/opencv -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.cpp"
+../main.cpp: In function ‘void applyDispMap(double, double, double)’:
+../main.cpp:259:8: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+  if (y > 0 & y < maxYSize-borderToCrop) {
+        ^
+../main.cpp: In function ‘void createMeshOfRect()’:
+../main.cpp:362:30: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    if ((x < maxYSize/2) | (x < (maxYSize/2+(maxXSize-maxYSize)) & x > (maxXSize-maxYSize))) {
+                              ^
+../main.cpp:373:16: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                ^
+../main.cpp:373:51: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                                                   ^
+../main.cpp:385:15: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if (x > (maxYSize) & x < (maxXSize-maxYSize)) {
+               ^
+../main.cpp:275:8: warning: unused variable ‘verZIncrement’ [-Wunused-variable]
+  float verZIncrement = 1.0f;//3.5f;//0.5f;//3.5f;
+        ^
+../main.cpp:292:8: warning: unused variable ‘initVerZUL’ [-Wunused-variable]
+  float initVerZUL = -4.50f+initalZ;
+        ^
+../main.cpp:293:8: warning: unused variable ‘initVerZUR’ [-Wunused-variable]
+  float initVerZUR = -4.50f+initalZ;//initVerZUL+verZIncrement;
+        ^
+../main.cpp:294:8: warning: unused variable ‘initVerZBL’ [-Wunused-variable]
+  float initVerZBL = -4.50f+initalZ;
+        ^
+../main.cpp:295:8: warning: unused variable ‘initVerZBR’ [-Wunused-variable]
+  float initVerZBR = -4.50f+initalZ;
+        ^
+Finished building: ../main.cpp
+ 
+Building target: DisplacementMapper
+Invoking: Cross G++ Linker
+g++ -L/usr/lib/x86_64-linux-gnu -L/usr/local/lib -o "DisplacementMapper"  ./imageloader.o ./main.o   -lGL -lopencv_core -lopencv_imgcodecs -lopencv_imgproc -lopencv_highgui -lGLU -lglut
+Finished building target: DisplacementMapper
+ 
+13:38:13 **** Incremental Build of configuration Debug for project ImagePreprocessor ****
+make all 
+make: Nothing to be done for 'all'.
+13:38:14 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+make all 
+make: Nothing to be done for 'all'.
+13:38:45 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+make all 
+Building file: ../main.cpp
+Invoking: Cross G++ Compiler
+g++ -I/usr/local/include/opencv -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.cpp"
+../main.cpp: In function ‘void applyDispMap(double, double, double)’:
+../main.cpp:259:8: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+  if (y > 0 & y < maxYSize-borderToCrop) {
+        ^
+../main.cpp: In function ‘void createMeshOfRect()’:
+../main.cpp:362:30: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    if ((x < maxYSize/2) | (x < (maxYSize/2+(maxXSize-maxYSize)) & x > (maxXSize-maxYSize))) {
+                              ^
+../main.cpp:373:16: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                ^
+../main.cpp:373:51: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                                                   ^
+../main.cpp:385:15: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if (x > (maxYSize) & x < (maxXSize-maxYSize)) {
+               ^
+../main.cpp:275:8: warning: unused variable ‘verZIncrement’ [-Wunused-variable]
+  float verZIncrement = 1.0f;//3.5f;//0.5f;//3.5f;
+        ^
+../main.cpp:292:8: warning: unused variable ‘initVerZUL’ [-Wunused-variable]
+  float initVerZUL = -4.50f+initalZ;
+        ^
+../main.cpp:293:8: warning: unused variable ‘initVerZUR’ [-Wunused-variable]
+  float initVerZUR = -4.50f+initalZ;//initVerZUL+verZIncrement;
+        ^
+../main.cpp:294:8: warning: unused variable ‘initVerZBL’ [-Wunused-variable]
+  float initVerZBL = -4.50f+initalZ;
+        ^
+../main.cpp:295:8: warning: unused variable ‘initVerZBR’ [-Wunused-variable]
+  float initVerZBR = -4.50f+initalZ;
+        ^
+Finished building: ../main.cpp
+ 
+Building target: DisplacementMapper
+Invoking: Cross G++ Linker
+g++ -L/usr/lib/x86_64-linux-gnu -L/usr/local/lib -o "DisplacementMapper"  ./imageloader.o ./main.o   -lGL -lopencv_core -lopencv_imgcodecs -lopencv_imgproc -lopencv_highgui -lGLU -lglut
+Finished building target: DisplacementMapper
+ 
+13:38:46 **** Incremental Build of configuration Debug for project ImagePreprocessor ****
+make all 
+make: Nothing to be done for 'all'.
+13:38:47 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+make all 
+make: Nothing to be done for 'all'.
+13:39:52 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+make all 
+Building file: ../main.cpp
+Invoking: Cross G++ Compiler
+g++ -I/usr/local/include/opencv -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.cpp"
+../main.cpp: In function ‘void applyDispMap(double, double, double)’:
+../main.cpp:260:8: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+  if (y > 0 & y < maxYSize-borderToCrop) {
+        ^
+../main.cpp: In function ‘void createMeshOfRect()’:
+../main.cpp:363:30: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    if ((x < maxYSize/2) | (x < (maxYSize/2+(maxXSize-maxYSize)) & x > (maxXSize-maxYSize))) {
+                              ^
+../main.cpp:374:16: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                ^
+../main.cpp:374:51: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                                                   ^
+../main.cpp:386:15: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if (x > (maxYSize) & x < (maxXSize-maxYSize)) {
+               ^
+../main.cpp:276:8: warning: unused variable ‘verZIncrement’ [-Wunused-variable]
+  float verZIncrement = 1.0f;//3.5f;//0.5f;//3.5f;
+        ^
+../main.cpp:293:8: warning: unused variable ‘initVerZUL’ [-Wunused-variable]
+  float initVerZUL = -4.50f+initalZ;
+        ^
+../main.cpp:294:8: warning: unused variable ‘initVerZUR’ [-Wunused-variable]
+  float initVerZUR = -4.50f+initalZ;//initVerZUL+verZIncrement;
+        ^
+../main.cpp:295:8: warning: unused variable ‘initVerZBL’ [-Wunused-variable]
+  float initVerZBL = -4.50f+initalZ;
+        ^
+../main.cpp:296:8: warning: unused variable ‘initVerZBR’ [-Wunused-variable]
+  float initVerZBR = -4.50f+initalZ;
+        ^
+Finished building: ../main.cpp
+ 
+Building target: DisplacementMapper
+Invoking: Cross G++ Linker
+g++ -L/usr/lib/x86_64-linux-gnu -L/usr/local/lib -o "DisplacementMapper"  ./imageloader.o ./main.o   -lGL -lopencv_core -lopencv_imgcodecs -lopencv_imgproc -lopencv_highgui -lGLU -lglut
+Finished building target: DisplacementMapper
+ 
+13:39:53 **** Incremental Build of configuration Debug for project ImagePreprocessor ****
+make all 
+make: Nothing to be done for 'all'.
+13:39:53 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+make all 
+make: Nothing to be done for 'all'.
+13:49:55 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+make all 
+Building file: ../main.cpp
+Invoking: Cross G++ Compiler
+g++ -I/usr/local/include/opencv -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.cpp"
+../main.cpp: In function ‘void extractAnchorPoint(cv::Mat, cv::String)’:
+../main.cpp:212:28: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+     if (anchorPointPosition=="start" & anchorFound1 == false) {
+                            ^
+../main.cpp:218:33: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+     else if (anchorPointPosition=="start" & anchorFound1 == true &
+                                 ^
+../main.cpp:228:33: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+     else if (anchorPointPosition=="end" & anchorFound1 == true &
+                                 ^
+../main.cpp:209:8: warning: unused variable ‘greenLevel’ [-Wunused-variable]
+    int greenLevel = anchorPointImage.at<Vec3b>(y,x).val[1];
+        ^
+../main.cpp: In function ‘void applyDispMap(double, double, double)’:
+../main.cpp:276:8: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+  if (y > 0 & y < maxYSize-borderToCrop) {
+        ^
+../main.cpp: In function ‘void createMeshOfRect()’:
+../main.cpp:379:30: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    if ((x < maxYSize/2) | (x < (maxYSize/2+(maxXSize-maxYSize)) & x > (maxXSize-maxYSize))) {
+                              ^
+../main.cpp:390:16: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                ^
+../main.cpp:390:51: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                                                   ^
+../main.cpp:402:15: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if (x > (maxYSize) & x < (maxXSize-maxYSize)) {
+               ^
+../main.cpp:292:8: warning: unused variable ‘verZIncrement’ [-Wunused-variable]
+  float verZIncrement = 1.0f;//3.5f;//0.5f;//3.5f;
+        ^
+../main.cpp:309:8: warning: unused variable ‘initVerZUL’ [-Wunused-variable]
+  float initVerZUL = -4.50f+initalZ;
+        ^
+../main.cpp:310:8: warning: unused variable ‘initVerZUR’ [-Wunused-variable]
+  float initVerZUR = -4.50f+initalZ;//initVerZUL+verZIncrement;
+        ^
+../main.cpp:311:8: warning: unused variable ‘initVerZBL’ [-Wunused-variable]
+  float initVerZBL = -4.50f+initalZ;
+        ^
+../main.cpp:312:8: warning: unused variable ‘initVerZBR’ [-Wunused-variable]
+  float initVerZBR = -4.50f+initalZ;
+        ^
+Finished building: ../main.cpp
+ 
+Building target: DisplacementMapper
+Invoking: Cross G++ Linker
+g++ -L/usr/lib/x86_64-linux-gnu -L/usr/local/lib -o "DisplacementMapper"  ./imageloader.o ./main.o   -lGL -lopencv_core -lopencv_imgcodecs -lopencv_imgproc -lopencv_highgui -lGLU -lglut
+Finished building target: DisplacementMapper
+ 
+13:49:56 **** Incremental Build of configuration Debug for project ImagePreprocessor ****
+make all 
+make: Nothing to be done for 'all'.
+13:51:40 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+make all 
+Building file: ../main.cpp
+Invoking: Cross G++ Compiler
+g++ -I/usr/local/include/opencv -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.cpp"
+../main.cpp: In function ‘void extractAnchorPoint(cv::Mat, cv::String)’:
+../main.cpp:211:29: error: ‘geenLevel’ was not declared in this scope
+    if ((blueLevel >= 50) & (geenLevel <= 50) & (redLevel >= 200)) {
+                             ^
+../main.cpp:209:8: warning: unused variable ‘greenLevel’ [-Wunused-variable]
+    int greenLevel = anchorPointImage.at<Vec3b>(y,x).val[1];
+        ^
+../main.cpp: In function ‘void applyDispMap(double, double, double)’:
+../main.cpp:276:8: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+  if (y > 0 & y < maxYSize-borderToCrop) {
+        ^
+../main.cpp: In function ‘void createMeshOfRect()’:
+../main.cpp:379:30: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    if ((x < maxYSize/2) | (x < (maxYSize/2+(maxXSize-maxYSize)) & x > (maxXSize-maxYSize))) {
+                              ^
+../main.cpp:390:16: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                ^
+../main.cpp:390:51: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                                                   ^
+../main.cpp:402:15: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if (x > (maxYSize) & x < (maxXSize-maxYSize)) {
+               ^
+../main.cpp:292:8: warning: unused variable ‘verZIncrement’ [-Wunused-variable]
+  float verZIncrement = 1.0f;//3.5f;//0.5f;//3.5f;
+        ^
+../main.cpp:309:8: warning: unused variable ‘initVerZUL’ [-Wunused-variable]
+  float initVerZUL = -4.50f+initalZ;
+        ^
+../main.cpp:310:8: warning: unused variable ‘initVerZUR’ [-Wunused-variable]
+  float initVerZUR = -4.50f+initalZ;//initVerZUL+verZIncrement;
+        ^
+../main.cpp:311:8: warning: unused variable ‘initVerZBL’ [-Wunused-variable]
+  float initVerZBL = -4.50f+initalZ;
+        ^
+../main.cpp:312:8: warning: unused variable ‘initVerZBR’ [-Wunused-variable]
+  float initVerZBR = -4.50f+initalZ;
+        ^
+make: *** [main.o] Error 1
+subdir.mk:21: recipe for target 'main.o' failed
+13:51:41 **** Incremental Build of configuration Debug for project ImagePreprocessor ****
+make all 
+make: Nothing to be done for 'all'.
+13:51:47 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+make all 
+Building file: ../main.cpp
+Invoking: Cross G++ Compiler
+g++ -I/usr/local/include/opencv -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.cpp"
+../main.cpp: In function ‘void applyDispMap(double, double, double)’:
+../main.cpp:276:8: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+  if (y > 0 & y < maxYSize-borderToCrop) {
+        ^
+../main.cpp: In function ‘void createMeshOfRect()’:
+../main.cpp:379:30: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    if ((x < maxYSize/2) | (x < (maxYSize/2+(maxXSize-maxYSize)) & x > (maxXSize-maxYSize))) {
+                              ^
+../main.cpp:390:16: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                ^
+../main.cpp:390:51: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                                                   ^
+../main.cpp:402:15: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if (x > (maxYSize) & x < (maxXSize-maxYSize)) {
+               ^
+../main.cpp:292:8: warning: unused variable ‘verZIncrement’ [-Wunused-variable]
+  float verZIncrement = 1.0f;//3.5f;//0.5f;//3.5f;
+        ^
+../main.cpp:309:8: warning: unused variable ‘initVerZUL’ [-Wunused-variable]
+  float initVerZUL = -4.50f+initalZ;
+        ^
+../main.cpp:310:8: warning: unused variable ‘initVerZUR’ [-Wunused-variable]
+  float initVerZUR = -4.50f+initalZ;//initVerZUL+verZIncrement;
+        ^
+../main.cpp:311:8: warning: unused variable ‘initVerZBL’ [-Wunused-variable]
+  float initVerZBL = -4.50f+initalZ;
+        ^
+../main.cpp:312:8: warning: unused variable ‘initVerZBR’ [-Wunused-variable]
+  float initVerZBR = -4.50f+initalZ;
+        ^
+Finished building: ../main.cpp
+ 
+Building target: DisplacementMapper
+Invoking: Cross G++ Linker
+g++ -L/usr/lib/x86_64-linux-gnu -L/usr/local/lib -o "DisplacementMapper"  ./imageloader.o ./main.o   -lGL -lopencv_core -lopencv_imgcodecs -lopencv_imgproc -lopencv_highgui -lGLU -lglut
+Finished building target: DisplacementMapper
+ 
+13:51:48 **** Incremental Build of configuration Debug for project ImagePreprocessor ****
+make all 
+make: Nothing to be done for 'all'.
+13:53:27 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+make all 
+Building file: ../main.cpp
+Invoking: Cross G++ Compiler
+g++ -I/usr/local/include/opencv -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.cpp"
+../main.cpp: In function ‘void applyDispMap(double, double, double)’:
+../main.cpp:277:8: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+  if (y > 0 & y < maxYSize-borderToCrop) {
+        ^
+../main.cpp: In function ‘void createMeshOfRect()’:
+../main.cpp:380:30: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    if ((x < maxYSize/2) | (x < (maxYSize/2+(maxXSize-maxYSize)) & x > (maxXSize-maxYSize))) {
+                              ^
+../main.cpp:391:16: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                ^
+../main.cpp:391:51: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                                                   ^
+../main.cpp:403:15: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if (x > (maxYSize) & x < (maxXSize-maxYSize)) {
+               ^
+../main.cpp:293:8: warning: unused variable ‘verZIncrement’ [-Wunused-variable]
+  float verZIncrement = 1.0f;//3.5f;//0.5f;//3.5f;
+        ^
+../main.cpp:310:8: warning: unused variable ‘initVerZUL’ [-Wunused-variable]
+  float initVerZUL = -4.50f+initalZ;
+        ^
+../main.cpp:311:8: warning: unused variable ‘initVerZUR’ [-Wunused-variable]
+  float initVerZUR = -4.50f+initalZ;//initVerZUL+verZIncrement;
+        ^
+../main.cpp:312:8: warning: unused variable ‘initVerZBL’ [-Wunused-variable]
+  float initVerZBL = -4.50f+initalZ;
+        ^
+../main.cpp:313:8: warning: unused variable ‘initVerZBR’ [-Wunused-variable]
+  float initVerZBR = -4.50f+initalZ;
+        ^
+Finished building: ../main.cpp
+ 
+Building target: DisplacementMapper
+Invoking: Cross G++ Linker
+g++ -L/usr/lib/x86_64-linux-gnu -L/usr/local/lib -o "DisplacementMapper"  ./imageloader.o ./main.o   -lGL -lopencv_core -lopencv_imgcodecs -lopencv_imgproc -lopencv_highgui -lGLU -lglut
+Finished building target: DisplacementMapper
+ 
+13:53:28 **** Incremental Build of configuration Debug for project ImagePreprocessor ****
+make all 
+make: Nothing to be done for 'all'.
+13:53:29 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+make all 
+make: Nothing to be done for 'all'.
+13:54:26 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+make all 
+Building file: ../main.cpp
+Invoking: Cross G++ Compiler
+g++ -I/usr/local/include/opencv -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.cpp"
+../main.cpp: In function ‘void applyDispMap(double, double, double)’:
+../main.cpp:277:8: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+  if (y > 0 & y < maxYSize-borderToCrop) {
+        ^
+../main.cpp: In function ‘void createMeshOfRect()’:
+../main.cpp:380:30: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    if ((x < maxYSize/2) | (x < (maxYSize/2+(maxXSize-maxYSize)) & x > (maxXSize-maxYSize))) {
+                              ^
+../main.cpp:391:16: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                ^
+../main.cpp:391:51: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                                                   ^
+../main.cpp:403:15: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if (x > (maxYSize) & x < (maxXSize-maxYSize)) {
+               ^
+../main.cpp:293:8: warning: unused variable ‘verZIncrement’ [-Wunused-variable]
+  float verZIncrement = 1.0f;//3.5f;//0.5f;//3.5f;
+        ^
+../main.cpp:310:8: warning: unused variable ‘initVerZUL’ [-Wunused-variable]
+  float initVerZUL = -4.50f+initalZ;
+        ^
+../main.cpp:311:8: warning: unused variable ‘initVerZUR’ [-Wunused-variable]
+  float initVerZUR = -4.50f+initalZ;//initVerZUL+verZIncrement;
+        ^
+../main.cpp:312:8: warning: unused variable ‘initVerZBL’ [-Wunused-variable]
+  float initVerZBL = -4.50f+initalZ;
+        ^
+../main.cpp:313:8: warning: unused variable ‘initVerZBR’ [-Wunused-variable]
+  float initVerZBR = -4.50f+initalZ;
+        ^
+Finished building: ../main.cpp
+ 
+Building target: DisplacementMapper
+Invoking: Cross G++ Linker
+g++ -L/usr/lib/x86_64-linux-gnu -L/usr/local/lib -o "DisplacementMapper"  ./imageloader.o ./main.o   -lGL -lopencv_core -lopencv_imgcodecs -lopencv_imgproc -lopencv_highgui -lGLU -lglut
+Finished building target: DisplacementMapper
+ 
+13:54:27 **** Incremental Build of configuration Debug for project ImagePreprocessor ****
+make all 
+make: Nothing to be done for 'all'.
+13:54:28 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+make all 
+make: Nothing to be done for 'all'.
+13:55:36 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+make all 
+Building file: ../main.cpp
+Invoking: Cross G++ Compiler
+g++ -I/usr/local/include/opencv -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.cpp"
+../main.cpp: In function ‘void applyDispMap(double, double, double)’:
+../main.cpp:277:8: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+  if (y > 0 & y < maxYSize-borderToCrop) {
+        ^
+../main.cpp: In function ‘void createMeshOfRect()’:
+../main.cpp:380:30: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    if ((x < maxYSize/2) | (x < (maxYSize/2+(maxXSize-maxYSize)) & x > (maxXSize-maxYSize))) {
+                              ^
+../main.cpp:391:16: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                ^
+../main.cpp:391:51: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                                                   ^
+../main.cpp:403:15: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if (x > (maxYSize) & x < (maxXSize-maxYSize)) {
+               ^
+../main.cpp:293:8: warning: unused variable ‘verZIncrement’ [-Wunused-variable]
+  float verZIncrement = 1.0f;//3.5f;//0.5f;//3.5f;
+        ^
+../main.cpp:310:8: warning: unused variable ‘initVerZUL’ [-Wunused-variable]
+  float initVerZUL = -4.50f+initalZ;
+        ^
+../main.cpp:311:8: warning: unused variable ‘initVerZUR’ [-Wunused-variable]
+  float initVerZUR = -4.50f+initalZ;//initVerZUL+verZIncrement;
+        ^
+../main.cpp:312:8: warning: unused variable ‘initVerZBL’ [-Wunused-variable]
+  float initVerZBL = -4.50f+initalZ;
+        ^
+../main.cpp:313:8: warning: unused variable ‘initVerZBR’ [-Wunused-variable]
+  float initVerZBR = -4.50f+initalZ;
+        ^
+Finished building: ../main.cpp
+ 
+Building target: DisplacementMapper
+Invoking: Cross G++ Linker
+g++ -L/usr/lib/x86_64-linux-gnu -L/usr/local/lib -o "DisplacementMapper"  ./imageloader.o ./main.o   -lGL -lopencv_core -lopencv_imgcodecs -lopencv_imgproc -lopencv_highgui -lGLU -lglut
+Finished building target: DisplacementMapper
+ 
+13:55:37 **** Incremental Build of configuration Debug for project ImagePreprocessor ****
+make all 
+make: Nothing to be done for 'all'.
+13:55:37 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+make all 
+make: Nothing to be done for 'all'.
+13:56:40 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+make all 
+Building file: ../main.cpp
+Invoking: Cross G++ Compiler
+g++ -I/usr/local/include/opencv -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.cpp"
+../main.cpp: In function ‘void extractAnchorPoint(cv::Mat, cv::String)’:
+../main.cpp:216:81: error: expected ‘;’ before string constant
+      cout<<"\n\nstart anchor found\t";cout<<anchorPointImage.at<Vec3b>(y,x);cout"\t";cout<<y;cout<<" ";cout<<x;cout<<"\n";
+                                                                                 ^
+../main.cpp:216:85: warning: statement has no effect [-Wunused-value]
+      cout<<"\n\nstart anchor found\t";cout<<anchorPointImage.at<Vec3b>(y,x);cout"\t";cout<<y;cout<<" ";cout<<x;cout<<"\n";
+                                                                                     ^
+../main.cpp:222:83: error: expected ‘;’ before string constant
+      cout<<"\n\nstart anchor 2 found\t";cout<<anchorPointImage.at<Vec3b>(y,x);cout"\t";cout<<y;cout<<" ";cout<<x;cout<<"\n";
+                                                                                   ^
+../main.cpp:222:87: warning: statement has no effect [-Wunused-value]
+      cout<<"\n\nstart anchor 2 found\t";cout<<anchorPointImage.at<Vec3b>(y,x);cout"\t";cout<<y;cout<<" ";cout<<x;cout<<"\n";
+                                                                                       ^
+../main.cpp: In function ‘void applyDispMap(double, double, double)’:
+../main.cpp:277:8: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+  if (y > 0 & y < maxYSize-borderToCrop) {
+        ^
+../main.cpp: In function ‘void createMeshOfRect()’:
+../main.cpp:380:30: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    if ((x < maxYSize/2) | (x < (maxYSize/2+(maxXSize-maxYSize)) & x > (maxXSize-maxYSize))) {
+                              ^
+../main.cpp:391:16: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                ^
+../main.cpp:391:51: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                                                   ^
+../main.cpp:403:15: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if (x > (maxYSize) & x < (maxXSize-maxYSize)) {
+               ^
+../main.cpp:293:8: warning: unused variable ‘verZIncrement’ [-Wunused-variable]
+  float verZIncrement = 1.0f;//3.5f;//0.5f;//3.5f;
+        ^
+../main.cpp:310:8: warning: unused variable ‘initVerZUL’ [-Wunused-variable]
+  float initVerZUL = -4.50f+initalZ;
+        ^
+../main.cpp:311:8: warning: unused variable ‘initVerZUR’ [-Wunused-variable]
+  float initVerZUR = -4.50f+initalZ;//initVerZUL+verZIncrement;
+        ^
+../main.cpp:312:8: warning: unused variable ‘initVerZBL’ [-Wunused-variable]
+  float initVerZBL = -4.50f+initalZ;
+        ^
+../main.cpp:313:8: warning: unused variable ‘initVerZBR’ [-Wunused-variable]
+  float initVerZBR = -4.50f+initalZ;
+        ^
+subdir.mk:21: recipe for target 'main.o' failed
+make: *** [main.o] Error 1
+13:56:41 **** Incremental Build of configuration Debug for project ImagePreprocessor ****
+make all 
+make: Nothing to be done for 'all'.
+13:57:09 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+make all 
+Building file: ../main.cpp
+Invoking: Cross G++ Compiler
+g++ -I/usr/local/include/opencv -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.cpp"
+../main.cpp: In function ‘void applyDispMap(double, double, double)’:
+../main.cpp:277:8: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+  if (y > 0 & y < maxYSize-borderToCrop) {
+        ^
+../main.cpp: In function ‘void createMeshOfRect()’:
+../main.cpp:380:30: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    if ((x < maxYSize/2) | (x < (maxYSize/2+(maxXSize-maxYSize)) & x > (maxXSize-maxYSize))) {
+                              ^
+../main.cpp:391:16: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                ^
+../main.cpp:391:51: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                                                   ^
+../main.cpp:403:15: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if (x > (maxYSize) & x < (maxXSize-maxYSize)) {
+               ^
+../main.cpp:293:8: warning: unused variable ‘verZIncrement’ [-Wunused-variable]
+  float verZIncrement = 1.0f;//3.5f;//0.5f;//3.5f;
+        ^
+../main.cpp:310:8: warning: unused variable ‘initVerZUL’ [-Wunused-variable]
+  float initVerZUL = -4.50f+initalZ;
+        ^
+../main.cpp:311:8: warning: unused variable ‘initVerZUR’ [-Wunused-variable]
+  float initVerZUR = -4.50f+initalZ;//initVerZUL+verZIncrement;
+        ^
+../main.cpp:312:8: warning: unused variable ‘initVerZBL’ [-Wunused-variable]
+  float initVerZBL = -4.50f+initalZ;
+        ^
+../main.cpp:313:8: warning: unused variable ‘initVerZBR’ [-Wunused-variable]
+  float initVerZBR = -4.50f+initalZ;
+        ^
+Finished building: ../main.cpp
+ 
+Building target: DisplacementMapper
+Invoking: Cross G++ Linker
+g++ -L/usr/lib/x86_64-linux-gnu -L/usr/local/lib -o "DisplacementMapper"  ./imageloader.o ./main.o   -lGL -lopencv_core -lopencv_imgcodecs -lopencv_imgproc -lopencv_highgui -lGLU -lglut
+Finished building target: DisplacementMapper
+ 
+13:57:10 **** Incremental Build of configuration Debug for project ImagePreprocessor ****
+make all 
+make: Nothing to be done for 'all'.
+13:57:11 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+make all 
+make: Nothing to be done for 'all'.
+13:59:48 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+make all 
+Building file: ../main.cpp
+Invoking: Cross G++ Compiler
+g++ -I/usr/local/include/opencv -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.cpp"
+../main.cpp: In function ‘void extractAnchorPoint(cv::Mat, cv::String)’:
+../main.cpp:228:68: error: expected ‘)’ before ‘{’ token
+     else if ((anchorPointPosition=="end") & (anchorFound1 == true) {
+                                                                    ^
+../main.cpp:232:4: error: expected primary-expression before ‘}’ token
+    }
+    ^
+../main.cpp: In function ‘void applyDispMap(double, double, double)’:
+../main.cpp:275:8: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+  if (y > 0 & y < maxYSize-borderToCrop) {
+        ^
+../main.cpp: In function ‘void createMeshOfRect()’:
+../main.cpp:378:30: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    if ((x < maxYSize/2) | (x < (maxYSize/2+(maxXSize-maxYSize)) & x > (maxXSize-maxYSize))) {
+                              ^
+../main.cpp:389:16: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                ^
+../main.cpp:389:51: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                                                   ^
+../main.cpp:401:15: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if (x > (maxYSize) & x < (maxXSize-maxYSize)) {
+               ^
+../main.cpp:291:8: warning: unused variable ‘verZIncrement’ [-Wunused-variable]
+  float verZIncrement = 1.0f;//3.5f;//0.5f;//3.5f;
+        ^
+../main.cpp:308:8: warning: unused variable ‘initVerZUL’ [-Wunused-variable]
+  float initVerZUL = -4.50f+initalZ;
+        ^
+../main.cpp:309:8: warning: unused variable ‘initVerZUR’ [-Wunused-variable]
+  float initVerZUR = -4.50f+initalZ;//initVerZUL+verZIncrement;
+        ^
+../main.cpp:310:8: warning: unused variable ‘initVerZBL’ [-Wunused-variable]
+  float initVerZBL = -4.50f+initalZ;
+        ^
+../main.cpp:311:8: warning: unused variable ‘initVerZBR’ [-Wunused-variable]
+  float initVerZBR = -4.50f+initalZ;
+        ^
+make: *** [main.o] Error 1
+subdir.mk:21: recipe for target 'main.o' failed
+13:59:49 **** Incremental Build of configuration Debug for project ImagePreprocessor ****
+make all 
+make: Nothing to be done for 'all'.
+13:59:55 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+make all 
+Building file: ../main.cpp
+Invoking: Cross G++ Compiler
+g++ -I/usr/local/include/opencv -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.cpp"
+../main.cpp: In function ‘void applyDispMap(double, double, double)’:
+../main.cpp:275:8: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+  if (y > 0 & y < maxYSize-borderToCrop) {
+        ^
+../main.cpp: In function ‘void createMeshOfRect()’:
+../main.cpp:378:30: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    if ((x < maxYSize/2) | (x < (maxYSize/2+(maxXSize-maxYSize)) & x > (maxXSize-maxYSize))) {
+                              ^
+../main.cpp:389:16: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                ^
+../main.cpp:389:51: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                                                   ^
+../main.cpp:401:15: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if (x > (maxYSize) & x < (maxXSize-maxYSize)) {
+               ^
+../main.cpp:291:8: warning: unused variable ‘verZIncrement’ [-Wunused-variable]
+  float verZIncrement = 1.0f;//3.5f;//0.5f;//3.5f;
+        ^
+../main.cpp:308:8: warning: unused variable ‘initVerZUL’ [-Wunused-variable]
+  float initVerZUL = -4.50f+initalZ;
+        ^
+../main.cpp:309:8: warning: unused variable ‘initVerZUR’ [-Wunused-variable]
+  float initVerZUR = -4.50f+initalZ;//initVerZUL+verZIncrement;
+        ^
+../main.cpp:310:8: warning: unused variable ‘initVerZBL’ [-Wunused-variable]
+  float initVerZBL = -4.50f+initalZ;
+        ^
+../main.cpp:311:8: warning: unused variable ‘initVerZBR’ [-Wunused-variable]
+  float initVerZBR = -4.50f+initalZ;
+        ^
+Finished building: ../main.cpp
+ 
+Building target: DisplacementMapper
+Invoking: Cross G++ Linker
+g++ -L/usr/lib/x86_64-linux-gnu -L/usr/local/lib -o "DisplacementMapper"  ./imageloader.o ./main.o   -lGL -lopencv_core -lopencv_imgcodecs -lopencv_imgproc -lopencv_highgui -lGLU -lglut
+Finished building target: DisplacementMapper
+ 
+13:59:56 **** Incremental Build of configuration Debug for project ImagePreprocessor ****
+make all 
+make: Nothing to be done for 'all'.
+13:59:57 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+make all 
+make: Nothing to be done for 'all'.
+14:00:10 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+make all 
+Building file: ../main.cpp
+Invoking: Cross G++ Compiler
+g++ -I/usr/local/include/opencv -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.cpp"
+../main.cpp: In function ‘void applyDispMap(double, double, double)’:
+../main.cpp:275:8: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+  if (y > 0 & y < maxYSize-borderToCrop) {
+        ^
+../main.cpp: In function ‘void createMeshOfRect()’:
+../main.cpp:378:30: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    if ((x < maxYSize/2) | (x < (maxYSize/2+(maxXSize-maxYSize)) & x > (maxXSize-maxYSize))) {
+                              ^
+../main.cpp:389:16: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                ^
+../main.cpp:389:51: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
+                                                   ^
+../main.cpp:401:15: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
+    else if (x > (maxYSize) & x < (maxXSize-maxYSize)) {
+               ^
+../main.cpp:291:8: warning: unused variable ‘verZIncrement’ [-Wunused-variable]
+  float verZIncrement = 1.0f;//3.5f;//0.5f;//3.5f;
+        ^
+../main.cpp:308:8: warning: unused variable ‘initVerZUL’ [-Wunused-variable]
+  float initVerZUL = -4.50f+initalZ;
+        ^
+../main.cpp:309:8: warning: unused variable ‘initVerZUR’ [-Wunused-variable]
+  float initVerZUR = -4.50f+initalZ;//initVerZUL+verZIncrement;
+        ^
+../main.cpp:310:8: warning: unused variable ‘initVerZBL’ [-Wunused-variable]
+  float initVerZBL = -4.50f+initalZ;
+        ^
+../main.cpp:311:8: warning: unused variable ‘initVerZBR’ [-Wunused-variable]
+  float initVerZBR = -4.50f+initalZ;
+        ^
+Finished building: ../main.cpp
+ 
+Building target: DisplacementMapper
+Invoking: Cross G++ Linker
+g++ -L/usr/lib/x86_64-linux-gnu -L/usr/local/lib -o "DisplacementMapper"  ./imageloader.o ./main.o   -lGL -lopencv_core -lopencv_imgcodecs -lopencv_imgproc -lopencv_highgui -lGLU -lglut
+Finished building target: DisplacementMapper
+ 
+14:00:10 **** Incremental Build of configuration Debug for project ImagePreprocessor ****
+make all 
+make: Nothing to be done for 'all'.

@@ -197,7 +197,7 @@ void initWeights() {
 }
 
 void extractAnchorPoint(Mat anchorPointImage, String anchorPointPosition) {
-	//cout<<"search started\n";
+	cout<<"search started\n";
 	// Find anchor points.  Search for pixels that are red B,G,R for OpenGL (1,1,255)
 	bool anchorFound1 = false;
 	for(int y=0;y<anchorPointImage.rows;y++)
