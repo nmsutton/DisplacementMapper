@@ -84,10 +84,12 @@ double animationDelay = 50.0;
 struct vertsAndTextures { double ULVerInst[3]; double URVerInst[3]; double BLVerInst[3]; double BRVerInst[3];
 double ULTexInst[2]; double URTexInst[2]; double BLTexInst[2]; double BRTexInst[2];};
 vertsAndTextures vAT3;
-int startingDispMapAnchorPoint1[2] = {0,0};
-int startingDispMapAnchorPoint2[2] = {0,0};
-int endingDispMapAnchorPoint1[2] = {0,0};
-int endingDispMapAnchorPoint2[2] = {0,0};
+double startingDispMapAnchorPoint1[2] = {0,0};
+double startingDispMapAnchorPoint2[2] = {0,0};
+double endingDispMapAnchorPoint1[2] = {0,0};
+double endingDispMapAnchorPoint2[2] = {0,0};
+double imageYPixels = 256;
+double imageXPixels = 512;
 
 //Makes the image into a texture, and returns the id of the texture
 GLuint loadTexture(Image* image) {
@@ -258,9 +260,15 @@ void applyDispMap(double maxXSize, double maxYSize, double borderToCrop) {
 
 
 	// Wv(s + 1) = Wv(s) + Θ(u, v, s) α(s)(D(t) - Wv(s))
+
+	double range = 20;
 	if (x < (maxXSize-borderToCrop)) {
 		// weights are applied as (oldPositionPercentage+newPositionPercentage)/oldPosition and then multiplied by oldPosition to change it
-		weightsBR[y][x] = (((startingVerZLevels[y][x]*depthScalingFactor)*(1.0-((1.0/animationDelay)*timeInMs))) + ((endingVerZLevels[y][x]*depthScalingFactor)*((1.0/animationDelay)*timeInMs)))/(startingVerZLevels[y][x]*depthScalingFactor);
+		if ((abs((((double)x/(double)xAmount) * imageXPixels) - endingDispMapAnchorPoint1[1]) <= range) & (abs((((double)y/(double)yAmount) * imageYPixels) - endingDispMapAnchorPoint1[0]) <= range)) {
+			cout<<"end\t";cout<<endingDispMapAnchorPoint1[0];cout<<" ((x/xAmount) * imageXPixels) ";cout<<((x/xAmount) * imageXPixels);cout<<"\n";//y 141 x 400
+		//if (true) {
+			weightsBR[y][x] = (((startingVerZLevels[y][x]*depthScalingFactor)*(1.0-((1.0/animationDelay)*timeInMs))) + ((endingVerZLevels[y][x]*depthScalingFactor)*((1.0/animationDelay)*timeInMs)))/(startingVerZLevels[y][x]*depthScalingFactor);
+		}
 		vAT3.BRVerInst[2] = (startingVerZLevels[y][x]*depthScalingFactor)*weightsBR[y][x];
 		///cout<<"weightsBR[5][5]\t";cout<<weightsBR[5][5];cout<<"\n";
 		//cout<<"weightsBR[y][x]\t";cout<<weightsBR[y][x];cout<<"\ty x: ";cout<<y;cout<<" ";cout<<x;cout<<"\n";
@@ -268,17 +276,26 @@ void applyDispMap(double maxXSize, double maxYSize, double borderToCrop) {
 		//cout<<"timeInMs:\t";cout<<timeInMs;cout<<"\t(1-(1/50*timeInMs))\t";cout<<(double)(1.0-((1.0/50.0)*timeInMs));cout << "\tvAT3.BRVerInst[2]:\t";cout<<vAT3.BRVerInst[2];cout<<"\n";
 	}
 	if ((x > 0) & (x < (maxXSize-borderToCrop))) {
-		weightsBL[y][x+1] = (((startingVerZLevels[y][x+1]*depthScalingFactor)*(1.0-((1.0/animationDelay)*timeInMs))) + ((endingVerZLevels[y][x+1]*depthScalingFactor)*((1.0/animationDelay)*timeInMs)))/(startingVerZLevels[y][x+1]*depthScalingFactor);
+		if ((abs((((double)x/(double)xAmount) * imageXPixels) - endingDispMapAnchorPoint1[1]) <= range) & (abs((((double)y/(double)yAmount) * imageYPixels) - endingDispMapAnchorPoint1[0]) <= range)) {
+		//if (true) {
+			weightsBL[y][x+1] = (((startingVerZLevels[y][x+1]*depthScalingFactor)*(1.0-((1.0/animationDelay)*timeInMs))) + ((endingVerZLevels[y][x+1]*depthScalingFactor)*((1.0/animationDelay)*timeInMs)))/(startingVerZLevels[y][x+1]*depthScalingFactor);
+		}
 		vAT3.BLVerInst[2] = (startingVerZLevels[y][x+1]*depthScalingFactor)*weightsBL[y][x+1];
 		//((startingVerZLevels[y][x+1]*depthScalingFactor)*(1.0-((1.0/animationDelay)*timeInMs))) + ((endingVerZLevels[y][x+1]*depthScalingFactor)*((1.0/animationDelay)*timeInMs));//verZLevels[y][x+1] = meshVec_0_0;
 	}
 	if (y > 0 & y < maxYSize-borderToCrop) {
-		weightsUL[y+1][x] = (((startingVerZLevels[y+1][x]*depthScalingFactor)*(1.0-((1.0/animationDelay)*timeInMs))) + ((endingVerZLevels[y+1][x]*depthScalingFactor)*((1.0/animationDelay)*timeInMs)))/(startingVerZLevels[y+1][x]*depthScalingFactor);
+		if ((abs((((double)x/(double)xAmount) * imageXPixels) - endingDispMapAnchorPoint1[1]) <= range) & (abs((((double)y/(double)yAmount) * imageYPixels) - endingDispMapAnchorPoint1[0]) <= range)) {
+		//if (true) {
+			weightsUL[y+1][x] = (((startingVerZLevels[y+1][x]*depthScalingFactor)*(1.0-((1.0/animationDelay)*timeInMs))) + ((endingVerZLevels[y+1][x]*depthScalingFactor)*((1.0/animationDelay)*timeInMs)))/(startingVerZLevels[y+1][x]*depthScalingFactor);
+		}
 		vAT3.ULVerInst[2] = (startingVerZLevels[y+1][x]*depthScalingFactor)*weightsUL[y+1][x];
 		//((startingVerZLevels[y+1][x]*depthScalingFactor)*(1.0-((1.0/animationDelay)*timeInMs))) + ((endingVerZLevels[y+1][x]*depthScalingFactor)*((1.0/animationDelay)*timeInMs));// = meshVec_0_0;
 	}
 	if ((y < maxYSize-borderToCrop) & (x < (maxXSize-borderToCrop))) {
-		weightsUR[y+1][x+1] = (((startingVerZLevels[y+1][x+1]*depthScalingFactor)*(1.0-((1.0/animationDelay)*timeInMs))) + ((endingVerZLevels[y+1][x+1]*depthScalingFactor)*((1.0/animationDelay)*timeInMs)))/(startingVerZLevels[y+1][x+1]*depthScalingFactor);
+		if ((abs((((double)x/(double)xAmount) * imageXPixels) - endingDispMapAnchorPoint1[1]) <= range) & (abs((((double)y/(double)yAmount) * imageYPixels) - endingDispMapAnchorPoint1[0]) <= range)) {
+		//if (true) {
+			weightsUR[y+1][x+1] = (((startingVerZLevels[y+1][x+1]*depthScalingFactor)*(1.0-((1.0/animationDelay)*timeInMs))) + ((endingVerZLevels[y+1][x+1]*depthScalingFactor)*((1.0/animationDelay)*timeInMs)))/(startingVerZLevels[y+1][x+1]*depthScalingFactor);
+		}
 		vAT3.URVerInst[2] = (startingVerZLevels[y+1][x+1]*depthScalingFactor)*weightsUR[y+1][x+1];
 		//((startingVerZLevels[y+1][x+1]*depthScalingFactor)*(1.0-((1.0/animationDelay)*timeInMs))) + ((endingVerZLevels[y+1][x+1]*depthScalingFactor)*((1.0/animationDelay)*timeInMs));// = meshVec_0_0;
 	}
