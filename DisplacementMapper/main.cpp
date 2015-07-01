@@ -49,8 +49,28 @@ void handleKeypress(unsigned char key, int x, int y) {
 }
 String image1 = "/home/nmsutton/Documents/Software/OpenGL/Media/GeneralProcessed90.bmp";
 String image2 = "/home/nmsutton/Documents/Software/OpenGL/Media/GeneralProcessed90UpSft.bmp";
-String imageName6 = image2;
-Mat dispMapImage;
+String startingDispMapImage = image1;
+String endingDispMapImage = image2;
+Mat startingDispMap;
+Mat endingDispMap;
+double timeInMs = 0;
+
+const int incrementValue = 1;
+
+// *2 is due to 2 rectangle verticies for each x and y axis used for the later Z level mapping.
+double verticiesInRectangle = 2;
+const double sizeOfMesh = 10;//6;//50;
+double sizeOfMesh2 = sizeOfMesh*2;
+double texYScaling = 2*.9;
+double texXScaling = 1.5*.9;
+int x = 0, y = 0;
+const double expandMeshSize = 2.0;//2.5;
+float initalZ = 40.0f;
+double depthScalingFactor = .7;//.025;//.3;//0.1;
+const int xAmount = ceil(sizeOfMesh*expandMeshSize*(1/incrementValue))*2, yAmount = ceil(sizeOfMesh*(1/incrementValue))*2;
+double startingVerZLevels[yAmount][xAmount] = {0};
+double endingVerZLevels[yAmount][xAmount] = {0};
+double animationDelay = 50.0;
 
 //Makes the image into a texture, and returns the id of the texture
 GLuint loadTexture(Image* image) {
@@ -108,6 +128,48 @@ void createMesh(vertsAndTextures vAT) {
 	glVertex3f(vAT.BRVerInst[0],vAT.BRVerInst[1],vAT.BRVerInst[2]);
 }
 
+void buildDispMap(Mat startingDispMap, string startingOrEndPoint) {
+	double verZLevels[yAmount][xAmount] = {0};
+	for (int y = 0; y < yAmount; y += 2) {
+		for (int x = 0; x < xAmount; x += 2) {
+			double imageToScenePixelDiff = (255/(double)sizeOfMesh)*(1/verticiesInRectangle);
+			//double translatedX = x * imageToScenePixelDiff; double translatedY = y * imageToScenePixelDiff;
+			double translatedX = ceil(x * imageToScenePixelDiff); double translatedY = ceil(y * imageToScenePixelDiff);
+			////cout << "translatedX\t";cout<<translatedX;cout<<"\ttranslatedY\t";cout<<translatedY;cout<<"\n";
+			//double nextTranslatedX = (x+incrementValue) * imageToScenePixelDiff; double nextTranslatedY = (y+incrementValue) * imageToScenePixelDiff;
+			//double priorTranslatedX = (x-incrementValue) * imageToScenePixelDiff; double priorTranslatedY = (y-incrementValue) * imageToScenePixelDiff;
+			double meshVec_0_0_b = startingDispMap.at<Vec3b>((int)translatedY,(int)translatedX).val[0];
+			//meshVec_0_0_b = meshVec_0_0_b/3;
+			meshVec_0_0_b = meshVec_0_0_b/4;
+
+			//cout<<"\ny: ";cout<<y;cout<<" x: ";cout<<x;cout<<"\n";
+
+			////cout<<"[y+1][x+1]\t";cout<<x+1;cout<<" ";cout<<y+1;cout<<" ";cout<<" meshVec_0_0 ";cout<<meshVec_0_0_b;cout<<"\n";
+			if (x < xAmount) {
+				verZLevels[y][x] = meshVec_0_0_b;
+			}
+			if (x > 0) {
+				verZLevels[y][x+1] = meshVec_0_0_b;
+			}
+			if ((y < yAmount) & (x < xAmount)) {
+				verZLevels[y+1][x+1] = meshVec_0_0_b;
+			}
+			if (y > 0) {
+				verZLevels[y+1][x] = meshVec_0_0_b;
+			}
+		}
+	}
+
+	if (startingOrEndPoint == "start") {
+		//startingVerZLevels = verZLevels;
+		copy(verZLevels[0], verZLevels[yAmount], startingVerZLevels[0]);
+	}
+	else if (startingOrEndPoint == "end") {
+		//endingVerZLevels = verZLevels;
+		copy(verZLevels[0], verZLevels[yAmount], endingVerZLevels[0]);
+	};
+}
+
 void drawScene() {
 	/*double grayLevel = 0;
 	double priorAdjustedGrayLevel = 0;
@@ -122,7 +184,18 @@ void drawScene() {
 	double meshVec_1_0 = 0;
 	double meshVec_1_1 = 0;
 
-	dispMapImage = imread(imageName6, CV_LOAD_IMAGE_COLOR);
+	double endingMeshVec_neg1_neg1 = 0;
+	double endingMeshVec_neg1_0 = 0;
+	double endingMeshVec_neg1_1 = 0;
+	double endingMeshVec_0_neg1 = 0;
+	double endingMeshVec_0_0 = 0;
+	double endingMeshVec_0_1 = 0;
+	double endingMeshVec_1_neg1 = 0;
+	double endingMeshVec_1_0 = 0;
+	double endingMeshVec_1_1 = 0;
+
+	startingDispMap = imread(startingDispMapImage, CV_LOAD_IMAGE_COLOR);
+	endingDispMap = imread(endingDispMapImage, CV_LOAD_IMAGE_COLOR);
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -160,18 +233,6 @@ void drawScene() {
 	//glFrustum(-10, 0, 0, 10, -200000, 200000000);
 
 	vertsAndTextures vAT3;
-
-	//double sizeScalingFactor = 5;
-	double sizeOfMesh = 10;//6;//50;
-	//sizeOfMesh = sizeOfMesh/sizeScalingFactor;
-	double sizeOfMesh2 = sizeOfMesh*2;
-	double texYScaling = 2*.9;
-	double texXScaling = 1.5*.9;
-	//double x = 0, y = 0;
-	int x = 0, y = 0;
-	double expandMeshSize = 2.0;//2.5;
-	float initalZ = 40.0f;
-	double depthScalingFactor = .7;//.025;//.3;//0.1;
 
 	float verXIncrement = 1.5f;//0.5f;//1.5f;
 	float verYIncrement = 1.5f;//2.0f;//0.5f;//2.0f;
@@ -221,42 +282,10 @@ void drawScene() {
 	vAT3.BRTexInst[0] = initTexXBR;
 	vAT3.BRTexInst[1] = initTexYBR;
 
-	//double incrementValue = 0.5;
-	int incrementValue = 1;
+	// Build displacement map.
+	buildDispMap(startingDispMap, "start");
+	buildDispMap(endingDispMap, "end");
 
-	// Build displacement map.  *2 is due to 2 rectangle verticies for each x and y axis used for the later Z level mapping.
-	double verticiesInRectangle = 2;
-	int xAmount = ceil(sizeOfMesh*expandMeshSize*(1/incrementValue))*2, yAmount = ceil(sizeOfMesh*(1/incrementValue))*2;
-	double verZLevels[yAmount][xAmount] = {0};
-	for (int y = 0; y < yAmount; y += 2) {
-		for (x = 0; x < xAmount; x += 2) {
-			double imageToScenePixelDiff = (255/(double)sizeOfMesh)*(1/verticiesInRectangle);
-			//double translatedX = x * imageToScenePixelDiff; double translatedY = y * imageToScenePixelDiff;
-			double translatedX = ceil(x * imageToScenePixelDiff); double translatedY = ceil(y * imageToScenePixelDiff);
-			////cout << "translatedX\t";cout<<translatedX;cout<<"\ttranslatedY\t";cout<<translatedY;cout<<"\n";
-			//double nextTranslatedX = (x+incrementValue) * imageToScenePixelDiff; double nextTranslatedY = (y+incrementValue) * imageToScenePixelDiff;
-			//double priorTranslatedX = (x-incrementValue) * imageToScenePixelDiff; double priorTranslatedY = (y-incrementValue) * imageToScenePixelDiff;
-			double meshVec_0_0_b = dispMapImage.at<Vec3b>((int)translatedY,(int)translatedX).val[0];
-			//meshVec_0_0_b = meshVec_0_0_b/3;
-			meshVec_0_0_b = meshVec_0_0_b/4;
-
-			//cout<<"\ny: ";cout<<y;cout<<" x: ";cout<<x;cout<<"\n";
-
-			////cout<<"[y+1][x+1]\t";cout<<x+1;cout<<" ";cout<<y+1;cout<<" ";cout<<" meshVec_0_0 ";cout<<meshVec_0_0_b;cout<<"\n";
-			if (x < xAmount) {
-				verZLevels[y][x] = meshVec_0_0_b;
-			}
-			if (x > 0) {
-				verZLevels[y][x+1] = meshVec_0_0_b;
-			}
-			if ((y < yAmount) & (x < xAmount)) {
-				verZLevels[y+1][x+1] = meshVec_0_0_b;
-			}
-			if (y > 0) {
-				verZLevels[y+1][x] = meshVec_0_0_b;
-			}
-		}
-	}
 	//cout << "yAmount\t";cout << yAmount;
 	//cout<<"\txAmount\t";cout<<xAmount;
 	//cout<<"\n";
@@ -394,29 +423,20 @@ void drawScene() {
 			// Avoid edge problems
 			double tempVal = 0;
 
-			meshVec_neg1_neg1 = dispMapImage.at<Vec3b>(priorTranslatedY,priorTranslatedX).val[0];
-			meshVec_neg1_0 = dispMapImage.at<Vec3b>(priorTranslatedY,translatedX).val[0];
-			meshVec_neg1_1 = dispMapImage.at<Vec3b>(priorTranslatedY,nextTranslatedX).val[0];
-			meshVec_0_neg1 = dispMapImage.at<Vec3b>(translatedY,priorTranslatedX).val[0];
-			meshVec_0_0 = dispMapImage.at<Vec3b>(translatedY,translatedX).val[0];
-			meshVec_0_1 = dispMapImage.at<Vec3b>(translatedY,nextTranslatedX).val[0];
-			meshVec_1_neg1 = dispMapImage.at<Vec3b>(nextTranslatedY,priorTranslatedX).val[0];
-			meshVec_1_0 = dispMapImage.at<Vec3b>(nextTranslatedY,translatedX).val[0];
-			meshVec_1_1 = dispMapImage.at<Vec3b>(nextTranslatedY,nextTranslatedX).val[0];
-
 			int x2 = x, y2 = y;
 			double borderToCrop = 1;
 			if (x2 < (maxXSize-borderToCrop)) {
-				vAT3.BRVerInst[2] = verZLevels[y2][x2]*depthScalingFactor;//verZLevels[y2][x2] = meshVec_0_0;
+				vAT3.BRVerInst[2] = ((startingVerZLevels[y2][x2]*depthScalingFactor)*(1.0-((1.0/animationDelay)*timeInMs))) + ((endingVerZLevels[y2][x2]*depthScalingFactor)*((1.0/animationDelay)*timeInMs));//verZLevels[y2][x2] = meshVec_0_0;
+				cout<<"timeInMs:\t";cout<<timeInMs;cout<<"\t(1-(1/50*timeInMs))\t";cout<<(double)(1.0-((1.0/50.0)*timeInMs));cout << "\tvAT3.BRVerInst[2]:\t";cout<<vAT3.BRVerInst[2];cout<<"\n";
 			}
 			if ((x2 > 0) & (x2 < (maxXSize-borderToCrop))) {
-				vAT3.BLVerInst[2] = verZLevels[y2][x2+1]*depthScalingFactor;//verZLevels[y2][x2+1] = meshVec_0_0;
+				vAT3.BLVerInst[2] = ((startingVerZLevels[y2][x2+1]*depthScalingFactor)*(1.0-((1.0/animationDelay)*timeInMs))) + ((endingVerZLevels[y2][x2+1]*depthScalingFactor)*((1.0/animationDelay)*timeInMs));//verZLevels[y2][x2+1] = meshVec_0_0;
 			}
 			if (y2 > 0 & y2 < maxYSize-borderToCrop) {
-				vAT3.ULVerInst[2] = verZLevels[y2+1][x2]*depthScalingFactor;// = meshVec_0_0;
+				vAT3.ULVerInst[2] = ((startingVerZLevels[y2+1][x2]*depthScalingFactor)*(1.0-((1.0/animationDelay)*timeInMs))) + ((endingVerZLevels[y2+1][x2]*depthScalingFactor)*((1.0/animationDelay)*timeInMs));// = meshVec_0_0;
 			}
 			if ((y2 < maxYSize-borderToCrop) & (x2 < (maxXSize-borderToCrop))) {
-				vAT3.URVerInst[2] = verZLevels[y2+1][x2+1]*depthScalingFactor;// = meshVec_0_0;
+				vAT3.URVerInst[2] = ((startingVerZLevels[y2+1][x2+1]*depthScalingFactor)*(1.0-((1.0/animationDelay)*timeInMs))) + ((endingVerZLevels[y2+1][x2+1]*depthScalingFactor)*((1.0/animationDelay)*timeInMs));// = meshVec_0_0;
 			}
 
 			createMesh(vAT3);
@@ -429,27 +449,27 @@ void drawScene() {
 }
 
 //Called every 25 milliseconds
-double timeInMs = 0;
 void update(int value) {
 	timeInMs += 1.0;
 	/*_angle += 1.0f;//0.1f;//0.330f;
 	if (_angle > 50) {
 		_angle -= 100;
 	}*/
-	if (timeInMs == 25) {
-		if (imageName6 == image1) {
-			imageName6 = image2;
+	if (timeInMs == animationDelay) {//25) {
+		if (startingDispMapImage == image1) {
+			startingDispMapImage = image2;
 			//cout << "switched\n";
 		}
-		else if (imageName6 == image2) {
-			imageName6 = image1;
+		else if (startingDispMapImage == image2) {
+			startingDispMapImage = image1;
 			//cout << "switched back\n";
 		}
 		timeInMs = 0;
 	}
-	//cout<<timeInMs;cout<<"\n";
+	cout<<timeInMs;cout<<"\n";
 	glutPostRedisplay();
-	glutTimerFunc(25, update, 0);
+	//glutTimerFunc(25, update, 0);
+	glutTimerFunc(animationDelay, update, 0);
 }
 
 int main(int argc, char** argv) {
@@ -464,7 +484,8 @@ int main(int argc, char** argv) {
 	glutKeyboardFunc(handleKeypress);
 	glutReshapeFunc(handleResize);
 	_angle = -45.330f;//25.330f;
-	glutTimerFunc(25, update, 0);
+	//glutTimerFunc(25, update, 0);
+	glutTimerFunc(animationDelay, update, 0);
 
 	glutMainLoop();
 	return 0;
