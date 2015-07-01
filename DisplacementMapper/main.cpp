@@ -47,13 +47,14 @@ void handleKeypress(unsigned char key, int x, int y) {
 		exit(0);
 	}
 }
-
-String imageName6 = "/home/nmsutton/Documents/Software/OpenGL/Media/GeneralProcessed90.bmp";
+String image1 = "/home/nmsutton/Documents/Software/OpenGL/Media/GeneralProcessed90.bmp";
+String image2 = "/home/nmsutton/Documents/Software/OpenGL/Media/GeneralProcessed90UpSft.bmp";
+String imageName6 = image2;
 Mat dispMapImage;
 
 //Makes the image into a texture, and returns the id of the texture
 GLuint loadTexture(Image* image) {
-	dispMapImage = imread(imageName6, CV_LOAD_IMAGE_COLOR);
+	//dispMapImage = imread(imageName6, CV_LOAD_IMAGE_COLOR);
 
 	GLuint textureId;
 	glGenTextures(1, &textureId); //Make room for our texture
@@ -120,6 +121,8 @@ void drawScene() {
 	double meshVec_1_neg1 = 0;
 	double meshVec_1_0 = 0;
 	double meshVec_1_1 = 0;
+
+	dispMapImage = imread(imageName6, CV_LOAD_IMAGE_COLOR);
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -426,11 +429,25 @@ void drawScene() {
 }
 
 //Called every 25 milliseconds
+double timeInMs = 0;
 void update(int value) {
-	_angle += 1.0f;//0.1f;//0.330f;
+	timeInMs += 1.0;
+	/*_angle += 1.0f;//0.1f;//0.330f;
 	if (_angle > 50) {
 		_angle -= 100;
+	}*/
+	if (timeInMs == 25) {
+		if (imageName6 == image1) {
+			imageName6 = image2;
+			//cout << "switched\n";
+		}
+		else if (imageName6 == image2) {
+			imageName6 = image1;
+			//cout << "switched back\n";
+		}
+		timeInMs = 0;
 	}
+	//cout<<timeInMs;cout<<"\n";
 	glutPostRedisplay();
 	glutTimerFunc(25, update, 0);
 }
