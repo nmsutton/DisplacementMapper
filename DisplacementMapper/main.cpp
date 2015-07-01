@@ -49,8 +49,8 @@ void handleKeypress(unsigned char key, int x, int y) {
 }
 String image1 = "/home/nmsutton/Documents/Software/OpenGL/Media/GeneralProcessed90.bmp";
 String image2 = "/home/nmsutton/Documents/Software/OpenGL/Media/GeneralProcessed90UpSft.bmp";
-String startingDispMapImage = image1;
-String endingDispMapImage = image2;
+String startingDispMapImage = image2;
+String endingDispMapImage = image1;
 Mat startingDispMap;
 Mat endingDispMap;
 double timeInMs = 0;
@@ -60,17 +60,24 @@ const int incrementValue = 1;
 // *2 is due to 2 rectangle verticies for each x and y axis used for the later Z level mapping.
 double verticiesInRectangle = 2;
 const double sizeOfMesh = 10;//6;//50;
+int scalingF = 2;
+const double expandMeshSize = 2.0;//2.5;
+double maxYSize = sizeOfMesh*scalingF;
+double maxXSize = (sizeOfMesh*expandMeshSize*scalingF);
+int incrementValue2 = 1;
 double sizeOfMesh2 = sizeOfMesh*2;
 double texYScaling = 2*.9;
 double texXScaling = 1.5*.9;
 int x = 0, y = 0;
-const double expandMeshSize = 2.0;//2.5;
 float initalZ = 40.0f;
 double depthScalingFactor = .7;//.025;//.3;//0.1;
 const int xAmount = ceil(sizeOfMesh*expandMeshSize*(1/incrementValue))*2, yAmount = ceil(sizeOfMesh*(1/incrementValue))*2;
 double startingVerZLevels[yAmount][xAmount] = {0};
 double endingVerZLevels[yAmount][xAmount] = {0};
 double animationDelay = 50.0;
+struct vertsAndTextures { double ULVerInst[3]; double URVerInst[3]; double BLVerInst[3]; double BRVerInst[3];
+double ULTexInst[2]; double URTexInst[2]; double BLTexInst[2]; double BRTexInst[2];};
+vertsAndTextures vAT3;
 
 //Makes the image into a texture, and returns the id of the texture
 GLuint loadTexture(Image* image) {
@@ -113,9 +120,6 @@ void handleResize(int w, int h) {
 	glLoadIdentity();
 	gluPerspective(45.0, (float)w / (float)h, 1.0, 200.0);
 }
-
-struct vertsAndTextures { float ULVerInst[3]; float URVerInst[3]; float BLVerInst[3]; float BRVerInst[3];
-float ULTexInst[2]; float URTexInst[2]; float BLTexInst[2]; float BRTexInst[2];};
 
 void createMesh(vertsAndTextures vAT) {
 	glTexCoord2f(vAT.ULTexInst[0], vAT.ULTexInst[1]);
@@ -170,69 +174,61 @@ void buildDispMap(Mat startingDispMap, string startingOrEndPoint) {
 	};
 }
 
-void drawScene() {
-	/*double grayLevel = 0;
-	double priorAdjustedGrayLevel = 0;
-	double nextGrayLevel = 0;*/
-	double meshVec_neg1_neg1 = 0;
-	double meshVec_neg1_0 = 0;
-	double meshVec_neg1_1 = 0;
-	double meshVec_0_neg1 = 0;
-	double meshVec_0_0 = 0;
-	double meshVec_0_1 = 0;
-	double meshVec_1_neg1 = 0;
-	double meshVec_1_0 = 0;
-	double meshVec_1_1 = 0;
+double weightsBR[yAmount][xAmount] = {1};
+double weightsBL[yAmount][xAmount] = {1};
+double weightsUL[yAmount][xAmount] = {1};
+double weightsUR[yAmount][xAmount] = {1};
 
-	double endingMeshVec_neg1_neg1 = 0;
-	double endingMeshVec_neg1_0 = 0;
-	double endingMeshVec_neg1_1 = 0;
-	double endingMeshVec_0_neg1 = 0;
-	double endingMeshVec_0_0 = 0;
-	double endingMeshVec_0_1 = 0;
-	double endingMeshVec_1_neg1 = 0;
-	double endingMeshVec_1_0 = 0;
-	double endingMeshVec_1_1 = 0;
+void initWeights() {
+	for (int weightY = 0;weightY < yAmount;weightY++) {fill_n(weightsBR[weightY], xAmount, 1.0);};
+	for (int weightY = 0;weightY < yAmount;weightY++) {fill_n(weightsBL[weightY], xAmount, 1.0);};
+	for (int weightY = 0;weightY < yAmount;weightY++) {fill_n(weightsUL[weightY], xAmount, 1.0);};
+	for (int weightY = 0;weightY < yAmount;weightY++) {fill_n(weightsUR[weightY], xAmount, 1.0);};
+}
 
-	startingDispMap = imread(startingDispMapImage, CV_LOAD_IMAGE_COLOR);
-	endingDispMap = imread(endingDispMapImage, CV_LOAD_IMAGE_COLOR);
+void applyDispMap(double maxXSize, double maxYSize, double borderToCrop) {
+	// Use self organizing maps to apply disp map movement transition
 
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	/*s is the current iteration
+	lambda is the iteration limit
+	t is the index of the target input data vector in the input data set \mathbf{D}
+	D(t) is a target input data vector
+	v is the index of the node in the map
+	\mathbf{W_v} is the current weight vector of node v
+	u is the index of the best matching unit (BMU) in the map
+	\Theta (u, v, s) is a restraint due to distance from BMU, usually called the neighborhood function, and
+	\alpha (s) is a learning restraint due to iteration progress.*/
 
-	glMatrixMode(GL_MODELVIEW);
-	glLoadIdentity();
 
-	// camera position mapper
-	//glTranslatef(-30.0f, 1.0f, -60.0f);//-150.0f);
-	glTranslatef(-25.0f, 11.0f, -90.0f);//-150.0f);
 
-	//GLfloat ambientLight[] = {0.2f, 0.2f, 0.2f, 1.0f};
-	GLfloat ambientLight[] = {200.2f, 200.2f, 200.2f, 1.0f};
-	glLightModelfv(GL_LIGHT_MODEL_AMBIENT, ambientLight);
+	// Wv(s + 1) = Wv(s) + Θ(u, v, s) α(s)(D(t) - Wv(s))
+	if (x < (maxXSize-borderToCrop)) {
+		// weights are applied as (oldPositionPercentage+newPositionPercentage)/oldPosition and then multiplied by oldPosition to change it
+		weightsBR[y][x] = (((startingVerZLevels[y][x]*depthScalingFactor)*(1.0-((1.0/animationDelay)*timeInMs))) + ((endingVerZLevels[y][x]*depthScalingFactor)*((1.0/animationDelay)*timeInMs)))/(startingVerZLevels[y][x]*depthScalingFactor);
+		vAT3.BRVerInst[2] = (startingVerZLevels[y][x]*depthScalingFactor)*weightsBR[y][x];
+		///cout<<"weightsBR[5][5]\t";cout<<weightsBR[5][5];cout<<"\n";
+		//cout<<"weightsBR[y][x]\t";cout<<weightsBR[y][x];cout<<"\ty x: ";cout<<y;cout<<" ";cout<<x;cout<<"\n";
+		//((startingVerZLevels[y][x]*depthScalingFactor)*(1.0-((1.0/animationDelay)*timeInMs))) + ((endingVerZLevels[y][x]*depthScalingFactor)*((1.0/animationDelay)*timeInMs));//verZLevels[y][x] = meshVec_0_0;
+		//cout<<"timeInMs:\t";cout<<timeInMs;cout<<"\t(1-(1/50*timeInMs))\t";cout<<(double)(1.0-((1.0/50.0)*timeInMs));cout << "\tvAT3.BRVerInst[2]:\t";cout<<vAT3.BRVerInst[2];cout<<"\n";
+	}
+	if ((x > 0) & (x < (maxXSize-borderToCrop))) {
+		weightsBL[y][x+1] = (((startingVerZLevels[y][x+1]*depthScalingFactor)*(1.0-((1.0/animationDelay)*timeInMs))) + ((endingVerZLevels[y][x+1]*depthScalingFactor)*((1.0/animationDelay)*timeInMs)))/(startingVerZLevels[y][x+1]*depthScalingFactor);
+		vAT3.BLVerInst[2] = (startingVerZLevels[y][x+1]*depthScalingFactor)*weightsBL[y][x+1];
+		//((startingVerZLevels[y][x+1]*depthScalingFactor)*(1.0-((1.0/animationDelay)*timeInMs))) + ((endingVerZLevels[y][x+1]*depthScalingFactor)*((1.0/animationDelay)*timeInMs));//verZLevels[y][x+1] = meshVec_0_0;
+	}
+	if (y > 0 & y < maxYSize-borderToCrop) {
+		weightsUL[y+1][x] = (((startingVerZLevels[y+1][x]*depthScalingFactor)*(1.0-((1.0/animationDelay)*timeInMs))) + ((endingVerZLevels[y+1][x]*depthScalingFactor)*((1.0/animationDelay)*timeInMs)))/(startingVerZLevels[y+1][x]*depthScalingFactor);
+		vAT3.ULVerInst[2] = (startingVerZLevels[y+1][x]*depthScalingFactor)*weightsUL[y+1][x];
+		//((startingVerZLevels[y+1][x]*depthScalingFactor)*(1.0-((1.0/animationDelay)*timeInMs))) + ((endingVerZLevels[y+1][x]*depthScalingFactor)*((1.0/animationDelay)*timeInMs));// = meshVec_0_0;
+	}
+	if ((y < maxYSize-borderToCrop) & (x < (maxXSize-borderToCrop))) {
+		weightsUR[y+1][x+1] = (((startingVerZLevels[y+1][x+1]*depthScalingFactor)*(1.0-((1.0/animationDelay)*timeInMs))) + ((endingVerZLevels[y+1][x+1]*depthScalingFactor)*((1.0/animationDelay)*timeInMs)))/(startingVerZLevels[y+1][x+1]*depthScalingFactor);
+		vAT3.URVerInst[2] = (startingVerZLevels[y+1][x+1]*depthScalingFactor)*weightsUR[y+1][x+1];
+		//((startingVerZLevels[y+1][x+1]*depthScalingFactor)*(1.0-((1.0/animationDelay)*timeInMs))) + ((endingVerZLevels[y+1][x+1]*depthScalingFactor)*((1.0/animationDelay)*timeInMs));// = meshVec_0_0;
+	}
+}
 
-	GLfloat directedLight[] = {0.7f, 0.7f, 0.7f, 1.0f};
-	GLfloat directedLightPos[] = {-10.0f, 15.0f, 20.0f, 0.0f};
-	glLightfv(GL_LIGHT0, GL_DIFFUSE, directedLight);
-	glLightfv(GL_LIGHT0, GL_POSITION, directedLightPos);
-
-	glRotatef(-_angle, -0.20f, 1.0f, 0.0f);
-
-	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, _textureId);
-
-	//Bottom
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	glColor3f(1.0f, 1.0f, 1.0f);
-	glBegin(GL_QUADS);
-
-	glNormal3f(1.0f, 1.0f, 1.0f);
-
-	//glFrustum(-10, 0, 0, 10, -200000, 200000000);
-
-	vertsAndTextures vAT3;
+void createMeshOfRect() {
 
 	float verXIncrement = 1.5f;//0.5f;//1.5f;
 	float verYIncrement = 1.5f;//2.0f;//0.5f;//2.0f;
@@ -282,31 +278,6 @@ void drawScene() {
 	vAT3.BRTexInst[0] = initTexXBR;
 	vAT3.BRTexInst[1] = initTexYBR;
 
-	// Build displacement map.
-	buildDispMap(startingDispMap, "start");
-	buildDispMap(endingDispMap, "end");
-
-	//cout << "yAmount\t";cout << yAmount;
-	//cout<<"\txAmount\t";cout<<xAmount;
-	//cout<<"\n";
-
-	// print out section
-	/*for (int y = 0; y < yAmount; y += 1) {
-		for (x = 0; x < xAmount; x += 1) {
-			double imageToScenePixelDiff = (255/(double)sizeOfMesh)*(1/verticiesInRectangle);
-			double translatedX = ceil(x * imageToScenePixelDiff); double translatedY = ceil(y * imageToScenePixelDiff);
-			double meshVec_0_0_b = dispMapImage.at<Vec3b>((int)translatedY,(int)translatedX).val[0];
-			//cout<<"(";cout<<y;cout<<",";cout<<x;cout<<"):";
-			cout<<"\t";cout<<meshVec_0_0_b;
-		}
-		cout<<"\n";
-	}
-	cout<<"_ _ _\n";*/
-
-	int scalingF = 2;
-	int incrementValue2 = 1;
-	double maxYSize = sizeOfMesh*scalingF;
-	double maxXSize = (sizeOfMesh*expandMeshSize*scalingF);
 	for (y = 0; y < (maxYSize); y += incrementValue2) {
 		//createMesh(vAT3);
 		// Reinitialze X dimension before the x value loop
@@ -328,11 +299,6 @@ void drawScene() {
 			vAT3.BLVerInst[1] -= verYIncrement;
 			vAT3.BRVerInst[1] -= verYIncrement;
 
-			/*vAT3.ULVerInst[2] += verZIncrement;
-			vAT3.URVerInst[2] += verZIncrement;
-			vAT3.BLVerInst[2] += verZIncrement;
-			vAT3.BRVerInst[2] += verZIncrement;*/
-
 			vAT3.ULTexInst[1] -= texYIncrement;
 			vAT3.URTexInst[1] -= texYIncrement;
 			vAT3.BLTexInst[1] -= texYIncrement;
@@ -344,11 +310,6 @@ void drawScene() {
 			vAT3.URVerInst[1] -= verYIncrement;
 			vAT3.BLVerInst[1] -= verYIncrement;
 			vAT3.BRVerInst[1] -= verYIncrement;
-
-			/*vAT3.ULVerInst[2] -= verZIncrement;
-			vAT3.URVerInst[2] -= verZIncrement;
-			vAT3.BLVerInst[2] -= verZIncrement;
-			vAT3.BRVerInst[2] -= verZIncrement;*/
 
 			vAT3.ULTexInst[1] -= texYIncrement;
 			vAT3.URTexInst[1] -= texYIncrement;
@@ -364,11 +325,6 @@ void drawScene() {
 				vAT3.BLVerInst[0] += verXIncrement;
 				vAT3.BRVerInst[0] += verXIncrement;
 
-				/*vAT3.ULVerInst[2] += verZIncrement;
-				vAT3.URVerInst[2] += verZIncrement;			
-				vAT3.BLVerInst[2] += verZIncrement;
-				vAT3.BRVerInst[2] += verZIncrement;*/
-
 				vAT3.ULTexInst[0] += texXIncrement;
 				vAT3.URTexInst[0] += texXIncrement;
 				vAT3.BLTexInst[0] += texXIncrement;
@@ -381,11 +337,6 @@ void drawScene() {
 				vAT3.BLVerInst[0] += verXIncrement;
 				vAT3.BRVerInst[0] += verXIncrement;
 
-				/*vAT3.ULVerInst[2] -= verZIncrement;
-				vAT3.URVerInst[2] -= verZIncrement;
-				vAT3.BLVerInst[2] -= verZIncrement;
-				vAT3.BRVerInst[2] -= verZIncrement;*/
-
 				vAT3.ULTexInst[0] += texXIncrement;
 				vAT3.URTexInst[0] += texXIncrement;
 				vAT3.BLTexInst[0] += texXIncrement;
@@ -397,52 +348,64 @@ void drawScene() {
 				vAT3.BLVerInst[0] += verXIncrement;
 				vAT3.BRVerInst[0] += verXIncrement;
 
-				/*vAT3.ULVerInst[2] -= verZIncrement;
-				vAT3.URVerInst[2] -= verZIncrement;			
-				vAT3.BLVerInst[2] -= verZIncrement;
-				vAT3.BRVerInst[2] -= verZIncrement;*/
-
 				vAT3.ULTexInst[0] += texXIncrement;
 				vAT3.URTexInst[0] += texXIncrement;
 				vAT3.BLTexInst[0] += texXIncrement;
 				vAT3.BRTexInst[0] += texXIncrement;
 			}
 
-
-
-			// Apply displacement map
-
-			double imageToScenePixelDiff = 255/maxYSize;
-			double translatedX = x * imageToScenePixelDiff; double translatedY = y * imageToScenePixelDiff;
-			double nextTranslatedX = (x+incrementValue) * imageToScenePixelDiff; double nextTranslatedY = (y+incrementValue) * imageToScenePixelDiff;
-			double priorTranslatedX = (x-incrementValue) * imageToScenePixelDiff; double priorTranslatedY = (y-incrementValue) * imageToScenePixelDiff;
-			/*grayLevel = dispMapImage.at<Vec3b>(translatedY,translatedX).val[0];
-			if (x != (maxYSize-1)*expandMeshSize) {
-				nextGrayLevel = dispMapImage.at<Vec3b>(nextTranslatedY,nextTranslatedX).val[0];
-			}*/
-			// Avoid edge problems
-			double tempVal = 0;
-
-			int x2 = x, y2 = y;
 			double borderToCrop = 1;
-			if (x2 < (maxXSize-borderToCrop)) {
-				vAT3.BRVerInst[2] = ((startingVerZLevels[y2][x2]*depthScalingFactor)*(1.0-((1.0/animationDelay)*timeInMs))) + ((endingVerZLevels[y2][x2]*depthScalingFactor)*((1.0/animationDelay)*timeInMs));//verZLevels[y2][x2] = meshVec_0_0;
-				cout<<"timeInMs:\t";cout<<timeInMs;cout<<"\t(1-(1/50*timeInMs))\t";cout<<(double)(1.0-((1.0/50.0)*timeInMs));cout << "\tvAT3.BRVerInst[2]:\t";cout<<vAT3.BRVerInst[2];cout<<"\n";
-			}
-			if ((x2 > 0) & (x2 < (maxXSize-borderToCrop))) {
-				vAT3.BLVerInst[2] = ((startingVerZLevels[y2][x2+1]*depthScalingFactor)*(1.0-((1.0/animationDelay)*timeInMs))) + ((endingVerZLevels[y2][x2+1]*depthScalingFactor)*((1.0/animationDelay)*timeInMs));//verZLevels[y2][x2+1] = meshVec_0_0;
-			}
-			if (y2 > 0 & y2 < maxYSize-borderToCrop) {
-				vAT3.ULVerInst[2] = ((startingVerZLevels[y2+1][x2]*depthScalingFactor)*(1.0-((1.0/animationDelay)*timeInMs))) + ((endingVerZLevels[y2+1][x2]*depthScalingFactor)*((1.0/animationDelay)*timeInMs));// = meshVec_0_0;
-			}
-			if ((y2 < maxYSize-borderToCrop) & (x2 < (maxXSize-borderToCrop))) {
-				vAT3.URVerInst[2] = ((startingVerZLevels[y2+1][x2+1]*depthScalingFactor)*(1.0-((1.0/animationDelay)*timeInMs))) + ((endingVerZLevels[y2+1][x2+1]*depthScalingFactor)*((1.0/animationDelay)*timeInMs));// = meshVec_0_0;
-			}
+			applyDispMap(maxXSize, maxYSize, borderToCrop);
 
 			createMesh(vAT3);
-			//priorAdjustedGrayLevel = grayLevel*depthScalingFactor;
 		}
 	}
+}
+
+void drawScene() {
+	startingDispMap = imread(startingDispMapImage, CV_LOAD_IMAGE_COLOR);
+	endingDispMap = imread(endingDispMapImage, CV_LOAD_IMAGE_COLOR);
+
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
+
+	// camera position mapper
+	//glTranslatef(-30.0f, 1.0f, -60.0f);//-150.0f);
+	glTranslatef(-25.0f, 11.0f, -90.0f);//-150.0f);
+
+	//GLfloat ambientLight[] = {0.2f, 0.2f, 0.2f, 1.0f};
+	GLfloat ambientLight[] = {200.2f, 200.2f, 200.2f, 1.0f};
+	glLightModelfv(GL_LIGHT_MODEL_AMBIENT, ambientLight);
+
+	GLfloat directedLight[] = {0.7f, 0.7f, 0.7f, 1.0f};
+	GLfloat directedLightPos[] = {-10.0f, 15.0f, 20.0f, 0.0f};
+	glLightfv(GL_LIGHT0, GL_DIFFUSE, directedLight);
+	glLightfv(GL_LIGHT0, GL_POSITION, directedLightPos);
+
+	glRotatef(-_angle, -0.20f, 1.0f, 0.0f);
+
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, _textureId);
+
+	//Bottom
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glColor3f(1.0f, 1.0f, 1.0f);
+	glBegin(GL_QUADS);
+
+	glNormal3f(1.0f, 1.0f, 1.0f);
+
+	// Build displacement map.
+	buildDispMap(startingDispMap, "start");
+	buildDispMap(endingDispMap, "end");
+
+	// Generate mesh with disp mapping
+	createMeshOfRect();
+
 	glEnd();
 
 	glutSwapBuffers();
@@ -458,11 +421,13 @@ void update(int value) {
 	if (timeInMs == animationDelay) {//25) {
 		if (startingDispMapImage == image1) {
 			startingDispMapImage = image2;
-			//cout << "switched\n";
+			endingDispMapImage = image1;
+			cout << "switched\n";
 		}
 		else if (startingDispMapImage == image2) {
 			startingDispMapImage = image1;
-			//cout << "switched back\n";
+			endingDispMapImage = image2;
+			cout << "switched back\n";
 		}
 		timeInMs = 0;
 	}
@@ -478,6 +443,8 @@ int main(int argc, char** argv) {
 	glutInitWindowSize(400, 400);
 
 	glutCreateWindow("Textures - videotutorialsrock.com");
+	initWeights();
+
 	initRendering();
 
 	glutDisplayFunc(drawScene);
