@@ -93,6 +93,36 @@ double imageYPixels = 256;
 double imageXPixels = 512;
 double lockedDistance = 0.0;
 
+float verXIncrement = 1.5f;//0.5f;//1.5f;
+float verYIncrement = 1.5f;//2.0f;//0.5f;//2.0f;
+float verZIncrement = 1.0f;//3.5f;//0.5f;//3.5f;
+//float texXIncrement = 1.1*(1.00f/(sizeOfMesh*expandMeshSize));
+float texXIncrement = (1.07*(1.00f/(sizeOfMesh2*expandMeshSize)))/texXScaling;
+float texYIncrement = (1.00f/sizeOfMesh2)/texYScaling;
+
+float initVerXUL = -2.50f;
+float initVerXBR = -2.50f;
+float initVerXUR = initVerXUL+verXIncrement;
+float initVerXBL = initVerXBR+verXIncrement;
+float initTexXUL = 0.10f;//-0.05f;//0.0f;//
+float initTexXBR = 0.10f;//-0.05f;//-0.10f;
+float initTexXUR = initTexXUL+texXIncrement;
+float initTexXBL = initTexXBR+texXIncrement;
+float initTexYBR = 0.64f;//1.0f;//1.10f;0.64f;//
+float initTexYBR2 = 0.64f;//1.0f;//1.10f;0.64f;//
+float initTexYUL = initTexYBR-texYIncrement;
+float initTexYBL = 0.64f;//1.0f;//1.10f;0.64f;//
+float initTexYBL2 = 0.64f;//1.0f;//1.10f;0.64f;//
+float initTexYUR = initTexYBL-texYIncrement;
+float initVerZUL = -4.50f+initalZ;
+float initVerZUR = -4.50f+initalZ;//initVerZUL+verZIncrement;
+float initVerZBL = -4.50f+initalZ;
+float initVerZBR = -4.50f+initalZ;
+
+float texYWeight = 1.0;
+float texXWeight = 1.0;
+bool changeTex = false;
+
 // from https://studiofreya.com/cpp/how-to-check-for-nan-inf-ind-in-c/
 template<typename T>
 bool is_nan( const T &value )
@@ -254,7 +284,7 @@ void findAnchorPoints() {
 	extractAnchorPoint(endingDispMapAnchor, "end");
 }
 
-void calculateWeightChange(String verPositionForWeights, double startY, double startX, double startZ, double endY, double endX, double endZ) {
+void calculateWeightChange(String verPositionForWeights, bool anchorForTexUpdate, double startY, double startX, double startZ, double endY, double endX, double endZ) {
 	// Current point in most direct motion path using anchor points
 	/*double startY = startingDispMapAnchorPoint1[0];
 	double startX = startingDispMapAnchorPoint1[1];
@@ -279,59 +309,20 @@ void calculateWeightChange(String verPositionForWeights, double startY, double s
 	double normalizedDistance = (distance/furthestDistPossible);
 	double scalingFactor = 0.9;
 	double scaledDistance = (1-(normalizedDistance*scalingFactor));
-	//if (normalizedDistance > 1) {normalizedDistance = 1;}
-	if (y>10&y<15) {
-		//cout << "yDirPath ";cout<<yDirPath;cout<<"xDirPath";cout<<xDirPath;
-		//cout<<"normalizedDistance ";cout << normalizedDistance;cout<<" distance ";cout<<distance;cout<<" furthestDistPossible ";cout<<furthestDistPossible;cout<<"\ty x: ";cout<<y;cout<<" ";cout<<x;cout<<"\n";
-	}
-	double distanceCost = (1-.0001);
+	scaledDistance = (1-(pow(normalizedDistance,.8)));
+
+	double distanceCost = (1-.1);
 	double distanceRestraint = scaledDistance*distanceCost;//1.0*distanceCost;//(1-normalizedDistance)*distanceCost;//2.8;//
 	double learningRestraint = 1.0;
 
 	double amountTransitioned = ((1.0/animationDelay)*timeInMs)*distanceRestraint;
 	double amountTransitioned2 = ((1.0/animationDelay)*timeInMs)*distanceRestraint;
-	double intialWobbleAllowed = 0.1;
+	double intialWobbleAllowed = 0.3;
 	//double wobblePastMax = 0.8;
 	double wobbleIncrement = .95;
 	double maxWobbles = ceil(intialWobbleAllowed/wobbleIncrement)+1;//*intialWobbleAllowed;
 	double wobbleForwardOrBack = 1.0;//-1.0;
 	double numberOfWobbles = 0.0;
-	/*for (double wobblePosition = (intialWobbleAllowed*2); wobblePosition>= 0.0;intialWobbleAllowed-=wobbleIncrement) {
-		if (amountTransitioned2>(intialWobbleAllowed+wobblePosition)) {
-			wobbleForwardOrBack = wobbleForwardOrBack * -1;
-			numberOfWobbles += 1;
-			//amountTransitioned +=
-			//amountTransitioned2
-		}
-	}*/
-	/*for (double wobblePosition = intialWobbleAllowed; wobblePosition<=(intialWobbleAllowed+(wobbleIncrement*maxWobbles));intialWobbleAllowed+=wobbleIncrement) {
-
-	}*/
-
-	//past iwa leftover reduces at.  past iwa*2 leftover adds at
-
-
-	/*double wobblePosition = wobbleIncrement;//(intialWobbleAllowed*2)+(intialWobbleAllowed-wobbleIncrement);
-	double wobbleCounter = 0.0;
-	for (double i = 1; i <= maxWobbles;i++) {
-		if ((amountTransitioned2>(1+intialWobbleAllowed)) & (i == 1)) {
-			wobbleForwardOrBack = wobbleForwardOrBack * -1;
-			numberOfWobbles += 1;
-			//wobblePosition-=wobbleIncrement;
-			wobbleCounter = (1+intialWobbleAllowed);
-		}
-		if (amountTransitioned2>((1+intialWobbleAllowed)+(wobblePosition))) {
-			wobbleForwardOrBack = wobbleForwardOrBack * -1;
-			numberOfWobbles += 1;
-			//wobblePosition-=wobbleIncrement;
-			wobblePosition+=wobbleIncrement*(1-((1/maxWobbles)*i));//((intialWobbleAllowed*2)-(wobbleIncrement*(i+1)));
-			//wobbleCounter = (1-(numberOfWobbles/maxWobbles))*wobbleForwardOrBack;
-			wobbleCounter += (wobblePosition*wobbleForwardOrBack);
-		}
-	}
-
-	// was running
-	cout<<"wobbleCounter\t";cout<<wobbleCounter;cout<<" maxWobbles ";cout<<maxWobbles;cout<<"\n";*/
 
 	for (double i = 1; i <= maxWobbles;i++) {
 		if (amountTransitioned2>=((1+intialWobbleAllowed)+(wobbleIncrement*i))) {
@@ -340,57 +331,83 @@ void calculateWeightChange(String verPositionForWeights, double startY, double s
 		}
 	}
 
-	/*if (amountTransitioned2 > (1+intialWobbleAllowed)) {
-		//amountTransitioned = ((amountTransitioned-((1+intialWobbleAllowed)+(wobbleIncrement*numberOfWobbles))))+
-		//		1+((intialWobbleAllowed*(1-(wobbleIncrement*numberOfWobbles)))*wobbleForwardOrBack);//((timeInMs));
-		amountTransitioned = 1+((intialWobbleAllowed*(1-(wobbleIncrement*numberOfWobbles)))*wobbleForwardOrBack);
-	}*/
-
 	double diminishingEffect = (1-((1/(transitionTime-animationDelay))*(timeInMs-animationDelay)));
 	if (amountTransitioned2 > (1+intialWobbleAllowed)) {
 
-		amountTransitioned = 1+((sin(((timeInMs-animationDelay)/10)*M_PI)*intialWobbleAllowed)*diminishingEffect);
+		amountTransitioned = 1+((sin(((timeInMs-animationDelay)/10)*M_PI)*intialWobbleAllowed)*(diminishingEffect*1.0));
 	}
 
-	cout<<"amountTransitioned2 ";cout<<amountTransitioned2;cout<<" wobbleForwardOrBack ";cout<<wobbleForwardOrBack;cout<<" numberOfWobbles ";cout<<numberOfWobbles;cout<<"\n";
+	//cout<<"amountTransitioned2 ";cout<<amountTransitioned2;cout<<" wobbleForwardOrBack ";cout<<wobbleForwardOrBack;cout<<" numberOfWobbles ";cout<<numberOfWobbles;cout<<"\n";
 
-	//if (numberOfWobbles == maxWobbles) {amountTransitioned = 1.0;}
-
-	/*if (amountTransitioned2 > (1+intialWobbleAllowed)) {
-		amountTransitioned = amountTransitioned+((amountTransitioned-wobblePosition)*wobbleForwardOrBack);
-	}*/
-	//amountTransitioned = amountTransitioned + ((intialWobbleAllowed*(1-(numberOfWobbles/maxWobbles)))*wobbleForwardOrBack);
-	//if (amountTransitioned > 1.5) {amountTransitioned = 1.0;}
-	//if (numberOfWobbles == maxWobbles) {amountTransitioned = 1.0;}
-	/*if (amountTransitioned2 > movementPastMax) {
-
-	}*/
-
-
-	//if (amountTransitioned > 1.5) {amountTransitioned = 1.0;}
-	//if (amountTransitioned > 1.0) {amountTransitioned = 1.0;}
-	//transitionTime
 	// Difference with starting and ending weights
 	double startDispMapWeights = 1.0;
 	double endDispMapWeights = (endZ*depthScalingFactor)/(startZ*depthScalingFactor);
 	// Position is based on transistion degree including distance restraint limit
 	double newWeight = ((distanceRestraint*learningRestraint*startDispMapWeights)*(1-amountTransitioned)) +
 			((distanceRestraint*learningRestraint*endDispMapWeights)*(amountTransitioned));
+	/*double newTexY = ((startY)*(1-amountTransitioned)) +
+			((endY)*(amountTransitioned));*/
+	// normalize tex map with
+	double yTexScalingFactor = 2.62649350649;//-2.1484375;
+	double texTransDelay = timeInMs*(1/(animationDelay*1.5));
+	//if (changeTex==false) {texTransDelay = 1-texTransDelay;}
+	if (texTransDelay > 1) {texTransDelay = 1;}
+	//changeTex
+	double newTexY;
+	//double newTexY = (1.0*(1-amountTransitioned))+((((endY-startY)/imageYPixels)*yTexScalingFactor)*amountTransitioned);//(1-amountTransitioned));
+
+
+	//double newTexY = (1.0*(1-texTransDelay))+((((((endY-startY)/imageYPixels)*yTexScalingFactor) / initTexYBR))*texTransDelay);//(1-amountTransitioned));  //(((endY-startY)/imageYPixels)*yTexScalingFactor)
+	//if (changeTex==true) {newTexY = (1.0*(texTransDelay))+((((((endY-startY)/imageYPixels)*yTexScalingFactor) / initTexYBR))*(1-texTransDelay));}
+
+	//if (changeTex==false) {newTexY = (.78 / initTexYBR);}
+	//else {newTexY = 1.0;}
+
+	//startY
 	/*if (timeInMs == 2) {
 		cout<<newWeight;cout<<" ";
 	}*/
 	if (is_nan(newWeight)==true) {newWeight = 1.0;}
 	if (verPositionForWeights == "BR") {
 		weightsBR[y][x] += newWeight;
+		//initTexYBR = (newTexY*.1);
+		//initTexYBR = .64f;//(newTexY*.1);
+		if (anchorForTexUpdate == true) {
+			if (changeTex == true) {initTexYBR = (initTexYBR2*(1-texTransDelay))+((initTexYBR2*(.78 / initTexYBR2))*texTransDelay);
+			initTexYBL = (initTexYBR2*(1-texTransDelay))+((initTexYBL2*(.78 / initTexYBL2))*texTransDelay);
+			initTexYUL = initTexYBR-texYIncrement;initTexYUR = initTexYBL-texYIncrement;}
+			/*float initTexYUL = initTexYBR-texYIncrement;
+			float initTexYBL = 0.64f;//1.0f;//1.10f;0.64f;//
+			float initTexYBL2 = 0.64f;//1.0f;//1.10f;0.64f;//
+			float initTexYUR = initTexYBL-texYIncrement;*/
+			if (changeTex == false) {initTexYBR = (initTexYBR2*(texTransDelay))+((initTexYBR2*(.78 / initTexYBR2))*(1-texTransDelay));
+			initTexYBL = (initTexYBR2*(texTransDelay))+((initTexYBL2*(.78 / initTexYBL2))*(1-texTransDelay));
+			initTexYUL = initTexYBR-texYIncrement;initTexYUR = initTexYBL-texYIncrement;}
+			/*{initTexYBR = initTexYBR2;initTexYBL = initTexYBL2;
+			initTexYUL = initTexYBR-texYIncrement;initTexYUR = initTexYBL-texYIncrement;}*/
+
+			//else {texYWeight = 1.0;}//changeTex==
+
+			//texYWeight = newTexY;//1.0f;//(.64 / initTexYBR);//0.820512820513;//newTexY;//(.64 / initTexYBR);
+			//cout<<startY;cout<<":::";cout<<endY;cout<<" number ";cout<<(.78 / initTexYBR);cout<<"\n";//141, 64
+			//cout<<"}}";cout<<(((endY-startY)/imageYPixels)*yTexScalingFactor);cout<<"\n";
+			cout<<changeTex;cout<<"\n";
+		}
 	}
 	else if (verPositionForWeights == "BL") {
 		weightsBL[y][x+1] += newWeight;
+		//initTexYBL = .64f;//(newTexY*.1);
+		//texYWeight = (.64 / initTexYBR);
 	}
 	else if (verPositionForWeights == "UL") {
 		weightsUL[y+1][x] += newWeight;
+		//float initTexYUL = initTexYBR-texYIncrement;
+		//texYWeight = (.64 / initTexYBR);
 	}
 	else if (verPositionForWeights == "UR") {
 		weightsUR[y+1][x+1] += newWeight;
+		//float initTexYUR = initTexYBL-texYIncrement;
+		//texYWeight = (.64 / initTexYBR);
 	}
 
 	/*if ((y==(15))&(x==15)&timeInMs == 15) {
@@ -428,40 +445,12 @@ void applyDispMap(double maxXSize, double maxYSize, double borderToCrop) {
 
 	double range = 20;
 	if (x < (maxXSize-borderToCrop)) {
-		// weights are applied as (oldPositionPercentage+newPositionPercentage)/oldPosition and then multiplied by oldPosition to change it
-		/*if ((abs((((double)x/(double)xAmount) * imageXPixels) - endingDispMapAnchorPoint1[1]) <= range) & (abs((((double)y/(double)yAmount) * imageYPixels) - endingDispMapAnchorPoint1[0]) <= range)) {
-			cout<<"end\t";cout<<endingDispMapAnchorPoint1[0];cout<<" ((x/xAmount) * imageXPixels) ";cout<<((x/xAmount) * imageXPixels);cout<<"\n";//y 141 x 400
-		//if (true) {
-			weightsBR[y][x] = (((startingVerZLevels[y][x]*depthScalingFactor)*(1.0-((1.0/animationDelay)*timeInMs))) + ((endingVerZLevels[y][x]*depthScalingFactor)*((1.0/animationDelay)*timeInMs)))/(startingVerZLevels[y][x]*depthScalingFactor);
-		}*/
-		// Current point in most direct motion path using anchor points
-		/*double startY = startingDispMapAnchorPoint1[0];
-		double startX = startingDispMapAnchorPoint1[1];
-		double endY = endingDispMapAnchorPoint1[0];
-		double endX = endingDispMapAnchorPoint1[1];
-		double yDirPath = startY*(1.0-((1.0/animationDelay)*timeInMs))+endY*((1.0/animationDelay)*timeInMs);
-		double xDirPath = startX*(1.0-((1.0/animationDelay)*timeInMs))+endX*((1.0/animationDelay)*timeInMs);
-		// Euclidean distance from most direct path of motion from starting anchor point to ending anchor point
-		double distance = sqrt(pow(yDirPath-y,2)+pow(xDirPath-x,2));
-		double furthestDistPossible = sqrt(pow(yMaxAmount,2)+pow(xMaxAmount,2));
-		// normalize distance with furthest possible in image giving it a 0-1 range
-		distance = distance/furthestDistPossible;
-		double distanceRestraint = distance*(.2);
-		double learningRestraint = 1.0;
 
-		double amountTransitioned = ((1.0/animationDelay)*timeInMs)*distanceRestraint;
-		if (amountTransitioned > 1.0) {amountTransitioned = 1.0;}
-		// Difference with starting and ending weights
-		double startDispMapWeights = 1.0;
-		double endDispMapWeights = (endingVerZLevels[y][x]*depthScalingFactor)/(startingVerZLevels[y][x]*depthScalingFactor);
-		// Position is based on transistion degree including distance retraint limit
-		weightsBR[y][x] = ((distanceRestraint*learningRestraint*startDispMapWeights)*(1-amountTransitioned)) +
-					((distanceRestraint*learningRestraint*endDispMapWeights)*(amountTransitioned));*/
 		weightsBR[y][x] = 0;
-		calculateWeightChange("BR", startingDispMapAnchorPoint1[0], startingDispMapAnchorPoint1[1],
+		calculateWeightChange("BR", true, startingDispMapAnchorPoint1[0], startingDispMapAnchorPoint1[1],
 				startingVerZLevels[y][x], endingDispMapAnchorPoint1[0], endingDispMapAnchorPoint1[1], endingVerZLevels[y][x]);
-		//calculateWeightChange("BR", startingDispMapAnchorPoint2[0], startingDispMapAnchorPoint2[1],
-		//		startingVerZLevels[y][x], endingDispMapAnchorPoint2[0], endingDispMapAnchorPoint2[1], endingVerZLevels[y][x]);
+		calculateWeightChange("BR", false, startingDispMapAnchorPoint2[0], startingDispMapAnchorPoint2[1],
+				startingVerZLevels[y][x], endingDispMapAnchorPoint2[0], endingDispMapAnchorPoint2[1], endingVerZLevels[y][x]);
 		vAT3.BRVerInst[2] = (startingVerZLevels[y][x]*depthScalingFactor)*weightsBR[y][x];
 		///cout<<"weightsBR[5][5]\t";cout<<weightsBR[5][5];cout<<"\n";
 		//cout<<"weightsBR[y][x]\t";cout<<weightsBR[y][x];cout<<"\ty x: ";cout<<y;cout<<" ";cout<<x;cout<<"\n";
@@ -474,10 +463,10 @@ void applyDispMap(double maxXSize, double maxYSize, double borderToCrop) {
 			//weightsBL[y][x+1] = (((startingVerZLevels[y][x+1]*depthScalingFactor)*(1.0-((1.0/animationDelay)*timeInMs))) + ((endingVerZLevels[y][x+1]*depthScalingFactor)*((1.0/animationDelay)*timeInMs)))/(startingVerZLevels[y][x+1]*depthScalingFactor);
 		}*/
 		weightsBL[y][x+1] = 0;
-		calculateWeightChange("BL", startingDispMapAnchorPoint1[0], startingDispMapAnchorPoint1[1],
+		calculateWeightChange("BL", true, startingDispMapAnchorPoint1[0], startingDispMapAnchorPoint1[1],
 				startingVerZLevels[y][x+1], endingDispMapAnchorPoint1[0], endingDispMapAnchorPoint1[1], endingVerZLevels[y][x+1]);
-		//calculateWeightChange("BL", startingDispMapAnchorPoint2[0], startingDispMapAnchorPoint2[1],
-		//		startingVerZLevels[y][x+1], endingDispMapAnchorPoint2[0], endingDispMapAnchorPoint2[1], endingVerZLevels[y][x+1]);
+		calculateWeightChange("BL", false, startingDispMapAnchorPoint2[0], startingDispMapAnchorPoint2[1],
+				startingVerZLevels[y][x+1], endingDispMapAnchorPoint2[0], endingDispMapAnchorPoint2[1], endingVerZLevels[y][x+1]);
 		vAT3.BLVerInst[2] = (startingVerZLevels[y][x+1]*depthScalingFactor)*weightsBL[y][x+1];
 		//((startingVerZLevels[y][x+1]*depthScalingFactor)*(1.0-((1.0/animationDelay)*timeInMs))) + ((endingVerZLevels[y][x+1]*depthScalingFactor)*((1.0/animationDelay)*timeInMs));//verZLevels[y][x+1] = meshVec_0_0;
 	}
@@ -487,10 +476,10 @@ void applyDispMap(double maxXSize, double maxYSize, double borderToCrop) {
 			weightsUL[y+1][x] = (((startingVerZLevels[y+1][x]*depthScalingFactor)*(1.0-((1.0/animationDelay)*timeInMs))) + ((endingVerZLevels[y+1][x]*depthScalingFactor)*((1.0/animationDelay)*timeInMs)))/(startingVerZLevels[y+1][x]*depthScalingFactor);
 		}*/
 		weightsUL[y+1][x] = 0;
-		calculateWeightChange("UL", startingDispMapAnchorPoint1[0], startingDispMapAnchorPoint1[1],
+		calculateWeightChange("UL", true, startingDispMapAnchorPoint1[0], startingDispMapAnchorPoint1[1],
 				startingVerZLevels[y+1][x], endingDispMapAnchorPoint1[0], endingDispMapAnchorPoint1[1], endingVerZLevels[y+1][x]);
-		//		calculateWeightChange("UL", startingDispMapAnchorPoint2[0], startingDispMapAnchorPoint2[1],
-		//				startingVerZLevels[y+1][x], endingDispMapAnchorPoint2[0], endingDispMapAnchorPoint2[1], endingVerZLevels[y+1][x]);
+		calculateWeightChange("UL", false, startingDispMapAnchorPoint2[0], startingDispMapAnchorPoint2[1],
+				startingVerZLevels[y+1][x], endingDispMapAnchorPoint2[0], endingDispMapAnchorPoint2[1], endingVerZLevels[y+1][x]);
 		vAT3.ULVerInst[2] = (startingVerZLevels[y+1][x]*depthScalingFactor)*weightsUL[y+1][x];
 		//if (y > (yMaxAmount-15) & x == 15 & timeInMs <= 6) {
 
@@ -502,40 +491,22 @@ void applyDispMap(double maxXSize, double maxYSize, double borderToCrop) {
 			//weightsUR[y+1][x+1] = (((startingVerZLevels[y+1][x+1]*depthScalingFactor)*(1.0-((1.0/animationDelay)*timeInMs))) + ((endingVerZLevels[y+1][x+1]*depthScalingFactor)*((1.0/animationDelay)*timeInMs)))/(startingVerZLevels[y+1][x+1]*depthScalingFactor);
 		}*/
 		weightsUR[y+1][x+1] = 0;
-		calculateWeightChange("UR", startingDispMapAnchorPoint1[0], startingDispMapAnchorPoint1[1],
+		calculateWeightChange("UR", true, startingDispMapAnchorPoint1[0], startingDispMapAnchorPoint1[1],
 				startingVerZLevels[y+1][x+1], endingDispMapAnchorPoint1[0], endingDispMapAnchorPoint1[1], endingVerZLevels[y+1][x+1]);
-		//		calculateWeightChange("UR", startingDispMapAnchorPoint2[0], startingDispMapAnchorPoint2[1],
-		//				startingVerZLevels[y+1][x+1], endingDispMapAnchorPoint2[0], endingDispMapAnchorPoint2[1], endingVerZLevels[y+1][x+1]);
+		calculateWeightChange("UR", false, startingDispMapAnchorPoint2[0], startingDispMapAnchorPoint2[1],
+				startingVerZLevels[y+1][x+1], endingDispMapAnchorPoint2[0], endingDispMapAnchorPoint2[1], endingVerZLevels[y+1][x+1]);
 		vAT3.URVerInst[2] = (startingVerZLevels[y+1][x+1]*depthScalingFactor)*weightsUR[y+1][x+1];
 		//((startingVerZLevels[y+1][x+1]*depthScalingFactor)*(1.0-((1.0/animationDelay)*timeInMs))) + ((endingVerZLevels[y+1][x+1]*depthScalingFactor)*((1.0/animationDelay)*timeInMs));// = meshVec_0_0;
 	}
 }
 
 void createMeshOfRect() {
-
-	float verXIncrement = 1.5f;//0.5f;//1.5f;
-	float verYIncrement = 1.5f;//2.0f;//0.5f;//2.0f;
-	float verZIncrement = 1.0f;//3.5f;//0.5f;//3.5f;
-	//float texXIncrement = 1.1*(1.00f/(sizeOfMesh*expandMeshSize));
-	float texXIncrement = (1.07*(1.00f/(sizeOfMesh2*expandMeshSize)))/texXScaling;
-	float texYIncrement = (1.00f/sizeOfMesh2)/texYScaling;
-
-	float initVerXUL = -2.50f;
-	float initVerXBR = -2.50f;
-	float initVerXUR = initVerXUL+verXIncrement;
-	float initVerXBL = initVerXBR+verXIncrement;
-	float initTexXUL = 0.10f;//-0.05f;//0.0f;//
-	float initTexXBR = 0.10f;//-0.05f;//-0.10f;
-	float initTexXUR = initTexXUL+texXIncrement;
-	float initTexXBL = initTexXBR+texXIncrement;
-	float initTexYBR = 0.78f;//1.0f;//1.10f;
-	float initTexYUL = initTexYBR-texYIncrement;
-	float initTexYBL = 0.78f;//1.0f;//1.10f;
-	float initTexYUR = initTexYBL-texYIncrement;
-	float initVerZUL = -4.50f+initalZ;
-	float initVerZUR = -4.50f+initalZ;//initVerZUL+verZIncrement;
-	float initVerZBL = -4.50f+initalZ;
-	float initVerZBR = -4.50f+initalZ;
+	//if (timeInMs == 15) {
+	/*initTexYBR = initTexYBR*texYWeight;//1.0f;//1.10f;0.64f;//
+	initTexYUL = initTexYBR-texYIncrement*texYWeight;
+	initTexYBL = initTexYBR*texYWeight;//1.0f;//1.10f;0.64f;//
+	initTexYUR = initTexYBL-texYIncrement*texYWeight;*/
+	//}
 
 	vAT3.ULVerInst[0] = -2.5f;
 	vAT3.ULVerInst[1] = -0.5f;
@@ -706,11 +677,13 @@ void update(int value) {
 			startingDispMapImage = image2;
 			endingDispMapImage = image1;
 			cout << "switched\n";
+			changeTex = true;
 		}
 		else if (startingDispMapImage == image2) {
 			startingDispMapImage = image1;
 			endingDispMapImage = image2;
 			cout << "switched back\n";
+			changeTex = false;
 		}
 		timeInMs = 0;
 	}
