@@ -81,7 +81,7 @@ const int xMaxAmount = ceil(sizeOfMesh*expandMeshSize*(1/incrementValue))*2, yMa
 double startingVerZLevels[yMaxAmount][xMaxAmount] = {0};
 double endingVerZLevels[yMaxAmount][xMaxAmount] = {0};
 double animationDelay = 50.0;
-double transitionTime = 200.0;
+double transitionTime = 200.0;//400.0;//200.0;
 struct vertsAndTextures { double ULVerInst[3]; double URVerInst[3]; double BLVerInst[3]; double BRVerInst[3];
 double ULTexInst[2]; double URTexInst[2]; double BLTexInst[2]; double BRTexInst[2];};
 vertsAndTextures vAT3;
@@ -91,6 +91,7 @@ double endingDispMapAnchorPoint1[2] = {0,0};
 double endingDispMapAnchorPoint2[2] = {0,0};
 double imageYPixels = 256;
 double imageXPixels = 512;
+double lockedDistance = 0.0;
 
 // from https://studiofreya.com/cpp/how-to-check-for-nan-inf-ind-in-c/
 template<typename T>
@@ -263,6 +264,15 @@ void calculateWeightChange(String verPositionForWeights, double startY, double s
 	double xDirPath = (startX*(1.0-((1.0/animationDelay)*timeInMs)))+(endX*((1.0/animationDelay)*timeInMs));
 	// Euclidean distance from most direct path of motion from starting anchor point to ending anchor point
 	double distance = sqrt(pow(yDirPath-(imageYPixels*((double)y/(double)yMaxAmount)),2)+pow(xDirPath-(imageXPixels*((double)x/(double)xMaxAmount)),2));
+	if (timeInMs <= animationDelay) {
+		lockedDistance = distance;
+	}
+	else {
+		yDirPath = endY;
+		xDirPath = startX;
+		distance = sqrt(pow(yDirPath-(imageYPixels*((double)y/(double)yMaxAmount)),2)+pow(xDirPath-(imageXPixels*((double)x/(double)xMaxAmount)),2));
+		//distance = lockedDistance;
+	}
 	if (distance == 0) {distance = .00001;}
 	double furthestDistPossible = sqrt(pow(imageYPixels,2)+pow(imageXPixels,2));
 	// normalize distance with furthest possible in image giving it a 0-1 range
@@ -271,8 +281,8 @@ void calculateWeightChange(String verPositionForWeights, double startY, double s
 	double scaledDistance = (1-(normalizedDistance*scalingFactor));
 	//if (normalizedDistance > 1) {normalizedDistance = 1;}
 	if (y>10&y<15) {
-	//cout << "yDirPath ";cout<<yDirPath;cout<<"xDirPath";cout<<xDirPath;
-	cout<<"normalizedDistance ";cout << normalizedDistance;cout<<" distance ";cout<<distance;cout<<" furthestDistPossible ";cout<<furthestDistPossible;cout<<"\ty x: ";cout<<y;cout<<" ";cout<<x;cout<<"\n";
+		//cout << "yDirPath ";cout<<yDirPath;cout<<"xDirPath";cout<<xDirPath;
+		//cout<<"normalizedDistance ";cout << normalizedDistance;cout<<" distance ";cout<<distance;cout<<" furthestDistPossible ";cout<<furthestDistPossible;cout<<"\ty x: ";cout<<y;cout<<" ";cout<<x;cout<<"\n";
 	}
 	double distanceCost = (1-.0001);
 	double distanceRestraint = scaledDistance*distanceCost;//1.0*distanceCost;//(1-normalizedDistance)*distanceCost;//2.8;//
@@ -280,28 +290,85 @@ void calculateWeightChange(String verPositionForWeights, double startY, double s
 
 	double amountTransitioned = ((1.0/animationDelay)*timeInMs)*distanceRestraint;
 	double amountTransitioned2 = ((1.0/animationDelay)*timeInMs)*distanceRestraint;
-	double intialWobbleAllowed = 0.5;
+	double intialWobbleAllowed = 0.1;
 	//double wobblePastMax = 0.8;
-	double wobbleIncrement = .2;
-	double maxWobbles = (1/wobbleIncrement)*intialWobbleAllowed;
-	double wobbleForwardOrBack = 1.0;
+	double wobbleIncrement = .95;
+	double maxWobbles = ceil(intialWobbleAllowed/wobbleIncrement)+1;//*intialWobbleAllowed;
+	double wobbleForwardOrBack = 1.0;//-1.0;
 	double numberOfWobbles = 0.0;
-	for (double wobblePosition = intialWobbleAllowed; wobblePosition<=maxWobbles;(intialWobbleAllowed*2)-wobbleIncrement) {
+	/*for (double wobblePosition = (intialWobbleAllowed*2); wobblePosition>= 0.0;intialWobbleAllowed-=wobbleIncrement) {
 		if (amountTransitioned2>(intialWobbleAllowed+wobblePosition)) {
 			wobbleForwardOrBack = wobbleForwardOrBack * -1;
 			numberOfWobbles += 1;
 			//amountTransitioned +=
 			//amountTransitioned2
 		}
+	}*/
+	/*for (double wobblePosition = intialWobbleAllowed; wobblePosition<=(intialWobbleAllowed+(wobbleIncrement*maxWobbles));intialWobbleAllowed+=wobbleIncrement) {
+
+	}*/
+
+	//past iwa leftover reduces at.  past iwa*2 leftover adds at
+
+
+	/*double wobblePosition = wobbleIncrement;//(intialWobbleAllowed*2)+(intialWobbleAllowed-wobbleIncrement);
+	double wobbleCounter = 0.0;
+	for (double i = 1; i <= maxWobbles;i++) {
+		if ((amountTransitioned2>(1+intialWobbleAllowed)) & (i == 1)) {
+			wobbleForwardOrBack = wobbleForwardOrBack * -1;
+			numberOfWobbles += 1;
+			//wobblePosition-=wobbleIncrement;
+			wobbleCounter = (1+intialWobbleAllowed);
+		}
+		if (amountTransitioned2>((1+intialWobbleAllowed)+(wobblePosition))) {
+			wobbleForwardOrBack = wobbleForwardOrBack * -1;
+			numberOfWobbles += 1;
+			//wobblePosition-=wobbleIncrement;
+			wobblePosition+=wobbleIncrement*(1-((1/maxWobbles)*i));//((intialWobbleAllowed*2)-(wobbleIncrement*(i+1)));
+			//wobbleCounter = (1-(numberOfWobbles/maxWobbles))*wobbleForwardOrBack;
+			wobbleCounter += (wobblePosition*wobbleForwardOrBack);
+		}
 	}
-	amountTransitioned = amountTransitioned + ((intialWobbleAllowed*(1-(numberOfWobbles/maxWobbles)))*wobbleForwardOrBack);
-	if (numberOfWobbles == maxWobbles) {amountTransitioned = 1.0;}
+
+	// was running
+	cout<<"wobbleCounter\t";cout<<wobbleCounter;cout<<" maxWobbles ";cout<<maxWobbles;cout<<"\n";*/
+
+	for (double i = 1; i <= maxWobbles;i++) {
+		if (amountTransitioned2>=((1+intialWobbleAllowed)+(wobbleIncrement*i))) {
+			wobbleForwardOrBack = wobbleForwardOrBack * -1;
+			numberOfWobbles += 1;
+		}
+	}
+
+	/*if (amountTransitioned2 > (1+intialWobbleAllowed)) {
+		//amountTransitioned = ((amountTransitioned-((1+intialWobbleAllowed)+(wobbleIncrement*numberOfWobbles))))+
+		//		1+((intialWobbleAllowed*(1-(wobbleIncrement*numberOfWobbles)))*wobbleForwardOrBack);//((timeInMs));
+		amountTransitioned = 1+((intialWobbleAllowed*(1-(wobbleIncrement*numberOfWobbles)))*wobbleForwardOrBack);
+	}*/
+
+	double diminishingEffect = (1-((1/(transitionTime-animationDelay))*(timeInMs-animationDelay)));
+	if (amountTransitioned2 > (1+intialWobbleAllowed)) {
+
+		amountTransitioned = 1+((sin(((timeInMs-animationDelay)/10)*M_PI)*intialWobbleAllowed)*diminishingEffect);
+	}
+
+	cout<<"amountTransitioned2 ";cout<<amountTransitioned2;cout<<" wobbleForwardOrBack ";cout<<wobbleForwardOrBack;cout<<" numberOfWobbles ";cout<<numberOfWobbles;cout<<"\n";
+
+	//if (numberOfWobbles == maxWobbles) {amountTransitioned = 1.0;}
+
+	/*if (amountTransitioned2 > (1+intialWobbleAllowed)) {
+		amountTransitioned = amountTransitioned+((amountTransitioned-wobblePosition)*wobbleForwardOrBack);
+	}*/
+	//amountTransitioned = amountTransitioned + ((intialWobbleAllowed*(1-(numberOfWobbles/maxWobbles)))*wobbleForwardOrBack);
+	//if (amountTransitioned > 1.5) {amountTransitioned = 1.0;}
+	//if (numberOfWobbles == maxWobbles) {amountTransitioned = 1.0;}
 	/*if (amountTransitioned2 > movementPastMax) {
 
 	}*/
 
 
-	if (amountTransitioned > 1.5) {amountTransitioned = 1.0;}
+	//if (amountTransitioned > 1.5) {amountTransitioned = 1.0;}
+	//if (amountTransitioned > 1.0) {amountTransitioned = 1.0;}
 	//transitionTime
 	// Difference with starting and ending weights
 	double startDispMapWeights = 1.0;
@@ -422,8 +489,8 @@ void applyDispMap(double maxXSize, double maxYSize, double borderToCrop) {
 		weightsUL[y+1][x] = 0;
 		calculateWeightChange("UL", startingDispMapAnchorPoint1[0], startingDispMapAnchorPoint1[1],
 				startingVerZLevels[y+1][x], endingDispMapAnchorPoint1[0], endingDispMapAnchorPoint1[1], endingVerZLevels[y+1][x]);
-//		calculateWeightChange("UL", startingDispMapAnchorPoint2[0], startingDispMapAnchorPoint2[1],
-//				startingVerZLevels[y+1][x], endingDispMapAnchorPoint2[0], endingDispMapAnchorPoint2[1], endingVerZLevels[y+1][x]);
+		//		calculateWeightChange("UL", startingDispMapAnchorPoint2[0], startingDispMapAnchorPoint2[1],
+		//				startingVerZLevels[y+1][x], endingDispMapAnchorPoint2[0], endingDispMapAnchorPoint2[1], endingVerZLevels[y+1][x]);
 		vAT3.ULVerInst[2] = (startingVerZLevels[y+1][x]*depthScalingFactor)*weightsUL[y+1][x];
 		//if (y > (yMaxAmount-15) & x == 15 & timeInMs <= 6) {
 
@@ -437,8 +504,8 @@ void applyDispMap(double maxXSize, double maxYSize, double borderToCrop) {
 		weightsUR[y+1][x+1] = 0;
 		calculateWeightChange("UR", startingDispMapAnchorPoint1[0], startingDispMapAnchorPoint1[1],
 				startingVerZLevels[y+1][x+1], endingDispMapAnchorPoint1[0], endingDispMapAnchorPoint1[1], endingVerZLevels[y+1][x+1]);
-//		calculateWeightChange("UR", startingDispMapAnchorPoint2[0], startingDispMapAnchorPoint2[1],
-//				startingVerZLevels[y+1][x+1], endingDispMapAnchorPoint2[0], endingDispMapAnchorPoint2[1], endingVerZLevels[y+1][x+1]);
+		//		calculateWeightChange("UR", startingDispMapAnchorPoint2[0], startingDispMapAnchorPoint2[1],
+		//				startingVerZLevels[y+1][x+1], endingDispMapAnchorPoint2[0], endingDispMapAnchorPoint2[1], endingVerZLevels[y+1][x+1]);
 		vAT3.URVerInst[2] = (startingVerZLevels[y+1][x+1]*depthScalingFactor)*weightsUR[y+1][x+1];
 		//((startingVerZLevels[y+1][x+1]*depthScalingFactor)*(1.0-((1.0/animationDelay)*timeInMs))) + ((endingVerZLevels[y+1][x+1]*depthScalingFactor)*((1.0/animationDelay)*timeInMs));// = meshVec_0_0;
 	}

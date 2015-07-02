@@ -2,33 +2,37 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="291" key="DIALOG_WIDTH"/>
-		<item value="176" key="DIALOG_Y_ORIGIN"/>
+		<item value="440" key="DIALOG_Y_ORIGIN"/>
+		<item value="1515" key="DIALOG_X_ORIGIN"/>
 		<item value="433" key="DIALOG_HEIGHT"/>
-		<item value="1436" key="DIALOG_X_ORIGIN"/>
 		<item value="1|Ubuntu|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="true" key="wrap"/>
-		<item value="false" key="isRegEx"/>
 		<item value="false" key="casesensitive"/>
+		<item value="true" key="isRegEx"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="sizeOfMesh" key="selection"/>
+		<item value="animationDelay" key="selection"/>
 		<list key="findhistory">
-			<item value="sizeOfMesh"/>
-			<item value="sizeOfMesh*scalingF"/>
-			<item value="sizeOfMesh*expandMeshSize"/>
-			<item value="(sizeOfMesh*expandMeshSize)"/>
-			<item value="sizeOfMesh*expandMeshSize*scalingF"/>
-			<item value="(sizeOfMesh*expandMeshSize*scalingF)"/>
-			<item value="y"/>
-			<item value="x"/>
+			<item value="animationDelay"/>
+			<item value="\tcout"/>
+			<item value="cout&lt;&lt;&quot;\\ty x: &quot;;cout&lt;&lt;y;cout&lt;&lt;&quot; &quot;;cout&lt;&lt;x;"/>
+			<item value="yMaxAmount"/>
+			<item value="512"/>
+			<item value="image"/>
+			<item value="startingDispMapImage"/>
+			<item value="imread"/>
 		</list>
 		<list key="replacehistory">
+			<item value="anchorPointImage"/>
+			<item value="double"/>
+			<item value="y"/>
+			<item value="x"/>
+			<item value="sizeOfMesh*expandMeshSizeY"/>
 			<item value="maxYSize"/>
 			<item value="maxXSize"/>
 			<item value="y2"/>
-			<item value="x2"/>
 		</list>
 	</section>
 </section>
