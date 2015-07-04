@@ -1,6 +1,6 @@
-22:13:40 **** Incremental Build of configuration Debug for project ImagePreprocessor ****
+22:26:37 **** Incremental Build of configuration Debug for project ImagePreprocessor ****
 make all 
 make: Nothing to be done for 'all'.
 
-22:13:41 Build Finished (took 66ms)
+22:26:37 Build Finished (took 67ms)
 

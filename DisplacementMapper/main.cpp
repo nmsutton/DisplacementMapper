@@ -691,7 +691,7 @@ int main(int argc, char** argv) {
 	glutDisplayFunc(drawScene);
 	glutKeyboardFunc(handleKeypress);
 	glutReshapeFunc(handleResize);
-	_angle = 0.0f;//_angle = -45.330f;//25.330f;_angle = 0.0f;//
+	_angle = -25.330f;//_angle = -45.330f;//25.330f;_angle = 0.0f;//
 	glutTimerFunc(20, update, 0);
 
 	glutMainLoop();
