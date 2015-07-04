@@ -47,17 +47,17 @@ void handleKeypress(unsigned char key, int x, int y) {
 		exit(0);
 	}
 }
-String image1 = "/home/nmsutton/Documents/Software/OpenGL/Media/GeneralProcessed90_512.bmp";
-String image2 = "/home/nmsutton/Documents/Software/OpenGL/Media/GeneralProcessed90UpSft_512.bmp";
+String image1 = "/home/nmsutton/Documents/Software/OpenGL/Media/gaborFilter1.bmp";//"/home/nmsutton/Documents/Software/OpenGL/Media/GeneralProcessed90_512.bmp";
+String image2 = "/home/nmsutton/Documents/Software/OpenGL/Media/gaborFilter2.bmp";//"/home/nmsutton/Documents/Software/OpenGL/Media/GeneralProcessed90UpSft_512.bmp";
 String startingDispMapImage = image2;
 String endingDispMapImage = image1;
 Mat startingDispMap;
 Mat endingDispMap;
-String anchorImage1 = "/home/nmsutton/Documents/Software/OpenGL/Media/anchorImage1_512.bmp";
-String anchorImage2 = "/home/nmsutton/Documents/Software/OpenGL/Media/anchorImage2_512.bmp";
+String anchorImage1 = "/home/nmsutton/Documents/Software/OpenGL/Media/gaborAnchorImageExtra.bmp";
+String anchorImage2 = "/home/nmsutton/Documents/Software/OpenGL/Media/gaborAnchorImageExtra.bmp";
 String startingDispMapAnchorImage = anchorImage2;
 String endingDispMapAnchorImage = anchorImage1;
-const int numberOfAnchors = 2;
+const int numberOfAnchors = 1;
 Mat startingDispMapAnchor;
 Mat endingDispMapAnchor;
 double timeInMs = 0;
@@ -165,7 +165,7 @@ void initRendering() {
 	glEnable(GL_COLOR_MATERIAL);
 	glShadeModel(GL_SMOOTH); //Enable smooth shading
 
-	Image* image = loadBMP("/home/nmsutton/Documents/Software/OpenGL/Media/generalImg3.bmp");
+	Image* image = loadBMP("/home/nmsutton/Documents/Software/OpenGL/Media/ColorTex.bmp");//loadBMP("/home/nmsutton/Documents/Software/OpenGL/Media/gaborFilter1.bmp");//loadBMP("/home/nmsutton/Documents/Software/OpenGL/Media/generalImg3.bmp");
 	_textureId = loadTexture(image);
 	delete image;
 }
@@ -252,21 +252,23 @@ void extractAnchorPoint(Mat anchorPointImage, String anchorPointPosition) {
 					startingDispMapAnchorPoint[0][0]=y;
 					startingDispMapAnchorPoint[0][1]=x;
 					anchorFound1 = true;
-					//cout<<"\n\nstart anchor found\t";cout<<anchorPointImage.at<Vec3b>(y,x);cout<<"\t";cout<<y;cout<<" ";cout<<x;cout<<"\n";
+					cout<<"\n\nstart anchor found\t";cout<<anchorPointImage.at<Vec3b>(y,x);cout<<"\t";cout<<y;cout<<" ";cout<<x;cout<<"\n";
 				}
 				else if ((anchorPointPosition=="start") & (anchorFound1 == true) & numberOfAnchors > 1){
 					startingDispMapAnchorPoint[1][0]=y;
 					startingDispMapAnchorPoint[1][1]=x;
-					//cout<<"\n\nstart anchor 2 found\t";cout<<anchorPointImage.at<Vec3b>(y,x);cout<<"\t";cout<<y;cout<<" ";cout<<x;cout<<"\n";
+					cout<<"\n\nstart anchor 2 found\t";cout<<anchorPointImage.at<Vec3b>(y,x);cout<<"\t";cout<<y;cout<<" ";cout<<x;cout<<"\n";
 				}
 				else if ((anchorPointPosition=="end") & (anchorFound1 == false)) {
 					anchorFound1 = true;
 					endingDispMapAnchorPoint[0][0]=y;
 					endingDispMapAnchorPoint[0][1]=x;
+					cout<<"\n\nend anchor found\t";cout<<anchorPointImage.at<Vec3b>(y,x);cout<<"\t";cout<<y;cout<<" ";cout<<x;cout<<"\n";
 				}
 				else if ((anchorPointPosition=="end") & (anchorFound1 == true) & numberOfAnchors > 1) {
 					endingDispMapAnchorPoint[1][0]=y;
 					endingDispMapAnchorPoint[1][1]=x;
+					cout<<"\n\nend anchor 2 found\t";cout<<anchorPointImage.at<Vec3b>(y,x);cout<<"\t";cout<<y;cout<<" ";cout<<x;cout<<"\n";
 				}
 			}
 		}
@@ -370,15 +372,15 @@ void calculateWeightChange(String verPositionForWeights, bool anchorForTexUpdate
 		//initTexYBR = (newTexY*.1);
 		//initTexYBR = .64f;//(newTexY*.1);
 		if (anchorForTexUpdate == true) {
-			if (changeTex == true) {initTexYBR = (initTexYBR2*(1-texTransDelay))+((initTexYBR2*(1.04 / initTexYBR2))*texTransDelay);
+			/*if (changeTex == true) {initTexYBR = (initTexYBR2*(1-texTransDelay))+((initTexYBR2*(1.04 / initTexYBR2))*texTransDelay);
 			initTexYBL = (initTexYBR2*(1-texTransDelay))+((initTexYBL2*(1.04 / initTexYBL2))*texTransDelay);
 			initTexYUL = initTexYBR-texYIncrement;initTexYUR = initTexYBL-texYIncrement;}
 
 			if (changeTex == false) {initTexYBR = (initTexYBR2*(texTransDelay))+((initTexYBR2*(1.04 / initTexYBR2))*(1-texTransDelay));
 			initTexYBL = (initTexYBR2*(texTransDelay))+((initTexYBL2*(1.04 / initTexYBL2))*(1-texTransDelay));
-			initTexYUL = initTexYBR-texYIncrement;initTexYUR = initTexYBL-texYIncrement;}
+			initTexYUL = initTexYBR-texYIncrement;initTexYUR = initTexYBL-texYIncrement;}*/
 
-			cout<<changeTex;cout<<"\n";
+			//cout<<changeTex;cout<<"\n";
 		}
 	}
 	else if (verPositionForWeights == "BL") {
@@ -614,7 +616,7 @@ void drawScene() {
 
 	// camera position mapper
 	//glTranslatef(-30.0f, 1.0f, -60.0f);//-150.0f);
-	glTranslatef(-25.0f, 11.0f, -90.0f);//-150.0f);
+	glTranslatef(-45.0f, 11.0f, -140.0f);//-150.0f);
 
 	//GLfloat ambientLight[] = {0.2f, 0.2f, 0.2f, 1.0f};
 	GLfloat ambientLight[] = {200.2f, 200.2f, 200.2f, 1.0f};
@@ -625,7 +627,8 @@ void drawScene() {
 	glLightfv(GL_LIGHT0, GL_DIFFUSE, directedLight);
 	glLightfv(GL_LIGHT0, GL_POSITION, directedLightPos);
 
-	glRotatef(-_angle, -0.20f, 1.0f, 0.0f);
+	//glRotatef(-_angle, -0.20f, 1.0f, 0.0f);
+	glRotatef(-_angle, -40.00f, 1.0f, 45.0f);
 
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, _textureId);
@@ -695,7 +698,7 @@ int main(int argc, char** argv) {
 	glutDisplayFunc(drawScene);
 	glutKeyboardFunc(handleKeypress);
 	glutReshapeFunc(handleResize);
-	_angle = -25.330f;//_angle = -45.330f;//25.330f;_angle = 0.0f;//
+	_angle = -45.330f;//_angle = -45.330f;//25.330f;_angle = 0.0f;//
 	glutTimerFunc(20, update, 0);
 
 	glutMainLoop();
