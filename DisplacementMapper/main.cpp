@@ -47,14 +47,14 @@ void handleKeypress(unsigned char key, int x, int y) {
 		exit(0);
 	}
 }
-String image1 = "/home/nmsutton/Documents/Software/OpenGL/Media/GeneralProcessed90.bmp";
-String image2 = "/home/nmsutton/Documents/Software/OpenGL/Media/GeneralProcessed90UpSft.bmp";
+String image1 = "/home/nmsutton/Documents/Software/OpenGL/Media/GeneralProcessed90_512.bmp";
+String image2 = "/home/nmsutton/Documents/Software/OpenGL/Media/GeneralProcessed90UpSft_512.bmp";
 String startingDispMapImage = image2;
 String endingDispMapImage = image1;
 Mat startingDispMap;
 Mat endingDispMap;
-String anchorImage1 = "/home/nmsutton/Documents/Software/OpenGL/Media/anchorImage1.bmp";
-String anchorImage2 = "/home/nmsutton/Documents/Software/OpenGL/Media/anchorImage2.bmp";
+String anchorImage1 = "/home/nmsutton/Documents/Software/OpenGL/Media/anchorImage1_512.bmp";
+String anchorImage2 = "/home/nmsutton/Documents/Software/OpenGL/Media/anchorImage2_512.bmp";
 String startingDispMapAnchorImage = anchorImage2;
 String endingDispMapAnchorImage = anchorImage1;
 Mat startingDispMapAnchor;
@@ -65,19 +65,19 @@ const int incrementValue = 1;
 
 // *2 is due to 2 rectangle verticies for each x and y axis used for the later Z level mapping.
 double verticiesInRectangle = 2;
-const double sizeOfMesh = 10;//6;//50;
+const double sizeOfMesh = 20;//10;//6;//50;
 int scalingF = 2;
 const double expandMeshSize = 2.0;//2.5;
 double maxYSize = sizeOfMesh*scalingF;
-double maxXSize = (sizeOfMesh*expandMeshSize*scalingF);
+double maxXSize = (sizeOfMesh*scalingF);
 int incrementValue2 = 1;
 double sizeOfMesh2 = sizeOfMesh*2;
-double texYScaling = 2*.9;
-double texXScaling = 1.5*.9;
+double texYScaling = 1*.9;
+double texXScaling = 0.75*.9;
 int x = 0, y = 0;
 float initalZ = 40.0f;
 double depthScalingFactor = .7;//.025;//.3;//0.1;
-const int xMaxAmount = ceil(sizeOfMesh*expandMeshSize*(1/incrementValue))*2, yMaxAmount = ceil(sizeOfMesh*(1/incrementValue))*2;
+const int xMaxAmount = ceil(sizeOfMesh*(1/incrementValue))*2, yMaxAmount = ceil(sizeOfMesh*(1/incrementValue))*2;
 double startingVerZLevels[yMaxAmount][xMaxAmount] = {0};
 double endingVerZLevels[yMaxAmount][xMaxAmount] = {0};
 double animationDelay = 50.0;
@@ -89,7 +89,7 @@ double startingDispMapAnchorPoint1[2] = {0,0};
 double startingDispMapAnchorPoint2[2] = {0,0};
 double endingDispMapAnchorPoint1[2] = {0,0};
 double endingDispMapAnchorPoint2[2] = {0,0};
-double imageYPixels = 256;
+double imageYPixels = 512;
 double imageXPixels = 512;
 double lockedDistance = 0.0;
 
@@ -108,11 +108,11 @@ float initTexXUL = 0.10f;//-0.05f;//0.0f;//
 float initTexXBR = 0.10f;//-0.05f;//-0.10f;
 float initTexXUR = initTexXUL+texXIncrement;
 float initTexXBL = initTexXBR+texXIncrement;
-float initTexYBR = 0.64f;//1.0f;//1.10f;0.64f;//
-float initTexYBR2 = 0.64f;//1.0f;//1.10f;0.64f;//
+float initTexYBR = 0.9f;//0.64f;//1.0f;//1.10f;0.64f;//
+float initTexYBR2 = 0.9;//0.64f;//1.0f;//1.10f;0.64f;//
 float initTexYUL = initTexYBR-texYIncrement;
-float initTexYBL = 0.64f;//1.0f;//1.10f;0.64f;//
-float initTexYBL2 = 0.64f;//1.0f;//1.10f;0.64f;//
+float initTexYBL = 0.9f;//0.64f;//1.0f;//1.10f;0.64f;//
+float initTexYBL2 = 0.9f;//0.64f;//1.0f;//1.10f;0.64f;//
 float initTexYUR = initTexYBL-texYIncrement;
 float initVerZUL = -4.50f+initalZ;
 float initVerZUR = -4.50f+initalZ;//initVerZUL+verZIncrement;
@@ -188,19 +188,12 @@ void buildDispMap(Mat startingDispMap, string startingOrEndPoint) {
 	double verZLevels[yMaxAmount][xMaxAmount] = {0};
 	for (int y = 0; y < yMaxAmount; y += 2) {
 		for (int x = 0; x < xMaxAmount; x += 2) {
-			double imageToScenePixelDiff = (255/(double)sizeOfMesh)*(1/verticiesInRectangle);
-			//double translatedX = x * imageToScenePixelDiff; double translatedY = y * imageToScenePixelDiff;
+			// imageYPixels is use to translate rectangles in mesh coord to pixels in input image
+			double imageToScenePixelDiff = (imageYPixels/(double)sizeOfMesh)*(1/verticiesInRectangle);
 			double translatedX = ceil(x * imageToScenePixelDiff); double translatedY = ceil(y * imageToScenePixelDiff);
-			////cout << "translatedX\t";cout<<translatedX;cout<<"\ttranslatedY\t";cout<<translatedY;cout<<"\n";
-			//double nextTranslatedX = (x+incrementValue) * imageToScenePixelDiff; double nextTranslatedY = (y+incrementValue) * imageToScenePixelDiff;
-			//double priorTranslatedX = (x-incrementValue) * imageToScenePixelDiff; double priorTranslatedY = (y-incrementValue) * imageToScenePixelDiff;
 			double meshVec_0_0_b = startingDispMap.at<Vec3b>((int)translatedY,(int)translatedX).val[0];
-			//meshVec_0_0_b = meshVec_0_0_b/3;
 			meshVec_0_0_b = meshVec_0_0_b/4;
 
-			//cout<<"\ny: ";cout<<y;cout<<" x: ";cout<<x;cout<<"\n";
-
-			////cout<<"[y+1][x+1]\t";cout<<x+1;cout<<" ";cout<<y+1;cout<<" ";cout<<" meshVec_0_0 ";cout<<meshVec_0_0_b;cout<<"\n";
 			if (x < xMaxAmount) {
 				verZLevels[y][x] = meshVec_0_0_b;
 			}
@@ -373,24 +366,14 @@ void calculateWeightChange(String verPositionForWeights, bool anchorForTexUpdate
 		//initTexYBR = (newTexY*.1);
 		//initTexYBR = .64f;//(newTexY*.1);
 		if (anchorForTexUpdate == true) {
-			if (changeTex == true) {initTexYBR = (initTexYBR2*(1-texTransDelay))+((initTexYBR2*(.78 / initTexYBR2))*texTransDelay);
-			initTexYBL = (initTexYBR2*(1-texTransDelay))+((initTexYBL2*(.78 / initTexYBL2))*texTransDelay);
+			if (changeTex == true) {initTexYBR = (initTexYBR2*(1-texTransDelay))+((initTexYBR2*(1.04 / initTexYBR2))*texTransDelay);
+			initTexYBL = (initTexYBR2*(1-texTransDelay))+((initTexYBL2*(1.04 / initTexYBL2))*texTransDelay);
 			initTexYUL = initTexYBR-texYIncrement;initTexYUR = initTexYBL-texYIncrement;}
-			/*float initTexYUL = initTexYBR-texYIncrement;
-			float initTexYBL = 0.64f;//1.0f;//1.10f;0.64f;//
-			float initTexYBL2 = 0.64f;//1.0f;//1.10f;0.64f;//
-			float initTexYUR = initTexYBL-texYIncrement;*/
-			if (changeTex == false) {initTexYBR = (initTexYBR2*(texTransDelay))+((initTexYBR2*(.78 / initTexYBR2))*(1-texTransDelay));
-			initTexYBL = (initTexYBR2*(texTransDelay))+((initTexYBL2*(.78 / initTexYBL2))*(1-texTransDelay));
+
+			if (changeTex == false) {initTexYBR = (initTexYBR2*(texTransDelay))+((initTexYBR2*(1.04 / initTexYBR2))*(1-texTransDelay));
+			initTexYBL = (initTexYBR2*(texTransDelay))+((initTexYBL2*(1.04 / initTexYBL2))*(1-texTransDelay));
 			initTexYUL = initTexYBR-texYIncrement;initTexYUR = initTexYBL-texYIncrement;}
-			/*{initTexYBR = initTexYBR2;initTexYBL = initTexYBL2;
-			initTexYUL = initTexYBR-texYIncrement;initTexYUR = initTexYBL-texYIncrement;}*/
 
-			//else {texYWeight = 1.0;}//changeTex==
-
-			//texYWeight = newTexY;//1.0f;//(.64 / initTexYBR);//0.820512820513;//newTexY;//(.64 / initTexYBR);
-			//cout<<startY;cout<<":::";cout<<endY;cout<<" number ";cout<<(.78 / initTexYBR);cout<<"\n";//141, 64
-			//cout<<"}}";cout<<(((endY-startY)/imageYPixels)*yTexScalingFactor);cout<<"\n";
 			cout<<changeTex;cout<<"\n";
 		}
 	}
@@ -708,7 +691,7 @@ int main(int argc, char** argv) {
 	glutDisplayFunc(drawScene);
 	glutKeyboardFunc(handleKeypress);
 	glutReshapeFunc(handleResize);
-	_angle = -45.330f;//25.330f;_angle = 0.0f;//
+	_angle = 0.0f;//_angle = -45.330f;//25.330f;_angle = 0.0f;//
 	glutTimerFunc(20, update, 0);
 
 	glutMainLoop();
