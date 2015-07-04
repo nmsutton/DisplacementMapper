@@ -57,7 +57,7 @@ String anchorImage1 = "/home/nmsutton/Documents/Software/OpenGL/Media/anchorImag
 String anchorImage2 = "/home/nmsutton/Documents/Software/OpenGL/Media/anchorImage2_512.bmp";
 String startingDispMapAnchorImage = anchorImage2;
 String endingDispMapAnchorImage = anchorImage1;
-const int numberOfAnchors = 2;
+const int numberOfAnchors = 1;
 Mat startingDispMapAnchor;
 Mat endingDispMapAnchor;
 double timeInMs = 0;

@@ -57,7 +57,7 @@ String anchorImage1 = "/home/nmsutton/Documents/Software/OpenGL/Media/anchorImag
 String anchorImage2 = "/home/nmsutton/Documents/Software/OpenGL/Media/anchorImage2_512.bmp";
 String startingDispMapAnchorImage = anchorImage2;
 String endingDispMapAnchorImage = anchorImage1;
-const int numberOfAnchors = 2;
+const int numberOfAnchors = 1;
 Mat startingDispMapAnchor;
 Mat endingDispMapAnchor;
 double timeInMs = 0;
@@ -436,7 +436,7 @@ void applyDispMap(double maxXSize, double maxYSize, double borderToCrop) {
 		weightsBR[y][x] = 0;
 		for (int anchorIndex = 0;anchorIndex < numberOfAnchors; anchorIndex++) {
 			calculateWeightChange("BR", true, startingDispMapAnchorPoint[anchorIndex][0], startingDispMapAnchorPoint[anchorIndex][1],
-					startingVerZLevels[y][x], endingDispMapAnchorPoint[anchorIndex][0], endingDispMapAnchorPoint[anchorIndex][1], endingVerZLevels[y][x]);
+							startingVerZLevels[y][x], endingDispMapAnchorPoint[anchorIndex][0], endingDispMapAnchorPoint[anchorIndex][1], endingVerZLevels[y][x]);
 		}
 		vAT3.BRVerInst[2] = (startingVerZLevels[y][x]*depthScalingFactor)*weightsBR[y][x];
 		///cout<<"weightsBR[5][5]\t";cout<<weightsBR[5][5];cout<<"\n";
@@ -451,8 +451,8 @@ void applyDispMap(double maxXSize, double maxYSize, double borderToCrop) {
 		}*/
 		weightsBL[y][x+1] = 0;
 		for (int anchorIndex = 0;anchorIndex < numberOfAnchors; anchorIndex++) {
-			calculateWeightChange("BL", true, startingDispMapAnchorPoint[anchorIndex][0], startingDispMapAnchorPoint[anchorIndex][1],
-					startingVerZLevels[y][x+1], endingDispMapAnchorPoint[anchorIndex][0], endingDispMapAnchorPoint[anchorIndex][1], endingVerZLevels[y][x+1]);
+		calculateWeightChange("BL", true, startingDispMapAnchorPoint[anchorIndex][0], startingDispMapAnchorPoint[anchorIndex][1],
+				startingVerZLevels[y][x+1], endingDispMapAnchorPoint[anchorIndex][0], endingDispMapAnchorPoint[anchorIndex][1], endingVerZLevels[y][x+1]);
 		}
 		vAT3.BLVerInst[2] = (startingVerZLevels[y][x+1]*depthScalingFactor)*weightsBL[y][x+1];
 		//((startingVerZLevels[y][x+1]*depthScalingFactor)*(1.0-((1.0/animationDelay)*timeInMs))) + ((endingVerZLevels[y][x+1]*depthScalingFactor)*((1.0/animationDelay)*timeInMs));//verZLevels[y][x+1] = meshVec_0_0;
@@ -464,8 +464,8 @@ void applyDispMap(double maxXSize, double maxYSize, double borderToCrop) {
 		}*/
 		weightsUL[y+1][x] = 0;
 		for (int anchorIndex = 0;anchorIndex < numberOfAnchors; anchorIndex++) {
-			calculateWeightChange("UL", true, startingDispMapAnchorPoint[anchorIndex][0], startingDispMapAnchorPoint[anchorIndex][1],
-					startingVerZLevels[y+1][x], endingDispMapAnchorPoint[anchorIndex][0], endingDispMapAnchorPoint[anchorIndex][1], endingVerZLevels[y+1][x]);
+		calculateWeightChange("UL", true, startingDispMapAnchorPoint[anchorIndex][0], startingDispMapAnchorPoint[anchorIndex][1],
+				startingVerZLevels[y+1][x], endingDispMapAnchorPoint[anchorIndex][0], endingDispMapAnchorPoint[anchorIndex][1], endingVerZLevels[y+1][x]);
 		}
 		vAT3.ULVerInst[2] = (startingVerZLevels[y+1][x]*depthScalingFactor)*weightsUL[y+1][x];
 		//if (y > (yMaxAmount-15) & x == 15 & timeInMs <= 6) {
@@ -479,8 +479,8 @@ void applyDispMap(double maxXSize, double maxYSize, double borderToCrop) {
 		}*/
 		weightsUR[y+1][x+1] = 0;
 		for (int anchorIndex = 0;anchorIndex < numberOfAnchors; anchorIndex++) {
-			calculateWeightChange("UR", true, startingDispMapAnchorPoint[anchorIndex][0], startingDispMapAnchorPoint[anchorIndex][1],
-					startingVerZLevels[y+1][x+1], endingDispMapAnchorPoint[anchorIndex][0], endingDispMapAnchorPoint[anchorIndex][1], endingVerZLevels[y+1][x+1]);
+		calculateWeightChange("UR", true, startingDispMapAnchorPoint[anchorIndex][0], startingDispMapAnchorPoint[anchorIndex][1],
+				startingVerZLevels[y+1][x+1], endingDispMapAnchorPoint[anchorIndex][0], endingDispMapAnchorPoint[anchorIndex][1], endingVerZLevels[y+1][x+1]);
 		}
 		vAT3.URVerInst[2] = (startingVerZLevels[y+1][x+1]*depthScalingFactor)*weightsUR[y+1][x+1];
 		//((startingVerZLevels[y+1][x+1]*depthScalingFactor)*(1.0-((1.0/animationDelay)*timeInMs))) + ((endingVerZLevels[y+1][x+1]*depthScalingFactor)*((1.0/animationDelay)*timeInMs));// = meshVec_0_0;
