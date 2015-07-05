@@ -24,10 +24,10 @@ double sigCent = 0.3; // sigmaCenter
 double sigSurr = 1.5; // sigmaSurround
 double Balance = 5; // Balance between center and surround
 double ms = .001; // miliseconds unit
-double aCenter = 1/(16);//1/(16*ms); // latency of response
-double aSurround = 1/(32); //1/(32*ms); // latency of response
-double bCenter = 1/(64);//1/(64*ms); // time of reversal
-double bSurround = 1/(64);//1/(64*ms); // time of reversal
+double aCenter = 1/(16*ms); // latency of response
+double aSurround = 1/(32*ms); // latency of response
+double bCenter = 1/(64*ms); // time of reversal
+double bSurround = 1/(64*ms); // time of reversal
 double z = 0; // depth dimension
 double tauMs = 0;
 double maxTau = 200;
@@ -37,6 +37,7 @@ double yStart = -2;
 double yEnd = 2;
 double imageHeightAndWidth = 512;
 double increment = (xEnd-xStart)/imageHeightAndWidth;
+double c = 0.02;
 String outputImageFile = "./gaborFilterDispMap.bmp";
 
 double time(double a, double b, double tau) {
@@ -63,7 +64,7 @@ double diffOfGaussians(double x, double y, double tau) {
 	diffOfGauss = (((time(aCenter, bCenter, tau)/(2*pi*pow(sigCent,2)))*exp(-((pow(x,2)+pow(y,2))/(2*pow(sigCent,2)))))-
 			((Balance*(time(aSurround, bSurround, tau))/(2*pi*pow(sigSurr,2)))*exp(-((pow(x,2)+pow(y,2))/(2*pow(sigSurr,2))))));
 
-	cout << diffOfGauss;cout<<" ";cout<<x;cout<<" ";cout<<y;cout<<" ";cout<<(((time(aCenter, bCenter, tau)/(2*pi*pow(sigCent,2)))*exp(-((pow(x,2)+pow(y,2))/(2*pow(sigCent,2))))));cout<<" ";cout<<(time(aCenter, bCenter, tau));cout<<" ";cout<<exp(-bSurround*tau);cout<<"\n";
+	//cout << diffOfGauss;cout<<" ";cout<<x;cout<<" ";cout<<y;cout<<" ";cout<<(((time(aCenter, bCenter, tau)/(2*pi*pow(sigCent,2)))*exp(-((pow(x,2)+pow(y,2))/(2*pow(sigCent,2))))));cout<<" ";cout<<(time(aCenter, bCenter, tau));cout<<" ";cout<<exp(-bSurround*tau);cout<<"\n";
 	return diffOfGauss;
 }
 
@@ -80,37 +81,53 @@ int main(int argc, char** argv) {
 	cout<<"test";
 	Mat outputImage;
 	outputImage = imread(outputImageFile, CV_LOAD_IMAGE_COLOR);
-	cout<<outputImage.rows;
 
-	for(double y=0;y<imageHeightAndWidth;y++)
-	{
-		for (int x=0;x<imageHeightAndWidth;x++)
-		{
-			// Difference of gausians
-			xD = (x * conversionConstant) + xStart;
-			yD = (y * conversionConstant) + yStart;
+	//double y = 0;
+	//maxTau = 51;
+	for (double tau = 0; tau < maxTau; tau++) {
+		tauMs = tau * ms;
+		double y = imageHeightAndWidth/2;
+		//for(double y=0;y<imageHeightAndWidth;y++)
+		//{
+			for (int x=0;x<imageHeightAndWidth;x++)
+			{
+				// Difference of gausians
+				xD = (x * conversionConstant) + xStart;
+				yD = (y * conversionConstant) + yStart;
 
-			maxTau = 101;
-			for (double tau = 100; tau < maxTau; tau++) {
-				tauMs = tau;// * ms;
+
 				z = diffOfGaussians(xD, yD, tauMs);
-				z = z*-1;
+				//z = z*-1;
+				//z = z -
+				double greyrange = 255;
+				double startingshift = 25;//greyrange/1.5;
+				double scalingf = greyrange/90;///greyrange/(4.5+2);
+				z = (z*scalingf)+startingshift;
 
 				// write pixels
-				outputImage.at<Vec3b>(y,x) = Vec3b(z,z,z);
-				//cout << z;cout<<" ";cout<<xD;cout<<" ";cout<<yD;cout<<"\n";
+				//outputImage.at<Vec3b>(y,x) = Vec3b(z,z,z);
+				outputImage.at<Vec3b>(tau,x) = Vec3b(z,z,z);
+				//outputImage.at<Vec3b>(tau,x) = Vec3b(200,200,200);
+				cout << z;cout<<" ";cout<<xD;cout<<" ";cout<<yD;cout<<"\n";
 			}
 			//z = 150;
 			//outputImage.at<Vec3b>(y,x) = Vec3b(150,150,150);
 			//////
-		}
-	}
-	imwrite(outputImageFile, outputImage );
+		//}
+		namedWindow( "Display Image", CV_WINDOW_AUTOSIZE );
+		imshow( "Display Image", outputImage );
 
-	namedWindow( "Display Image", CV_WINDOW_AUTOSIZE );
+		// from http://stackoverflow.com/questions/23997266/opencv-animation
+		waitKey(33);
+	}
+
+	//imwrite(outputImageFile, outputImage );
+
+
+	/*namedWindow( "Display Image", CV_WINDOW_AUTOSIZE );
 	imshow( "Display Image", outputImage );
 
-	waitKey(0);
+	waitKey(0);*/
 
 	cout << "done";
 	return 0;

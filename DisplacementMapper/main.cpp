@@ -701,6 +701,9 @@ int main(int argc, char** argv) {
 	_angle = -45.330f;//_angle = -45.330f;//25.330f;_angle = 0.0f;//
 	glutTimerFunc(20, update, 0);
 
+	// try
+	// http://stackoverflow.com/questions/19070333/saving-the-opengl-context-as-a-video-output
+
 	glutMainLoop();
 	return 0;
 }
