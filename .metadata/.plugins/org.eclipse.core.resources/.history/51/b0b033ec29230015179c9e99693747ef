@@ -86,9 +86,9 @@ int main(int argc, char** argv) {
 	//maxTau = 51;
 	for (double tau = 0; tau < maxTau; tau++) {
 		tauMs = tau * ms;
-		//double y = imageHeightAndWidth/2;
-		for(double y=0;y<imageHeightAndWidth;y++)
-		{
+		double y = imageHeightAndWidth/2;
+		//for(double y=0;y<imageHeightAndWidth;y++)
+		//{
 			for (int x=0;x<imageHeightAndWidth;x++)
 			{
 				// Difference of gausians
@@ -100,22 +100,20 @@ int main(int argc, char** argv) {
 				//z = z*-1;
 				//z = z -
 				double greyrange = 255;
-				double startingshift = 50;//greyrange/1.5;
-				//double scalingf = greyrange/90;///greyrange/(4.5+2);
-				double scalingf = greyrange/45;///greyrange/(4.5+2);
+				double startingshift = 25;//greyrange/1.5;
+				double scalingf = greyrange/90;///greyrange/(4.5+2);
 				z = (z*scalingf)+startingshift;
-				//z = z*-1;
 
 				// write pixels
-				outputImage.at<Vec3b>(y,x) = Vec3b(z,z,z);
-				//outputImage.at<Vec3b>(tau,x) = Vec3b(z,z,z);
+				//outputImage.at<Vec3b>(y,x) = Vec3b(z,z,z);
+				outputImage.at<Vec3b>(tau,x) = Vec3b(z,z,z);
 				//outputImage.at<Vec3b>(tau,x) = Vec3b(200,200,200);
-				//cout << z;cout<<" ";cout<<xD;cout<<" ";cout<<yD;cout<<"\n";
+				cout << z;cout<<" ";cout<<xD;cout<<" ";cout<<yD;cout<<"\n";
 			}
 			//z = 150;
 			//outputImage.at<Vec3b>(y,x) = Vec3b(150,150,150);
 			//////
-		}
+		//}
 		namedWindow( "Display Image", CV_WINDOW_AUTOSIZE );
 		imshow( "Display Image", outputImage );
 

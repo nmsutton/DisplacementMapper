@@ -100,9 +100,9 @@ int main(int argc, char** argv) {
 				//z = z*-1;
 				//z = z -
 				double greyrange = 255;
-				double startingshift = 50;//greyrange/1.5;
+				double startingshift = 150;//greyrange/1.5;
 				//double scalingf = greyrange/90;///greyrange/(4.5+2);
-				double scalingf = greyrange/45;///greyrange/(4.5+2);
+				double scalingf = greyrange/25;///greyrange/(4.5+2);
 				z = (z*scalingf)+startingshift;
 				//z = z*-1;
 

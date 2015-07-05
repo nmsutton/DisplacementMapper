@@ -100,17 +100,15 @@ int main(int argc, char** argv) {
 				//z = z*-1;
 				//z = z -
 				double greyrange = 255;
-				double startingshift = 50;//greyrange/1.5;
-				//double scalingf = greyrange/90;///greyrange/(4.5+2);
-				double scalingf = greyrange/45;///greyrange/(4.5+2);
+				double startingshift = 25;//greyrange/1.5;
+				double scalingf = greyrange/90;///greyrange/(4.5+2);
 				z = (z*scalingf)+startingshift;
-				//z = z*-1;
 
 				// write pixels
 				outputImage.at<Vec3b>(y,x) = Vec3b(z,z,z);
 				//outputImage.at<Vec3b>(tau,x) = Vec3b(z,z,z);
 				//outputImage.at<Vec3b>(tau,x) = Vec3b(200,200,200);
-				//cout << z;cout<<" ";cout<<xD;cout<<" ";cout<<yD;cout<<"\n";
+				cout << z;cout<<" ";cout<<xD;cout<<" ";cout<<yD;cout<<"\n";
 			}
 			//z = 150;
 			//outputImage.at<Vec3b>(y,x) = Vec3b(150,150,150);

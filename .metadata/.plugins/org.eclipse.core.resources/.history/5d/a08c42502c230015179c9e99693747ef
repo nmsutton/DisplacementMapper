@@ -102,7 +102,7 @@ int main(int argc, char** argv) {
 				double greyrange = 255;
 				double startingshift = 50;//greyrange/1.5;
 				//double scalingf = greyrange/90;///greyrange/(4.5+2);
-				double scalingf = greyrange/45;///greyrange/(4.5+2);
+				double scalingf = greyrange/35;///greyrange/(4.5+2);
 				z = (z*scalingf)+startingshift;
 				//z = z*-1;
 
