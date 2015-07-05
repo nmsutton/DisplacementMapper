@@ -93,8 +93,8 @@ double endingDispMapAnchorPoint2[2] = {0,0};*/
 
 double startingDispMapAnchorPoint[numberOfAnchors][2] = {0};
 double endingDispMapAnchorPoint[numberOfAnchors][2] = {0};
-double imageYPixels = 512;
-double imageXPixels = 512;
+double imageYPixels = 512;//image.rows;
+double imageXPixels = 512;//image.cols;
 double lockedDistance = 0.0;
 
 float verXIncrement = 1.5f;//0.5f;//1.5f;
