@@ -13,6 +13,7 @@
 #include <opencv2/highgui/highgui.hpp>
 
 #include <math.h>
+#include <stdio.h>
 #include <iostream>
 #include <string>
 
@@ -48,6 +49,7 @@ double a = 1.0/15.0;//1.0/20.0;//1.0/15.0;//(1/(15*ms));//20*ms;
 double c = 0.02;//(1/.02);//0.02; // converts units of time (ms) and space (degrees). e.g. degrees/time.
 double psi = pi/9.0; // space-time rotation angle
 String outputImageFile = "./gaborFilterDispMap.bmp";
+String outputImageFileForSaving = "./media/gaborFilterDispMap";
 
 double time(double a, double b, double tau) {
 	double timeFunct = 0;
@@ -177,8 +179,24 @@ int main(int argc, char** argv) {
 			//outputImage.at<Vec3b>(y,x) = Vec3b(150,150,150);
 			//////
 		}
-		//cout << z;cout<<" ";cout<<xD;cout<<" ";cout<<yD;cout<<" ";cout<<tau;cout<<" ";cout<<gabor(xPrime(xD,tauMs), yD);cout<<" ";cout<<gaborTime(tauPrime(xD,tau));cout<<"\n";
-		//cout << z;cout<<" ";cout<<xD;cout<<" ";cout<<yD;cout<<" ";cout<<tau;cout<<" ";cout<<tauPrime(xD,tau);cout<<"\n";
+		stringstream ss;
+		ss << outputImageFileForSaving;
+		ss << "_";
+		ss << tau;
+		ss << ".bmp";
+
+		//char arr [50];
+		//int q=4;
+		//sprintf (arr, "decimal %d in the array", q);
+		/*double a=2.132;
+		char arr[sizeof(tau)];
+		memcpy(&arr,&tau,sizeof(tau));*/
+
+		//char outputImageFileForSaving2[] = outputImageFileForSaving;
+		//outputImageFileForSaving = sprintf(outputImageFileForSaving, outputImageFileForSaving+"_%d.bmp", tau);
+		//outputImageFileForSaving + "_" + std::to_string(tau) + ".bmp";
+		//cout<<ss.str();cout<<" ";cout<<*tauCopy;cout<<"\n";
+		imwrite(ss.str(), outputImage );
 		namedWindow( "Display Image", CV_WINDOW_AUTOSIZE );
 		imshow( "Display Image", outputImage );
 
