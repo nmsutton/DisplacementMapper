@@ -3,28 +3,29 @@
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="291" key="DIALOG_WIDTH"/>
 		<item value="440" key="DIALOG_Y_ORIGIN"/>
-		<item value="1515" key="DIALOG_X_ORIGIN"/>
 		<item value="433" key="DIALOG_HEIGHT"/>
+		<item value="1515" key="DIALOG_X_ORIGIN"/>
 		<item value="1|Ubuntu|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="true" key="wrap"/>
-		<item value="false" key="casesensitive"/>
 		<item value="true" key="isRegEx"/>
+		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="animationDelay" key="selection"/>
+		<item value="image" key="selection"/>
 		<list key="findhistory">
-			<item value="animationDelay"/>
-			<item value="\tcout"/>
-			<item value="cout&lt;&lt;&quot;\\ty x: &quot;;cout&lt;&lt;y;cout&lt;&lt;&quot; &quot;;cout&lt;&lt;x;"/>
-			<item value="yMaxAmount"/>
-			<item value="512"/>
 			<item value="image"/>
-			<item value="startingDispMapImage"/>
-			<item value="imread"/>
+			<item value="_angle"/>
+			<item value="\tcout"/>
+			<item value="\"/>
+			<item value="startingDispMapAnchorPoint1"/>
+			<item value="startingVerZLevels"/>
+			<item value="1.05"/>
+			<item value="startingDispMap"/>
 		</list>
 		<list key="replacehistory">
+			<item value="*"/>
 			<item value="anchorPointImage"/>
 			<item value="double"/>
 			<item value="y"/>
@@ -32,7 +33,6 @@
 			<item value="sizeOfMesh*expandMeshSizeY"/>
 			<item value="maxYSize"/>
 			<item value="maxXSize"/>
-			<item value="y2"/>
 		</list>
 	</section>
 </section>
