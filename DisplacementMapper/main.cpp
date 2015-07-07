@@ -69,7 +69,7 @@ const int incrementValue = 1;
 
 // *2 is due to 2 rectangle verticies for each x and y axis used for the later Z level mapping.
 double verticiesInRectangle = 2;
-const double sizeOfMesh = 20;//10;//6;//50;
+const double sizeOfMesh = 35;//10;//6;//50;
 int scalingF = 2;
 const double expandMeshSize = 2.0;//2.5;
 double maxYSize = sizeOfMesh*scalingF;
@@ -80,7 +80,7 @@ double texYScaling = 1*.9;
 double texXScaling = 0.75*.9;
 int x = 0, y = 0;
 float initalZ = 40.0f;
-double depthScalingFactor = .7;//.025;//.3;//0.1;
+double depthScalingFactor = 0.85;//1.4;//.7;//.025;//.3;//0.1;
 const int xMaxAmount = ceil(sizeOfMesh*(1/incrementValue))*2, yMaxAmount = ceil(sizeOfMesh*(1/incrementValue))*2;
 double startingVerZLevels[yMaxAmount][xMaxAmount] = {0};
 double endingVerZLevels[yMaxAmount][xMaxAmount] = {0};
@@ -129,9 +129,6 @@ float initVerZBR = -4.50f+initalZ;
 float texYWeight = 1.0;
 float texXWeight = 1.0;
 bool changeTex = false;
-int texImageSwitch = 3;
-int texImageCounter = 0;
-int imageTransIncrementOld = 0;
 
 // from https://studiofreya.com/cpp/how-to-check-for-nan-inf-ind-in-c/
 template<typename T>
@@ -170,45 +167,45 @@ Image* texture[200];
 
 GLuint LoadTexture2( const char * filename, int width, int height )
 {
-	GLuint texture;
-	unsigned char * data;
-	FILE * file;
+    GLuint texture;
+    unsigned char * data;
+    FILE * file;
 
-	//The following code will read in our RAW file
-	file = fopen( filename, "rb" );
-	if ( file == NULL ) return 0;
-	data = (unsigned char *)malloc( width * height * 3 );
-	fread( data, width * height * 3, 1, file );
-	fclose( file );
+    //The following code will read in our RAW file
+    file = fopen( filename, "rb" );
+    if ( file == NULL ) return 0;
+    data = (unsigned char *)malloc( width * height * 3 );
+    fread( data, width * height * 3, 1, file );
+    fclose( file );
 
-	glGenTextures( 1, &texture ); //generate the texture with the loaded data
-	glBindTexture( GL_TEXTURE_2D, texture ); //bind the textureto it’s array
-	glTexEnvf( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE ); //set texture environment parameters
+    glGenTextures( 1, &texture ); //generate the texture with the loaded data
+    glBindTexture( GL_TEXTURE_2D, texture ); //bind the textureto it’s array
+    glTexEnvf( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE ); //set texture environment parameters
 
-	//here we are setting what textures to use and when. The MIN  filter is which quality to show
-	//when the texture is near the view, and the MAG filter is which quality to show when the texture
-	//is far from the view.
+    //here we are setting what textures to use and when. The MIN  filter is which quality to show
+    //when the texture is near the view, and the MAG filter is which quality to show when the texture
+    //is far from the view.
 
-	//The qualities are (in order from worst to best)
-	//GL_NEAREST
-	//GL_LINEAR
-	//GL_LINEAR_MIPMAP_NEAREST
-	//GL_LINEAR_MIPMAP_LINEAR
+    //The qualities are (in order from worst to best)
+    //GL_NEAREST
+    //GL_LINEAR
+    //GL_LINEAR_MIPMAP_NEAREST
+    //GL_LINEAR_MIPMAP_LINEAR
 
-	//And if you go and use extensions, you can use Anisotropic  filtering textures which are of an
-	//even better quality, but this will do for now.
-	glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER,GL_LINEAR_MIPMAP_LINEAR );
-	glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER,GL_LINEAR_MIPMAP_LINEAR );
+    //And if you go and use extensions, you can use Anisotropic  filtering textures which are of an
+    //even better quality, but this will do for now.
+    glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER,GL_LINEAR_MIPMAP_LINEAR );
+    glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER,GL_LINEAR_MIPMAP_LINEAR );
 
-	//Here we are setting the parameter to repeat the texture instead of clamping the texture
-	//to the edge of our shape.
-	glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT );
-	glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT );
+    //Here we are setting the parameter to repeat the texture instead of clamping the texture
+    //to the edge of our shape.
+    glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT );
+    glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT );
 
-	//Generate the texture with mipmaps
-	gluBuild2DMipmaps( GL_TEXTURE_2D, 3, width, height, GL_RGB, GL_UNSIGNED_BYTE, data );
-	free( data ); //free the texture
-	return texture; //return whether it was successfull
+    //Generate the texture with mipmaps
+    gluBuild2DMipmaps( GL_TEXTURE_2D, 3, width, height, GL_RGB, GL_UNSIGNED_BYTE, data );
+    free( data ); //free the texture
+    return texture; //return whether it was successfull
 }
 
 void initRendering() {
@@ -229,7 +226,7 @@ void initRendering() {
 	texGroup[(int)timeInMs] = ss.str();
 	const char *test2[50];
 	const char test3[50];
-	 *test2 = &test3;*/
+	*test2 = &test3;*/
 
 	//Image* image = loadBMP("/home/nmsutton/Documents/Software/OpenGL/Media/ColorTex.bmp");//loadBMP("/home/nmsutton/Documents/Software/OpenGL/Media/gaborFilter1.bmp");//loadBMP("/home/nmsutton/Documents/Software/OpenGL/Media/generalImg3.bmp");
 	//Image* image = loadBMP(texGroup[(int)timeInMs]);//loadBMP(ss.str());//loadBMP("/home/nmsutton/Documents/Software/OpenGL/Media/gaborFilter1.bmp");//loadBMP("/home/nmsutton/Documents/Software/OpenGL/Media/generalImg3.bmp");
@@ -690,19 +687,19 @@ void drawScene() {
 
 	// camera position mapper
 	//glTranslatef(-30.0f, 1.0f, -60.0f);//-150.0f);
-	glTranslatef(-30.0f, 11.0f, -140.0f);//-150.0f);
+	glTranslatef(-60.0f, 15.0f, -150.0f);//-150.0f);
 
 	//GLfloat ambientLight[] = {0.2f, 0.2f, 0.2f, 1.0f};
-	GLfloat ambientLight[] = {200.2f, 200.2f, 200.2f, 1.0f};
+	GLfloat ambientLight[] = {1000.2f, 1000.2f, 1000.2f, 1.0f};
 	glLightModelfv(GL_LIGHT_MODEL_AMBIENT, ambientLight);
 
-	GLfloat directedLight[] = {0.7f, 0.7f, 0.7f, 1.0f};
-	GLfloat directedLightPos[] = {-10.0f, 15.0f, 20.0f, 0.0f};
+	GLfloat directedLight[] = {200.7f, 200.7f, 200.7f, 1.0f};
+	GLfloat directedLightPos[] = {-210.0f, 215.0f, 220.0f, 0.0f};
 	glLightfv(GL_LIGHT0, GL_DIFFUSE, directedLight);
 	glLightfv(GL_LIGHT0, GL_POSITION, directedLightPos);
 
 	//glRotatef(-_angle, -0.20f, 1.0f, 0.0f);
-	glRotatef(-_angle, -35.00f, 1.0f, 0.0f);
+	glRotatef(-_angle, -400.00f, 50.0f, 20.0f);
 
 	glEnable(GL_TEXTURE_2D);
 	//glBindTexture(GL_TEXTURE_2D, _textureId);
@@ -737,8 +734,7 @@ void update(int value) {
 	if (_angle > 50) {
 		_angle -= 100;
 	}*/
-	double scaleAnim = 1;
-	if (timeInMs == (transitionTime*scaleAnim)) {//25) {
+	if (timeInMs == transitionTime) {//25) {
 		/*if (startingDispMapImage == image1) {
 			startingDispMapImage = image2;
 			endingDispMapImage = image1;
@@ -753,25 +749,18 @@ void update(int value) {
 		}*/
 		timeInMs = 0;
 	}
-	int imageTransIncrement = (int) floor(timeInMs/scaleAnim);
-
-	if (imageTransIncrement > imageTransIncrementOld) {
-		startingDispMapImage = texGroup[(int)timeInMs];
-		if (timeInMs < (transitionTime-1)) {
+		//if (startingDispMapImage == texGroup[(int)timeInMs]) {
+			startingDispMapImage = texGroup[(int)timeInMs];
+			if (timeInMs < (transitionTime-1)) {
 			endingDispMapImage = texGroup[(int)timeInMs+1];
-		}
-		else {
-			endingDispMapImage = texGroup[0];
-		}
+			}
+			else {
+				endingDispMapImage = texGroup[0];
+			}
 
-		changeTex = true;
-	}
-
-	imageTransIncrementOld = imageTransIncrement;
-	//if (startingDispMapImage == texGroup[(int)timeInMs]) {
-
-	//}
-	/*		timeInMs = 0;
+			changeTex = true;
+		//}
+/*		timeInMs = 0;
 	}*/
 	cout<<timeInMs;cout<<"\n";
 	glutPostRedisplay();
@@ -794,7 +783,7 @@ int main(int argc, char** argv) {
 	glutDisplayFunc(drawScene);
 	glutKeyboardFunc(handleKeypress);
 	glutReshapeFunc(handleResize);
-	_angle = -60.330f;//-45.330f;//_angle = -45.330f;//25.330f;_angle = 0.0f;//
+	_angle = -70.330f;//-45.330f;//_angle = -45.330f;//25.330f;_angle = 0.0f;//
 	glutTimerFunc(100, update, 0);
 
 	// try
