@@ -660,13 +660,6 @@ void create3dGraphics(int argc, char** argv) {
 }
 
 int main(int argc, char** argv) {
-	/*
-	 * Creation of 3d graphics based on displacement maps using 2d disp maps.
-	 *
-	 * references:
-	 * http://stackoverflow.com/questions/8765574/how-to-put-stringstream-contents-into-char-type-instead-string-type
-	 * http://stackoverflow.com/questions/2848087/how-to-clear-stringstream
-	 */
 	cout<<"\n\nImages used for the simulation need to be in a folder one level below this program in the file system.  \n";
 	cout<<"The folder is named \"OpenGL/Media/\".  See image variable names to set or change where images are located.\n";
 	cout<<"Images used come from the image preprocessor program which generates 2d dispacement maps according to the\n";
@@ -678,14 +671,19 @@ int main(int argc, char** argv) {
 	if (simulationToRun == "gaborFilter") {
 		stringstream ss;
 		for (int i = 0; i < 200; i++) {
-			ss.str( std::string() );
-			ss.clear();
-			ss << "../../../OpenGL/Media/gabor/gaborFilterDispMap_";
+			/*ss << "../../../OpenGL/DisplacementMapper/ImagePreprocessor/media/gaborFilterDispMap_";
 			ss << i;
-			ss << ".bmp";
+			ss << ".bmp";*/
+			ss.clear();
+			ss << "../../../OpenGL/Media/diffGaus/diffGSTScaled.bmp";
+			//texGroup[i] = "../../../OpenGL/Media/diffGaus/diffGSTScaled.bmp";
+			//strcpy(texGroup[i], ss.str());
 			std::string s = ss.str();
 			const char* p = s.c_str();
+			//strcpy(texGroup[i], p);
 			strcpy(texGroup[i], p);
+			//strcpy(texGroup[i], "../../../OpenGL/Media/diffGaus/diffGSTScaled.bmp");
+			//texGroup[i] = ss;
 		}
 
 		image1 = texGroup[0];
