@@ -39,6 +39,26 @@ double yStart = -5.0;//-7.0;//-5.0;
 double yEnd = 5.0;//7.0;//5.0;
 double imageHeightAndWidth = 512.0;
 double increment = (xEnd-xStart)/imageHeightAndWidth;
+
+/*double pi = M_PI;
+double sigCent = 0.3; // sigmaCenter
+double sigSurr = 1.5; // sigmaSurround
+double Balance = 5; // Balance between center and surround
+double ms = .001; // miliseconds unit
+double aCenter = 1/(16*ms); // latency of response
+double aSurround = 1/(32*ms); // latency of response
+double bCenter = 1/(64*ms); // time of reversal
+double bSurround = 1/(64*ms); // time of reversal
+double z = 0; // depth dimension
+double tauMs = 0;
+double maxTau = 200;
+double xStart = -2;
+double xEnd = 2;
+double yStart = -2;
+double yEnd = 2;
+double imageHeightAndWidth = 512;
+double increment = (xEnd-xStart)/imageHeightAndWidth;*/
+//double c = 0.02;
 // gabor variables
 double sigmaX = 1.0;
 double sigmaY= 2.0;
@@ -48,8 +68,10 @@ double a = 1.0/15.0;//1.0/20.0;//1.0/15.0;//(1/(15*ms));//20*ms;
 // prime functions
 double c = 0.02;//(1/.02);//0.02; // converts units of time (ms) and space (degrees). e.g. degrees/time.
 double psi = pi/9.0; // space-time rotation angle
-String outputImageFile = "./gaborFilterDispMap.bmp";
-String outputImageFileForSaving = "./media/gaborFilterDispMap";
+//String outputImageFile = "./gaborFilterDispMap.bmp";
+//String outputImageFileForSaving = "./media/gaborFilterDispMap";
+String outputImageFile = "./blankImage.bmp";
+String outputImageFileForSaving = "./diffGST.bmp";
 
 double time(double a, double b, double tau) {
 	double timeFunct = 0;
@@ -116,13 +138,14 @@ int main(int argc, char** argv) {
 	 * yD; // y translated to scale used for gabor function
 	 * xD; // x translated to scale used for gabor function
 	 */
-	double xD;
+
+	/*double xD;
 	double yD;
 	double conversionConstant = ((xEnd - xStart) / imageHeightAndWidth);
 	Mat outputImage;
-	outputImage = imread(outputImageFile, CV_LOAD_IMAGE_COLOR);
+	outputImage = imread(outputImageFile, CV_LOAD_IMAGE_COLOR);*/
 
-	//double y = 0;
+	/*//double y = 0;
 	//maxTau = 1;
 	for (double tau = 0; tau < maxTau; tau++) {
 		//tauMs = tau * ms;
@@ -188,9 +211,9 @@ int main(int argc, char** argv) {
 		//char arr [50];
 		//int q=4;
 		//sprintf (arr, "decimal %d in the array", q);
-		/*double a=2.132;
-		char arr[sizeof(tau)];
-		memcpy(&arr,&tau,sizeof(tau));*/
+		//double a=2.132;
+		//char arr[sizeof(tau)];
+		//memcpy(&arr,&tau,sizeof(tau));
 
 		//char outputImageFileForSaving2[] = outputImageFileForSaving;
 		//outputImageFileForSaving = sprintf(outputImageFileForSaving, outputImageFileForSaving+"_%d.bmp", tau);
@@ -203,9 +226,118 @@ int main(int argc, char** argv) {
 		// from http://stackoverflow.com/questions/23997266/opencv-animation
 		//waitKey(0);
 		waitKey(33);
+	}*/
+
+	/*for (double tau = 0; tau < maxTau; tau++) {
+		tauMs = tau * ms;
+		for(double y=0;y<imageHeightAndWidth;y++)
+		{
+			for (int x=0;x<imageHeightAndWidth;x++)
+			{
+				// Difference of gausians
+				xD = (x * conversionConstant) + xStart;
+				yD = (y * conversionConstant) + yStart;
+
+
+				z = diffOfGaussians(xD, yD, tauMs);
+				//z = z*-1;
+				//z = z -
+				double greyrange = 255;
+				double startingshift = 50;//greyrange/1.5;
+				//double scalingf = greyrange/90;///greyrange/(4.5+2);
+				double scalingf = greyrange/45;///greyrange/(4.5+2);
+				z = (z*scalingf)+startingshift;
+				//z = z*-1;
+
+				// write pixels
+				outputImage.at<Vec3b>(y,x) = Vec3b(z,z,z);
+				//outputImage.at<Vec3b>(tau,x) = Vec3b(z,z,z);
+				//outputImage.at<Vec3b>(tau,x) = Vec3b(200,200,200);
+				//cout << z;cout<<" ";cout<<xD;cout<<" ";cout<<yD;cout<<"\n";
+			}
+			//z = 150;
+			//outputImage.at<Vec3b>(y,x) = Vec3b(150,150,150);
+			//////
+		}
+		stringstream ss;
+		ss << outputImageFileForSaving;
+		ss << "_";
+		ss << tau;
+		ss << ".bmp";
+
+		//char arr [50];
+		//int q=4;
+		//sprintf (arr, "decimal %d in the array", q);
+		//double a=2.132;
+		//char arr[sizeof(tau)];
+		//memcpy(&arr,&tau,sizeof(tau));
+
+		//char outputImageFileForSaving2[] = outputImageFileForSaving;
+		//outputImageFileForSaving = sprintf(outputImageFileForSaving, outputImageFileForSaving+"_%d.bmp", tau);
+		//outputImageFileForSaving + "_" + std::to_string(tau) + ".bmp";
+		//cout<<ss.str();cout<<" ";cout<<*tauCopy;cout<<"\n";
+		imwrite(ss.str(), outputImage );
+
+
+		namedWindow( "Display Image", CV_WINDOW_AUTOSIZE );
+		imshow( "Display Image", outputImage );
+
+		// from http://stackoverflow.com/questions/23997266/opencv-animation
+		waitKey(33);
+	}*/
+
+	//double y = 0;
+	//maxTau = 51;
+	double xStart = -2.0;
+	double xEnd = 2.0;
+	double yStart = -2.0;
+	double yEnd = 2.0;
+
+	double xD;
+	double yD;
+	double conversionConstant = ((xEnd - xStart) / imageHeightAndWidth);
+	Mat outputImage;
+	outputImage = imread(outputImageFile, CV_LOAD_IMAGE_COLOR);
+
+	for (double tau = 0; tau < maxTau; tau++) {
+		tauMs = tau * ms;
+		double y = imageHeightAndWidth/2;
+		//for(double y=0;y<imageHeightAndWidth;y++)
+		//{
+			for (int x=0;x<imageHeightAndWidth;x++)
+			{
+				// Difference of gausians
+				xD = (x * conversionConstant) + xStart;
+				yD = (y * conversionConstant) + yStart;
+
+
+				z = diffOfGaussians(xD, yD, tauMs);
+				//z = z*-1;
+				//z = z -
+				double greyrange = 255;
+				double startingshift = 25;//greyrange/1.5;
+				double scalingf = greyrange/45;///greyrange/(4.5+2);
+				z = (z*scalingf)+startingshift;
+				if (z<0) {z = 0;}
+
+				// write pixels
+				//outputImage.at<Vec3b>(y,x) = Vec3b(z,z,z);
+				outputImage.at<Vec3b>(tau,x) = Vec3b(z,z,z);
+				//outputImage.at<Vec3b>(tau,x) = Vec3b(200,200,200);
+				cout << z;cout<<" ";cout<<xD;cout<<" ";cout<<yD;cout<<"\n";
+			}
+			//z = 150;
+			//outputImage.at<Vec3b>(y,x) = Vec3b(150,150,150);
+			//////
+		//}
+		namedWindow( "Display Image", CV_WINDOW_AUTOSIZE );
+		imshow( "Display Image", outputImage );
+
+		// from http://stackoverflow.com/questions/23997266/opencv-animation
+		waitKey(33);
 	}
 
-	//imwrite(outputImageFile, outputImage );
+	imwrite(outputImageFileForSaving, outputImage );
 
 
 	/*namedWindow( "Display Image", CV_WINDOW_AUTOSIZE );
