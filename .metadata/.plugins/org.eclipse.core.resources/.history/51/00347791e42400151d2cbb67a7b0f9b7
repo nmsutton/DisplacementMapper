@@ -26,7 +26,7 @@ using namespace std;
  * "LGNReceptiveField"
  * "LGNSpaceTimeFixedY"
  */
-String simulationToRun = "LGNReceptiveField";//"gaborFilter";//"LGNReceptiveField";//"LGNSpaceTimeFixedY";
+String simulationToRun = "gaborFilter";//"gaborFilter";//"LGNReceptiveField";//"LGNSpaceTimeFixedY";
 String outputImageFile;
 String outputImageFileForSaving;
 bool saveOutputVideo = false, simulationFound = false;

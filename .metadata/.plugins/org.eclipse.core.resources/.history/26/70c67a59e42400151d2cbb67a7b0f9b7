@@ -26,7 +26,7 @@ using namespace std;
  * "LGNReceptiveField"
  * "LGNSpaceTimeFixedY"
  */
-String simulationToRun = "LGNReceptiveField";//"gaborFilter";//"LGNReceptiveField";//"LGNSpaceTimeFixedY";
+String simulationToRun = "LGNSpaceTimeFixedY";//"gaborFilter";//"LGNReceptiveField";//"LGNSpaceTimeFixedY";
 String outputImageFile;
 String outputImageFileForSaving;
 bool saveOutputVideo = false, simulationFound = false;
@@ -58,9 +58,9 @@ double sigmaX = 1.0;
 double sigmaY= 2.0;
 double k = (1.0/0.5); // preferred spatial frequency
 double phi = 0;//1-pi;//0; // preferred spatial phase
-double a = 1.0/15.0;
+double a = 1.0/15.0;//1.0/20.0;//1.0/15.0;//(1/(15*ms));//20*ms;
 // prime functions
-double c = 0.02; // converts units of time (ms) and space (degrees). e.g. degrees/time.
+double c = 0.02;//(1/.02);//0.02; // converts units of time (ms) and space (degrees). e.g. degrees/time.
 double psi = pi/9.0; // space-time rotation angle
 
 double time(double a, double b, double tau) {
@@ -82,10 +82,12 @@ double diffOfGaussians(double x, double y, double tau) {
 	 * f(x) = a*exp(-((x-mu)^2)/((2*sigma)^2))
 	 */
 
-	double diffOfGauss = 0;
+	double diffOfGauss = 0; // difference of gaussians
 
 	diffOfGauss = (((time(aCenter, bCenter, tau)/(2*pi*pow(sigCent,2)))*exp(-((pow(x,2)+pow(y,2))/(2*pow(sigCent,2)))))-
 			((Balance*(time(aSurround, bSurround, tau))/(2*pi*pow(sigSurr,2)))*exp(-((pow(x,2)+pow(y,2))/(2*pow(sigSurr,2))))));
+
+	//cout << diffOfGauss;cout<<" ";cout<<x;cout<<" ";cout<<y;cout<<" ";cout<<(((time(aCenter, bCenter, tau)/(2*pi*pow(sigCent,2)))*exp(-((pow(x,2)+pow(y,2))/(2*pow(sigCent,2))))));cout<<" ";cout<<(time(aCenter, bCenter, tau));cout<<" ";cout<<exp(-bSurround*tau);cout<<"\n";
 	return diffOfGauss;
 }
 
@@ -100,6 +102,7 @@ unsigned int iter_factorial(unsigned int n)
 
 double gaborTime(double tau) {
 	return a*exp(-(a*tau))*((pow((a*tau),5)/iter_factorial(5))-(pow((a*tau),7)/iter_factorial(7)));
+	//return a*exp(-(a*tau))*(pow((a*tau),5)/iter_factorial(5));
 }
 
 double gabor(double x, double y) {
