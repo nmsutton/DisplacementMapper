@@ -79,7 +79,7 @@ const int incrementValue = 1;
 
 // *2 is due to 2 rectangle verticies for each x and y axis used for the later Z level mapping.
 double verticiesInRectangle = 2;
-double sizeOfMesh = 40;//35;//10;//6;//50;
+const double sizeOfMesh = 40;//35;//10;//6;//50;
 int scalingF = 2;
 const double expandMeshSize = 2.0;//2.5;
 double maxYSize = sizeOfMesh*scalingF;
@@ -91,11 +91,9 @@ double texXScaling = 0.75*.9;
 int x = 0, y = 0;
 float initalZ = 40.0f;
 double depthScalingFactor = 0.75;//1.4;//.7;//.025;//.3;//0.1;
-const double maxMeshSizeAllowed = 200;
-int xMaxAmount = ceil(sizeOfMesh*(1/incrementValue))*2, yMaxAmount = ceil(sizeOfMesh*(1/incrementValue))*2;
-const int xMaxAmountForArray = ceil(maxMeshSizeAllowed*(1/incrementValue))*2, yMaxAmountForArray = ceil(maxMeshSizeAllowed*(1/incrementValue))*2;
-double startingVerZLevels[xMaxAmountForArray][yMaxAmountForArray] = {0};
-double endingVerZLevels[xMaxAmountForArray][yMaxAmountForArray] = {0};
+const int xMaxAmount = ceil(sizeOfMesh*(1/incrementValue))*2, yMaxAmount = ceil(sizeOfMesh*(1/incrementValue))*2;
+double startingVerZLevels[xMaxAmount][yMaxAmount] = {0};
+double endingVerZLevels[xMaxAmount][yMaxAmount] = {0};
 double animationDelay = 50.0;
 double transitionTime = 200.0;//400.0;//200.0;
 struct vertsAndTextures { double ULVerInst[3]; double URVerInst[3]; double BLVerInst[3]; double BRVerInst[3];
@@ -286,10 +284,15 @@ void buildDispMap(Mat startingDispMap, string startingOrEndPoint) {
 	};
 }
 
-double weightsBR[yMaxAmountForArray][xMaxAmountForArray] = {1};
-double weightsBL[yMaxAmountForArray][xMaxAmountForArray] = {1};
-double weightsUL[yMaxAmountForArray][xMaxAmountForArray] = {1};
-double weightsUR[yMaxAmountForArray][xMaxAmountForArray] = {1};
+double weightsBR[yMaxAmount][xMaxAmount] = {1};
+double weightsBL[yMaxAmount][xMaxAmount] = {1};
+double weightsUL[yMaxAmount][xMaxAmount] = {1};
+double weightsUR[yMaxAmount][xMaxAmount] = {1};
+
+/*double weightsBR[yMaxAmountForArray2][xMaxAmountForArray2] = {1};
+double weightsBL[yMaxAmountForArray2][xMaxAmountForArray2] = {1};
+double weightsUL[yMaxAmountForArray2][xMaxAmountForArray2] = {1};
+double weightsUR[yMaxAmountForArray2][xMaxAmountForArray2] = {1};*/
 
 void initWeights() {
 	for (int weightY = 0;weightY < yMaxAmount;weightY++) {fill_n(weightsBR[weightY], xMaxAmount, 1.0);};
@@ -700,7 +703,7 @@ int main(int argc, char** argv) {
 
 		glRotatef(-_angle+10, -30.00f, 30.0f, 100.0f);
 
-		sizeOfMesh = 40;//35;//10;//6;//50;
+		//sizeOfMesh = 40;//35;//10;//6;//50;
 
 		depthScalingFactor = 0.75;//1.4;//.7;//.025;//.3;//0.1;
 
@@ -750,7 +753,7 @@ int main(int argc, char** argv) {
 
 		glRotatef(-_angle+10, -30.00f, 30.0f, 100.0f);
 
-		sizeOfMesh = 40;//35;//10;//6;//50;
+		//sizeOfMesh = 40;//35;//10;//6;//50;
 
 		depthScalingFactor = 0.75;//1.4;//.7;//.025;//.3;//0.1;
 
