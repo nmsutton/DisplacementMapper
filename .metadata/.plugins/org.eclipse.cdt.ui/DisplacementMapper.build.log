@@ -1,49 +1,6 @@
-16:50:27 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+18:45:32 **** Incremental Build of configuration Debug for project DisplacementMapper ****
 make all 
-Building file: ../main.cpp
-Invoking: Cross G++ Compiler
-g++ -I/usr/local/include/opencv -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.d" -o "main.o" "../main.cpp"
-../main.cpp: In function ‘void extractAnchorPoint(cv::Mat, cv::String)’:
-../main.cpp:306:70: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
-     else if ((anchorPointPosition=="start") & (anchorFound1 == true) & numberOfAnchors > 1){
-                                                                      ^
-../main.cpp:317:68: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
-     else if ((anchorPointPosition=="end") & (anchorFound1 == true) & numberOfAnchors > 1) {
-                                                                    ^
-../main.cpp: In function ‘void calculateWeightChange(cv::String, bool, double, double, double, double, double, double)’:
-../main.cpp:389:9: warning: unused variable ‘yTexScalingFactor’ [-Wunused-variable]
-  double yTexScalingFactor = 2.62649350649;//-2.1484375;
-         ^
-../main.cpp:394:9: warning: unused variable ‘newTexY’ [-Wunused-variable]
-  double newTexY;
-         ^
-../main.cpp: In function ‘void applyDispMap(double, double, double)’:
-../main.cpp:457:8: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
-  if (y > 0 & y < maxYSize-borderToCrop) {
-        ^
-../main.cpp:439:9: warning: unused variable ‘range’ [-Wunused-variable]
-  double range = 20;
-         ^
-../main.cpp: In function ‘void createMeshOfRect()’:
-../main.cpp:538:30: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
-    if ((x < maxYSize/2) | (x < (maxYSize/2+(maxXSize-maxYSize)) & x > (maxXSize-maxYSize))) {
-                              ^
-../main.cpp:549:16: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
-    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
-                ^
-../main.cpp:549:51: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
-    else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
-                                                   ^
-../main.cpp:560:15: warning: suggest parentheses around comparison in operand of ‘&’ [-Wparentheses]
-    else if (x > (maxYSize) & x < (maxXSize-maxYSize)) {
-               ^
-Finished building: ../main.cpp
- 
-Building target: DisplacementMapper
-Invoking: Cross G++ Linker
-g++ -L/usr/lib/x86_64-linux-gnu -L/usr/local/lib -o "DisplacementMapper"  ./imageloader.o ./main.o   -lGL -lopencv_core -lopencv_imgcodecs -lopencv_imgproc -lopencv_highgui -lGLU -lglut
-Finished building target: DisplacementMapper
- 
+make: Nothing to be done for 'all'.
 
-16:50:28 Build Finished (took 1s.104ms)
+18:45:32 Build Finished (took 64ms)
 
