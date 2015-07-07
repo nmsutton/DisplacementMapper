@@ -610,7 +610,7 @@ void drawScene() {
 
 	// camera position mapper
 	//glTranslatef(-30.0f, 1.0f, -60.0f);//-150.0f);
-	glTranslatef(-25.0f, 11.0f, -140.0f);//-150.0f);
+	glTranslatef(-30.0f, 31.0f, -100.0f);//-150.0f);
 
 	//GLfloat ambientLight[] = {0.2f, 0.2f, 0.2f, 1.0f};
 	GLfloat ambientLight[] = {200.2f, 200.2f, 200.2f, 1.0f};
@@ -621,7 +621,7 @@ void drawScene() {
 	glLightfv(GL_LIGHT0, GL_DIFFUSE, directedLight);
 	glLightfv(GL_LIGHT0, GL_POSITION, directedLightPos);
 
-	glRotatef(-_angle, -0.20f, 1.0f, 0.0f);
+	glRotatef(-_angle, -50.20f, 51.0f, 45.0f);
 
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, _textureId);
@@ -662,12 +662,12 @@ void update(int value) {
 			cout << "switched\n";
 			changeTex = true;
 		}
-		else if (startingDispMapImage == image2) {
+		/*else if (startingDispMapImage == image2) {
 			startingDispMapImage = image1;
 			endingDispMapImage = image2;
 			cout << "switched back\n";
 			changeTex = false;
-		}
+		}*/
 		timeInMs = 0;
 	}
 	cout<<timeInMs;cout<<"\n";

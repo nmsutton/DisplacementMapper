@@ -1,6 +1,26 @@
-04:43:55 **** Incremental Build of configuration Debug for project ImagePreprocessor ****
+15:56:33 **** Incremental Build of configuration Debug for project ImagePreprocessor ****
 make all 
-make: Nothing to be done for 'all'.
+Building file: ../src/ImagePreprocessor.cpp
+Invoking: Cross G++ Compiler
+g++ -I/usr/local/include/opencv -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/ImagePreprocessor.d" -MT"src/ImagePreprocessor.d" -o "src/ImagePreprocessor.o" "../src/ImagePreprocessor.cpp"
+../src/ImagePreprocessor.cpp: In function ‘double gabor(double, double)’:
+../src/ImagePreprocessor.cpp:111:56: warning: left operand of comma operator has no effect [-Wunused-value]
+  gabor = (1/(2*pi*sigmaX-sigmaY))*exp(((-(pow(x,2)))/(2*sigmaX,2))-(pow(y,2)/(2*sigmaY,2)))*cos((k*x)-phi);
+                                                        ^
+../src/ImagePreprocessor.cpp:111:80: warning: left operand of comma operator has no effect [-Wunused-value]
+  gabor = (1/(2*pi*sigmaX-sigmaY))*exp(((-(pow(x,2)))/(2*sigmaX,2))-(pow(y,2)/(2*sigmaY,2)))*cos((k*x)-phi);
+                                                                                ^
+../src/ImagePreprocessor.cpp: In function ‘double gaborZDim()’:
+../src/ImagePreprocessor.cpp:127:9: warning: unused variable ‘scalingf’ [-Wunused-variable]
+  double scalingf = 1/1.0;
+         ^
+Finished building: ../src/ImagePreprocessor.cpp
+ 
+Building target: ImagePreprocessor
+Invoking: Cross G++ Linker
+g++ -L/usr/local/lib -o "ImagePreprocessor"  ./src/ImagePreprocessor.o   -lopencv_core -lopencv_imgcodecs -lopencv_imgproc -lopencv_highgui
+Finished building target: ImagePreprocessor
+ 
 
-04:43:55 Build Finished (took 65ms)
+15:56:34 Build Finished (took 767ms)
 
