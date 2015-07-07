@@ -129,6 +129,9 @@ float initVerZBR = -4.50f+initalZ;
 float texYWeight = 1.0;
 float texXWeight = 1.0;
 bool changeTex = false;
+int texImageSwitch = 3;
+int texImageCounter = 0;
+int imageTransIncrementOld = 0;
 
 // from https://studiofreya.com/cpp/how-to-check-for-nan-inf-ind-in-c/
 template<typename T>
@@ -167,45 +170,45 @@ Image* texture[200];
 
 GLuint LoadTexture2( const char * filename, int width, int height )
 {
-    GLuint texture;
-    unsigned char * data;
-    FILE * file;
+	GLuint texture;
+	unsigned char * data;
+	FILE * file;
 
-    //The following code will read in our RAW file
-    file = fopen( filename, "rb" );
-    if ( file == NULL ) return 0;
-    data = (unsigned char *)malloc( width * height * 3 );
-    fread( data, width * height * 3, 1, file );
-    fclose( file );
+	//The following code will read in our RAW file
+	file = fopen( filename, "rb" );
+	if ( file == NULL ) return 0;
+	data = (unsigned char *)malloc( width * height * 3 );
+	fread( data, width * height * 3, 1, file );
+	fclose( file );
 
-    glGenTextures( 1, &texture ); //generate the texture with the loaded data
-    glBindTexture( GL_TEXTURE_2D, texture ); //bind the textureto it’s array
-    glTexEnvf( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE ); //set texture environment parameters
+	glGenTextures( 1, &texture ); //generate the texture with the loaded data
+	glBindTexture( GL_TEXTURE_2D, texture ); //bind the textureto it’s array
+	glTexEnvf( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE ); //set texture environment parameters
 
-    //here we are setting what textures to use and when. The MIN  filter is which quality to show
-    //when the texture is near the view, and the MAG filter is which quality to show when the texture
-    //is far from the view.
+	//here we are setting what textures to use and when. The MIN  filter is which quality to show
+	//when the texture is near the view, and the MAG filter is which quality to show when the texture
+	//is far from the view.
 
-    //The qualities are (in order from worst to best)
-    //GL_NEAREST
-    //GL_LINEAR
-    //GL_LINEAR_MIPMAP_NEAREST
-    //GL_LINEAR_MIPMAP_LINEAR
+	//The qualities are (in order from worst to best)
+	//GL_NEAREST
+	//GL_LINEAR
+	//GL_LINEAR_MIPMAP_NEAREST
+	//GL_LINEAR_MIPMAP_LINEAR
 
-    //And if you go and use extensions, you can use Anisotropic  filtering textures which are of an
-    //even better quality, but this will do for now.
-    glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER,GL_LINEAR_MIPMAP_LINEAR );
-    glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER,GL_LINEAR_MIPMAP_LINEAR );
+	//And if you go and use extensions, you can use Anisotropic  filtering textures which are of an
+	//even better quality, but this will do for now.
+	glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER,GL_LINEAR_MIPMAP_LINEAR );
+	glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER,GL_LINEAR_MIPMAP_LINEAR );
 
-    //Here we are setting the parameter to repeat the texture instead of clamping the texture
-    //to the edge of our shape.
-    glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT );
-    glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT );
+	//Here we are setting the parameter to repeat the texture instead of clamping the texture
+	//to the edge of our shape.
+	glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT );
+	glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT );
 
-    //Generate the texture with mipmaps
-    gluBuild2DMipmaps( GL_TEXTURE_2D, 3, width, height, GL_RGB, GL_UNSIGNED_BYTE, data );
-    free( data ); //free the texture
-    return texture; //return whether it was successfull
+	//Generate the texture with mipmaps
+	gluBuild2DMipmaps( GL_TEXTURE_2D, 3, width, height, GL_RGB, GL_UNSIGNED_BYTE, data );
+	free( data ); //free the texture
+	return texture; //return whether it was successfull
 }
 
 void initRendering() {
@@ -226,7 +229,7 @@ void initRendering() {
 	texGroup[(int)timeInMs] = ss.str();
 	const char *test2[50];
 	const char test3[50];
-	*test2 = &test3;*/
+	 *test2 = &test3;*/
 
 	//Image* image = loadBMP("/home/nmsutton/Documents/Software/OpenGL/Media/ColorTex.bmp");//loadBMP("/home/nmsutton/Documents/Software/OpenGL/Media/gaborFilter1.bmp");//loadBMP("/home/nmsutton/Documents/Software/OpenGL/Media/generalImg3.bmp");
 	//Image* image = loadBMP(texGroup[(int)timeInMs]);//loadBMP(ss.str());//loadBMP("/home/nmsutton/Documents/Software/OpenGL/Media/gaborFilter1.bmp");//loadBMP("/home/nmsutton/Documents/Software/OpenGL/Media/generalImg3.bmp");
@@ -734,7 +737,8 @@ void update(int value) {
 	if (_angle > 50) {
 		_angle -= 100;
 	}*/
-	if (timeInMs == transitionTime) {//25) {
+	double scaleAnim = 1;
+	if (timeInMs == (transitionTime*scaleAnim)) {//25) {
 		/*if (startingDispMapImage == image1) {
 			startingDispMapImage = image2;
 			endingDispMapImage = image1;
@@ -749,23 +753,30 @@ void update(int value) {
 		}*/
 		timeInMs = 0;
 	}
-		//if (startingDispMapImage == texGroup[(int)timeInMs]) {
-			startingDispMapImage = texGroup[(int)timeInMs];
-			if (timeInMs < (transitionTime-1)) {
-			endingDispMapImage = texGroup[(int)timeInMs+1];
-			}
-			else {
-				endingDispMapImage = texGroup[0];
-			}
+	int imageTransIncrement = (int) floor(timeInMs/scaleAnim);
 
-			changeTex = true;
-		//}
-/*		timeInMs = 0;
+	if (imageTransIncrement > imageTransIncrementOld) {
+		startingDispMapImage = texGroup[(int)timeInMs];
+		if (timeInMs < (transitionTime-1)) {
+			endingDispMapImage = texGroup[(int)timeInMs+1];
+		}
+		else {
+			endingDispMapImage = texGroup[0];
+		}
+
+		changeTex = true;
+	}
+
+	imageTransIncrementOld = imageTransIncrement;
+	//if (startingDispMapImage == texGroup[(int)timeInMs]) {
+
+	//}
+	/*		timeInMs = 0;
 	}*/
 	cout<<timeInMs;cout<<"\n";
 	glutPostRedisplay();
 	//glutTimerFunc(25, update, 0);
-	glutTimerFunc(20, update, 0);
+	glutTimerFunc(100, update, 0);
 }
 
 int main(int argc, char** argv) {
@@ -784,7 +795,7 @@ int main(int argc, char** argv) {
 	glutKeyboardFunc(handleKeypress);
 	glutReshapeFunc(handleResize);
 	_angle = -60.330f;//-45.330f;//_angle = -45.330f;//25.330f;_angle = 0.0f;//
-	glutTimerFunc(20, update, 0);
+	glutTimerFunc(100, update, 0);
 
 	// try
 	// http://stackoverflow.com/questions/19070333/saving-the-opengl-context-as-a-video-output
