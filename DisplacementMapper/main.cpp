@@ -45,7 +45,7 @@ using namespace std;
  * "LGNReceptiveField"
  * "LGNSpaceTimeFixedY"
  */
-String simulationToRun = "LGNSpaceTimeFixedY";//"gaborFilter";//"LGNReceptiveField";//"LGNSpaceTimeFixedY";
+String simulationToRun = "gaborFilter";//"gaborFilter";//"LGNReceptiveField";//"LGNSpaceTimeFixedY";
 bool simulationFound = false;
 
 float _angle = 0;            //The rotation of the box
@@ -274,11 +274,9 @@ void buildDispMap(Mat startingDispMap, string startingOrEndPoint) {
 	}
 
 	if (startingOrEndPoint == "start") {
-		//startingVerZLevels = verZLevels;
 		copy(verZLevels[0], verZLevels[yMaxAmount], startingVerZLevels[0]);
 	}
 	else if (startingOrEndPoint == "end") {
-		//endingVerZLevels = verZLevels;
 		copy(verZLevels[0], verZLevels[yMaxAmount], endingVerZLevels[0]);
 	};
 }
@@ -287,11 +285,6 @@ double weightsBR[yMaxAmount][xMaxAmount] = {1};
 double weightsBL[yMaxAmount][xMaxAmount] = {1};
 double weightsUL[yMaxAmount][xMaxAmount] = {1};
 double weightsUR[yMaxAmount][xMaxAmount] = {1};
-
-/*double weightsBR[yMaxAmountForArray2][xMaxAmountForArray2] = {1};
-double weightsBL[yMaxAmountForArray2][xMaxAmountForArray2] = {1};
-double weightsUL[yMaxAmountForArray2][xMaxAmountForArray2] = {1};
-double weightsUR[yMaxAmountForArray2][xMaxAmountForArray2] = {1};*/
 
 void initWeights() {
 	for (int weightY = 0;weightY < yMaxAmount;weightY++) {fill_n(weightsBR[weightY], xMaxAmount, 1.0);};
@@ -434,9 +427,11 @@ void calculateWeightChange(String verPositionForWeights, bool anchorForTexUpdate
 }
 
 void applyDispMap(double maxXSize, double maxYSize, double borderToCrop) {
-	// Use self organizing maps to apply disp map movement transition
-
 	/*
+	Use self organizing maps to apply disp map movement transition
+
+	from: https://en.wikipedia.org/wiki/Self-organizing_map
+
 	s is the current iteration
 	L is the iteration limit
 	t is the index of the target input data vector in the input data set \mathbf{D}
@@ -445,11 +440,10 @@ void applyDispMap(double maxXSize, double maxYSize, double borderToCrop) {
 	W_v is the current weight vector of node v
 	u is the index of the best matching unit (BMU) in the map
 	Θ(u, v, s) is a restraint due to distance from BMU, usually called the neighborhood function, and
-	α (s) is a learning restraint due to iteration progress.*/
+	α (s) is a learning restraint due to iteration progress.
 
-
-
-	// Wv(s + 1) = Wv(s) + Θ(u, v, s) α(s)(D(t) - Wv(s))
+	Wv(s + 1) = Wv(s) + Θ(u, v, s) α(s)(D(t) - Wv(s))
+	*/
 
 	double range = 20;
 	if (x < (maxXSize-borderToCrop)) {
@@ -652,31 +646,11 @@ void update(int value) {
 	}
 
 	changeTex = true;
-	cout<<timeInMs;cout<<"\n";
 	glutPostRedisplay();
 	glutTimerFunc(animationSpeed, update, 0);
 }
 
-void create3dGraphics(int argc, char** argv) {
-
-}
-
-int main(int argc, char** argv) {
-	/*
-	 * Creation of 3d graphics based on displacement maps using 2d disp maps.
-	 *
-	 * references:
-	 * http://stackoverflow.com/questions/8765574/how-to-put-stringstream-contents-into-char-type-instead-string-type
-	 * http://stackoverflow.com/questions/2848087/how-to-clear-stringstream
-	 */
-
-	cout<<"\n\nImages used for the simulation need to be in a folder one level below this program in the file system.  \n";
-	cout<<"The folder is named \"OpenGL/Media/\".  See image variable names to set or change where images are located.\n";
-	cout<<"Images used come from the image preprocessor program which generates 2d dispacement maps according to the\n";
-	cout<<"experiment being simulated.\n\n";
-
-	cout<<"Please use an available simulation type:\n\"gaborFilter\"\n\"LGNReceptiveField\"\n\"LGNSpaceTimeFixedY\"\n\n";
-
+void loadSimParameters(String simulationToRun) {
 	// Parameters for gabor filter and LGN receptive field
 	if (simulationToRun == "gaborFilter") {
 		stringstream ss;
@@ -813,6 +787,25 @@ int main(int argc, char** argv) {
 	else {
 		cerr<<"\n--Error--\nIncorrect simulation type specified\n--Error--\n\n";
 	}
+}
+
+int main(int argc, char** argv) {
+	/*
+	 * Creation of 3d graphics based on displacement maps using 2d disp maps.
+	 *
+	 * references:
+	 * http://stackoverflow.com/questions/8765574/how-to-put-stringstream-contents-into-char-type-instead-string-type
+	 * http://stackoverflow.com/questions/2848087/how-to-clear-stringstream
+	 */
+
+	cout<<"\n\nImages used for the simulation need to be in a folder one level below this program in the file system.  \n";
+	cout<<"The folder is named \"OpenGL/Media/\".  See image variable names to set or change where images are located.\n";
+	cout<<"Images used come from the image preprocessor program which generates 2d dispacement maps according to the\n";
+	cout<<"experiment being simulated.\n\n";
+
+	cout<<"Please use an available simulation type:\n\"gaborFilter\"\n\"LGNReceptiveField\"\n\"LGNSpaceTimeFixedY\"\n\n";
+
+	loadSimParameters(simulationToRun);
 
 	if (simulationFound) {
 		glutInit(&argc, argv);
