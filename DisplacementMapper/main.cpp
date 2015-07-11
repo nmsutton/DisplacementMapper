@@ -58,8 +58,11 @@ void handleKeypress(unsigned char key, int x, int y) {
 }
 
 char texGroup[200][150];
-String image1 = texGroup[0];
-String image2 = texGroup[1];
+String textureFile1 = texGroup[0];
+String textureFile2 = texGroup[1];
+char dispMapGroup[200][150];
+String image1 = dispMapGroup[0];
+String image2 = dispMapGroup[1];
 String startingDispMapImage = image2;
 String endingDispMapImage = image1;
 Mat startingDispMap;
@@ -222,9 +225,9 @@ void initRendering() {
 	glEnable(GL_COLOR_MATERIAL);
 	glShadeModel(GL_SMOOTH); //Enable smooth shading
 
-	texture[(int)timeInMs] = loadBMP(texGroup[(int)timeInMs]);
+	texture[(int)timeInMs] = loadBMP(dispMapGroup[(int)timeInMs]);
 
-	Image* image = loadBMP(texGroup[(int)timeInMs]);
+	Image* image = loadBMP(dispMapGroup[(int)timeInMs]);
 	delete image;
 }
 
@@ -637,12 +640,12 @@ void update(int value) {
 	timeInMs += 1.0;
 	if (timeInMs == transitionTime) {timeInMs = 0;}
 
-	startingDispMapImage = texGroup[(int)timeInMs];
+	startingDispMapImage = dispMapGroup[(int)timeInMs];
 	if (timeInMs < (transitionTime-1)) {
-		endingDispMapImage = texGroup[(int)timeInMs+1];
+		endingDispMapImage = dispMapGroup[(int)timeInMs+1];
 	}
 	else {
-		endingDispMapImage = texGroup[0];
+		endingDispMapImage = dispMapGroup[0];
 	}
 
 	changeTex = true;
@@ -662,11 +665,11 @@ void loadSimParameters(String simulationToRun) {
 			ss << ".bmp";
 			std::string s = ss.str();
 			const char* p = s.c_str();
-			strcpy(texGroup[i], p);
+			strcpy(dispMapGroup[i], p);
 		}
 
-		image1 = texGroup[0];
-		image2 = texGroup[1];
+		image1 = dispMapGroup[0];
+		image2 = dispMapGroup[1];
 		startingDispMapImage = image2;
 		endingDispMapImage = image1;
 
@@ -709,11 +712,11 @@ void loadSimParameters(String simulationToRun) {
 			ss << ".bmp";
 			std::string s = ss.str();
 			const char* p = s.c_str();
-			strcpy(texGroup[i], p);
+			strcpy(dispMapGroup[i], p);
 		}
 
-		image1 = texGroup[0];
-		image2 = texGroup[1];
+		image1 = dispMapGroup[0];
+		image2 = dispMapGroup[1];
 		startingDispMapImage = image2;
 		endingDispMapImage = image1;
 
@@ -747,11 +750,11 @@ void loadSimParameters(String simulationToRun) {
 	}
 	else if (simulationToRun == "LGNSpaceTimeFixedY") {
 		for (int i = 0; i < 200; i++) {
-			strcpy(texGroup[i], "../../../OpenGL/Media/diffGaus/diffGSTScaled.bmp");
+			strcpy(dispMapGroup[i], "../../../OpenGL/Media/diffGaus/diffGSTScaled.bmp");
 		}
 
-		image1 = texGroup[0];
-		image2 = texGroup[1];
+		image1 = dispMapGroup[0];
+		image2 = dispMapGroup[1];
 		startingDispMapImage = image2;
 		endingDispMapImage = image1;
 
@@ -789,21 +792,26 @@ void loadSimParameters(String simulationToRun) {
 		for (int i = 0; i < 28; i++) {
 			ss.str( std::string() );
 			ss.clear();
-			//ss << "../../../OpenGL/Media/gabor/gaborFilterDispMap_";
 			ss << "../../../OpenGL/Media/input/sequence/idp0";
 			ss << i;
 			ss << ".bmp";
-			//ss << "/home/nmsutton/Documents/Software/OpenGL/Media/input/sequence/idp05.bmp";
-			/*ss << "../../../OpenGL/Media/gabor/gaborFilterDispMap_";
+			std::string s = ss.str();
+			const char* p = s.c_str();
+			strcpy(dispMapGroup[i], p);
+		}
+		for (int i = 0; i < 28; i++) {
+			ss.str( std::string() );
+			ss.clear();
+			ss << "../../../OpenGL/Media/input/textures/idp0";
 			ss << i;
-			ss << ".bmp";*/
+			ss << ".bmp";
 			std::string s = ss.str();
 			const char* p = s.c_str();
 			strcpy(texGroup[i], p);
 		}
 
-		image1 = texGroup[0];
-		image2 = texGroup[1];
+		image1 = dispMapGroup[0];
+		image2 = dispMapGroup[1];
 		startingDispMapImage = image2;
 		endingDispMapImage = image1;
 
@@ -818,10 +826,6 @@ void loadSimParameters(String simulationToRun) {
 		animationDelay = 50.0;
 		transitionTime = 28.0;//200.0;//400.0;//200.0;
 
-		/*//texXIncrement = (1.07*(1.00f/(sizeOfMesh2*expandMeshSize)))/texXScaling;
-		texXIncrement = (1.07*(1.00f/(sizeOfMesh2*expandMeshSize)))/texXScaling;
-		texYIncrement = (1.07*(1.00f/(sizeOfMesh2*expandMeshSize)))/texYScaling;
-		//texYIncrement = (.85f/sizeOfMesh2*expandMeshSize)/texYScaling;*/
 		texXIncrement = (1.10*(1.00f/(sizeOfMesh2*expandMeshSize)))/texXScaling;
 		texYIncrement = (0.87f/sizeOfMesh2)/texYScaling;
 
@@ -838,69 +842,9 @@ void loadSimParameters(String simulationToRun) {
 		initTexYBL2 = yShift;//0.64f;//1.0f;//1.10f;0.64f;//
 		initTexYUR = initTexYBL-texYIncrement;
 
-		/*initTexXUL = 0.10f;//-0.05f;//0.0f;//
-		initTexXBR = 0.10f;//-0.05f;//-0.10f;
-		initTexXUR = initTexXUL+texXIncrement;
-		initTexXBL = initTexXBR+texXIncrement;
-		initTexYBR = 1.0f;//0.9f;//0.64f;//1.0f;//1.10f;0.64f;//
-		initTexYBR2 = 1.0f;//0.9;//0.64f;//1.0f;//1.10f;0.64f;//
-		initTexYUL = initTexYBR-texYIncrement;
-		initTexYBL = 1.0f;//0.9f;//0.64f;//1.0f;//1.10f;0.64f;//
-		initTexYBL2 = 1.0f;//0.9f;//0.64f;//1.0f;//1.10f;0.64f;//
-		initTexYUR = initTexYBL-texYIncrement;*/
-
 		animationSpeed = 100;
 
 		simulationFound = true;
-		/*stringstream ss;
-		for (int i = 1; i < 200; i++) {
-			ss.str( std::string() );
-			ss.clear();
-			ss << "../../../OpenGL/Media/gabor/gaborFilterDispMap_";
-			//ss << "../../../OpenGL/Media/input/sequence/idp0";
-			//ss << "/home/nmsutton/Documents/Software/OpenGL/Media/input/sequence/idp01.bmp";
-			//ss << "../../../OpenGL/Media/gabor/gaborFilterDispMap_198.bmp";
-			ss << i;
-			ss << ".bmp";
-			cout<<"\n\n\n";cout<<ss.str();cout<<"\n\n\n";
-			std::string s = ss.str();
-			const char* p = s.c_str();
-			strcpy(texGroup[i], p);
-		}
-
-		image1 = texGroup[0];
-		image2 = texGroup[1];
-		startingDispMapImage = image2;
-		endingDispMapImage = image1;
-
-		translateX = -60.0f; translateY = 15.0f; translateZ = -180.0f;
-
-		rotationX = -400.00f; rotationY = 50.0f; rotationZ = 20.0f;
-
-		_angle = -70.330f;
-
-		depthScalingFactor = 0.75;//1.4;//.7;//.025;//.3;//0.1;
-
-		animationDelay = 50.0;
-		transitionTime = 200.0;//400.0;//200.0;
-
-		texXIncrement = (1.07*(1.00f/(sizeOfMesh2*expandMeshSize)))/texXScaling;
-		texYIncrement = (.85f/sizeOfMesh2)/texYScaling;
-
-		initTexXUL = 0.10f;//-0.05f;//0.0f;//
-		initTexXBR = 0.10f;//-0.05f;//-0.10f;
-		initTexXUR = initTexXUL+texXIncrement;
-		initTexXBL = initTexXBR+texXIncrement;
-		initTexYBR = 1.0f;//0.9f;//0.64f;//1.0f;//1.10f;0.64f;//
-		initTexYBR2 = 1.0f;//0.9;//0.64f;//1.0f;//1.10f;0.64f;//
-		initTexYUL = initTexYBR-texYIncrement;
-		initTexYBL = 1.0f;//0.9f;//0.64f;//1.0f;//1.10f;0.64f;//
-		initTexYBL2 = 1.0f;//0.9f;//0.64f;//1.0f;//1.10f;0.64f;//
-		initTexYUR = initTexYBL-texYIncrement;
-
-		animationSpeed = 100;
-
-		simulationFound = true;*/
 	}
 	else {
 		cerr<<"\n--Error--\nIncorrect simulation type specified\n--Error--\n\n";
