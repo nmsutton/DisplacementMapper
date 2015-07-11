@@ -75,6 +75,10 @@ const int numberOfAnchors = 1;
 Mat startingDispMapAnchor;
 Mat endingDispMapAnchor;
 double timeInMs = 0;
+double dispMapChangeCounter = 0;
+double dispMapFileCounter = 0;
+double dispMapChangeDelay = 5;//5;
+double numberOfDispMaps = 6;//5;//6;
 
 const int incrementValue = 1;
 
@@ -172,7 +176,7 @@ GLuint _textureId; //The id of the texture
 
 
 //texture[200] texGroup2;
-Image* texture[200];
+//Image* texture[200];
 
 GLuint LoadTexture2( const char * filename, int width, int height )
 {
@@ -225,10 +229,10 @@ void initRendering() {
 	glEnable(GL_COLOR_MATERIAL);
 	glShadeModel(GL_SMOOTH); //Enable smooth shading
 
-	texture[(int)timeInMs] = loadBMP(dispMapGroup[(int)timeInMs]);
+	//texture[(int)timeInMs] = loadBMP(dispMapGroup[(int)timeInMs]);
 
-	Image* image = loadBMP(dispMapGroup[(int)timeInMs]);
-	delete image;
+	//Image* image = loadBMP(dispMapGroup[(int)timeInMs]);
+	//delete image;
 }
 
 
@@ -446,7 +450,7 @@ void applyDispMap(double maxXSize, double maxYSize, double borderToCrop) {
 	α (s) is a learning restraint due to iteration progress.
 
 	Wv(s + 1) = Wv(s) + Θ(u, v, s) α(s)(D(t) - Wv(s))
-	*/
+	 */
 
 	double range = 20;
 	if (x < (maxXSize-borderToCrop)) {
@@ -640,13 +644,19 @@ void update(int value) {
 	timeInMs += 1.0;
 	if (timeInMs == transitionTime) {timeInMs = 0;}
 
-	startingDispMapImage = dispMapGroup[(int)timeInMs];
-	if (timeInMs < (transitionTime-1)) {
-		endingDispMapImage = dispMapGroup[(int)timeInMs+1];
-	}
-	else {
-		endingDispMapImage = dispMapGroup[0];
-	}
+	dispMapChangeCounter += 1.0;
+	if (dispMapChangeCounter == dispMapChangeDelay) {
+		dispMapFileCounter += 1.0;
+
+		startingDispMapImage = dispMapGroup[(int)dispMapFileCounter];
+		if ((dispMapFileCounter+1) < numberOfDispMaps) {
+			endingDispMapImage = dispMapGroup[(int)dispMapFileCounter+1];
+		}
+		else {
+			endingDispMapImage = dispMapGroup[0];
+			dispMapFileCounter = 0;
+		}
+		dispMapChangeCounter = 0;}
 
 	changeTex = true;
 	glutPostRedisplay();
@@ -654,155 +664,25 @@ void update(int value) {
 }
 
 void loadSimParameters(String simulationToRun) {
-	// Parameters for gabor filter and LGN receptive field
-	if (simulationToRun == "gaborFilter") {
+	// Parameters for simulations
+	if (simulationToRun == "General") {
 		stringstream ss;
-		for (int i = 0; i < 200; i++) {
+		// Load disp maps
+		for (int i = 0; i < numberOfDispMaps; i++) {
 			ss.str( std::string() );
 			ss.clear();
-			ss << "../../../OpenGL/Media/gabor/gaborFilterDispMap_";
+			ss << "../../../OpenGL/Media/input/backup/idp0";
 			ss << i;
 			ss << ".bmp";
 			std::string s = ss.str();
 			const char* p = s.c_str();
 			strcpy(dispMapGroup[i], p);
 		}
-
-		image1 = dispMapGroup[0];
-		image2 = dispMapGroup[1];
-		startingDispMapImage = image2;
-		endingDispMapImage = image1;
-
-		translateX = -60.0f; translateY = 15.0f; translateZ = -180.0f;
-
-		rotationX = -400.00f; rotationY = 50.0f; rotationZ = 20.0f;
-
-		_angle = -70.330f;
-
-		depthScalingFactor = 0.75;//1.4;//.7;//.025;//.3;//0.1;
-
-		animationDelay = 50.0;
-		transitionTime = 200.0;//400.0;//200.0;
-
-		texXIncrement = (1.07*(1.00f/(sizeOfMesh2*expandMeshSize)))/texXScaling;
-		texYIncrement = (.85f/sizeOfMesh2)/texYScaling;
-
-		initTexXUL = 0.10f;//-0.05f;//0.0f;//
-		initTexXBR = 0.10f;//-0.05f;//-0.10f;
-		initTexXUR = initTexXUL+texXIncrement;
-		initTexXBL = initTexXBR+texXIncrement;
-		initTexYBR = 1.0f;//0.9f;//0.64f;//1.0f;//1.10f;0.64f;//
-		initTexYBR2 = 1.0f;//0.9;//0.64f;//1.0f;//1.10f;0.64f;//
-		initTexYUL = initTexYBR-texYIncrement;
-		initTexYBL = 1.0f;//0.9f;//0.64f;//1.0f;//1.10f;0.64f;//
-		initTexYBL2 = 1.0f;//0.9f;//0.64f;//1.0f;//1.10f;0.64f;//
-		initTexYUR = initTexYBL-texYIncrement;
-
-		animationSpeed = 100;
-
-		simulationFound = true;
-	}
-	else if (simulationToRun == "LGNReceptiveField") {
-		stringstream ss;
-		for (int i = 0; i < 200; i++) {
-			ss.str( std::string() );
-			ss.clear();
-			ss << "../../../OpenGL/Media/diffGaus/plot1/diffGaus_";
-			ss << i;
-			ss << ".bmp";
-			std::string s = ss.str();
-			const char* p = s.c_str();
-			strcpy(dispMapGroup[i], p);
-		}
-
-		image1 = dispMapGroup[0];
-		image2 = dispMapGroup[1];
-		startingDispMapImage = image2;
-		endingDispMapImage = image1;
-
-		translateX = -110.0f; translateY = 15.0f; translateZ = -100.0f;
-
-		rotationX = -200.00f; rotationY = 60.0f; rotationZ = 120.0f;
-
-		_angle = -60.330f;
-
-		double depthScalingFactor = 0.75;//1.4;//.7;//.025;//.3;//0.1;
-
-		double animationDelay = 50.0;
-		double transitionTime = 200.0;//400.0;//200.0;
-
-		float texXIncrement = (1.07*(1.00f/(sizeOfMesh2*expandMeshSize)))/texXScaling;
-		float texYIncrement = (1.00f/sizeOfMesh2)/texYScaling;
-
-		float initTexXUL = 0.10f;//-0.05f;//0.0f;//
-		float initTexXBR = 0.10f;//-0.05f;//-0.10f;
-		float initTexXUR = initTexXUL+texXIncrement;
-		float initTexXBL = initTexXBR+texXIncrement;
-		float initTexYBR = 1.10f;//0.9f;//0.64f;//1.0f;//1.10f;0.64f;//
-		float initTexYBR2 = 1.10f;//0.9;//0.64f;//1.0f;//1.10f;0.64f;//
-		float initTexYUL = initTexYBR-texYIncrement;
-		float initTexYBL = 1.10f;//0.9f;//0.64f;//1.0f;//1.10f;0.64f;//
-		float initTexYBL2 = 1.10f;//0.9f;//0.64f;//1.0f;//1.10f;0.64f;//
-		float initTexYUR = initTexYBL-texYIncrement;
-
-		animationSpeed = 100;
-		simulationFound = true;
-	}
-	else if (simulationToRun == "LGNSpaceTimeFixedY") {
-		for (int i = 0; i < 200; i++) {
-			strcpy(dispMapGroup[i], "../../../OpenGL/Media/diffGaus/diffGSTScaled.bmp");
-		}
-
-		image1 = dispMapGroup[0];
-		image2 = dispMapGroup[1];
-		startingDispMapImage = image2;
-		endingDispMapImage = image1;
-
-		translateX = -60.0f; translateY = -35.0f; translateZ = -100.0f;
-
-		rotationX = -30.00f; rotationY = 30.0f; rotationZ = 100.0f;
-
-		_angle = -84.330f;
-
-		depthScalingFactor = 0.75;//1.4;//.7;//.025;//.3;//0.1;
-
-		animationDelay = 50.0;
-		transitionTime = 200.0;//400.0;//200.0;
-
-		texXIncrement = (1.07*(1.00f/(sizeOfMesh2*expandMeshSize)))/texXScaling;
-		texYIncrement = (.85f/sizeOfMesh2)/texYScaling;
-
-		initTexXUL = 0.10f;//-0.05f;//0.0f;//
-		initTexXBR = 0.10f;//-0.05f;//-0.10f;
-		initTexXUR = initTexXUL+texXIncrement;
-		initTexXBL = initTexXBR+texXIncrement;
-		initTexYBR = 1.0f;//0.9f;//0.64f;//1.0f;//1.10f;0.64f;//
-		initTexYBR2 = 1.0f;//0.9;//0.64f;//1.0f;//1.10f;0.64f;//
-		initTexYUL = initTexYBR-texYIncrement;
-		initTexYBL = 1.0f;//0.9f;//0.64f;//1.0f;//1.10f;0.64f;//
-		initTexYBL2 = 1.0f;//0.9f;//0.64f;//1.0f;//1.10f;0.64f;//
-		initTexYUR = initTexYBL-texYIncrement;
-
-		animationSpeed = 100;
-
-		simulationFound = true;
-	}
-	else if (simulationToRun == "General") {
-		stringstream ss;
+		// Load textures
 		for (int i = 0; i < 28; i++) {
 			ss.str( std::string() );
 			ss.clear();
-			ss << "../../../OpenGL/Media/input/sequence/idp0";
-			ss << i;
-			ss << ".bmp";
-			std::string s = ss.str();
-			const char* p = s.c_str();
-			strcpy(dispMapGroup[i], p);
-		}
-		for (int i = 0; i < 28; i++) {
-			ss.str( std::string() );
-			ss.clear();
-			ss << "../../../OpenGL/Media/input/textures/idp0";
+			ss << "../../../OpenGL/Media/input/backup2/idp0";
 			ss << i;
 			ss << ".bmp";
 			std::string s = ss.str();
@@ -819,7 +699,7 @@ void loadSimParameters(String simulationToRun) {
 
 		rotationX = -100.20f; rotationY = 201.0f; rotationZ = 45.0f;
 
-		_angle = 30.00f;//45.330f;//0.0f;
+		_angle = 0.0f;//30.00f;//45.330f;//0.0f;
 
 		depthScalingFactor = 0.75;//1.4;//.7;//.025;//.3;//0.1;
 
