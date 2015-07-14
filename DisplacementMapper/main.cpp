@@ -79,7 +79,7 @@ Mat endingDispMapAnchor;
 double timeInMs = 0.0;
 double dispMapChangeCounter = 0.0;
 double dispMapFileCounter = 0.0;
-double dispMapChangeDelay = 30;//15;//5.0;//5;
+double dispMapChangeDelay = 15;//15;//5.0;//5;
 double numberOfDispMaps = 6.0;//5;//6;
 
 const int incrementValue = 1;
@@ -123,15 +123,15 @@ float initVerXUL = -2.00f;
 float initVerXBR = -2.00f;
 float initVerXUR = initVerXUL+verXIncrement;
 float initVerXBL = initVerXBR+verXIncrement;
-float initTexXUL = 0.10f;//-0.05f;//0.0f;//
-float initTexXBR = 0.10f;//-0.05f;//-0.10f;
+float initTexXUL = 0.90f;//-0.05f;//0.0f;//
+float initTexXBR = 0.90f;//-0.05f;//-0.10f;
 float initTexXUR = initTexXUL+texXIncrement;
 float initTexXBL = initTexXBR+texXIncrement;
-float initTexYBR = 1.0f;//0.9f;//0.64f;//1.0f;//1.10f;0.64f;//
-float initTexYBR2 = 1.0f;//0.9;//0.64f;//1.0f;//1.10f;0.64f;//
+float initTexYBR = 0.9f;//0.9f;//0.64f;//1.0f;//1.10f;0.64f;//
+float initTexYBR2 = 0.9f;//0.9;//0.64f;//1.0f;//1.10f;0.64f;//
 float initTexYUL = initTexYBR-texYIncrement;
-float initTexYBL = 1.0f;//0.9f;//0.64f;//1.0f;//1.10f;0.64f;//
-float initTexYBL2 = 1.0f;//0.9f;//0.64f;//1.0f;//1.10f;0.64f;//
+float initTexYBL = 0.5f;//0.9f;//0.64f;//1.0f;//1.10f;0.64f;//
+float initTexYBL2 = 0.5f;//0.9f;//0.64f;//1.0f;//1.10f;0.64f;//
 float initTexYUR = initTexYBL-texYIncrement;
 float initVerZUL = -4.50f+initalZ;
 float initVerZUR = -4.50f+initalZ;//initVerZUL+verZIncrement;
@@ -159,7 +159,7 @@ bool is_nan( const T &value )
 }
 
 //Makes the image into a texture, and returns the id of the texture
-GLuint loadTexture(Image* image) {
+/*GLuint loadTexture(Image* image) {
 	//dispMapImage = imread(imageName6, CV_LOAD_IMAGE_COLOR);
 
 	GLuint textureId;
@@ -168,17 +168,17 @@ GLuint loadTexture(Image* image) {
 	//Map the image to the texture
 	glTexImage2D(GL_TEXTURE_2D,                //Always GL_TEXTURE_2D
 			0,                            //0 for now
-			GL_RGB,                       //Format OpenGL uses for image
+			GL_BGR_EXT,                       //Format OpenGL uses for image
 			image->width, image->height,  //Width and height
 			0,                            //The border of the image
-			GL_RGB, //GL_RGB, because pixels are stored in RGB format
+			GL_BGR_EXT, //GL_RGB, because pixels are stored in RGB format
 			GL_UNSIGNED_BYTE, //GL_UNSIGNED_BYTE, because pixels are stored
 			//as unsigned numbers
 			image->pixels);               //The actual pixel data
 	return textureId; //Returns the id of the texture
 }
 
-GLuint _textureId; //The id of the texture
+GLuint _textureId; //The id of the texture*/
 
 
 
@@ -229,9 +229,10 @@ GLuint LoadTexture2( const char * filename, int width, int height )
 }
 
 void initRendering() {
-	glEnable(GL_DEPTH_TEST);
+	//changed
+	/*glEnable(GL_DEPTH_TEST);
 	glEnable(GL_LIGHTING);
-	glEnable(GL_LIGHT0);
+	glEnable(GL_LIGHT0);*/
 	glEnable(GL_NORMALIZE);
 	glEnable(GL_COLOR_MATERIAL);
 	glShadeModel(GL_SMOOTH); //Enable smooth shading
@@ -352,7 +353,7 @@ void extractAnchorPoint(Mat anchorPointImage, String anchorPointPosition) {
 }
 
 void findAnchorPoints() {
-	cout<<startingDispMapAnchorImage;cout<<"\n";
+	//cout<<startingDispMapAnchorImage;cout<<"\n";
 	startingDispMapAnchor = imread(startingDispMapAnchorImage, CV_LOAD_IMAGE_COLOR);
 	endingDispMapAnchor = imread(endingDispMapAnchorImage, CV_LOAD_IMAGE_COLOR);
 
@@ -678,6 +679,7 @@ void createMeshOfRect() {
 	}
 }
 
+const float BOX_SIZE = 7.0f;
 void drawScene() {
 	startingDispMap = imread(startingDispMapImage, CV_LOAD_IMAGE_COLOR);
 	endingDispMap = imread(endingDispMapImage, CV_LOAD_IMAGE_COLOR);
@@ -696,8 +698,15 @@ void drawScene() {
 
 	GLfloat directedLight[] = {200.7f, 200.7f, 200.7f, 1.0f};
 	GLfloat directedLightPos[] = {-210.0f, 215.0f, 220.0f, 0.0f};
-	glLightfv(GL_LIGHT0, GL_DIFFUSE, directedLight);
-	glLightfv(GL_LIGHT0, GL_POSITION, directedLightPos);
+	//GLfloat ambientLight[] = {0.3f, 0.3f, 0.3f, 1.0f};
+	//glLightModelfv(GL_LIGHT_MODEL_AMBIENT, ambientLight);
+
+	/*GLfloat lightColor[] = {0.7f, 0.7f, 0.7f, 1.0f};
+	GLfloat lightPos[] = {-2 * BOX_SIZE, BOX_SIZE, 4 * BOX_SIZE, 1.0f};
+	glLightfv(GL_LIGHT0, GL_DIFFUSE, lightColor);
+	glLightfv(GL_LIGHT0, GL_POSITION, lightPos);*/
+	//glLightfv(GL_LIGHT0, GL_DIFFUSE, directedLight);
+	//glLightfv(GL_LIGHT0, GL_POSITION, directedLightPos);
 
 	glRotatef(-_angle, rotationX, rotationY, rotationZ);
 
@@ -707,7 +716,8 @@ void drawScene() {
 	//Bottom
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-	glColor3f(1.0f, 1.0f, 1.0f);
+	//glColor3f(1.0f, 1.0f, 1.0f);
+	glColor3f(1.0f, 0.45, 0.0f);
 	glBegin(GL_QUADS);
 
 	glNormal3f(1.0f, 1.0f, 1.0f);
@@ -810,14 +820,14 @@ void loadSimParameters(String simulationToRun) {
 		transitionTime = 28.0;//200.0;//400.0;//200.0;
 
 		texXIncrement = (1.10*(1.00f/(sizeOfMesh2*expandMeshSize)))/texXScaling;
-		texYIncrement = (0.87f/sizeOfMesh2)/texYScaling;
+		texYIncrement = (0.6f/sizeOfMesh2)/texYScaling;
 
-		double xShift = 1.10f;
+		double xShift = 0.95f;
 		initTexXUL = xShift;//-0.05f;//0.0f;//
 		initTexXBR = xShift;//-0.05f;//-0.10f;
 		initTexXUR = initTexXUL+texXIncrement;
 		initTexXBL = initTexXBR+texXIncrement;
-		double yShift = 0.90f;
+		double yShift = 0.65f;
 		initTexYBR = yShift;//0.64f;//1.0f;//1.10f;0.64f;//
 		initTexYBR2 = yShift;//0.64f;//1.0f;//1.10f;0.64f;//
 		initTexYUL = initTexYBR-texYIncrement;

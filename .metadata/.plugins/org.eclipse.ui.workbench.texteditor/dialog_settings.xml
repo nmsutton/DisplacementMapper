@@ -2,37 +2,37 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="291" key="DIALOG_WIDTH"/>
-		<item value="461" key="DIALOG_Y_ORIGIN"/>
-		<item value="1288" key="DIALOG_X_ORIGIN"/>
+		<item value="474" key="DIALOG_Y_ORIGIN"/>
 		<item value="433" key="DIALOG_HEIGHT"/>
+		<item value="1525" key="DIALOG_X_ORIGIN"/>
 		<item value="1|Ubuntu|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="true" key="wrap"/>
+		<item value="false" key="isRegEx"/>
 		<item value="false" key="casesensitive"/>
-		<item value="true" key="isRegEx"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="&#x09;cout" key="selection"/>
+		<item value="LoadTexture2" key="selection"/>
 		<list key="findhistory">
-			<item value="\tcout"/>
-			<item value="drawScene"/>
-			<item value="yMaxAmountForArray"/>
-			<item value="xMaxAmountForArray"/>
-			<item value="startingVerZLevels"/>
-			<item value="endingVerZLevels"/>
+			<item value="LoadTexture2"/>
+			<item value="color"/>
+			<item value="Color3"/>
+			<item value="loadTexture"/>
+			<item value="blue"/>
 			<item value="weightsBR"/>
-			<item value="initRendering"/>
+			<item value="dispMapFileCounter"/>
+			<item value="buildDispMap"/>
 		</list>
 		<list key="replacehistory">
+			<item value="dispMapChangeCounterWobbling"/>
+			<item value="dispMapChangeCounter"/>
+			<item value="dispMapChangeDelay"/>
 			<item value="yMaxAmount"/>
 			<item value="xMaxAmount"/>
 			<item value="../../.."/>
 			<item value="../.."/>
 			<item value=".."/>
-			<item value="/home/nmsutton/Documents/Software/"/>
-			<item value="*"/>
-			<item value="anchorPointImage"/>
 		</list>
 	</section>
 </section>
