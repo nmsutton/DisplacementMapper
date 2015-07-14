@@ -79,7 +79,7 @@ Mat endingDispMapAnchor;
 double timeInMs = 0.0;
 double dispMapChangeCounter = 0.0;
 double dispMapFileCounter = 0.0;
-double dispMapChangeDelay = 30;//15;//5.0;//5;
+double dispMapChangeDelay = 15;//5.0;//5;
 double numberOfDispMaps = 6.0;//5;//6;
 
 const int incrementValue = 1;
@@ -356,7 +356,7 @@ void findAnchorPoints() {
 }
 
 void calculateWeightChange(String verPositionForWeights, bool anchorForTexUpdate, double startY, double startX, double startZ, double endY, double endX, double endZ) {
-	double dispMapChangeCounterWobbling = dispMapChangeCounter*2.0;//1.5;//3.0;//1.2;
+	double dispMapChangeCounterWobbling = dispMapChangeCounter*1.5;//1.5;//3.0;//1.2;
 	// Current point in most direct motion path using anchor points
 	double yDirPath = (startY*(1.0-((1.0/dispMapChangeDelay)*dispMapChangeCounterWobbling)))+(endY*((1.0/dispMapChangeDelay)*dispMapChangeCounterWobbling));
 	double xDirPath = (startX*(1.0-((1.0/dispMapChangeDelay)*dispMapChangeCounterWobbling)))+(endX*((1.0/dispMapChangeDelay)*dispMapChangeCounterWobbling));
