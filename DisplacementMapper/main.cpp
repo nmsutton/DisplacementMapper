@@ -67,11 +67,13 @@ String startingDispMapImage = image2;
 String endingDispMapImage = image1;
 Mat startingDispMap;
 Mat endingDispMap;
-String anchorImage1 = "../../../OpenGL/Media/anchorImageExtra.bmp";
-String anchorImage2 = "../../../OpenGL/Media/anchorImageExtra.bmp";
+//String anchorImage1 = "../../../OpenGL/Media/anchorImageExtra.bmp";
+//String anchorImage2 = "../../../OpenGL/Media/anchorImageExtra.bmp";
+String anchorImage1 = "/home/nmsutton/Documents/Software/OpenGL/Media/input/dispMaps/idp01.bmp";
+String anchorImage2 = "/home/nmsutton/Documents/Software/OpenGL/Media/input/dispMaps/idp02.bmp";
 String startingDispMapAnchorImage = anchorImage2;
 String endingDispMapAnchorImage = anchorImage1;
-const int numberOfAnchors = 1;
+const int numberOfAnchors = 2;
 Mat startingDispMapAnchor;
 Mat endingDispMapAnchor;
 double timeInMs = 0;
@@ -301,8 +303,8 @@ void initWeights() {
 }
 
 void extractAnchorPoint(Mat anchorPointImage, String anchorPointPosition) {
+	//cout<<"searching";cout<<anchorPointImage;cout<<"\n";
 	// Find anchor points.  Search for pixels that are red B,G,R for OpenGL (1,1,255)
-	bool anchorFound1 = false;
 	for(int y=0;y<anchorPointImage.rows;y++)
 	{
 		for (int x=0;x<anchorPointImage.cols;x++)
@@ -311,35 +313,41 @@ void extractAnchorPoint(Mat anchorPointImage, String anchorPointPosition) {
 			int blueLevel = anchorPointImage.at<Vec3b>(y,x).val[0];
 			int greenLevel = anchorPointImage.at<Vec3b>(y,x).val[1];
 			int redLevel = anchorPointImage.at<Vec3b>(y,x).val[2];
+			//cout<<blueLevel;cout<<"|";cout<<greenLevel;cout<<"|";cout<<redLevel;cout<<" ";
+			//cout<<blueLevel;cout<<greenLevel;cout<<redLevel;cout<<" ";
+			//cout<<redLevel;
 			if ((blueLevel <= 50) & (greenLevel <= 50) & (redLevel >= 200)) {
-				if ((anchorPointPosition=="start") & (anchorFound1 == false)) {
+				if (anchorPointPosition=="start") {
 					startingDispMapAnchorPoint[0][0]=y;
 					startingDispMapAnchorPoint[0][1]=x;
-					anchorFound1 = true;
-					//out<<"\n\nstart anchor found\t";cout<<anchorPointImage.at<Vec3b>(y,x);cout<<"\t";cout<<y;cout<<" ";cout<<x;cout<<"\n";
+					cout<<"\n\nstart anchor found\t";cout<<"\n";//cout<<anchorPointImage.at<Vec3b>(y,x);cout<<"\t";cout<<y;cout<<" ";cout<<x;cout<<"\n";
 				}
-				else if ((anchorPointPosition=="start") & (anchorFound1 == true) & numberOfAnchors > 1){
-					startingDispMapAnchorPoint[1][0]=y;
-					startingDispMapAnchorPoint[1][1]=x;
-					//cout<<"\n\nstart anchor 2 found\t";cout<<anchorPointImage.at<Vec3b>(y,x);cout<<"\t";cout<<y;cout<<" ";cout<<x;cout<<"\n";
-				}
-				else if ((anchorPointPosition=="end") & (anchorFound1 == false)) {
-					anchorFound1 = true;
+				else if (anchorPointPosition=="end") {
 					endingDispMapAnchorPoint[0][0]=y;
 					endingDispMapAnchorPoint[0][1]=x;
-					//cout<<"\n\nend anchor found\t";cout<<anchorPointImage.at<Vec3b>(y,x);cout<<"\t";cout<<y;cout<<" ";cout<<x;cout<<"\n";
+					cout<<"\n\nend anchor found\t";cout<<"\n";//cout<<anchorPointImage.at<Vec3b>(y,x);cout<<"\t";cout<<y;cout<<" ";cout<<x;cout<<"\n";
 				}
-				else if ((anchorPointPosition=="end") & (anchorFound1 == true) & numberOfAnchors > 1) {
+			}
+			if ((blueLevel >= 200) & (greenLevel <= 50) & (redLevel <= 50)  & (numberOfAnchors > 1)) {
+				if (anchorPointPosition=="start") {
+					startingDispMapAnchorPoint[1][0]=y;
+					startingDispMapAnchorPoint[1][1]=x;
+					cout<<"\n\nstart anchor 2 found\t";cout<<"\n";//cout<<anchorPointImage.at<Vec3b>(y,x);cout<<"\t";cout<<y;cout<<" ";cout<<x;cout<<"\n";
+				}
+				else if (anchorPointPosition=="end") {
 					endingDispMapAnchorPoint[1][0]=y;
 					endingDispMapAnchorPoint[1][1]=x;
-					//cout<<"\n\nend anchor 2 found\t";cout<<anchorPointImage.at<Vec3b>(y,x);cout<<"\t";cout<<y;cout<<" ";cout<<x;cout<<"\n";
+					cout<<"\n\nend anchor 2 found\t";cout<<"\n";//cout<<anchorPointImage.at<Vec3b>(y,x);cout<<"\t";cout<<y;cout<<" ";cout<<x;cout<<"\n";
 				}
 			}
 		}
+		//cout<<"\n";
 	}
+	//exit(0);
 }
 
 void findAnchorPoints() {
+	cout<<startingDispMapAnchorImage;cout<<"\n";
 	startingDispMapAnchor = imread(startingDispMapAnchorImage, CV_LOAD_IMAGE_COLOR);
 	endingDispMapAnchor = imread(endingDispMapAnchorImage, CV_LOAD_IMAGE_COLOR);
 
@@ -631,6 +639,9 @@ void drawScene() {
 	buildDispMap(startingDispMap, "start");
 	buildDispMap(endingDispMap, "end");
 
+	// Update Anchor points
+	findAnchorPoints();
+
 	// Generate mesh with disp mapping
 	createMeshOfRect();
 
@@ -656,6 +667,8 @@ void update(int value) {
 			endingDispMapImage = dispMapGroup[0];
 			dispMapFileCounter = 0;
 		}
+		startingDispMapAnchorImage = startingDispMapImage;
+		endingDispMapAnchorImage = endingDispMapImage;
 		dispMapChangeCounter = 0;}
 
 	changeTex = true;
@@ -671,7 +684,7 @@ void loadSimParameters(String simulationToRun) {
 		for (int i = 0; i < numberOfDispMaps; i++) {
 			ss.str( std::string() );
 			ss.clear();
-			ss << "../../../OpenGL/Media/input/backup/idp0";
+			ss << "../../../OpenGL/Media/input/dispMaps/idp0";//"../../../OpenGL/Media/input/backup/idp0";
 			ss << i;
 			ss << ".bmp";
 			std::string s = ss.str();
@@ -682,7 +695,7 @@ void loadSimParameters(String simulationToRun) {
 		for (int i = 0; i < 28; i++) {
 			ss.str( std::string() );
 			ss.clear();
-			ss << "../../../OpenGL/Media/input/backup2/idp0";
+			ss << "../../../OpenGL/Media/input/textures/idp0";
 			ss << i;
 			ss << ".bmp";
 			std::string s = ss.str();
@@ -695,11 +708,11 @@ void loadSimParameters(String simulationToRun) {
 		startingDispMapImage = image2;
 		endingDispMapImage = image1;
 
-		translateX = -30.0f; translateY = 31.0f; translateZ = -150.0f;
+		translateX = -30.0f; translateY = 81.0f; translateZ = -180.0f;
 
 		rotationX = -100.20f; rotationY = 201.0f; rotationZ = 45.0f;
 
-		_angle = 0.0f;//30.00f;//45.330f;//0.0f;
+		_angle = 30.00f;//45.330f;//0.0f;
 
 		depthScalingFactor = 0.75;//1.4;//.7;//.025;//.3;//0.1;
 
@@ -756,7 +769,7 @@ int main(int argc, char** argv) {
 
 		glutCreateWindow("Textures - videotutorialsrock.com");
 		initWeights();
-		findAnchorPoints();
+		//findAnchorPoints();
 
 		initRendering();
 
