@@ -76,11 +76,11 @@ String endingDispMapAnchorImage = anchorImage1;
 const int numberOfAnchors = 2;
 Mat startingDispMapAnchor;
 Mat endingDispMapAnchor;
-double timeInMs = 0;
-double dispMapChangeCounter = 0;
-double dispMapFileCounter = 0;
-double dispMapChangeDelay = 5;//5;
-double numberOfDispMaps = 6;//5;//6;
+double timeInMs = 0.0;
+double dispMapChangeCounter = 0.0;
+double dispMapFileCounter = 0.0;
+double dispMapChangeDelay = 5.0;//5;
+double numberOfDispMaps = 6.0;//5;//6;
 
 const int incrementValue = 1;
 
@@ -356,12 +356,13 @@ void findAnchorPoints() {
 }
 
 void calculateWeightChange(String verPositionForWeights, bool anchorForTexUpdate, double startY, double startX, double startZ, double endY, double endX, double endZ) {
+	double dispMapChangeCounterWobbling = dispMapChangeCounter*1.0;//1.5;//3.0;//1.2;
 	// Current point in most direct motion path using anchor points
-	double yDirPath = (startY*(1.0-((1.0/animationDelay)*timeInMs)))+(endY*((1.0/animationDelay)*timeInMs));
-	double xDirPath = (startX*(1.0-((1.0/animationDelay)*timeInMs)))+(endX*((1.0/animationDelay)*timeInMs));
+	double yDirPath = (startY*(1.0-((1.0/dispMapChangeDelay)*dispMapChangeCounterWobbling)))+(endY*((1.0/dispMapChangeDelay)*dispMapChangeCounterWobbling));
+	double xDirPath = (startX*(1.0-((1.0/dispMapChangeDelay)*dispMapChangeCounterWobbling)))+(endX*((1.0/dispMapChangeDelay)*dispMapChangeCounterWobbling));
 	// Euclidean distance from most direct path of motion from starting anchor point to ending anchor point
 	double distance = sqrt(pow(yDirPath-(imageYPixels*((double)y/(double)yMaxAmount)),2)+pow(xDirPath-(imageXPixels*((double)x/(double)xMaxAmount)),2));
-	if (timeInMs <= animationDelay) {
+	if (dispMapChangeCounterWobbling <= dispMapChangeDelay) {
 		lockedDistance = distance;
 	}
 	else {
@@ -381,10 +382,10 @@ void calculateWeightChange(String verPositionForWeights, bool anchorForTexUpdate
 	double distanceRestraint = scaledDistance*distanceCost;//1.0*distanceCost;//(1-normalizedDistance)*distanceCost;//2.8;//
 	double learningRestraint = 1.0;
 
-	double amountTransitioned = ((1.0/animationDelay)*timeInMs)*distanceRestraint;
-	double amountTransitioned2 = ((1.0/animationDelay)*timeInMs)*distanceRestraint;
-	double intialWobbleAllowed = 0.3;
-	double wobbleIncrement = .95;
+	double amountTransitioned = ((1.0/dispMapChangeDelay)*dispMapChangeCounterWobbling);//*distanceRestraint;
+	double amountTransitioned2 = ((1.0/dispMapChangeDelay)*dispMapChangeCounterWobbling);//*distanceRestraint;
+	double intialWobbleAllowed = 0.3;//5.0;//
+	double wobbleIncrement = .95;//3.0;//.95;
 	double maxWobbles = ceil(intialWobbleAllowed/wobbleIncrement)+1;//*intialWobbleAllowed;
 	double wobbleForwardOrBack = 1.0;//-1.0;
 	double numberOfWobbles = 0.0;
@@ -396,10 +397,10 @@ void calculateWeightChange(String verPositionForWeights, bool anchorForTexUpdate
 		}
 	}
 
-	double diminishingEffect = (1-((1/(transitionTime-animationDelay))*(timeInMs-animationDelay)));
+	double diminishingEffect = (1-((1/((dispMapChangeDelay/3.0)))*(dispMapChangeCounterWobbling-dispMapChangeDelay)));
 	if (amountTransitioned2 > (1+intialWobbleAllowed)) {
 
-		amountTransitioned = 1+((sin(((timeInMs-animationDelay)/10)*M_PI)*intialWobbleAllowed)*(diminishingEffect*1.0));
+		//amountTransitioned = 1+((sin(((dispMapChangeCounterWobbling-dispMapChangeDelay)/10)*M_PI)*intialWobbleAllowed)*(diminishingEffect*1.0));
 	}
 
 	// Difference with starting and ending weights
@@ -410,7 +411,7 @@ void calculateWeightChange(String verPositionForWeights, bool anchorForTexUpdate
 			((distanceRestraint*learningRestraint*endDispMapWeights)*(amountTransitioned));
 	// normalize tex map with
 	double yTexScalingFactor = 2.62649350649;//-2.1484375;
-	double texTransDelay = timeInMs*(1/(animationDelay*1.5));
+	double texTransDelay = dispMapChangeCounterWobbling*(1/(dispMapChangeDelay*1.5));
 	//if (changeTex==false) {texTransDelay = 1-texTransDelay;}
 	if (texTransDelay > 1) {texTransDelay = 1;}
 	//changeTex
@@ -650,6 +651,7 @@ void drawScene() {
 	glutSwapBuffers();
 }
 
+double dispMapChangeSine = 1.0;
 //Called every 25 milliseconds
 void update(int value) {
 	timeInMs += 1.0;
@@ -657,15 +659,26 @@ void update(int value) {
 
 	dispMapChangeCounter += 1.0;
 	if (dispMapChangeCounter == dispMapChangeDelay) {
-		dispMapFileCounter += 1.0;
+		dispMapFileCounter += 1.0*dispMapChangeSine;
 
 		startingDispMapImage = dispMapGroup[(int)dispMapFileCounter];
-		if ((dispMapFileCounter+1) < numberOfDispMaps) {
+		if ((dispMapChangeSine==1.0)&(dispMapFileCounter+1) < numberOfDispMaps) {
 			endingDispMapImage = dispMapGroup[(int)dispMapFileCounter+1];
 		}
+		else if ((dispMapChangeSine==-1.0)&(dispMapFileCounter-1) > -1.0) {
+			endingDispMapImage = dispMapGroup[(int)dispMapFileCounter-1];
+		}
 		else {
-			endingDispMapImage = dispMapGroup[0];
-			dispMapFileCounter = 0;
+			if (dispMapChangeSine==1.0) {
+				dispMapFileCounter = numberOfDispMaps-1;
+				endingDispMapImage = dispMapGroup[(int)numberOfDispMaps-1];
+				dispMapChangeSine = dispMapChangeSine * -1;
+			}
+			else if (dispMapChangeSine==-1.0) {
+				dispMapFileCounter = 1;
+				endingDispMapImage = dispMapGroup[1];
+				dispMapChangeSine = dispMapChangeSine * -1;
+			}
 		}
 		startingDispMapAnchorImage = startingDispMapImage;
 		endingDispMapAnchorImage = endingDispMapImage;
@@ -708,7 +721,7 @@ void loadSimParameters(String simulationToRun) {
 		startingDispMapImage = image2;
 		endingDispMapImage = image1;
 
-		translateX = -30.0f; translateY = 81.0f; translateZ = -180.0f;
+		translateX = -60.0f; translateY = 61.0f; translateZ = -180.0f;
 
 		rotationX = -100.20f; rotationY = 201.0f; rotationZ = 45.0f;
 
