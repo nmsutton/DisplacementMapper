@@ -79,8 +79,10 @@ Mat endingDispMapAnchor;
 double timeInMs = 0.0;
 double dispMapChangeCounter = 0.0;
 double dispMapFileCounter = 0.0;
+double texFileCounter = 0.0;
 double dispMapChangeDelay = 15;//15;//5.0;//5;
 double numberOfDispMaps = 6.0;//5;//6;
+double numberOfTexs = 28.0;
 
 const int incrementValue = 1;
 
@@ -711,7 +713,9 @@ void drawScene() {
 	glRotatef(-_angle, rotationX, rotationY, rotationZ);
 
 	glEnable(GL_TEXTURE_2D);
-	glBindTexture( GL_TEXTURE_2D, LoadTexture2(texGroup[(int)timeInMs], 512, 512) );
+	//numberOfTexs
+	//glBindTexture( GL_TEXTURE_2D, LoadTexture2(texGroup[(int)timeInMs], 512, 512) );
+	glBindTexture( GL_TEXTURE_2D, LoadTexture2(texGroup[(int)texFileCounter], 512, 512) );
 
 	//Bottom
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
@@ -741,9 +745,10 @@ double dispMapChangeSine = 1.0;
 //Called every 25 milliseconds
 void update(int value) {
 	timeInMs += 1.0;
+	texFileCounter += (1.0*dispMapChangeSine)*(numberOfTexs/(numberOfDispMaps*dispMapChangeDelay));
+	dispMapChangeCounter += 1.0;
 	if (timeInMs == transitionTime) {timeInMs = 0;}
 
-	dispMapChangeCounter += 1.0;
 	if (dispMapChangeCounter == dispMapChangeDelay) {
 		//copy(endingVerZLevels[0], endingVerZLevels[yMaxAmount], startingVerZLevels[0]);
 		dispMapFileCounter += 1.0*dispMapChangeSine;
@@ -758,11 +763,13 @@ void update(int value) {
 		else {
 			if (dispMapChangeSine==1.0) {
 				dispMapFileCounter = numberOfDispMaps-1;
+				texFileCounter = numberOfTexs - 1;
 				endingDispMapImage = dispMapGroup[(int)numberOfDispMaps-2];
 				dispMapChangeSine = dispMapChangeSine * -1;
 			}
 			else if (dispMapChangeSine==-1.0) {
 				dispMapFileCounter = 0;
+				texFileCounter = 0;
 				endingDispMapImage = dispMapGroup[1];
 				dispMapChangeSine = dispMapChangeSine * -1;
 			}
@@ -792,7 +799,7 @@ void loadSimParameters(String simulationToRun) {
 			strcpy(dispMapGroup[i], p);
 		}
 		// Load textures
-		for (int i = 0; i < 28; i++) {
+		for (int i = 0; i < numberOfTexs; i++) {
 			ss.str( std::string() );
 			ss.clear();
 			ss << "../../../OpenGL/Media/input/textures/idp0";
@@ -819,15 +826,15 @@ void loadSimParameters(String simulationToRun) {
 		animationDelay = 50.0;
 		transitionTime = 28.0;//200.0;//400.0;//200.0;
 
-		texXIncrement = (1.10*(1.00f/(sizeOfMesh2*expandMeshSize)))/texXScaling;
-		texYIncrement = (0.6f/sizeOfMesh2)/texYScaling;
+		texXIncrement = (1.60*(1.00f/(sizeOfMesh2*expandMeshSize)))/texXScaling;
+		texYIncrement = (0.73f/sizeOfMesh2)/texYScaling;
 
-		double xShift = 0.95f;
+		double xShift = 0.89f;
 		initTexXUL = xShift;//-0.05f;//0.0f;//
 		initTexXBR = xShift;//-0.05f;//-0.10f;
 		initTexXUR = initTexXUL+texXIncrement;
 		initTexXBL = initTexXBR+texXIncrement;
-		double yShift = 0.65f;
+		double yShift = 0.68f;
 		initTexYBR = yShift;//0.64f;//1.0f;//1.10f;0.64f;//
 		initTexYBR2 = yShift;//0.64f;//1.0f;//1.10f;0.64f;//
 		initTexYUL = initTexYBR-texYIncrement;
