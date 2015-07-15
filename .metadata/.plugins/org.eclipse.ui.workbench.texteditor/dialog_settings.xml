@@ -2,37 +2,37 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="291" key="DIALOG_WIDTH"/>
-		<item value="440" key="DIALOG_Y_ORIGIN"/>
+		<item value="461" key="DIALOG_Y_ORIGIN"/>
+		<item value="1288" key="DIALOG_X_ORIGIN"/>
 		<item value="433" key="DIALOG_HEIGHT"/>
-		<item value="1515" key="DIALOG_X_ORIGIN"/>
 		<item value="1|Ubuntu|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="true" key="wrap"/>
-		<item value="true" key="isRegEx"/>
 		<item value="false" key="casesensitive"/>
+		<item value="true" key="isRegEx"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="image" key="selection"/>
+		<item value="&#x09;cout" key="selection"/>
 		<list key="findhistory">
-			<item value="image"/>
-			<item value="_angle"/>
 			<item value="\tcout"/>
-			<item value="\"/>
-			<item value="startingDispMapAnchorPoint1"/>
+			<item value="drawScene"/>
+			<item value="yMaxAmountForArray"/>
+			<item value="xMaxAmountForArray"/>
 			<item value="startingVerZLevels"/>
-			<item value="1.05"/>
-			<item value="startingDispMap"/>
+			<item value="endingVerZLevels"/>
+			<item value="weightsBR"/>
+			<item value="initRendering"/>
 		</list>
 		<list key="replacehistory">
+			<item value="yMaxAmount"/>
+			<item value="xMaxAmount"/>
+			<item value="../../.."/>
+			<item value="../.."/>
+			<item value=".."/>
+			<item value="/home/nmsutton/Documents/Software/"/>
 			<item value="*"/>
 			<item value="anchorPointImage"/>
-			<item value="double"/>
-			<item value="y"/>
-			<item value="x"/>
-			<item value="sizeOfMesh*expandMeshSizeY"/>
-			<item value="maxYSize"/>
-			<item value="maxXSize"/>
 		</list>
 	</section>
 </section>
