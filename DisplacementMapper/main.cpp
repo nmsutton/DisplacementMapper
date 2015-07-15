@@ -80,7 +80,7 @@ double timeInMs = 0.0;
 double dispMapChangeCounter = 0.0;
 double dispMapFileCounter = 0.0;
 double texFileCounter = 0.0;
-double dispMapChangeDelay = 15;//15;//5.0;//5;
+double dispMapChangeDelay = 5;//15;//15;//5.0;//5;
 double numberOfDispMaps = 6.0;//5;//6;
 double numberOfTexs = 28.0;
 
