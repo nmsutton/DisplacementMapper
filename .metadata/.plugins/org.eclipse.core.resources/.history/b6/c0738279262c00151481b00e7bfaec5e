@@ -1045,7 +1045,7 @@ void loadSimParameters(String simulationToRun) {
 		texXIncrement = (1.60*(1.00f/(sizeOfMesh2*expandMeshSize)))/texXScaling;
 		texYIncrement = (0.73f/sizeOfMesh2)/texYScaling;
 
-		double xShift = 0.84f;
+		double xShift = 0.82f;
 		initTexXUL = xShift;//-0.05f;//0.0f;//
 		initTexXBR = xShift;//-0.05f;//-0.10f;
 		initTexXUR = initTexXUL+texXIncrement;
