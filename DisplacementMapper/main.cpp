@@ -156,6 +156,10 @@ double weightsBR[yMaxAmount][xMaxAmount] = {1};
 double weightsBL[yMaxAmount][xMaxAmount] = {1};
 double weightsUL[yMaxAmount][xMaxAmount] = {1};
 double weightsUR[yMaxAmount][xMaxAmount] = {1};
+double weightsBR2[yMaxAmount][xMaxAmount] = {0};
+double weightsBL2[yMaxAmount][xMaxAmount] = {0};
+double weightsUL2[yMaxAmount][xMaxAmount] = {0};
+double weightsUR2[yMaxAmount][xMaxAmount] = {0};
 
 // from https://studiofreya.com/cpp/how-to-check-for-nan-inf-ind-in-c/
 template<typename T>
@@ -287,7 +291,7 @@ GLuint loadDDS(const char * imagepath){
 
 GLuint loadBMP_custom(const char * imagepath){
 
-	printf("Reading image %s\n", imagepath);
+	//printf("Reading image %s\n", imagepath);
 
 	// Data read from the header of the BMP file
 	unsigned char header[54];
@@ -582,21 +586,15 @@ double euclideanDistance(double x1, double x2, double y1, double y2) {
 	return sqrt(pow((y2-y1),2)+pow((x2-x1),2));
 }
 
-void calculateWeightChange(String verPositionForWeights, bool anchorForTexUpdate, double startY, double startX, double startZ, double endY, double endX, double endZ) {
-	double dispMapChangeCounterWobbling = dispMapChangeCounter*1.0;//2.0;//1.5;//3.0;//1.2;
+double createWobble(String verPositionForWeights, bool anchorForTexUpdate, double startY, double startX, double startZ, double endY, double endX, double endZ, double dispMapChangeCounterWobbling) {
 	// Current point in most direct motion path using anchor points
 	double yDirPath = (startY*(1.0-((1.0/dispMapChangeDelay)*dispMapChangeCounterWobbling)))+(endY*((1.0/dispMapChangeDelay)*dispMapChangeCounterWobbling));
 	double xDirPath = (startX*(1.0-((1.0/dispMapChangeDelay)*dispMapChangeCounterWobbling)))+(endX*((1.0/dispMapChangeDelay)*dispMapChangeCounterWobbling));
 	// Euclidean distance from most direct path of motion from starting anchor point to ending anchor point
 	double distance = sqrt(pow(yDirPath-(imageYPixels*((double)y/(double)yMaxAmount)),2)+pow(xDirPath-(imageXPixels*((double)x/(double)xMaxAmount)),2));
-	if (dispMapChangeCounterWobbling <= dispMapChangeDelay) {
-		lockedDistance = distance;
-	}
-	else {
-		yDirPath = endY;
-		xDirPath = startX;
-		distance = sqrt(pow(yDirPath-(imageYPixels*((double)y/(double)yMaxAmount)),2)+pow(xDirPath-(imageXPixels*((double)x/(double)xMaxAmount)),2));
-	}
+	yDirPath = endY;
+	xDirPath = startX;
+	distance = sqrt(pow(yDirPath-(imageYPixels*((double)y/(double)yMaxAmount)),2)+pow(xDirPath-(imageXPixels*((double)x/(double)xMaxAmount)),2));
 	if (distance == 0) {distance = .00001;}
 	double furthestDistPossible = sqrt(pow(imageYPixels,2)+pow(imageXPixels,2));
 	// normalize distance with furthest possible in image giving it a 0-1 range
@@ -653,7 +651,7 @@ void calculateWeightChange(String verPositionForWeights, bool anchorForTexUpdate
 		double trajectoryOfEffect = 0;
 		double surroundingCircumference = 3;
 		double effectDistance = (endZ/startZ);// amount of depth change
-		double angleWobbleScaling = 0.0;//70.0;//3.0;
+		double angleWobbleScaling = 0.0;//7000.0;//3.0;
 
 		for (double pixelY = (-surroundingCircumference+(floor(surroundingCircumference/2))); pixelY < surroundingCircumference; pixelY+=1.0) {
 			for (double pixelX = (-surroundingCircumference+(floor(surroundingCircumference/2))); pixelY < surroundingCircumference; pixelY+=1.0) {
@@ -666,22 +664,53 @@ void calculateWeightChange(String verPositionForWeights, bool anchorForTexUpdate
 				// avoid out of bounds error
 				if ((x-surroundingCircumference > 0) & (y-surroundingCircumference > 0) & (x+surroundingCircumference < imageXPixels) & (y+surroundingCircumference > imageYPixels)) {
 					if (verPositionForWeights == "BR") {
-						weightsBR[(int)pixelY][(int)pixelX] -= angleWobbleScaling * (1-(pixelToOriginDistance/surroundingCircumference)) * wobble * trajectoryOfEffect;
+						weightsBR2[(int)pixelY][(int)pixelX] -= angleWobbleScaling * (1-(pixelToOriginDistance/surroundingCircumference)) * wobble * trajectoryOfEffect;
 					}
 					else if (verPositionForWeights == "BL") {
-						weightsBL[(int)pixelY][(int)pixelX+1] -= angleWobbleScaling * (1-(pixelToOriginDistance/surroundingCircumference)) * wobble * trajectoryOfEffect;
+						weightsBL2[(int)pixelY][(int)pixelX+1] -= angleWobbleScaling * (1-(pixelToOriginDistance/surroundingCircumference)) * wobble * trajectoryOfEffect;
 					}
 					else if (verPositionForWeights == "UL") {
-						weightsUL[(int)pixelY+1][(int)pixelX] -= angleWobbleScaling * (1-(pixelToOriginDistance/surroundingCircumference)) * wobble * trajectoryOfEffect;
+						weightsUL2[(int)pixelY+1][(int)pixelX] -= angleWobbleScaling * (1-(pixelToOriginDistance/surroundingCircumference)) * wobble * trajectoryOfEffect;
 					}
 					else if (verPositionForWeights == "UR") {
-						weightsUR[(int)pixelY+1][(int)pixelX+1] -= angleWobbleScaling * (1-(pixelToOriginDistance/surroundingCircumference)) * wobble * trajectoryOfEffect;
+						weightsUR2[(int)pixelY+1][(int)pixelX+1] -= angleWobbleScaling * (1-(pixelToOriginDistance/surroundingCircumference)) * wobble * trajectoryOfEffect;
 					}
 				}
+				//cout<<weightsBR2[(int)pixelY][(int)pixelX];cout<<"\n";
 			}
+			//cout<<angleWobbleScaling * (1-(pixelToOriginDistance/surroundingCircumference)) * wobble * trajectoryOfEffect;cout<<"\t";cout<<pixelToOriginDistance;cout<<"\t";cout<<surroundingCircumference;cout<<"\t";cout<<wobble;cout<<"\t";cout<<trajectoryOfEffect;cout<<"\n";
 		}
 		//distance*(1/(endZ/startZ))
 	}
+
+	return amountTransitioned;
+}
+
+void calculateWeightChange(String verPositionForWeights, bool anchorForTexUpdate, double startY, double startX, double startZ, double endY, double endX, double endZ) {
+	double dispMapChangeCounterWobbling = dispMapChangeCounter*1.5;//2.0;//1.5;//3.0;//1.2;
+	// Current point in most direct motion path using anchor points
+	double yDirPath = (startY*(1.0-((1.0/dispMapChangeDelay)*dispMapChangeCounterWobbling)))+(endY*((1.0/dispMapChangeDelay)*dispMapChangeCounterWobbling));
+	double xDirPath = (startX*(1.0-((1.0/dispMapChangeDelay)*dispMapChangeCounterWobbling)))+(endX*((1.0/dispMapChangeDelay)*dispMapChangeCounterWobbling));
+	// Euclidean distance from most direct path of motion from starting anchor point to ending anchor point
+	double distance = sqrt(pow(yDirPath-(imageYPixels*((double)y/(double)yMaxAmount)),2)+pow(xDirPath-(imageXPixels*((double)x/(double)xMaxAmount)),2));
+	yDirPath = endY;
+	xDirPath = startX;
+	distance = sqrt(pow(yDirPath-(imageYPixels*((double)y/(double)yMaxAmount)),2)+pow(xDirPath-(imageXPixels*((double)x/(double)xMaxAmount)),2));
+	if (distance == 0) {distance = .00001;}
+	double furthestDistPossible = sqrt(pow(imageYPixels,2)+pow(imageXPixels,2));
+	// normalize distance with furthest possible in image giving it a 0-1 range
+	double normalizedDistance = (distance/furthestDistPossible);
+	double scalingFactor = 0.9;
+	double scaledDistance = (1-(normalizedDistance*scalingFactor));
+	scaledDistance = (1-(pow(normalizedDistance,.8)));
+
+	double distanceCost = (1-.1);
+	double distanceRestraint = scaledDistance*distanceCost;//1.0*distanceCost;//(1-normalizedDistance)*distanceCost;//2.8;//
+	double learningRestraint = 1.0;
+
+	double amountTransitioned = ((1.0/dispMapChangeDelay)*dispMapChangeCounterWobbling);
+
+	amountTransitioned = createWobble(verPositionForWeights, anchorForTexUpdate, startY, startX, startZ, endY, endX, endZ, dispMapChangeCounterWobbling);
 
 	// Difference with starting and ending weights
 	double startDispMapWeights = 1.0;
@@ -689,36 +718,19 @@ void calculateWeightChange(String verPositionForWeights, bool anchorForTexUpdate
 	// Position is based on transistion degree including distance restraint limit
 	double newWeight = ((distanceRestraint*learningRestraint*startDispMapWeights)*(1-amountTransitioned)) +
 			((distanceRestraint*learningRestraint*endDispMapWeights)*(amountTransitioned));
-	// normalize tex map with
-	double yTexScalingFactor = 2.62649350649;//-2.1484375;
-	double texTransDelay = dispMapChangeCounterWobbling*(1/(dispMapChangeDelay*1.5));
-	//if (changeTex==false) {texTransDelay = 1-texTransDelay;}
-	if (texTransDelay > 1) {texTransDelay = 1;}
-	//changeTex
-	double newTexY;
 
 	if (is_nan(newWeight)==true) {newWeight = 1.0;}
 	if (verPositionForWeights == "BR") {
-		weightsBR[y][x] += newWeight;
-		// Movement guided by anchor points disabled
-		/*if (anchorForTexUpdate == true) {
-			if (changeTex == true) {initTexYBR = (initTexYBR2*(1-texTransDelay))+((initTexYBR2*(1.04 / initTexYBR2))*texTransDelay);
-			initTexYBL = (initTexYBR2*(1-texTransDelay))+((initTexYBL2*(1.04 / initTexYBL2))*texTransDelay);
-			initTexYUL = initTexYBR-texYIncrement;initTexYUR = initTexYBL-texYIncrement;}
-
-			if (changeTex == false) {initTexYBR = (initTexYBR2*(texTransDelay))+((initTexYBR2*(1.04 / initTexYBR2))*(1-texTransDelay));
-			initTexYBL = (initTexYBR2*(texTransDelay))+((initTexYBL2*(1.04 / initTexYBL2))*(1-texTransDelay));
-			initTexYUL = initTexYBR-texYIncrement;initTexYUR = initTexYBL-texYIncrement;}
-		}*/
+		weightsBR[y][x] += newWeight + weightsBR2[y][x];
 	}
 	else if (verPositionForWeights == "BL") {
-		weightsBL[y][x+1] += newWeight;
+		weightsBL[y][x+1] += newWeight + weightsBL2[y][x+1];
 	}
 	else if (verPositionForWeights == "UL") {
-		weightsUL[y+1][x] += newWeight;
+		weightsUL[y+1][x] += newWeight + weightsUL2[y+1][x];
 	}
 	else if (verPositionForWeights == "UR") {
-		weightsUR[y+1][x+1] += newWeight;
+		weightsUR[y+1][x+1] += newWeight + weightsUR2[y+1][x+1];
 	}
 }
 
@@ -880,6 +892,10 @@ void createMeshOfRect() {
 			createMesh(vAT3);
 		}
 	}
+	weightsBR2[yMaxAmount][xMaxAmount] = {0};
+	weightsBL2[yMaxAmount][xMaxAmount] = {0};
+	weightsUL2[yMaxAmount][xMaxAmount] = {0};
+	weightsUR2[yMaxAmount][xMaxAmount] = {0};
 }
 
 const float BOX_SIZE = 7.0f;
@@ -1019,6 +1035,7 @@ void loadSimParameters(String simulationToRun) {
 			ss.str( std::string() );
 			ss.clear();
 			ss << "../../../OpenGL/Media/input/textures/idp0";
+			//ss << "../../../OpenGL/Media/input/backup6/idp0";
 			ss << i;
 			ss << ".bmp";
 			std::string s = ss.str();
