@@ -67,19 +67,17 @@ void handleKeypress(unsigned char key, int x, int y) {
   surface size for 3d displacement mapping, texture scaling, 
   depth of z dimention in 3d, speed of animation, offset of texture placement
 */
-  char texGroup[200][150];
-String image1 = texGroup[0];
+char texGroup[200][150]; // texture file name group
+String image1 = texGroup[0];  
 String image2 = texGroup[1];
-String startingDispMapImage = image2;
-String endingDispMapImage = image1;
+String startingDispMapImage = image2;  // starting point image of transition of displacement map
+String endingDispMapImage = image1;  // end point image of transition of displacement map
 Mat startingDispMap;
 Mat endingDispMap;
-
 double timeInMs = 0;
 const int incrementValue = 1;
-// *2 is due to 2 rectangle verticies for each x and y axis used for the later Z level mapping.
-double verticiesInRectangle = 2;
-const double sizeOfMesh = 40; // Squares in the mesh
+double verticiesInRectangle = 2; // *2 is due to 2 rectangle verticies for each x and y axis used for the later Z level mapping.
+const double sizeOfMesh = 40; // Squares in the 3d surface (mesh)
 int scalingF = 2;
 const double expandMeshSize = 2.0;
 double maxYSize = sizeOfMesh*scalingF;
@@ -90,18 +88,16 @@ double texYScaling = 1*.9;
 double texXScaling = 0.75*.9;
 int x = 0, y = 0;
 float initalZ = 40.0f;
-double depthScalingFactor = 0.75;//1.4;//.7;//.025;//.3;//0.1;
+double depthScalingFactor = 0.75; // scaling of the amount of 3d depth
 const int xMaxAmount = ceil(sizeOfMesh*(1/incrementValue))*2, yMaxAmount = ceil(sizeOfMesh*(1/incrementValue))*2;
 double startingVerZLevels[xMaxAmount][yMaxAmount] = {0};
 double endingVerZLevels[xMaxAmount][yMaxAmount] = {0};
 double animationDelay = 50.0;
-double transitionTime = 200.0;//400.0;//200.0;
+double transitionTime = 200.0;
 struct vertsAndTextures { double ULVerInst[3]; double URVerInst[3]; double BLVerInst[3]; double BRVerInst[3];
 double ULTexInst[2]; double URTexInst[2]; double BLTexInst[2]; double BRTexInst[2];};
 vertsAndTextures vAT3;
 
-double startingDispMapAnchorPoint[numberOfAnchors][2] = {0};
-double endingDispMapAnchorPoint[numberOfAnchors][2] = {0};
 double imageYPixels = 512;//image.rows;
 double imageXPixels = 512;//image.cols;
 double lockedDistance = 0.0;
@@ -346,7 +342,7 @@ void calculateWeightChange(String verPositionForWeights, bool anchorForTexUpdate
 
 void applyDispMap(double maxXSize, double maxYSize, double borderToCrop) {
 	/*
-	* Each vertice in the squares of the 3d surface are positioned here
+	* Each vertex in the squares of the 3d surface are positioned here
 	*/
 
 	double range = 20;
@@ -417,14 +413,14 @@ void createMeshOfRect() {
 
 	for (y = 0; y < (maxYSize); y += incrementValue2) {
 		//createMesh(vAT3);
-		// Reinitialze X dimension before the x value loop
+		// Reinitialze X dimension before the x value loop.  First vertices positions than texture of squares
 		vAT3.ULVerInst[0] = initVerXUL;
-		vAT3.ULTexInst[0] = initTexXUL;
-		vAT3.URVerInst[0] = initVerXUR;
-		vAT3.URTexInst[0] = initTexXUR;
-		vAT3.BLVerInst[0] = initVerXBL;
-		vAT3.BLTexInst[0] = initTexXBL;
+		vAT3.URVerInst[0] = initVerXUR;		
+		vAT3.BLVerInst[0] = initVerXBL;i
 		vAT3.BRVerInst[0] = initVerXBR;
+		vAT3.ULTexInst[0] = initTexXUL;
+		vAT3.URTexInst[0] = initTexXUR;
+		vAT3.BLTexInst[0] = initTexXBL;
 		vAT3.BRTexInst[0] = initTexXBR;
 
 		// For y dimension iteration update the y values
