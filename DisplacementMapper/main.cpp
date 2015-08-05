@@ -98,6 +98,8 @@ struct vertsAndTextures { double ULVerInst[3]; double URVerInst[3]; double BLVer
 double ULTexInst[2]; double URTexInst[2]; double BLTexInst[2]; double BRTexInst[2];};
 vertsAndTextures vAT3;
 
+double startingDispMapAnchorPoint[numberOfAnchors][2] = {0};
+double endingDispMapAnchorPoint[numberOfAnchors][2] = {0};
 double imageYPixels = 512;//image.rows;
 double imageXPixels = 512;//image.cols;
 double lockedDistance = 0.0;
@@ -133,6 +135,14 @@ bool changeTex = false;
 int animationSpeed;
 float translateX = 0.0, translateY = 0.0, translateZ = 0.0;
 float rotationX = 0.0, rotationY = 0.0, rotationZ = 0.0;
+
+String anchorImage1 = "../../../OpenGL/Media/gaborAnchorImageExtra.bmp";
+String anchorImage2 = "../../../OpenGL/Media/gaborAnchorImageExtra.bmp";
+String startingDispMapAnchorImage = anchorImage2;
+String endingDispMapAnchorImage = anchorImage1;
+const int numberOfAnchors = 1;
+Mat startingDispMapAnchor;
+Mat endingDispMapAnchor;
 
 // from https://studiofreya.com/cpp/how-to-check-for-nan-inf-ind-in-c/
 template<typename T>
@@ -263,6 +273,53 @@ void initWeights() {
 	for (int weightY = 0;weightY < yMaxAmount;weightY++) {fill_n(weightsBL[weightY], xMaxAmount, 1.0);};
 	for (int weightY = 0;weightY < yMaxAmount;weightY++) {fill_n(weightsUL[weightY], xMaxAmount, 1.0);};
 	for (int weightY = 0;weightY < yMaxAmount;weightY++) {fill_n(weightsUR[weightY], xMaxAmount, 1.0);};
+}
+
+void extractAnchorPoint(Mat anchorPointImage, String anchorPointPosition) {
+	// Find anchor points.  Search for pixels that are red B,G,R for OpenGL (1,1,255)
+	bool anchorFound1 = false;
+	for(int y=0;y<anchorPointImage.rows;y++)
+	{
+		for (int x=0;x<anchorPointImage.cols;x++)
+		{
+			//if ((anchorPointImage.at<Vec3b>(y,x) != Vec3b(0,0,0)) & (anchorFound == false)) {
+			int blueLevel = anchorPointImage.at<Vec3b>(y,x).val[0];
+			int greenLevel = anchorPointImage.at<Vec3b>(y,x).val[1];
+			int redLevel = anchorPointImage.at<Vec3b>(y,x).val[2];
+			if ((blueLevel <= 50) & (greenLevel <= 50) & (redLevel >= 200)) {
+				if ((anchorPointPosition=="start") & (anchorFound1 == false)) {
+					startingDispMapAnchorPoint[0][0]=y;
+					startingDispMapAnchorPoint[0][1]=x;
+					anchorFound1 = true;
+					//out<<"\n\nstart anchor found\t";cout<<anchorPointImage.at<Vec3b>(y,x);cout<<"\t";cout<<y;cout<<" ";cout<<x;cout<<"\n";
+				}
+				else if ((anchorPointPosition=="start") & (anchorFound1 == true) & numberOfAnchors > 1){
+					startingDispMapAnchorPoint[1][0]=y;
+					startingDispMapAnchorPoint[1][1]=x;
+					//cout<<"\n\nstart anchor 2 found\t";cout<<anchorPointImage.at<Vec3b>(y,x);cout<<"\t";cout<<y;cout<<" ";cout<<x;cout<<"\n";
+				}
+				else if ((anchorPointPosition=="end") & (anchorFound1 == false)) {
+					anchorFound1 = true;
+					endingDispMapAnchorPoint[0][0]=y;
+					endingDispMapAnchorPoint[0][1]=x;
+					//cout<<"\n\nend anchor found\t";cout<<anchorPointImage.at<Vec3b>(y,x);cout<<"\t";cout<<y;cout<<" ";cout<<x;cout<<"\n";
+				}
+				else if ((anchorPointPosition=="end") & (anchorFound1 == true) & numberOfAnchors > 1) {
+					endingDispMapAnchorPoint[1][0]=y;
+					endingDispMapAnchorPoint[1][1]=x;
+					//cout<<"\n\nend anchor 2 found\t";cout<<anchorPointImage.at<Vec3b>(y,x);cout<<"\t";cout<<y;cout<<" ";cout<<x;cout<<"\n";
+				}
+			}
+		}
+	}
+}
+
+void findAnchorPoints() {
+	startingDispMapAnchor = imread(startingDispMapAnchorImage, CV_LOAD_IMAGE_COLOR);
+	endingDispMapAnchor = imread(endingDispMapAnchorImage, CV_LOAD_IMAGE_COLOR);
+
+	extractAnchorPoint(startingDispMapAnchor, "start");
+	extractAnchorPoint(endingDispMapAnchor, "end");
 }
 
 void calculateWeightChange(String verPositionForWeights, bool anchorForTexUpdate, double startY, double startX, double startZ, double endY, double endX, double endZ) {
@@ -684,6 +741,7 @@ int main(int argc, char** argv) {
 
 		glutCreateWindow("Visual neuron receptor field simulation"); // Initialize window
 		initWeights(); // Calculate depth (z dimention) for 3d graphics
+		findAnchorPoints();		
 		initRendering(); // Render graphics
 
 		glutDisplayFunc(drawScene);
