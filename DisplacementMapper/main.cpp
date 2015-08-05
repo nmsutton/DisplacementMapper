@@ -659,7 +659,9 @@ void loadSimParameters(String simulationToRun) {
 
 int main(int argc, char** argv) {
 	/*
-	 * Creation of 3d graphics based on displacement maps using 2d disp maps.
+	 * Creation of 3d graphics based on displacement maps using 2d disp maps.  If a known simulation
+	 * is found than a window is generated.  Methods are called to render the graphics including resizing.
+	 * The animation is repeated including updating 3d surface content.
 	 *
 	 * references:
 	 * http://stackoverflow.com/questions/8765574/how-to-put-stringstream-contents-into-char-type-instead-string-type
@@ -678,18 +680,16 @@ int main(int argc, char** argv) {
 	if (simulationFound) {
 		glutInit(&argc, argv);
 		glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
-		glutInitWindowSize(400, 400);
+		glutInitWindowSize(400, 400); 
 
-		glutCreateWindow("Textures - videotutorialsrock.com");
-		initWeights();
-		findAnchorPoints();
-
-		initRendering();
+		glutCreateWindow("Visual neuron receptor field simulation"); // Initialize window
+		initWeights(); // Calculate depth (z dimention) for 3d graphics
+		initRendering(); // Render graphics
 
 		glutDisplayFunc(drawScene);
 		glutKeyboardFunc(handleKeypress);
 		glutReshapeFunc(handleResize);
-		glutTimerFunc(animationSpeed, update, 0);
+		glutTimerFunc(animationSpeed, update, 0); // Animate through repeating updates to scene
 
 		glutMainLoop();
 	};
