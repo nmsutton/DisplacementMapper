@@ -292,8 +292,28 @@ void initWeights() {
 }
 
 void calculateWeightChange(String verPositionForWeights, bool anchorForTexUpdate, double startY, double startX, double startZ, double endY, double endX, double endZ) {
-	/* Z dimention (3d depth) is calculated here and saved in weight groups.  Weights are used as z-dimention
-	* values.  
+	/* 
+	Z dimention (3d depth) is calculated here and saved in weight 
+	groups.  Weights are used as z-dimention values.  
+		
+	Use self organizing maps to apply disp map movement transition
+
+	from: https://en.wikipedia.org/wiki/Self-organizing_map
+
+	s is the current iteration
+	L is the iteration limit
+	t is the index of the target input data vector in the input data set \mathbf{D}
+	D(t) is a target input data vector
+	v is the index of the node in the map
+	W_v is the current weight vector of node v
+	u is the index of the best matching unit (BMU) in the map
+	Θ(u, v, s) is a restraint due to distance from BMU, usually called the neighborhood function, and
+	α (s) is a learning restraint due to iteration progress.
+
+	Wv(s + 1) = Wv(s) + Θ(u, v, s) α(s)(D(t) - Wv(s))
+
+	The Self organizing map is applied below in the newWeight variable
+	
 	*/
 
 	// Current point in most direct motion path using anchor points
@@ -348,21 +368,7 @@ void calculateWeightChange(String verPositionForWeights, bool anchorForTexUpdate
 
 void applyDispMap(double maxXSize, double maxYSize, double borderToCrop) {
 	/*
-	Use self organizing maps to apply disp map movement transition
-
-	from: https://en.wikipedia.org/wiki/Self-organizing_map
-
-	s is the current iteration
-	L is the iteration limit
-	t is the index of the target input data vector in the input data set \mathbf{D}
-	D(t) is a target input data vector
-	v is the index of the node in the map
-	W_v is the current weight vector of node v
-	u is the index of the best matching unit (BMU) in the map
-	Θ(u, v, s) is a restraint due to distance from BMU, usually called the neighborhood function, and
-	α (s) is a learning restraint due to iteration progress.
-
-	Wv(s + 1) = Wv(s) + Θ(u, v, s) α(s)(D(t) - Wv(s))
+	* Each vertice in the squares of the 3d surface are positioned here
 	*/
 
 	double range = 20;
