@@ -176,8 +176,6 @@ GLuint loadTexture(Image* image) {
 
 GLuint _textureId; //The id of the texture
 
-
-
 //texture[200] texGroup2;
 Image* texture[200];
 
@@ -237,8 +235,6 @@ void initRendering() {
 	Image* image = loadBMP(texGroup[(int)timeInMs]);
 	delete image;
 }
-
-
 
 void handleResize(int w, int h) {
 	glViewport(0, 0, w, h);
@@ -351,19 +347,18 @@ void findAnchorPoints() {
 }
 
 void calculateWeightChange(String verPositionForWeights, bool anchorForTexUpdate, double startY, double startX, double startZ, double endY, double endX, double endZ) {
+	/* Z dimention (3d depth) is calculated here and saved in weight groups.  Weights are used as z-dimention
+	* values.  
+	*/
+	
 	// Current point in most direct motion path using anchor points
 	double yDirPath = (startY*(1.0-((1.0/animationDelay)*timeInMs)))+(endY*((1.0/animationDelay)*timeInMs));
 	double xDirPath = (startX*(1.0-((1.0/animationDelay)*timeInMs)))+(endX*((1.0/animationDelay)*timeInMs));
 	// Euclidean distance from most direct path of motion from starting anchor point to ending anchor point
 	double distance = sqrt(pow(yDirPath-(imageYPixels*((double)y/(double)yMaxAmount)),2)+pow(xDirPath-(imageXPixels*((double)x/(double)xMaxAmount)),2));
-	if (timeInMs <= animationDelay) {
-		lockedDistance = distance;
-	}
-	else {
-		yDirPath = endY;
-		xDirPath = startX;
-		distance = sqrt(pow(yDirPath-(imageYPixels*((double)y/(double)yMaxAmount)),2)+pow(xDirPath-(imageXPixels*((double)x/(double)xMaxAmount)),2));
-	}
+	yDirPath = endY;
+	xDirPath = startX;
+	distance = sqrt(pow(yDirPath-(imageYPixels*((double)y/(double)yMaxAmount)),2)+pow(xDirPath-(imageXPixels*((double)x/(double)xMaxAmount)),2));
 	if (distance == 0) {distance = .00001;}
 	double furthestDistPossible = sqrt(pow(imageYPixels,2)+pow(imageXPixels,2));
 	// normalize distance with furthest possible in image giving it a 0-1 range
@@ -377,25 +372,6 @@ void calculateWeightChange(String verPositionForWeights, bool anchorForTexUpdate
 	double learningRestraint = 1.0;
 
 	double amountTransitioned = ((1.0/animationDelay)*timeInMs)*distanceRestraint;
-	double amountTransitioned2 = ((1.0/animationDelay)*timeInMs)*distanceRestraint;
-	double intialWobbleAllowed = 0.3;
-	double wobbleIncrement = .95;
-	double maxWobbles = ceil(intialWobbleAllowed/wobbleIncrement)+1;//*intialWobbleAllowed;
-	double wobbleForwardOrBack = 1.0;//-1.0;
-	double numberOfWobbles = 0.0;
-
-	for (double i = 1; i <= maxWobbles;i++) {
-		if (amountTransitioned2>=((1+intialWobbleAllowed)+(wobbleIncrement*i))) {
-			wobbleForwardOrBack = wobbleForwardOrBack * -1;
-			numberOfWobbles += 1;
-		}
-	}
-
-	double diminishingEffect = (1-((1/(transitionTime-animationDelay))*(timeInMs-animationDelay)));
-	if (amountTransitioned2 > (1+intialWobbleAllowed)) {
-
-		amountTransitioned = 1+((sin(((timeInMs-animationDelay)/10)*M_PI)*intialWobbleAllowed)*(diminishingEffect*1.0));
-	}
 
 	// Difference with starting and ending weights
 	double startDispMapWeights = 1.0;
@@ -403,8 +379,7 @@ void calculateWeightChange(String verPositionForWeights, bool anchorForTexUpdate
 	// Position is based on transistion degree including distance restraint limit
 	double newWeight = ((distanceRestraint*learningRestraint*startDispMapWeights)*(1-amountTransitioned)) +
 			((distanceRestraint*learningRestraint*endDispMapWeights)*(amountTransitioned));
-	// normalize tex map with
-	double yTexScalingFactor = 2.62649350649;//-2.1484375;
+	// normalize tex map
 	double texTransDelay = timeInMs*(1/(animationDelay*1.5));
 	//if (changeTex==false) {texTransDelay = 1-texTransDelay;}
 	if (texTransDelay > 1) {texTransDelay = 1;}
@@ -414,16 +389,6 @@ void calculateWeightChange(String verPositionForWeights, bool anchorForTexUpdate
 	if (is_nan(newWeight)==true) {newWeight = 1.0;}
 	if (verPositionForWeights == "BR") {
 		weightsBR[y][x] += newWeight;
-		// Movement guided by anchor points disabled
-		/*if (anchorForTexUpdate == true) {
-			if (changeTex == true) {initTexYBR = (initTexYBR2*(1-texTransDelay))+((initTexYBR2*(1.04 / initTexYBR2))*texTransDelay);
-			initTexYBL = (initTexYBR2*(1-texTransDelay))+((initTexYBL2*(1.04 / initTexYBL2))*texTransDelay);
-			initTexYUL = initTexYBR-texYIncrement;initTexYUR = initTexYBL-texYIncrement;}
-
-			if (changeTex == false) {initTexYBR = (initTexYBR2*(texTransDelay))+((initTexYBR2*(1.04 / initTexYBR2))*(1-texTransDelay));
-			initTexYBL = (initTexYBR2*(texTransDelay))+((initTexYBL2*(1.04 / initTexYBL2))*(1-texTransDelay));
-			initTexYUL = initTexYBR-texYIncrement;initTexYUR = initTexYBL-texYIncrement;}
-		}*/
 	}
 	else if (verPositionForWeights == "BL") {
 		weightsBL[y][x+1] += newWeight;
