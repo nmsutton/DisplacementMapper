@@ -350,7 +350,7 @@ void calculateWeightChange(String verPositionForWeights, bool anchorForTexUpdate
 	/* Z dimention (3d depth) is calculated here and saved in weight groups.  Weights are used as z-dimention
 	* values.  
 	*/
-	
+
 	// Current point in most direct motion path using anchor points
 	double yDirPath = (startY*(1.0-((1.0/animationDelay)*timeInMs)))+(endY*((1.0/animationDelay)*timeInMs));
 	double xDirPath = (startX*(1.0-((1.0/animationDelay)*timeInMs)))+(endX*((1.0/animationDelay)*timeInMs));
@@ -457,6 +457,11 @@ void applyDispMap(double maxXSize, double maxYSize, double borderToCrop) {
 }
 
 void createMeshOfRect() {
+	/*
+	*  Squares in the surface used for 3d model representation are positioned and
+	*  depth is added to them here.
+	*/
+
 	vAT3.ULVerInst[0] = -2.5f;
 	vAT3.ULVerInst[1] = -0.5f;
 	vAT3.ULVerInst[2] = -4.5f;
@@ -494,64 +499,27 @@ void createMeshOfRect() {
 		vAT3.BRTexInst[0] = initTexXBR;
 
 		// For y dimension iteration update the y values
-		if (y < maxYSize/2) {
-			vAT3.ULVerInst[1] -= verYIncrement;
-			vAT3.URVerInst[1] -= verYIncrement;
-			vAT3.BLVerInst[1] -= verYIncrement;
-			vAT3.BRVerInst[1] -= verYIncrement;
+		vAT3.ULVerInst[1] -= verYIncrement;
+		vAT3.URVerInst[1] -= verYIncrement;
+		vAT3.BLVerInst[1] -= verYIncrement;
+		vAT3.BRVerInst[1] -= verYIncrement;
 
-			vAT3.ULTexInst[1] -= texYIncrement;
-			vAT3.URTexInst[1] -= texYIncrement;
-			vAT3.BLTexInst[1] -= texYIncrement;
-			vAT3.BRTexInst[1] -= texYIncrement;
-		}
-		else if (y >= maxYSize/2) {
-			vAT3.ULVerInst[1] -= verYIncrement;
-			vAT3.URVerInst[1] -= verYIncrement;
-			vAT3.BLVerInst[1] -= verYIncrement;
-			vAT3.BRVerInst[1] -= verYIncrement;
-
-			vAT3.ULTexInst[1] -= texYIncrement;
-			vAT3.URTexInst[1] -= texYIncrement;
-			vAT3.BLTexInst[1] -= texYIncrement;
-			vAT3.BRTexInst[1] -= texYIncrement;
-		}
+		vAT3.ULTexInst[1] -= texYIncrement;
+		vAT3.URTexInst[1] -= texYIncrement;
+		vAT3.BLTexInst[1] -= texYIncrement;
+		vAT3.BRTexInst[1] -= texYIncrement;
 
 
 		for (x = 0; x < maxXSize; x += incrementValue2) {
-			if ((x < maxYSize/2) | (x < (maxYSize/2+(maxXSize-maxYSize)) & x > (maxXSize-maxYSize))) {
-				vAT3.ULVerInst[0] += verXIncrement;
-				vAT3.URVerInst[0] += verXIncrement;
-				vAT3.BLVerInst[0] += verXIncrement;
-				vAT3.BRVerInst[0] += verXIncrement;
+			vAT3.ULVerInst[0] += verXIncrement;
+			vAT3.URVerInst[0] += verXIncrement;
+			vAT3.BLVerInst[0] += verXIncrement;
+			vAT3.BRVerInst[0] += verXIncrement;
 
-				vAT3.ULTexInst[0] += texXIncrement;
-				vAT3.URTexInst[0] += texXIncrement;
-				vAT3.BLTexInst[0] += texXIncrement;
-				vAT3.BRTexInst[0] += texXIncrement;
-			}
-			else if ((x >= maxYSize/2 & x < maxYSize) | (x > (maxYSize/2+(maxXSize-maxYSize)) & x < (maxXSize))) {
-				vAT3.ULVerInst[0] += verXIncrement;
-				vAT3.URVerInst[0] += verXIncrement;
-				vAT3.BLVerInst[0] += verXIncrement;
-				vAT3.BRVerInst[0] += verXIncrement;
-
-				vAT3.ULTexInst[0] += texXIncrement;
-				vAT3.URTexInst[0] += texXIncrement;
-				vAT3.BLTexInst[0] += texXIncrement;
-				vAT3.BRTexInst[0] += texXIncrement;
-			}
-			else if (x > (maxYSize) & x < (maxXSize-maxYSize)) {
-				vAT3.ULVerInst[0] += verXIncrement;
-				vAT3.URVerInst[0] += verXIncrement;
-				vAT3.BLVerInst[0] += verXIncrement;
-				vAT3.BRVerInst[0] += verXIncrement;
-
-				vAT3.ULTexInst[0] += texXIncrement;
-				vAT3.URTexInst[0] += texXIncrement;
-				vAT3.BLTexInst[0] += texXIncrement;
-				vAT3.BRTexInst[0] += texXIncrement;
-			}
+			vAT3.ULTexInst[0] += texXIncrement;
+			vAT3.URTexInst[0] += texXIncrement;
+			vAT3.BLTexInst[0] += texXIncrement;
+			vAT3.BRTexInst[0] += texXIncrement;
 
 			double borderToCrop = 1;
 			applyDispMap(maxXSize, maxYSize, borderToCrop);
