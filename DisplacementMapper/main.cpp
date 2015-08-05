@@ -16,7 +16,12 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-/* File for "Textures" lesson of the OpenGL tutorial on
+
+/* Copyright 2015 Nate Sutton
+ * 
+ * 3d graphics generation from 2d displacement map images created in the 
+ * image preprocessor code.  Some content used from the 
+ * File for "Textures" lesson of the OpenGL tutorial on
  * www.videotutorialsrock.com
  */
 
@@ -57,29 +62,26 @@ void handleKeypress(unsigned char key, int x, int y) {
 	}
 }
 
-char texGroup[200][150];
+/*
+  Parameters for modeling are given such as initialization of texture image variables,
+  surface size for 3d displacement mapping, texture scaling, 
+  depth of z dimention in 3d, speed of animation, offset of texture placement
+*/
+  char texGroup[200][150];
 String image1 = texGroup[0];
 String image2 = texGroup[1];
 String startingDispMapImage = image2;
 String endingDispMapImage = image1;
 Mat startingDispMap;
 Mat endingDispMap;
-String anchorImage1 = "../../../OpenGL/Media/gaborAnchorImageExtra.bmp";
-String anchorImage2 = "../../../OpenGL/Media/gaborAnchorImageExtra.bmp";
-String startingDispMapAnchorImage = anchorImage2;
-String endingDispMapAnchorImage = anchorImage1;
-const int numberOfAnchors = 1;
-Mat startingDispMapAnchor;
-Mat endingDispMapAnchor;
+
 double timeInMs = 0;
-
 const int incrementValue = 1;
-
 // *2 is due to 2 rectangle verticies for each x and y axis used for the later Z level mapping.
 double verticiesInRectangle = 2;
-const double sizeOfMesh = 40;//35;//10;//6;//50;
+const double sizeOfMesh = 40; // Squares in the mesh
 int scalingF = 2;
-const double expandMeshSize = 2.0;//2.5;
+const double expandMeshSize = 2.0;
 double maxYSize = sizeOfMesh*scalingF;
 double maxXSize = (sizeOfMesh*scalingF);
 int incrementValue2 = 1;
@@ -135,6 +137,14 @@ bool changeTex = false;
 int animationSpeed;
 float translateX = 0.0, translateY = 0.0, translateZ = 0.0;
 float rotationX = 0.0, rotationY = 0.0, rotationZ = 0.0;
+
+String anchorImage1 = "../../../OpenGL/Media/gaborAnchorImageExtra.bmp";
+String anchorImage2 = "../../../OpenGL/Media/gaborAnchorImageExtra.bmp";
+String startingDispMapAnchorImage = anchorImage2;
+String endingDispMapAnchorImage = anchorImage1;
+const int numberOfAnchors = 1;
+Mat startingDispMapAnchor;
+Mat endingDispMapAnchor;
 
 // from https://studiofreya.com/cpp/how-to-check-for-nan-inf-ind-in-c/
 template<typename T>
