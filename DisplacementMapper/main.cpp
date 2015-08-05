@@ -84,8 +84,8 @@ double maxYSize = sizeOfMesh*scalingF;
 double maxXSize = (sizeOfMesh*scalingF);
 int incrementValue2 = 1;
 double sizeOfMesh2 = sizeOfMesh*2;
-double texYScaling = 1*.9;
-double texXScaling = 0.75*.9;
+double texYScaling = 1*.9; // scaling of the Y dimention of texture images
+double texXScaling = 0.75*.9; // scaling of the X dimention of texture images
 int x = 0, y = 0;
 float initalZ = 40.0f;
 double depthScalingFactor = 0.75; // scaling of the amount of 3d depth
