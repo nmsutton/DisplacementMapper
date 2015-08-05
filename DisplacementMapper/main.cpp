@@ -18,9 +18,9 @@
  */
 
 /* Copyright 2015 Nate Sutton
- * 
- * 3d graphics generation from 2d displacement map images created in the 
- * image preprocessor code.  Some content used from the 
+ *
+ * 3d graphics generation from 2d displacement map images created in the
+ * image preprocessor code.  Some content used from the
  * File for "Textures" lesson of the OpenGL tutorial on
  * www.videotutorialsrock.com
  */
@@ -64,11 +64,11 @@ void handleKeypress(unsigned char key, int x, int y) {
 
 /*
   Parameters for modeling are given such as initialization of texture image variables,
-  surface size for 3d displacement mapping, texture scaling, 
+  surface size for 3d displacement mapping, texture scaling,
   depth of z dimention in 3d, speed of animation, offset of texture placement
 */
 char texGroup[200][150]; // texture file name group
-String image1 = texGroup[0];  
+String image1 = texGroup[0];
 String image2 = texGroup[1];
 String startingDispMapImage = image2;  // starting point image of transition of displacement map
 String endingDispMapImage = image1;  // end point image of transition of displacement map
@@ -98,8 +98,6 @@ struct vertsAndTextures { double ULVerInst[3]; double URVerInst[3]; double BLVer
 double ULTexInst[2]; double URTexInst[2]; double BLTexInst[2]; double BRTexInst[2];};
 vertsAndTextures vAT3;
 
-double startingDispMapAnchorPoint[numberOfAnchors][2] = {0};
-double endingDispMapAnchorPoint[numberOfAnchors][2] = {0};
 double imageYPixels = 512;//image.rows;
 double imageXPixels = 512;//image.cols;
 double lockedDistance = 0.0;
@@ -136,11 +134,13 @@ int animationSpeed;
 float translateX = 0.0, translateY = 0.0, translateZ = 0.0;
 float rotationX = 0.0, rotationY = 0.0, rotationZ = 0.0;
 
+const int numberOfAnchors = 1;
+double startingDispMapAnchorPoint[numberOfAnchors][2] = {0};
+double endingDispMapAnchorPoint[numberOfAnchors][2] = {0};
 String anchorImage1 = "../../../OpenGL/Media/gaborAnchorImageExtra.bmp";
 String anchorImage2 = "../../../OpenGL/Media/gaborAnchorImageExtra.bmp";
 String startingDispMapAnchorImage = anchorImage2;
 String endingDispMapAnchorImage = anchorImage1;
-const int numberOfAnchors = 1;
 Mat startingDispMapAnchor;
 Mat endingDispMapAnchor;
 
@@ -323,10 +323,10 @@ void findAnchorPoints() {
 }
 
 void calculateWeightChange(String verPositionForWeights, bool anchorForTexUpdate, double startY, double startX, double startZ, double endY, double endX, double endZ) {
-	/* 
-	Z dimention (3d depth) is calculated here and saved in weight 
-	groups.  Weights are used as z-dimention values.  
-		
+	/*
+	Z dimention (3d depth) is calculated here and saved in weight
+	groups.  Weights are used as z-dimention values.
+
 	Use self organizing maps to apply disp map movement transition
 
 	from: https://en.wikipedia.org/wiki/Self-organizing_map
@@ -344,7 +344,7 @@ void calculateWeightChange(String verPositionForWeights, bool anchorForTexUpdate
 	Wv(s + 1) = Wv(s) + Θ(u, v, s) α(s)(D(t) - Wv(s))
 
 	The Self organizing map is applied below in the newWeight variable
-	
+
 	*/
 
 	// Current point in most direct motion path using anchor points
@@ -472,8 +472,8 @@ void createMeshOfRect() {
 		//createMesh(vAT3);
 		// Reinitialze X dimension before the x value loop.  First vertices positions than texture of squares
 		vAT3.ULVerInst[0] = initVerXUL;
-		vAT3.URVerInst[0] = initVerXUR;		
-		vAT3.BLVerInst[0] = initVerXBL;i
+		vAT3.URVerInst[0] = initVerXUR;
+		vAT3.BLVerInst[0] = initVerXBL;
 		vAT3.BRVerInst[0] = initVerXBR;
 		vAT3.ULTexInst[0] = initTexXUL;
 		vAT3.URTexInst[0] = initTexXUR;
@@ -737,11 +737,11 @@ int main(int argc, char** argv) {
 	if (simulationFound) {
 		glutInit(&argc, argv);
 		glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
-		glutInitWindowSize(400, 400); 
+		glutInitWindowSize(400, 400);
 
 		glutCreateWindow("Visual neuron receptor field simulation"); // Initialize window
 		initWeights(); // Calculate depth (z dimention) for 3d graphics
-		findAnchorPoints();		
+		findAnchorPoints();
 		initRendering(); // Render graphics
 
 		glutDisplayFunc(drawScene);
