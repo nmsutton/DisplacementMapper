@@ -193,104 +193,6 @@ GLuint loadTexture(Image* image) {
 
 GLuint _textureId; //The id of the texture
 
-
-
-//texture[200] texGroup2;
-//Image* texture[200];
-
-GLuint loadDDS(const char * imagepath){
-
-	unsigned char header[124];
-
-	FILE *fp;
-
-	/* try to open the file */
-	fp = fopen(imagepath, "rb");
-	if (fp == NULL){
-		printf("%s could not be opened. Are you in the right directory ? Don't forget to read the FAQ !\n", imagepath); getchar();
-		return 0;
-	}
-
-	/* verify the type of file */
-	char filecode[4];
-	fread(filecode, 1, 4, fp);
-	if (strncmp(filecode, "DDS ", 4) != 0) {
-		fclose(fp);
-		return 0;
-	}
-
-	/* get the surface desc */
-	fread(&header, 124, 1, fp);
-
-	unsigned int height      = *(unsigned int*)&(header[8 ]);
-	unsigned int width	     = *(unsigned int*)&(header[12]);
-	unsigned int linearSize	 = *(unsigned int*)&(header[16]);
-	unsigned int mipMapCount = *(unsigned int*)&(header[24]);
-	unsigned int fourCC      = *(unsigned int*)&(header[80]);
-
-
-	unsigned char * buffer;
-	unsigned int bufsize;
-	/* how big is it going to be including all mipmaps? */
-	bufsize = mipMapCount > 1 ? linearSize * 2 : linearSize;
-	buffer = (unsigned char*)malloc(bufsize * sizeof(unsigned char));
-	fread(buffer, 1, bufsize, fp);
-	/* close the file pointer */
-	fclose(fp);
-
-	unsigned int components  = (fourCC == FOURCC_DXT1) ? 3 : 4;
-	unsigned int format;
-	switch(fourCC)
-	{
-	case FOURCC_DXT1:
-		format = GL_COMPRESSED_RGBA_S3TC_DXT1_EXT;
-		break;
-	case FOURCC_DXT3:
-		format = GL_COMPRESSED_RGBA_S3TC_DXT3_EXT;
-		break;
-	case FOURCC_DXT5:
-		format = GL_COMPRESSED_RGBA_S3TC_DXT5_EXT;
-		break;
-	default:
-		free(buffer);
-		return 0;
-	}
-
-	// Create one OpenGL texture
-	GLuint textureID;
-	glGenTextures(1, &textureID);
-
-	// "Bind" the newly created texture : all future texture functions will modify this texture
-	glBindTexture(GL_TEXTURE_2D, textureID);
-	glPixelStorei(GL_UNPACK_ALIGNMENT,1);
-
-	unsigned int blockSize = (format == GL_COMPRESSED_RGBA_S3TC_DXT1_EXT) ? 8 : 16;
-	unsigned int offset = 0;
-
-	/* load the mipmaps */
-	for (unsigned int level = 0; level < mipMapCount && (width || height); ++level)
-	{
-		unsigned int size = ((width+3)/4)*((height+3)/4)*blockSize;
-		glCompressedTexImage2D(GL_TEXTURE_2D, level, format, width, height,
-				0, size, buffer + offset);
-
-		offset += size;
-		width  /= 2;
-		height /= 2;
-
-		// Deal with Non-Power-Of-Two textures. This code is not included in the webpage to reduce clutter.
-		if(width < 1) width = 1;
-		if(height < 1) height = 1;
-
-	}
-
-	free(buffer);
-
-	return textureID;
-
-
-}
-
 GLuint loadBMP_custom(const char * imagepath){
 
 	//printf("Reading image %s\n", imagepath);
@@ -369,67 +271,6 @@ GLuint loadBMP_custom(const char * imagepath){
 
 	// Return the ID of the texture we just created
 	return textureID;
-}
-
-GLuint LoadTexture2( const char * filename, int width, int height )
-{
-	/*GLuint texture;
-	unsigned char * data;
-	FILE * file;
-
-	//The following code will read in our RAW file
-	file = fopen( filename, "rb" );
-	if ( file == NULL ) return 0;
-	data = (unsigned char *)malloc( width * height * 3 );
-	fread( data, width * height * 3, 1, file );
-	fclose( file );*/
-
-	GLuint texture;
-	unsigned char *data;
-	FILE *file;
-
-	// open texture data
-	file = fopen(filename, "rb");
-	if (file == NULL) return 0;
-
-	// allocate buffer
-	data = (unsigned char*) malloc(width * height * 4);
-
-	// read texture data
-	fread(data, width * height * 4, 1, file);
-	fclose(file);
-
-	// allocate a texture name
-	glGenTextures(1, &texture);
-
-	glGenTextures( 1, &texture ); //generate the texture with the loaded data
-	glBindTexture( GL_TEXTURE_2D, texture ); //bind the textureto it’s array
-	glTexEnvf( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE ); //set texture environment parameters
-
-	//here we are setting what textures to use and when. The MIN  filter is which quality to show
-	//when the texture is near the view, and the MAG filter is which quality to show when the texture
-	//is far from the view.
-
-	//The qualities are (in order from worst to best)
-	//GL_NEAREST
-	//GL_LINEAR
-	//GL_LINEAR_MIPMAP_NEAREST
-	//GL_LINEAR_MIPMAP_LINEAR
-
-	//And if you go and use extensions, you can use Anisotropic  filtering textures which are of an
-	//even better quality, but this will do for now.
-	glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER,GL_LINEAR_MIPMAP_LINEAR );
-	glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER,GL_LINEAR_MIPMAP_LINEAR );
-
-	//Here we are setting the parameter to repeat the texture instead of clamping the texture
-	//to the edge of our shape.
-	glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT );
-	glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT );
-
-	//Generate the texture with mipmaps
-	gluBuild2DMipmaps( GL_TEXTURE_2D, 3, width, height, GL_BGR_EXT, GL_UNSIGNED_BYTE, data );
-	free( data ); //free the texture
-	return texture; //return whether it was successfull
 }
 
 void initRendering() {
@@ -589,163 +430,16 @@ double euclideanDistance(double x1, double x2, double y1, double y2) {
 	return sqrt(pow((y2-y1),2)+pow((x2-x1),2));
 }
 
-double createWobble(String verPositionForWeights, bool anchorForTexUpdate, double startY, double startX, double startZ, double endY, double endX, double endZ, double dispMapChangeCounterWobbling) {
-	// Current point in most direct motion path using anchor points
-	double yDirPath = (startY*(1.0-((1.0/dispMapChangeDelay)*dispMapChangeCounterWobbling)))+(endY*((1.0/dispMapChangeDelay)*dispMapChangeCounterWobbling));
-	double xDirPath = (startX*(1.0-((1.0/dispMapChangeDelay)*dispMapChangeCounterWobbling)))+(endX*((1.0/dispMapChangeDelay)*dispMapChangeCounterWobbling));
-	// Euclidean distance from most direct path of motion from starting anchor point to ending anchor point
-	double distance = sqrt(pow(yDirPath-(imageYPixels*((double)y/(double)yMaxAmount)),2)+pow(xDirPath-(imageXPixels*((double)x/(double)xMaxAmount)),2));
-	yDirPath = endY;
-	xDirPath = startX;
-	distance = sqrt(pow(yDirPath-(imageYPixels*((double)y/(double)yMaxAmount)),2)+pow(xDirPath-(imageXPixels*((double)x/(double)xMaxAmount)),2));
-	if (distance == 0) {distance = .00001;}
-	double furthestDistPossible = sqrt(pow(imageYPixels,2)+pow(imageXPixels,2));
-	// normalize distance with furthest possible in image giving it a 0-1 range
-	double normalizedDistance = (distance/furthestDistPossible);
-	double scalingFactor = 0.9;
-	double scaledDistance = (1-(normalizedDistance*scalingFactor));
-	scaledDistance = (1-(pow(normalizedDistance,.8)));
-
-	double distanceCost = (1-.1);
-	double distanceRestraint = scaledDistance*distanceCost;//1.0*distanceCost;//(1-normalizedDistance)*distanceCost;//2.8;//
-	double learningRestraint = 1.0;
-
-	double dispMapChangeCounterWobbling2 = dispMapChangeCounterWobbling*2.0;//dispMapChangeCounter*2.0;
-
-	double amountTransitioned = ((1.0/dispMapChangeDelay)*dispMapChangeCounterWobbling);//*distanceRestraint;
-	double amountTransitioned2 = ((1.0/dispMapChangeDelay)*dispMapChangeCounterWobbling2);//*distanceRestraint;
-	double intialWobbleAllowed = 0.4;//0.3;//5.0;//
-	double wobbleIncrement = 1.0;//2.0;//.95;//3.0;//.95;
-	double maxWobbles = ceil(intialWobbleAllowed/wobbleIncrement)+1;//*intialWobbleAllowed;
-	double wobbleForwardOrBack = 1.0;//-1.0;
-	double numberOfWobbles = 0.0;
-
-	for (double i = 1; i <= maxWobbles;i++) {
-		if (amountTransitioned2>=((1+intialWobbleAllowed)+(wobbleIncrement*i))) {
-			wobbleForwardOrBack = wobbleForwardOrBack * -1;
-			numberOfWobbles += 1;
-		}
-	}
-
-	double wobble = 0;
-	double wobbleResistance = 0;
-
-	double diminishingEffect = (1-((1/((dispMapChangeDelay/3.0)))*(dispMapChangeCounterWobbling2-dispMapChangeDelay)));
-	if (amountTransitioned2 > (1+intialWobbleAllowed)) {
-		wobble = ((sin(((dispMapChangeCounterWobbling2-dispMapChangeDelay)/10)*M_PI)*intialWobbleAllowed)*(diminishingEffect*1.0));
-		//wobbleResistance = (dispMapChangeCounter/((dispMapChangeDelay/4.0)));
-		wobbleResistance = pow((dispMapChangeCounter/dispMapChangeDelay),2);
-		//if (wobbleResistance > 1.0) {wobbleResistance = 0.25;}
-		if (wobbleResistance > 1.0) {wobbleResistance = (dispMapChangeDelay/dispMapChangeCounter);}
-		amountTransitioned += ( wobble * wobbleResistance );
-		//amountTransitioned += ( wobble * .8 );
-		//amountTransitioned = 1+wobble;
-		//cout<<"++++++++++++++++\n";
-
-		/*change in x, change in y.  keep track of z difference.  for greater change in z, create corresponding extended change in x and y.
-		 * account for x and y and scale difference from normal ending z amount by the trajectory of the x and y change, using the amount of z change.
-		 * new weight should be added and not =?
-		 */
-		/* effect surrounding weights
-		 */
-		double dispMChangeAngle = xYChangeToAngle(endY, startY, endX, startX);
-		double pixelToOriginAngle = 0;
-		double pixelToOriginDistance = 0;
-		double trajectoryOfEffect = 0;
-		double surroundingCircumference = 3;
-		double effectDistance = (endZ/startZ);// amount of depth change
-		double angleWobbleScaling = 0.0;//7000.0;//3.0;
-
-		for (double pixelY = (-surroundingCircumference+(floor(surroundingCircumference/2))); pixelY < surroundingCircumference; pixelY+=1.0) {
-			for (double pixelX = (-surroundingCircumference+(floor(surroundingCircumference/2))); pixelY < surroundingCircumference; pixelY+=1.0) {
-				pixelToOriginAngle = xYChangeToAngle(pixelY, 0.0, pixelX, 0.0);
-				trajectoryOfEffect = 0.5+cos(dispMChangeAngle - pixelToOriginAngle);
-				pixelToOriginDistance = euclideanDistance(pixelY, 0.0, pixelX, 0.0);
-				//amountTransitioned = amountTransitioned * trajectoryOfEffect;
-				//amountTransitioned -= ((sin(((dispMapChangeCounterWobbling-dispMapChangeDelay)/10)*M_PI)*intialWobbleAllowed)*(diminishingEffect*1.0)) * trajectoryOfEffect;
-
-				// avoid out of bounds error
-				if ((x-surroundingCircumference > 0) & (y-surroundingCircumference > 0) & (x+surroundingCircumference < imageXPixels) & (y+surroundingCircumference > imageYPixels)) {
-					if (verPositionForWeights == "BR") {
-						weightsBR2[(int)pixelY][(int)pixelX] -= angleWobbleScaling * (1-(pixelToOriginDistance/surroundingCircumference)) * wobble * trajectoryOfEffect;
-					}
-					else if (verPositionForWeights == "BL") {
-						weightsBL2[(int)pixelY][(int)pixelX+1] -= angleWobbleScaling * (1-(pixelToOriginDistance/surroundingCircumference)) * wobble * trajectoryOfEffect;
-					}
-					else if (verPositionForWeights == "UL") {
-						weightsUL2[(int)pixelY+1][(int)pixelX] -= angleWobbleScaling * (1-(pixelToOriginDistance/surroundingCircumference)) * wobble * trajectoryOfEffect;
-					}
-					else if (verPositionForWeights == "UR") {
-						weightsUR2[(int)pixelY+1][(int)pixelX+1] -= angleWobbleScaling * (1-(pixelToOriginDistance/surroundingCircumference)) * wobble * trajectoryOfEffect;
-					}
-				}
-				//cout<<weightsBR2[(int)pixelY][(int)pixelX];cout<<"\n";
-			}
-			//cout<<angleWobbleScaling * (1-(pixelToOriginDistance/surroundingCircumference)) * wobble * trajectoryOfEffect;cout<<"\t";cout<<pixelToOriginDistance;cout<<"\t";cout<<surroundingCircumference;cout<<"\t";cout<<wobble;cout<<"\t";cout<<trajectoryOfEffect;cout<<"\n";
-		}
-		//distance*(1/(endZ/startZ))
-	}
-
-	return amountTransitioned;
-}
-
-void calculateWeightChange(String verPositionForWeights, bool anchorForTexUpdate, double startY, double startX, double startZ, double endY, double endX, double endZ) {
-	double dispMapChangeCounterWobbling = dispMapChangeCounter*1.5;//2.0;//1.5;//3.0;//1.2;
-	// Current point in most direct motion path using anchor points
-	double yDirPath = (startY*(1.0-((1.0/dispMapChangeDelay)*dispMapChangeCounterWobbling)))+(endY*((1.0/dispMapChangeDelay)*dispMapChangeCounterWobbling));
-	double xDirPath = (startX*(1.0-((1.0/dispMapChangeDelay)*dispMapChangeCounterWobbling)))+(endX*((1.0/dispMapChangeDelay)*dispMapChangeCounterWobbling));
-	// Euclidean distance from most direct path of motion from starting anchor point to ending anchor point
-	double distance = sqrt(pow(yDirPath-(imageYPixels*((double)y/(double)yMaxAmount)),2)+pow(xDirPath-(imageXPixels*((double)x/(double)xMaxAmount)),2));
-	yDirPath = endY;
-	xDirPath = startX;
-	distance = sqrt(pow(yDirPath-(imageYPixels*((double)y/(double)yMaxAmount)),2)+pow(xDirPath-(imageXPixels*((double)x/(double)xMaxAmount)),2));
-	if (distance == 0) {distance = .00001;}
-	double furthestDistPossible = sqrt(pow(imageYPixels,2)+pow(imageXPixels,2));
-	// normalize distance with furthest possible in image giving it a 0-1 range
-	double normalizedDistance = (distance/furthestDistPossible);
-	double scalingFactor = 0.9;
-	double scaledDistance = (1-(normalizedDistance*scalingFactor));
-	scaledDistance = (1-(pow(normalizedDistance,.8)));
-
-	double distanceCost = (1-.1);
-	double distanceRestraint = scaledDistance*distanceCost;//1.0*distanceCost;//(1-normalizedDistance)*distanceCost;//2.8;//
-	double learningRestraint = 1.0;
-
-	double amountTransitioned = ((1.0/dispMapChangeDelay)*dispMapChangeCounterWobbling);
-
-	amountTransitioned = createWobble(verPositionForWeights, anchorForTexUpdate, startY, startX, startZ, endY, endX, endZ, dispMapChangeCounterWobbling);
-
-	// Difference with starting and ending weights
-	double startDispMapWeights = 1.0;
-	double endDispMapWeights = (endZ*depthScalingFactor)/(startZ*depthScalingFactor);
-	// Position is based on transistion degree including distance restraint limit
-	double newWeight = ((distanceRestraint*learningRestraint*startDispMapWeights)*(1-amountTransitioned)) +
-			((distanceRestraint*learningRestraint*endDispMapWeights)*(amountTransitioned));
-
-	if (is_nan(newWeight)==true) {newWeight = 1.0;}
-	if (verPositionForWeights == "BR") {
-		weightsBR[y][x] += newWeight + weightsBR2[y][x];
-	}
-	else if (verPositionForWeights == "BL") {
-		weightsBL[y][x+1] += newWeight + weightsBL2[y][x+1];
-	}
-	else if (verPositionForWeights == "UL") {
-		weightsUL[y+1][x] += newWeight + weightsUL2[y+1][x];
-	}
-	else if (verPositionForWeights == "UR") {
-		weightsUR[y+1][x+1] += newWeight + weightsUR2[y+1][x+1];
-	}
-}
-
-
-
 double wobble() {
 	double weight = 0.0;
+	for (y = 0; y < (maxYSize); y += incrementValue2) {
+		for (x = 0; x < maxXSize; x += incrementValue2) {
+			weightsZ[y][x] = weightsZ[y][x] + 0.0;
+		}
+	}
 
 	return weight;
 }
-
-//double
 
 void applyDispMap2(int x, int y) {
 	/*
@@ -765,9 +459,6 @@ void applyDispMap2(int x, int y) {
 	double amountTransitioned = (dispMapChangeCounter/dispMapChangeDelay);
 
 	// NOTE: reuse of x,y global variable names, mabie make them non-global
-
-	//for (y = 0; y < (maxYSize); y += incrementValue2) {
-	//	for (x = 0; x < maxXSize; x += incrementValue2) {
 			if (x < (maxXSize-borderToCrop)) {
 				vAT3.BRVerInst[2] = (startingVerZLevels[y][x]*amountTransitioned) +
 						(endingVerZLevels[y][x]*(1-amountTransitioned)) *
@@ -790,74 +481,6 @@ void applyDispMap2(int x, int y) {
 						(endingVerZLevels[y+1][x+1]*(1-amountTransitioned)) *
 						depthScalingFactor * weightsZ[y+1][x+1];
 			}
-
-	//	}
-	//}
-
-	/*
-	vAT3.BRVerInst[2] = (startingVerZLevels[y][x]*depthScalingFactor)*weightsBR[y][x];
-
-	vAT3.BLVerInst[2] = (startingVerZLevels[y][x+1]*depthScalingFactor)*weightsBL[y][x+1];
-
-	vAT3.ULVerInst[2] = (startingVerZLevels[y+1][x]*depthScalingFactor)*weightsUL[y+1][x];
-
-	vAT3.URVerInst[2] = (startingVerZLevels[y+1][x+1]*depthScalingFactor)*weightsUR[y+1][x+1];
-	 */
-}
-
-void applyDispMap(double maxXSize, double maxYSize, double borderToCrop) {
-	/*
-	Use self organizing maps to apply disp map movement transition
-
-	from: https://en.wikipedia.org/wiki/Self-organizing_map
-
-	s is the current iteration
-	L is the iteration limit
-	t is the index of the target input data vector in the input data set \mathbf{D}
-	D(t) is a target input data vector
-	v is the index of the node in the map
-	W_v is the current weight vector of node v
-	u is the index of the best matching unit (BMU) in the map
-	Θ(u, v, s) is a restraint due to distance from BMU, usually called the neighborhood function, and
-	α (s) is a learning restraint due to iteration progress.
-
-	Wv(s + 1) = Wv(s) + Θ(u, v, s) α(s)(D(t) - Wv(s))
-	 */
-
-	double range = 20;
-	if (x < (maxXSize-borderToCrop)) {
-
-		weightsBR[y][x] = 0;
-		for (int anchorIndex = 0;anchorIndex < numberOfAnchors; anchorIndex++) {
-			calculateWeightChange("BR", true, startingDispMapAnchorPoint[anchorIndex][0], startingDispMapAnchorPoint[anchorIndex][1],
-					startingVerZLevels[y][x], endingDispMapAnchorPoint[anchorIndex][0], endingDispMapAnchorPoint[anchorIndex][1], endingVerZLevels[y][x]);
-		}
-		vAT3.BRVerInst[2] = (startingVerZLevels[y][x]*depthScalingFactor)*weightsBR[y][x];
-	}
-	if ((x > 0) & (x < (maxXSize-borderToCrop))) {
-		weightsBL[y][x+1] = 0;
-		for (int anchorIndex = 0;anchorIndex < numberOfAnchors; anchorIndex++) {
-			calculateWeightChange("BL", true, startingDispMapAnchorPoint[anchorIndex][0], startingDispMapAnchorPoint[anchorIndex][1],
-					startingVerZLevels[y][x+1], endingDispMapAnchorPoint[anchorIndex][0], endingDispMapAnchorPoint[anchorIndex][1], endingVerZLevels[y][x+1]);
-		}
-		vAT3.BLVerInst[2] = (startingVerZLevels[y][x+1]*depthScalingFactor)*weightsBL[y][x+1];
-	}
-	if (y > 0 & y < maxYSize-borderToCrop) {
-		weightsUL[y+1][x] = 0;
-		for (int anchorIndex = 0;anchorIndex < numberOfAnchors; anchorIndex++) {
-			calculateWeightChange("UL", true, startingDispMapAnchorPoint[anchorIndex][0], startingDispMapAnchorPoint[anchorIndex][1],
-					startingVerZLevels[y+1][x], endingDispMapAnchorPoint[anchorIndex][0], endingDispMapAnchorPoint[anchorIndex][1], endingVerZLevels[y+1][x]);
-		}
-		vAT3.ULVerInst[2] = (startingVerZLevels[y+1][x]*depthScalingFactor)*weightsUL[y+1][x];
-	}
-	if ((y < maxYSize-borderToCrop) & (x < (maxXSize-borderToCrop))) {
-		weightsUR[y+1][x+1] = 0;
-		for (int anchorIndex = 0;anchorIndex < numberOfAnchors; anchorIndex++) {
-			calculateWeightChange("UR", true, startingDispMapAnchorPoint[anchorIndex][0], startingDispMapAnchorPoint[anchorIndex][1],
-					startingVerZLevels[y+1][x+1], endingDispMapAnchorPoint[anchorIndex][0], endingDispMapAnchorPoint[anchorIndex][1], endingVerZLevels[y+1][x+1]);
-		}
-		vAT3.URVerInst[2] = (startingVerZLevels[y+1][x+1]*depthScalingFactor)*weightsUR[y+1][x+1];
-	}
 }
 
 void createMeshOfRect() {
@@ -884,6 +507,8 @@ void createMeshOfRect() {
 	vAT3.BRVerInst[2] = -4.5f;
 	vAT3.BRTexInst[0] = initTexXBR;
 	vAT3.BRTexInst[1] = initTexYBR;
+
+	wobble();
 
 	for (y = 0; y < (maxYSize); y += incrementValue2) {
 		//createMesh(vAT3);
@@ -1105,8 +730,8 @@ void loadSimParameters(String simulationToRun) {
 		for (int i = 0; i < numberOfTexs; i++) {
 			ss.str( std::string() );
 			ss.clear();
-			ss << "../../../OpenGL/Media/input/textures/idp0";
-			//ss << "../../../OpenGL/Media/input/backup6/idp0";
+			//ss << "../../../OpenGL/Media/input/textures/idp0";
+			ss << "../../../OpenGL/Media/input/backup6/idp0";
 			ss << i;
 			ss << ".bmp";
 			std::string s = ss.str();
@@ -1123,12 +748,12 @@ void loadSimParameters(String simulationToRun) {
 
 		rotationX = -100.20f; rotationY = 201.0f; rotationZ = 45.0f;
 
-		_angle = 0.0f;//30.00f;//45.330f;//0.0f;
+		_angle = 30.0f;//30.00f;//45.330f;//0.0f;
 
 		depthScalingFactor = 0.75;//1.4;//.7;//.025;//.3;//0.1;
 
-		animationDelay = 50.0;
-		transitionTime = 28.0;//200.0;//400.0;//200.0;
+		animationDelay = 100.0;
+		transitionTime = 100.0;//200.0;//400.0;//200.0;
 
 		texXIncrement = (1.60*(1.00f/(sizeOfMesh2*expandMeshSize)))/texXScaling;
 		texYIncrement = (0.73f/sizeOfMesh2)/texYScaling;
