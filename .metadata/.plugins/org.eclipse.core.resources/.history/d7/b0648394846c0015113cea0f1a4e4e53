@@ -174,7 +174,6 @@ bool is_nan( const T &value )
 float mouseX;
 float mouseY;
 float angle = 0.0f;
-int rightMouseButtonDown = 0;
 
 //Makes the image into a texture, and returns the id of the texture
 GLuint loadTexture(Image* image) {
@@ -792,21 +791,20 @@ void mouse(int button, int state, int x, int y)
 	/*
 	 * Reference http://www.glprogramming.com/red/chapter01.html
 	 */
-	switch (button) {
-	case GLUT_RIGHT_BUTTON:
-		if (state == GLUT_DOWN)
-			//glutIdleFunc(spinDisplay);
-			cout<<"right\n";
-		rightMouseButtonDown = (state == GLUT_DOWN);
-		break;
-	case GLUT_MIDDLE_BUTTON:
-		if (state == GLUT_DOWN)
-			//glutIdleFunc(NULL);
-			cout<<"middle\n";
-		break;
-	default:
-		break;
-	}
+   switch (button) {
+      case GLUT_LEFT_BUTTON:
+         if (state == GLUT_DOWN)
+            //glutIdleFunc(spinDisplay);
+        	 cout<<"left\n";
+         break;
+      case GLUT_MIDDLE_BUTTON:
+         if (state == GLUT_DOWN)
+            //glutIdleFunc(NULL);
+        	 cout<<"middle\n";
+         break;
+      default:
+         break;
+   }
 }
 
 void mouseMove(int x, int y)
@@ -814,19 +812,16 @@ void mouseMove(int x, int y)
 	/*
 	 * http://stackoverflow.com/questions/13399021/getting-the-position-of-a-user-mouse-click-in-c-glut
 	 */
-	if (rightMouseButtonDown == 1) {
-		mouseX = -1.0 + 2.0 * x / 320 ;
-		mouseY = 1.0 - 2.0 * y / 320 ;
+    mouseX = -1.0 + 2.0 * x / 320 ;
+    mouseY = 1.0 - 2.0 * y / 320 ;
 
-		//angle = 90 + atan2(pos.y-mouseY, pos.x-mouseX) * 180 / 3.1415926;
-		_angle = x*0.2;
-		rotationY = 201.0f+-200+y;
+    //angle = 90 + atan2(pos.y-mouseY, pos.x-mouseX) * 180 / 3.1415926;
+    _angle = x*0.2;
+    rotationY = 201.0f+0+y;
 
-
-		std::cout << mouseX << ", " << mouseY << std::endl;
-		std::cout << x << ", " << y << std::endl;
-		std::cout << angle << std::endl;
-	}
+    std::cout << mouseX << ", " << mouseY << std::endl;
+    std::cout << x << ", " << y << std::endl;
+    std::cout << angle << std::endl;
 }
 
 int main(int argc, char** argv) {
