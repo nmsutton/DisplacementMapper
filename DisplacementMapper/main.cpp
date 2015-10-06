@@ -145,6 +145,7 @@ float initVerZUR = -4.50f+initalZ;//initVerZUL+verZIncrement;
 float initVerZBL = -4.50f+initalZ;
 float initVerZBR = -4.50f+initalZ;
 
+double borderToCrop = 1;
 float texYWeight = 1.0;
 float texXWeight = 1.0;
 bool changeTex = false;
@@ -160,6 +161,7 @@ double weightsBR2[yMaxAmount][xMaxAmount] = {0};
 double weightsBL2[yMaxAmount][xMaxAmount] = {0};
 double weightsUL2[yMaxAmount][xMaxAmount] = {0};
 double weightsUR2[yMaxAmount][xMaxAmount] = {0};
+double weightsZ[yMaxAmount][xMaxAmount] = {0.0};//test_test[yMaxAmount][xMaxAmount] = {1};
 
 // from https://studiofreya.com/cpp/how-to-check-for-nan-inf-ind-in-c/
 template<typename T>
@@ -270,7 +272,7 @@ GLuint loadDDS(const char * imagepath){
 	{
 		unsigned int size = ((width+3)/4)*((height+3)/4)*blockSize;
 		glCompressedTexImage2D(GL_TEXTURE_2D, level, format, width, height,
-			0, size, buffer + offset);
+				0, size, buffer + offset);
 
 		offset += size;
 		width  /= 2;
@@ -382,23 +384,23 @@ GLuint LoadTexture2( const char * filename, int width, int height )
 	fread( data, width * height * 3, 1, file );
 	fclose( file );*/
 
-    GLuint texture;
-    unsigned char *data;
-    FILE *file;
+	GLuint texture;
+	unsigned char *data;
+	FILE *file;
 
-    // open texture data
-    file = fopen(filename, "rb");
-    if (file == NULL) return 0;
+	// open texture data
+	file = fopen(filename, "rb");
+	if (file == NULL) return 0;
 
-    // allocate buffer
-    data = (unsigned char*) malloc(width * height * 4);
+	// allocate buffer
+	data = (unsigned char*) malloc(width * height * 4);
 
-    // read texture data
-    fread(data, width * height * 4, 1, file);
-    fclose(file);
+	// read texture data
+	fread(data, width * height * 4, 1, file);
+	fclose(file);
 
-    // allocate a texture name
-    glGenTextures(1, &texture);
+	// allocate a texture name
+	glGenTextures(1, &texture);
 
 	glGenTextures( 1, &texture ); //generate the texture with the loaded data
 	glBindTexture( GL_TEXTURE_2D, texture ); //bind the textureto it’s array
@@ -513,6 +515,7 @@ void initWeights() {
 	for (int weightY = 0;weightY < yMaxAmount;weightY++) {fill_n(weightsBL[weightY], xMaxAmount, 1.0);};
 	for (int weightY = 0;weightY < yMaxAmount;weightY++) {fill_n(weightsUL[weightY], xMaxAmount, 1.0);};
 	for (int weightY = 0;weightY < yMaxAmount;weightY++) {fill_n(weightsUR[weightY], xMaxAmount, 1.0);};
+	for (int weightZ = 0;weightZ < yMaxAmount;weightZ++) {fill_n(weightsZ[weightZ], xMaxAmount, 1.0);};
 }
 
 void extractAnchorPoint(Mat anchorPointImage, String anchorPointPosition) {
@@ -734,6 +737,74 @@ void calculateWeightChange(String verPositionForWeights, bool anchorForTexUpdate
 	}
 }
 
+
+
+double wobble() {
+	double weight = 0.0;
+
+	return weight;
+}
+
+//double
+
+void applyDispMap2(int x, int y) {
+	/*
+		Translate a z movement into the corresponding movement of 4 edge vertices in a
+		square in the mesh.
+
+		dispMapChangeCounter = time point along transition from startZ to endZ.
+
+		weight = amount of adjustment to apply
+	 */
+
+	// NOTE: weightsZ dummy variable for now
+
+	//dispMapChangeCounter
+	// NOTE: check if this ever reaches 1.0 or it always resets before then.
+	// Also, animation is fine if it never reaches 1.0?
+	double amountTransitioned = (dispMapChangeCounter/dispMapChangeDelay);
+
+	// NOTE: reuse of x,y global variable names, mabie make them non-global
+
+	//for (y = 0; y < (maxYSize); y += incrementValue2) {
+	//	for (x = 0; x < maxXSize; x += incrementValue2) {
+			if (x < (maxXSize-borderToCrop)) {
+				vAT3.BRVerInst[2] = (startingVerZLevels[y][x]*amountTransitioned) +
+						(endingVerZLevels[y][x]*(1-amountTransitioned)) *
+						depthScalingFactor * weightsZ[y][x];
+			}
+			if ((x > 0) & (x < (maxXSize-borderToCrop))) {
+				vAT3.BLVerInst[2] = (startingVerZLevels[y][x+1]*amountTransitioned) +
+						(endingVerZLevels[y][x+1]*(1-amountTransitioned)) *
+						depthScalingFactor * weightsZ[y][x+1];
+			}
+			if (y > 0 & y < maxYSize-borderToCrop) {
+				weightsUL[y+1][x] = 0;
+				vAT3.ULVerInst[2] = (startingVerZLevels[y+1][x]*amountTransitioned) +
+						(endingVerZLevels[y+1][x]*(1-amountTransitioned)) *
+						depthScalingFactor * weightsZ[y+1][x];
+			}
+			if ((y < maxYSize-borderToCrop) & (x < (maxXSize-borderToCrop))) {
+				weightsUR[y+1][x+1] = 0;
+				vAT3.URVerInst[2] = (startingVerZLevels[y+1][x+1]*amountTransitioned) +
+						(endingVerZLevels[y+1][x+1]*(1-amountTransitioned)) *
+						depthScalingFactor * weightsZ[y+1][x+1];
+			}
+
+	//	}
+	//}
+
+	/*
+	vAT3.BRVerInst[2] = (startingVerZLevels[y][x]*depthScalingFactor)*weightsBR[y][x];
+
+	vAT3.BLVerInst[2] = (startingVerZLevels[y][x+1]*depthScalingFactor)*weightsBL[y][x+1];
+
+	vAT3.ULVerInst[2] = (startingVerZLevels[y+1][x]*depthScalingFactor)*weightsUL[y+1][x];
+
+	vAT3.URVerInst[2] = (startingVerZLevels[y+1][x+1]*depthScalingFactor)*weightsUR[y+1][x+1];
+	 */
+}
+
 void applyDispMap(double maxXSize, double maxYSize, double borderToCrop) {
 	/*
 	Use self organizing maps to apply disp map movement transition
@@ -886,8 +957,8 @@ void createMeshOfRect() {
 				vAT3.BRTexInst[0] += texXIncrement;
 			}
 
-			double borderToCrop = 1;
-			applyDispMap(maxXSize, maxYSize, borderToCrop);
+			//applyDispMap(maxXSize, maxYSize, borderToCrop);
+			applyDispMap2(x, y);
 
 			createMesh(vAT3);
 		}
