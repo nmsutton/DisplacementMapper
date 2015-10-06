@@ -782,27 +782,6 @@ void loadSimParameters(String simulationToRun) {
 	}
 }
 
-void mouse(int button, int state, int x, int y)
-{
-	/*
-	 * Reference http://www.glprogramming.com/red/chapter01.html
-	 */
-   switch (button) {
-      case GLUT_LEFT_BUTTON:
-         if (state == GLUT_DOWN)
-            //glutIdleFunc(spinDisplay);
-        	 cout<<"left\n";
-         break;
-      case GLUT_MIDDLE_BUTTON:
-         if (state == GLUT_DOWN)
-            //glutIdleFunc(NULL);
-        	 cout<<"middle\n";
-         break;
-      default:
-         break;
-   }
-}
-
 int main(int argc, char** argv) {
 	/*
 	 * Creation of 3d graphics based on displacement maps using 2d disp maps.
@@ -829,7 +808,6 @@ int main(int argc, char** argv) {
 		glutCreateWindow("Textures - videotutorialsrock.com");
 		initWeights();
 		//findAnchorPoints();
-		glutMouseFunc(mouse);
 
 		initRendering();
 
