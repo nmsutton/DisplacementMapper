@@ -1,6 +1,6 @@
-14:24:53 **** Incremental Build of configuration Debug for project DisplacementMapper ****
+19:18:56 **** Incremental Build of configuration Debug for project DisplacementMapper ****
 make all 
-Cannot run program "make": Unknown reason
+make: Nothing to be done for 'all'.
 
-14:24:54 Build Finished (took 444ms)
+19:18:57 Build Finished (took 83ms)
 

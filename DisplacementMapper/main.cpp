@@ -171,6 +171,10 @@ bool is_nan( const T &value )
 	return value != value;
 }
 
+float mouseX;
+float mouseY;
+float angle = 0.0f;
+
 //Makes the image into a texture, and returns the id of the texture
 GLuint loadTexture(Image* image) {
 	//dispMapImage = imread(imageName6, CV_LOAD_IMAGE_COLOR);
@@ -721,7 +725,7 @@ void loadSimParameters(String simulationToRun) {
 		for (int i = 0; i < numberOfDispMaps; i++) {
 			ss.str( std::string() );
 			ss.clear();
-			ss << "../../../OpenGL/Media/input/dispMaps/idp0";//"../../../OpenGL/Media/input/backup/idp0";
+			ss << "../../../../OpenGL/Media/input/dispMaps/idp0";//"../../../OpenGL/Media/input/backup/idp0";
 			ss << i;
 			ss << ".bmp";
 			std::string s = ss.str();
@@ -733,7 +737,7 @@ void loadSimParameters(String simulationToRun) {
 			ss.str( std::string() );
 			ss.clear();
 			//ss << "../../../OpenGL/Media/input/textures/idp0";
-			ss << "../../../OpenGL/Media/input/backup6/idp0";
+			ss << "../../../../OpenGL/Media/input/backup6/idp0";
 			ss << i;
 			ss << ".bmp";
 			std::string s = ss.str();
@@ -803,6 +807,18 @@ void mouse(int button, int state, int x, int y)
    }
 }
 
+void mouseMove(int x, int y)
+{
+    mouseX = -1.0 + 2.0 * x / 320 ;
+    mouseY = 1.0 - 2.0 * y / 320 ;
+
+    //angle = 90 + atan2(pos.y-mouseY, pos.x-mouseX) * 180 / 3.1415926;
+
+    std::cout << mouseX << ", " << mouseY << std::endl;
+    std::cout << x << ", " << y << std::endl;
+    std::cout << angle << std::endl;
+}
+
 int main(int argc, char** argv) {
 	/*
 	 * Creation of 3d graphics based on displacement maps using 2d disp maps.
@@ -830,6 +846,8 @@ int main(int argc, char** argv) {
 		initWeights();
 		//findAnchorPoints();
 		glutMouseFunc(mouse);
+
+		glutMotionFunc(mouseMove);
 
 		initRendering();
 
