@@ -468,7 +468,8 @@ void applyDispMap2(int x, int y) {
 	//dispMapChangeCounter
 	// NOTE: check if this ever reaches 1.0 or it always resets before then.
 	// Also, animation is fine if it never reaches 1.0?
-	double amountTransitioned = (dispMapChangeCounter/dispMapChangeDelay);
+	double amountTransitioned = amountTransitioned*(1+(1/(numberOfDispMaps-2)));//(dispMapChangeCounter/dispMapChangeDelay);//+(1/numberOfDispMaps);
+	cout<<"amountTransitioned "<<amountTransitioned*(1+(1/(numberOfDispMaps-2)))<<"\n";
 
 	// NOTE: reuse of x,y global variable names, mabie make them non-global
 	if (x < (maxXSize-borderToCrop)) {
@@ -733,7 +734,7 @@ void loadSimParameters(String simulationToRun) {
 		for (int i = 0; i < numberOfDispMaps; i++) {
 			ss.str( std::string() );
 			ss.clear();
-			ss << "../../../../OpenGL/Media/input/dispMaps/idp0";//"../../../OpenGL/Media/input/backup/idp0";
+			ss << "../../../../OpenGL/Media/input/dispMaps2/idp0";//"../../../../OpenGL/Media/input/dispMaps/idp0";//"../../../OpenGL/Media/input/backup/idp0";
 			ss << i;
 			ss << ".bmp";
 			std::string s = ss.str();
@@ -848,7 +849,7 @@ void mouseMove(int x, int y)
 		std::cout << angle << std::endl;
 	}
 	if (leftMouseButtonDown == 1) {
-		weightsZ[y/5][x/5] = 100;
+		weightsZ[(int)((y/5)*window_height_expansion)][(int)((x/5)*window_width_expansion)] = 20;
 	}
 }
 
