@@ -182,6 +182,19 @@ int reference_window_width = 400;
 int reference_window_height = 400;
 double window_height_expansion = 1.0;
 double window_width_expansion = 1.0;
+int last_down_x = 0;
+int last_down_y = 0;
+const int WOBBLE_TRANS_TIME = 100;
+struct click_positioning {
+	int start_x = 0;
+	int start_y = 0;
+	int end_x = 0;
+	int end_y = 0;
+	int transition_counter = WOBBLE_TRANS_TIME;
+};
+// reference: http://stackoverflow.com/questions/6810656/creating-an-array-of-structs-in-c
+const int MAX_MOVEMENTS_TRACKED = 1000;
+click_positioning click_detected[MAX_MOVEMENTS_TRACKED];  // 1000 is max movement data tracked
 
 //Makes the image into a texture, and returns the id of the texture
 GLuint loadTexture(Image* image) {
@@ -363,12 +376,16 @@ void buildDispMap(Mat startingDispMap, string startingOrEndPoint) {
 	};
 }
 
-void initWeights() {
-	for (int weightY = 0;weightY < yMaxAmount;weightY++) {fill_n(weightsBR[weightY], xMaxAmount, 1.0);};
-	for (int weightY = 0;weightY < yMaxAmount;weightY++) {fill_n(weightsBL[weightY], xMaxAmount, 1.0);};
-	for (int weightY = 0;weightY < yMaxAmount;weightY++) {fill_n(weightsUL[weightY], xMaxAmount, 1.0);};
-	for (int weightY = 0;weightY < yMaxAmount;weightY++) {fill_n(weightsUR[weightY], xMaxAmount, 1.0);};
-	for (int weightZ = 0;weightZ < yMaxAmount;weightZ++) {fill_n(weightsZ[weightZ], xMaxAmount, 1.0);};
+void initWeights(String varTypes) {
+	if (varTypes=="onlyZWeights") {
+		for (int weightZ = 0;weightZ < yMaxAmount;weightZ++) {fill_n(weightsZ[weightZ], xMaxAmount, 1.0);};
+	}
+	else {
+		for (int weightY = 0;weightY < yMaxAmount;weightY++) {fill_n(weightsBR[weightY], xMaxAmount, 1.0);};
+		for (int weightY = 0;weightY < yMaxAmount;weightY++) {fill_n(weightsBL[weightY], xMaxAmount, 1.0);};
+		for (int weightY = 0;weightY < yMaxAmount;weightY++) {fill_n(weightsUL[weightY], xMaxAmount, 1.0);};
+		for (int weightY = 0;weightY < yMaxAmount;weightY++) {fill_n(weightsUR[weightY], xMaxAmount, 1.0);};
+	}
 }
 
 void extractAnchorPoint(Mat anchorPointImage, String anchorPointPosition) {
@@ -444,10 +461,76 @@ double euclideanDistance(double x1, double x2, double y1, double y2) {
 
 double wobble() {
 	double weight = 0.0;
-	for (y = 0; y < (maxYSize); y += incrementValue2) {
+	double wobble_trans = 0.0;
+	int i = 0;
+	bool last_click_found = false;
+	int start_x = 0;
+	int start_y = 0;
+	int end_x = 0;
+	int end_y = 0;
+	double dist_end = 0.0;
+	double trans_z = 0.0;
+	double trans_x_2 = 0.0;
+	double trans_y_2 = 0.0;
+
+	/*for (y = 0; y < (maxYSize); y += incrementValue2) {
 		for (x = 0; x < maxXSize; x += incrementValue2) {
 			weightsZ[y][x] = weightsZ[y][x] + 1.1;
 		}
+	}*/
+
+	/*
+	 * Scan for movements needing wobble
+	 * wobble_trans is normalized to 1.0 max by dividing by
+	 * WOBBLE_TRANS_TIME.
+	 */
+	//while (last_click_found==false) {
+	for (i = 0; i < MAX_MOVEMENTS_TRACKED; i++) {
+		start_x = click_detected[i].start_x;
+		start_y = click_detected[i].start_y;
+		end_x = click_detected[i].end_x;
+		end_y = click_detected[i].end_y;
+		if (start_x==0 && start_y==0 && end_x==0 && end_y==0) {
+			last_click_found = true;
+			break;
+		}
+		wobble_trans = click_detected[i].transition_counter/(double)WOBBLE_TRANS_TIME;
+		if (wobble_trans <= 0.0) {
+			// TODO: add removal of movement array entry here
+			cout<<"end wobble at "<<i<<"\n";
+		}
+		else {
+			/*
+			 * scan through all points that can use a transition
+			 * dist_end is normalized below to keep it as max 1.0 value.
+			 * dividing by euclideanDistance(...) creates normalization.
+			 * The closer dist_end is to the wobble_trans the greater
+			 * trans_z is.
+			 * trans_x_2 = current x point along transition weight calcs.
+			 * trans_y_2 = same for y
+			 */
+			click_detected[i].transition_counter -= 5.0;
+			wobble_trans = click_detected[i].transition_counter/(double)WOBBLE_TRANS_TIME;
+			cout<<"wobble_trans "<<wobble_trans<<" i: "<<i<<" start_x "<<click_detected[i].start_x<<" end_x "<<click_detected[i].start_y<<
+					" abs(end_x-start_x) "<<(int)abs((double)end_x-(double)start_x)<<" abs(end_y-start_y) "<<(int)abs(end_y-start_y)<<"\n";
+
+			for (int trans_x = 0; trans_x < abs(end_x-start_x); trans_x++) {
+				for(int trans_y = 0; trans_y < abs(end_y-start_y); trans_y++) {
+					dist_end = euclideanDistance(trans_x, end_x, trans_y, end_y)/euclideanDistance(start_x, end_x, start_y, end_y);
+					trans_z = 1 - abs(dist_end - wobble_trans);
+					trans_x_2 = ((double)start_x*(1-((double)trans_x/(double)abs(end_x-start_x))))+((double)end_x*((double)trans_x/(double)abs(end_x-start_x)));
+					trans_y_2 = ((double)start_y*(1-((double)trans_y/(double)abs(end_y-start_y))))+((double)end_y*((double)trans_y/(double)abs(end_y-start_y)));
+					cout<<"trans_x_2 "<<(int)((trans_x_2/5)*window_width_expansion)<<"\n";
+					cout<<"trans_y_2 "<<(int)((trans_y_2/5)*window_height_expansion)<<"\n";
+
+					weightsZ[(int)((trans_y_2/5)*window_height_expansion)][(int)((trans_x_2/5)*window_width_expansion)] =
+							1.0 + (trans_z*20.0);
+							//(startingVerZLevels[y+1][x+1]*wobble_trans) +
+							//(endingVerZLevels[y+1][x+1]*(1-wobble_trans));
+				}
+			}
+		}
+		//i = i + 1;
 	}
 
 	return weight;
@@ -469,7 +552,7 @@ void applyDispMap2(int x, int y) {
 	// NOTE: check if this ever reaches 1.0 or it always resets before then.
 	// Also, animation is fine if it never reaches 1.0?
 	double amountTransitioned = amountTransitioned*(1+(1/(numberOfDispMaps-2)));//(dispMapChangeCounter/dispMapChangeDelay);//+(1/numberOfDispMaps);
-	cout<<"amountTransitioned "<<amountTransitioned*(1+(1/(numberOfDispMaps-2)))<<"\n";
+	//cout<<"amountTransitioned "<<amountTransitioned*(1+(1/(numberOfDispMaps-2)))<<"\n";
 
 	// NOTE: reuse of x,y global variable names, mabie make them non-global
 	if (x < (maxXSize-borderToCrop)) {
@@ -483,13 +566,13 @@ void applyDispMap2(int x, int y) {
 				depthScalingFactor * weightsZ[y][x+1];
 	}
 	if (y > 0 & y < maxYSize-borderToCrop) {
-		weightsUL[y+1][x] = 0;
+		//weightsUL[y+1][x] = 0;
 		vAT3.ULVerInst[2] = (startingVerZLevels[y+1][x]*amountTransitioned) +
 				(endingVerZLevels[y+1][x]*(1-amountTransitioned)) *
 				depthScalingFactor * weightsZ[y+1][x];
 	}
 	if ((y < maxYSize-borderToCrop) & (x < (maxXSize-borderToCrop))) {
-		weightsUR[y+1][x+1] = 0;
+		//weightsUR[y+1][x+1] = 0;
 		vAT3.URVerInst[2] = (startingVerZLevels[y+1][x+1]*amountTransitioned) +
 				(endingVerZLevels[y+1][x+1]*(1-amountTransitioned)) *
 				depthScalingFactor * weightsZ[y+1][x+1];
@@ -606,7 +689,7 @@ void createMeshOfRect() {
 	weightsUL2[yMaxAmount][xMaxAmount] = {0};
 	weightsUR2[yMaxAmount][xMaxAmount] = {0};
 	// Reset Z levels
-	for (int weightZ = 0;weightZ < yMaxAmount;weightZ++) {fill_n(weightsZ[weightZ], xMaxAmount, 1.0);};
+	//for (int weightZ = 0;weightZ < yMaxAmount;weightZ++) {fill_n(weightsZ[weightZ], xMaxAmount, 1.0);};
 }
 
 const float BOX_SIZE = 7.0f;
@@ -789,6 +872,8 @@ void loadSimParameters(String simulationToRun) {
 		animationSpeed = 100;
 
 		simulationFound = true;
+
+		initWeights("onlyZWeights");
 	}
 	else {
 		cerr<<"\n--Error--\nIncorrect simulation type specified\n--Error--\n\n";
@@ -802,8 +887,33 @@ void mouse(int button, int state, int x, int y)
 	 */
 	switch (button) {
 	case GLUT_LEFT_BUTTON:
-		if (state == GLUT_DOWN)
-		leftMouseButtonDown = (state == GLUT_DOWN);
+		if (state == GLUT_DOWN) {
+			leftMouseButtonDown = (state == GLUT_DOWN);
+			cout<<"down x: "<<x<<" down y: "<<y<<"\n";
+			last_down_x = x;
+			last_down_y = y;
+		}
+		if (state == GLUT_UP) {
+			int i = -1;
+			bool last_click_found = false;
+			while (last_click_found==false) {
+				i = i + 1;
+				if (click_detected[i].start_x==0 && click_detected[i].start_y==0 &&
+						click_detected[i].end_x==0 && click_detected[i].end_y==0) {
+					click_detected[i].start_x=last_down_x;
+					click_detected[i].start_y=last_down_y;
+					click_detected[i].end_x=x;
+					click_detected[i].end_y=y;
+
+					cout<<"click_detected "<<i<<" sX "<<click_detected[i].start_x<<"\n";
+					cout<<"click_detected "<<i<<" sY "<<click_detected[i].start_y<<"\n";
+					cout<<"click_detected "<<i<<" eX "<<click_detected[i].end_x<<"\n";
+					cout<<"click_detected "<<i<<" eY "<<click_detected[i].end_y<<"\n";
+					last_click_found=true;
+				}
+			}
+			cout<<"up x: "<<x<<" up y: "<<y<<"\n";
+		}
 		break;
 	case GLUT_RIGHT_BUTTON:
 		if (state == GLUT_DOWN)
@@ -830,9 +940,9 @@ void mouseMove(int x, int y)
 	window_width_expansion = (double)reference_window_width/(double)window_width;
 	window_height = glutGet(GLUT_WINDOW_HEIGHT);
 	window_height_expansion = (double)reference_window_height/(double)window_height;
-	cout<<"window height"<<window_height<<"window_width"<<window_width<<"\n";
+	/*cout<<"window height"<<window_height<<"window_width"<<window_width<<"\n";
 	cout<<"::x::"<<x<<"::y::"<<y<<"\n";
-	cout<<"window_width_expansion"<<window_width_expansion<<"window_height_expansion"<<window_height_expansion<<"\n";
+	cout<<"window_width_expansion"<<window_width_expansion<<"window_height_expansion"<<window_height_expansion<<"\n";*/
 
 	if (rightMouseButtonDown == 1) {
 
@@ -844,12 +954,14 @@ void mouseMove(int x, int y)
 		rotationY = (201.0f*1.0)+(-200*1.0)+(y*window_height_expansion)*1.5;
 
 
-		std::cout << mouseX << ", " << mouseY << std::endl;
+		/*std::cout << mouseX << ", " << mouseY << std::endl;
 		std::cout << x << ", " << y << std::endl;
-		std::cout << angle << std::endl;
+		std::cout << angle << std::endl;*/
 	}
 	if (leftMouseButtonDown == 1) {
-		weightsZ[(int)((y/5)*window_height_expansion)][(int)((x/5)*window_width_expansion)] = 20;
+		if (weightsZ[(int)((y/5)*window_height_expansion)][(int)((x/5)*window_width_expansion)] <= 20) {
+		weightsZ[(int)((y/5)*window_height_expansion)][(int)((x/5)*window_width_expansion)] += 5;
+		}
 	}
 }
 
@@ -877,7 +989,7 @@ int main(int argc, char** argv) {
 		glutInitWindowSize(400, 400);
 
 		glutCreateWindow("Textures - videotutorialsrock.com");
-		initWeights();
+		initWeights("X_Y_and_others");
 		//findAnchorPoints();
 		glutMouseFunc(mouse);
 
