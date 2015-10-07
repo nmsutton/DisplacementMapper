@@ -176,6 +176,12 @@ float mouseY;
 float angle = 0.0f;
 int leftMouseButtonDown = 0;
 int rightMouseButtonDown = 0;
+int window_width = 0;
+int window_height = 0;
+int reference_window_width = 400;
+int reference_window_height = 400;
+double window_height_expansion = 1.0;
+double window_width_expansion = 1.0;
 
 //Makes the image into a texture, and returns the id of the texture
 GLuint loadTexture(Image* image) {
@@ -819,13 +825,22 @@ void mouseMove(int x, int y)
 	/*
 	 * http://stackoverflow.com/questions/13399021/getting-the-position-of-a-user-mouse-click-in-c-glut
 	 */
+	window_width = glutGet(GLUT_WINDOW_WIDTH);
+	window_width_expansion = (double)reference_window_width/(double)window_width;
+	window_height = glutGet(GLUT_WINDOW_HEIGHT);
+	window_height_expansion = (double)reference_window_height/(double)window_height;
+	cout<<"window height"<<window_height<<"window_width"<<window_width<<"\n";
+	cout<<"::x::"<<x<<"::y::"<<y<<"\n";
+	cout<<"window_width_expansion"<<window_width_expansion<<"window_height_expansion"<<window_height_expansion<<"\n";
+
 	if (rightMouseButtonDown == 1) {
+
 		mouseX = -1.0 + 2.0 * x / 320 ;
 		mouseY = 1.0 - 2.0 * y / 320 ;
 
 		//angle = 90 + atan2(pos.y-mouseY, pos.x-mouseX) * 180 / 3.1415926;
-		_angle = x*0.2;
-		rotationY = 201.0f+-200+y;
+		_angle = (x*window_width_expansion)*(0.2*1.0);
+		rotationY = (201.0f*1.0)+(-200*1.0)+(y*window_height_expansion)*1.5;
 
 
 		std::cout << mouseX << ", " << mouseY << std::endl;
@@ -833,7 +848,7 @@ void mouseMove(int x, int y)
 		std::cout << angle << std::endl;
 	}
 	if (leftMouseButtonDown == 1) {
-		weightsZ[y/5][x/5] = x;
+		weightsZ[y/5][x/5] = 100;
 	}
 }
 
