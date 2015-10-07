@@ -833,7 +833,7 @@ void mouseMove(int x, int y)
 		std::cout << angle << std::endl;
 	}
 	if (leftMouseButtonDown == 1) {
-		weightsZ[y/5][x/5] = x;
+		weightsZ[x][y] = x;
 	}
 }
 

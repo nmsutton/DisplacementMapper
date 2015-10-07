@@ -174,7 +174,6 @@ bool is_nan( const T &value )
 float mouseX;
 float mouseY;
 float angle = 0.0f;
-int leftMouseButtonDown = 0;
 int rightMouseButtonDown = 0;
 
 //Makes the image into a texture, and returns the id of the texture
@@ -794,10 +793,6 @@ void mouse(int button, int state, int x, int y)
 	 * Reference http://www.glprogramming.com/red/chapter01.html
 	 */
 	switch (button) {
-	case GLUT_LEFT_BUTTON:
-		if (state == GLUT_DOWN)
-		leftMouseButtonDown = (state == GLUT_DOWN);
-		break;
 	case GLUT_RIGHT_BUTTON:
 		if (state == GLUT_DOWN)
 			//glutIdleFunc(spinDisplay);
@@ -831,9 +826,6 @@ void mouseMove(int x, int y)
 		std::cout << mouseX << ", " << mouseY << std::endl;
 		std::cout << x << ", " << y << std::endl;
 		std::cout << angle << std::endl;
-	}
-	if (leftMouseButtonDown == 1) {
-		weightsZ[y/5][x/5] = x;
 	}
 }
 
