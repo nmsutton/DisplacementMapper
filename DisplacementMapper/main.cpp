@@ -327,9 +327,9 @@ void calculateWeightChange(String verPositionForWeights, bool anchorForTexUpdate
 	Z dimention (3d depth) is calculated here and saved in weight
 	groups.  Weights are used as z-dimention values.
 
-	The newWeight variable serves as the z-dimention value which 
-	transitions between values of input from 2d image pixel lightness
-	values.  
+	The newWeight variable serves as a value which assists with
+	transitions between z-levels based on values of input from 2d 
+	image pixel lightness values.  
 	
 	Note: learningRestraint is not set to restrict weights currently.
 
