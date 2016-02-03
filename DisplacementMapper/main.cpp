@@ -332,6 +332,30 @@ void calculateWeightChange(String verPositionForWeights, bool anchorForTexUpdate
 	image pixel lightness values.  
 	
 	Note: learningRestraint is not set to restrict weights currently.
+	
+	Additional code is included here for potential future addition of
+	Self Organizing Maps (SOM) into movement animations of verticies. 
+
+	If SOM were included some relevant details are as follows:
+	
+	SOM to applied disp map movement transition:
+	
+	from: https://en.wikipedia.org/wiki/Self-organizing_map
+	s is the current iteration
+	L is the iteration limit
+	t is the index of the target input data vector in the input data set \mathbf{D}
+	D(t) is a target input data vector
+	v is the index of the node in the map
+	W_v is the current weight vector of node v
+	u is the index of the best matching unit (BMU) in the map
+	Θ(u, v, s) is a restraint due to distance from BMU, usually called the neighborhood function, and
+	α (s) is a learning restraint due to iteration progress.
+	
+	Wv(s + 1) = Wv(s) + Θ(u, v, s) α(s)(D(t) - Wv(s))
+	
+	SOM could be applied in the newWeight variable.  Code such as 
+	distanceRestraint would be Θ(u, v, s), learningRestraint would
+	be α(s).
 
 	*/
 
