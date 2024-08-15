@@ -1,6 +1,6 @@
 # DisplacementMapper
 
-Please see http://nmsutton.herokuapp.com/nmsuttondetails/PlottingVisualReceptors 
+Please see https://nsutton.com/simulating-visual-filter-responses-plotted-with-self-organizing-maps/
 for details about this work
 
 File structure:
